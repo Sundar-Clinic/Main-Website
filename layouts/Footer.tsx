@@ -4,14 +4,14 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Clock } from 'lucide-react';
 import { FOOTER_NAVIGATION } from '@/constants/navigation';
-import { CONTACTS } from '@/constants/clinic';
+import { CONTACTS, SOCIALS } from '@/constants/clinic';
 
-const Footer = () => {
+export default function Footer() {
 	return (
 		<footer>
-			<section className='max-w-7xl mx-auto p-4'>
+			<section className='max-w-7xl mx-auto p-4 text-center md:text-left'>
 				<p className='font-heading font-medium text-xl'>Find Us</p>
-				<div className='grid grid-cols-4 w-full justify-between gap-8'>
+				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 place-items-center w-full justify-between gap-8'>
 					<div className='flex flex-col items-center justify-center gap-2 w-fit'>
 						<div className='w-32'>
 							<Image
@@ -64,9 +64,39 @@ const Footer = () => {
 					referrerPolicy='no-referrer-when-downgrade'
 				></iframe>
 			</section>
-			<section></section>
+			<section className='max-w-7xl mx-auto p-4'>
+				<div className='grid grid-cols-1 sm:grid-cols-2 place-items-center gap-4'>
+					<ul className='grid grid-cols-2 gap-2 w-fit'>
+						{FOOTER_NAVIGATION.map((link) => (
+							<li key={`footer-${link.name}`}>
+								<Link href={link.url} target={link.target}>
+									{link.name}
+								</Link>
+							</li>
+						))}
+					</ul>
+					<ul className='flex gap-2 items-center w-fit'>
+						{SOCIALS.map((link) => (
+							<Link
+								href={link.url}
+								target={'_blank'}
+								key={`footer-social-${link.name}`}
+								title={link.name}
+							>
+								<Button asChild size='icon' variant={'outline'}>
+									<li>
+										<link.Icon />
+									</li>
+								</Button>
+							</Link>
+						))}
+					</ul>
+				</div>
+				<hr className='border-b max-w-sm my-2 border-b-black mx-auto' />
+				<p className='text-center'>
+					2023. &copy; Sundar Clinic. All rights reserved
+				</p>
+			</section>
 		</footer>
 	);
-};
-
-export default Footer;
+}
