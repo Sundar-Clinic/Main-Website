@@ -20,6 +20,7 @@ export default function Footer() {
 								width={100}
 								height={100}
 								className='w-full h-auto object-contain'
+								priority
 							/>
 						</div>
 						<p>2013 - {new Date().getFullYear()}</p>
