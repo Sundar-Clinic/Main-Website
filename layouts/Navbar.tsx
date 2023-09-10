@@ -32,6 +32,7 @@ const Navbar = () => {
 							width={100}
 							height={100}
 							className='w-full h-auto object-contain'
+							priority
 						/>
 					</Link>
 					<Sheet>
