@@ -12,10 +12,11 @@ const Hero = () => {
 					Not just a better healthcare, but a better healthcare
 					experience.
 				</h1>
-				<h2 className='text-lg font-thin'>
-					Lorem ipsum dolor sit amet, consectetur adipisci eit, sed do
-					eiusmod tempor incididunt ut labore et dolore magna aliqua.
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+				<h2 className='text-lg font-light'>
+					In Pappanchatirma, Dr. Ekta Bharti (M.B.B.S) at Sundar
+					Clinic is your trusted healthcare partner. With personalized
+					care, your health is our priority. Experience exceptional
+					healthcare with us today
 				</h2>
 				<div className='flex gap-4 items-center'>
 					<Button asChild className=''>

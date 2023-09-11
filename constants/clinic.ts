@@ -9,15 +9,32 @@ import {
 	Mail,
 	Phone,
 	PhoneCall,
+	Plus,
+	Bed,
+	TestTube,
+	BadgePlus,
 } from 'lucide-react';
 
-interface SocialData {
+type SocialData = ReadonlyArray<{
 	name: string;
 	Icon: LucideIcon;
 	url: string;
-}
+}>;
 
-export const CONTACTS = {
+type ContactData = Readonly<{
+	phone: string;
+	googleLocation: string;
+	address: string;
+	email: string;
+}>;
+
+export type ServiceData = ReadonlyArray<{
+	title: string;
+	description: string;
+	Icon: LucideIcon;
+}>;
+
+export const CONTACTS: ContactData = {
 	phone: '+918939881708',
 	googleLocation: 'https://goo.gl/maps/qp2T6itZ5gp7wCJr8',
 	address:
@@ -25,7 +42,7 @@ export const CONTACTS = {
 	email: 'sundarclinic@gmail.com',
 };
 
-export const SOCIALS: ReadonlyArray<SocialData> = [
+export const SOCIALS: SocialData = [
 	{
 		name: 'Instagram',
 		Icon: Instagram,
@@ -55,5 +72,32 @@ export const SOCIALS: ReadonlyArray<SocialData> = [
 		name: 'Phone',
 		Icon: PhoneCall,
 		url: `tel:${CONTACTS.phone}`,
+	},
+];
+
+export const SERVICES: ServiceData = [
+	{
+		title: 'Consultation',
+		description:
+			'Receive expert medical guidance and personalized care from our dedicated healthcare team.',
+		Icon: Plus,
+	},
+	{
+		title: 'Inpatient Care',
+		description:
+			'Rest and recover in comfort with our inpatient facilities, ensuring a peaceful and nurturing environment during your stay.',
+		Icon: Bed,
+	},
+	{
+		title: 'Lab Tests',
+		description:
+			'Access cutting-edge diagnostic tests and screenings to aid in accurate diagnoses and treatment plans.',
+		Icon: TestTube,
+	},
+	{
+		title: 'Additional Services',
+		description:
+			'Explore the full scope of our offerings by visiting us. We are continuously expanding our services to better serve you.',
+		Icon: BadgePlus,
 	},
 ];
