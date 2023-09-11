@@ -1,5 +1,4 @@
 import React from 'react';
-import { FAQS } from '@/constants/clinic';
 import {
 	Accordion,
 	AccordionContent,
@@ -7,7 +6,11 @@ import {
 	AccordionTrigger,
 } from '@/components/ui/accordion';
 
-const FAQ = () => {
+interface FAQProps {
+	faqs: FAQData;
+}
+
+const FAQ: React.FC<FAQProps> = ({ faqs }) => {
 	return (
 		<section className='max-w-3xl mx-auto w-full p-4 mt-8'>
 			<h3 className='text-xl font-heading text-center'>
@@ -15,7 +18,7 @@ const FAQ = () => {
 			</h3>
 			<hr className='border-b-4 max-w-[10rem] border-b-primary-clinic rounded-lg mx-auto mt-2' />
 			<Accordion type='single' collapsible className='w-full mt-8'>
-				{FAQS.map((faq) => (
+				{faqs?.map((faq) => (
 					<AccordionItem
 						key={`faq-${faq.question}`}
 						value={faq.question}
