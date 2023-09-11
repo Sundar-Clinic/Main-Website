@@ -51,7 +51,7 @@ export default function Footer() {
 							<Clock />
 							<p className='flex flex-col'>
 								<span>Morning ‣ 9 a.m. - 1:30 p.m.</span>
-								<span>Evening ‣ 1:30 p.m. - 9:30 p.m.</span>
+								<span>Evening ‣ 4:00 p.m. - 9:30 p.m.</span>
 							</p>
 						</div>
 						<Button asChild className=''>
