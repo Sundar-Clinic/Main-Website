@@ -9,7 +9,7 @@ import { CONTACTS, SOCIALS } from '@/constants/clinic';
 export default function Footer() {
 	return (
 		<footer>
-			<section className='max-w-7xl mx-auto p-4 text-center md:text-left'>
+			<section className='max-w-7xl mx-auto p-4 text-center md:text-left mt-8'>
 				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 place-items-center w-full justify-between gap-8'>
 					<div className='flex flex-col items-center justify-center gap-2 w-fit'>
 						<div className='w-28'>
@@ -51,7 +51,7 @@ export default function Footer() {
 							<Clock />
 							<p className='flex flex-col'>
 								<span>Morning ‣ 9 a.m. - 1:30 p.m.</span>
-								<span>Evening ‣ 1:30 p.m. - 9:30 p.m.</span>
+								<span>Evening ‣ 4:00 p.m. - 9:30 p.m.</span>
 							</p>
 						</div>
 						<Button asChild className=''>

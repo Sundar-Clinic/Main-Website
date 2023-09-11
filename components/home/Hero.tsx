@@ -13,10 +13,10 @@ const Hero = () => {
 					experience.
 				</h1>
 				<h2 className='text-lg text-slate-500'>
-					In Pappanchatirma, Dr. Ekta Bharti (M.B.B.S) at Sundar
-					Clinic is your trusted healthcare partner. With personalized
-					care, your health is our priority. Experience exceptional
-					healthcare with us today
+					In Pappanchatirma, <b>Dr. Ekta Bharti (M.B.B.S)</b> at
+					Sundar Clinic is your trusted healthcare partner. With
+					personalized care, your health is our priority. Experience
+					exceptional healthcare with us today
 				</h2>
 				<div className='flex gap-4 items-center'>
 					<Button asChild className=''>
