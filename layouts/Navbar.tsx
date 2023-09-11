@@ -25,7 +25,7 @@ const Navbar = () => {
 		<nav className='w-full'>
 			<section className='max-w-7xl mx-auto p-4 flex w-full items-center justify-between flex-col md:flex-row gap-4'>
 				<div className='flex items-center justify-between w-full md:w-fit'>
-					<Link href={'/'} className='block w-32'>
+					<Link href={'/'} className='block w-28'>
 						<Image
 							src='/logo/logo-fit.png'
 							alt='Sundar Clinic'
@@ -73,7 +73,7 @@ const Navbar = () => {
 										);
 									})}
 								</ul>
-								<Button asChild className='mt-4 w-full'>
+								<Button asChild className='mt-4 md:mt-0 w-full'>
 									<Link
 										href={CONTACTS.googleLocation}
 										target='_blank'
@@ -90,26 +90,29 @@ const Navbar = () => {
 				</div>
 				<div className='flex items-center justify-between w-full md:w-1/2'>
 					<div className='flex items-center justify-center gap-4'>
-						<Clock />
-						<p className='flex flex-col'>
+						<Clock strokeWidth={1.5} size={20} />
+						<p className='flex flex-col text-sm md:text-base'>
 							<span>Morning ‣ 9 a.m. - 1:30 p.m.</span>
 							<span>Evening ‣ 1:30 p.m. - 9:30 p.m.</span>
 						</p>
 					</div>
 					<div className='flex items-center justify-center gap-4'>
-						<Phone />
-						<Link href={`tel:${CONTACTS.phone}`}>
+						<Phone strokeWidth={1.5} size={20} />
+						<Link
+							href={`tel:${CONTACTS.phone}`}
+							className='text-sm md:text-base underline underline-offset-2'
+						>
 							{CONTACTS.phone}
 						</Link>
 					</div>
 				</div>
-				<Button asChild className='hidden md:block'>
+				<Button asChild className='hidden md:flex'>
 					<Link href={CONTACTS.googleLocation} target='_blank'>
 						Visit Now
 					</Link>
 				</Button>
 			</section>
-			<section className='w-full bg-secondary-clinic/5 px-4 py-2'>
+			<section className='w-full bg-secondary-clinic/5 px-4 py-2 hidden md:block'>
 				<ul className='max-w-7xl mx-auto flex gap-8 items-center justify-center font-heading'>
 					{NAVBAR_NAVIGATION.map((link) => {
 						const isActive = pathname === link.url;

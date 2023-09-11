@@ -10,10 +10,9 @@ export default function Footer() {
 	return (
 		<footer>
 			<section className='max-w-7xl mx-auto p-4 text-center md:text-left'>
-				<p className='font-heading font-medium text-xl'>Find Us</p>
 				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 place-items-center w-full justify-between gap-8'>
 					<div className='flex flex-col items-center justify-center gap-2 w-fit'>
-						<div className='w-32'>
+						<div className='w-28'>
 							<Image
 								src='/logo/logo-fit.png'
 								alt='Sundar Clinic'
@@ -23,15 +22,27 @@ export default function Footer() {
 								priority
 							/>
 						</div>
-						<p>2013 - {new Date().getFullYear()}</p>
+						<p className='text-slate-500 text-sm'>
+							2013 - {new Date().getFullYear()}
+						</p>
 					</div>
-					<p className='max-w-[40ch]'>{CONTACTS.address}</p>
+					<div className='max-w-[40ch]'>
+						<p className='font-semibold'>Address</p>
+						<p>{CONTACTS.address}</p>
+					</div>
 					<div>
-						<Link href={`tel:${CONTACTS.phone}`}>
+						<p className='font-semibold'>Contacts</p>
+						<Link
+							href={`tel:${CONTACTS.phone}`}
+							className='underline underline-offset-2'
+						>
 							{CONTACTS.phone}
 						</Link>
 						<p>Reception, Sundar Clinic</p>
-						<Link href={`mailto:${CONTACTS.phone}`}>
+						<Link
+							href={`mailto:${CONTACTS.phone}`}
+							className='underline underline-offset-2'
+						>
 							{CONTACTS.email}
 						</Link>
 					</div>
@@ -65,9 +76,9 @@ export default function Footer() {
 					referrerPolicy='no-referrer-when-downgrade'
 				></iframe>
 			</section>
-			<section className='max-w-7xl mx-auto p-4'>
+			<section className='max-w-7xl mx-auto my-4'>
 				<div className='grid grid-cols-1 sm:grid-cols-2 place-items-center gap-4'>
-					<ul className='grid grid-cols-2 gap-2 w-fit'>
+					<ul className='grid grid-cols-3 gap-2 place-items-center'>
 						{FOOTER_NAVIGATION.map((link) => (
 							<li key={`footer-${link.name}`}>
 								<Link href={link.url} target={link.target}>
@@ -84,16 +95,19 @@ export default function Footer() {
 								key={`footer-social-${link.name}`}
 								title={link.name}
 							>
-								<Button asChild size='icon' variant={'outline'}>
+								<Button asChild size='icon' variant={'ghost'}>
 									<li>
-										<link.Icon />
+										<link.Icon
+											strokeWidth={1.5}
+											size={20}
+										/>
 									</li>
 								</Button>
 							</Link>
 						))}
 					</ul>
 				</div>
-				<hr className='border-b max-w-sm my-2 border-b-black mx-auto' />
+				<hr className='border-b mb-2 mt-4 border-b-slate-300 mx-auto' />
 				<p className='text-center'>
 					2023. &copy; Sundar Clinic. All rights reserved
 				</p>

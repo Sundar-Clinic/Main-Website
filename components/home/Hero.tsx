@@ -6,13 +6,13 @@ import { CONTACTS } from '@/constants/clinic';
 
 const Hero = () => {
 	return (
-		<section className='max-w-7xl mx-auto min-h-[60vh] grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-8 p-4 pt-12 md:pt-0'>
+		<section className='max-w-7xl mx-auto min-h-[60vh] grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-8 p-4 pt-8 md:pt-0'>
 			<div className='flex flex-col justify-center items-center md:items-start gap-8'>
 				<h1 className='text-4xl font-heading'>
 					Not just a better healthcare, but a better healthcare
 					experience.
 				</h1>
-				<h2 className='text-lg font-light'>
+				<h2 className='text-lg text-slate-500'>
 					In Pappanchatirma, Dr. Ekta Bharti (M.B.B.S) at Sundar
 					Clinic is your trusted healthcare partner. With personalized
 					care, your health is our priority. Experience exceptional
@@ -30,7 +30,7 @@ const Hero = () => {
 				</div>
 			</div>
 			<div className='flex items-center justify-center'>
-				<div className='max-w-[80%] relative'>
+				<div className='w-full md:max-w-[80%] relative'>
 					<div className='overflow-hidden w-full rounded-lg z-20'>
 						<Image
 							src='/images/landing.jpg'
