@@ -20,3 +20,7 @@ export const postPathsQuery = groq`*[_type == "post" && defined(slug.current)][]
 export const faqsQuery = groq`*[_type == "faq"]{
   _id, question, answer
 }`;
+
+export const testimonialsQuery = groq`*[_type == "testimonial"]{
+  _id, stars, name, review, link
+}`;

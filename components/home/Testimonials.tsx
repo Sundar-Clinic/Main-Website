@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Testimonials = () => {
+interface TestimonailsProps {
+	testimonials: TestimonailData;
+}
+
+const Testimonials: React.FC<TestimonailsProps> = ({ testimonials }) => {
 	return <div>Testimonials</div>;
 };
 
