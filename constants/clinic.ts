@@ -94,9 +94,9 @@ export const SERVICES: ServiceData = [
 		Icon: Plus,
 	},
 	{
-		title: 'Inpatient Care',
+		title: 'Cots and Beds',
 		description:
-			'Rest and recover in comfort with our inpatient facilities, ensuring a peaceful and nurturing environment during your stay.',
+			'We offer cots and beds for your comfort during outpatient visits, ensuring a convenient and comfortable experience.',
 		Icon: Bed,
 	},
 	{
