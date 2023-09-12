@@ -87,9 +87,9 @@ export const SERVICES: ServiceData = [
 		Icon: Plus,
 	},
 	{
-		title: 'Cots and Beds',
+		title: 'Beds',
 		description:
-			'We offer cots and beds for your comfort during outpatient visits, ensuring a convenient and comfortable experience.',
+			'We offer beds for your comfort during outpatient visits, ensuring a convenient and comfortable experience.',
 		Icon: Bed,
 	},
 	{
