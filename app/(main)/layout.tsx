@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Source_Sans_3, Poppins } from 'next/font/google';
 import Navbar from '@/layouts/Navbar';
 import Footer from '@/layouts/Footer';
+import { TooltipProvider } from '@/components/ui/tooltip';
+
 import './globals.css';
 
 const sourceSans3 = Source_Sans_3({
@@ -37,9 +39,11 @@ export default function RootLayout({
 			className={`${sourceSans3.variable} ${poppins.variable} font-sans`}
 		>
 			<body>
-				<Navbar />
-				{children}
-				<Footer />
+				<TooltipProvider>
+					<Navbar />
+					{children}
+					<Footer />
+				</TooltipProvider>
 			</body>
 		</html>
 	);
