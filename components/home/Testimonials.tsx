@@ -21,11 +21,11 @@ const TestimonialCard: React.FC<TestimonailData[number]> = ({
 	review,
 }) => {
 	return (
-		<li className='w-full h-full block p-4 rounded-lg border border-slate-500 relative'>
+		<li className='w-full h-full block p-4 rounded-lg border border-slate-500 relative group hover:shadow-md transition-all hover:border-slate-700'>
 			<Quote
 				size={24}
 				strokeWidth={1.5}
-				className='absolute -top-[10px] right-4 text-slate-500'
+				className='absolute -top-[10px] right-4 text-slate-500 group-hover:fill-slate-700 transition-all group-hover:text-slate-700'
 				fill='white'
 			/>
 			<p className='font-medium font-heading text-sm'>{name}</p>
