@@ -33,7 +33,7 @@ const TestimonialCard: React.FC<TestimonailData[number]> = ({
 			<div className='flex gap-2 justify-between items-center mt-2'>
 				<Link
 					href={link}
-					className='text-sm text-blue-500 underline underline-offset-2'
+					className='text-sm text-secondary-clinic underline underline-offset-2'
 					target='_blank'
 				>
 					View Review
