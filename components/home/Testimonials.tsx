@@ -21,11 +21,11 @@ const TestimonialCard: React.FC<TestimonailData[number]> = ({
 	review,
 }) => {
 	return (
-		<li className='w-full h-full block p-4 rounded-lg border border-slate-500 relative'>
+		<li className='w-full h-full block p-4 rounded-lg border border-slate-500 relative group hover:shadow-md transition-all hover:border-slate-700'>
 			<Quote
 				size={24}
 				strokeWidth={1.5}
-				className='absolute -top-[10px] right-4 text-slate-500'
+				className='absolute -top-[10px] right-4 text-slate-500 group-hover:fill-slate-700 transition-all group-hover:text-slate-700'
 				fill='white'
 			/>
 			<p className='font-medium font-heading text-sm'>{name}</p>
@@ -33,7 +33,7 @@ const TestimonialCard: React.FC<TestimonailData[number]> = ({
 			<div className='flex gap-2 justify-between items-center mt-2'>
 				<Link
 					href={link}
-					className='text-sm text-blue-500 underline underline-offset-2'
+					className='text-sm text-secondary-clinic underline underline-offset-2'
 					target='_blank'
 				>
 					View Review
