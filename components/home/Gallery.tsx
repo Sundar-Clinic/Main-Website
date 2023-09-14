@@ -47,7 +47,7 @@ const Gallery: React.FC<GalleryProps> = ({ galleryImages, ...props }) => {
 			<Button
 				asChild
 				variant={'ghost'}
-				className='w-full text-center mt-8 text-lg'
+				className='w-full text-center text-lg'
 			>
 				<Link href={'/gallery'}>View more</Link>
 			</Button>

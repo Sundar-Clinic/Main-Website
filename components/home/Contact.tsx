@@ -90,7 +90,7 @@ const Contact = () => {
 					<Form {...form}>
 						<form
 							onSubmit={form.handleSubmit(onSubmit)}
-							className='space-y-2 flex flex-col'
+							className='gap-2 h-full flex flex-col'
 						>
 							<FormField
 								control={form.control}
@@ -179,7 +179,7 @@ const Contact = () => {
 									</FormItem>
 								)}
 							/>
-							<Button type='submit' disabled className='!mt-4'>
+							<Button type='submit' disabled className='mt-auto'>
 								Submit
 							</Button>
 						</form>
