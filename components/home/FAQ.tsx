@@ -13,7 +13,7 @@ interface FAQProps {
 const FAQ: React.FC<FAQProps> = ({ faqs }) => {
 	return (
 		<section className='max-w-3xl mx-auto w-full p-4 mt-8'>
-			<h3 className='text-xl font-heading text-center'>
+			<h3 className='text-2xl font-heading text-center font-medium'>
 				Frequently Asked Questions
 			</h3>
 			<hr className='border-b-4 max-w-[10rem] border-b-primary-clinic rounded-lg mx-auto mt-2' />

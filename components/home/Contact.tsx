@@ -48,7 +48,9 @@ const Contact = () => {
 
 	return (
 		<section className='max-w-5xl mx-auto w-full p-4 mt-8'>
-			<h3 className='text-xl font-heading text-center'>Contact Us</h3>
+			<h3 className='text-2xl font-heading text-center font-medium'>
+				Contact Us
+			</h3>
 			<hr className='border-b-4 max-w-[10rem] border-b-primary-clinic rounded-lg mx-auto mt-2' />
 			<div className='grid grid-cols-1 md:grid-cols-2 mt-8 gap-4 md:gap-8'>
 				<div className='w-full h-full flex flex-col items-center p-2'>
