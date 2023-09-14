@@ -15,7 +15,7 @@ const GalleryImage: React.FC<GalleryImageProps> = ({
 	...props
 }) => {
 	return (
-		<li {...props} className='rounded-lg overflow-hidden'>
+		<li {...props} className='rounded-lg overflow-hidden mt-2'>
 			<Image
 				src={image}
 				alt={alt}
@@ -34,7 +34,7 @@ const Gallery: React.FC<GalleryProps> = ({ galleryImages, ...props }) => {
 				Gallery
 			</h3>
 			<hr className='border-b-4 max-w-[10rem] border-b-primary-clinic rounded-lg mx-auto mt-2' />
-			<ul className='mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 place-content-start max-h-[60vh] overflow-hidden relative'>
+			<ul className='mt-6 columns-2 md:columns-4 gap-4 max-h-[60vh] overflow-hidden relative'>
 				<div className='from-transparent to-white bg-gradient-to-b absolute w-full h-full'></div>
 				{galleryImages
 					.concat(Array(12).fill(galleryImages[0]))
