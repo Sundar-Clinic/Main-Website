@@ -24,3 +24,7 @@ export const faqsQuery = groq`*[_type == "faq"]{
 export const testimonialsQuery = groq`*[_type == "testimonial"]{
   _id, stars, name, review, link
 }`;
+
+export const galleryImagesQuery = groq`*[_type == "gallery"]{
+  _id, caption, "image": image.asset->url, "alt": image.alt
+}`;

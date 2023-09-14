@@ -15,3 +15,12 @@ type TestimonailData = ReadonlyArray<
 		link: string;
 	}>
 >;
+
+type GalleryImageData = ReadonlyArray<
+	Readonly<{
+		_id: string;
+		caption: string;
+		image: string;
+		alt: string;
+	}>
+>;
