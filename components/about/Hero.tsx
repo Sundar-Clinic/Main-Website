@@ -7,7 +7,7 @@ const Hero = () => {
 	return (
 		<section className='max-w-7xl mx-auto w-full p-4 mt-8 relative min-h-[50vh] grid grid-cols-1 gap-8 md:grid-cols-2'>
 			<div className='flex flex-col gap-4'>
-				<p className='font-medium text-lg md:text-xl'>About Us</p>
+				<p className='font-medium text-lg md:text-2xl'>About Us</p>
 				<h1 className='font-heading font-medium text-2xl md:text-4xl max-w-3xl'>
 					Welcome to Sundar Clinic: Where Healthcare Meets Exceptional
 					Experience

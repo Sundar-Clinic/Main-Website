@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.1",
     "@portabletext/react": "^3.0.7",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-dialog": "^1.0.4",
@@ -32,6 +33,7 @@
     "postcss": "8.4.29",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.46.1",
     "sanity": "3",
     "server-only": "^0.0.1",
     "styled-components": "5.2",
