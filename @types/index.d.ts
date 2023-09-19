@@ -27,12 +27,14 @@ type GalleryImageData = ReadonlyArray<
 
 type TeamMemberData = ReadonlyArray<
 	Readonly<{
+		_id: string;
 		name: string;
 		role: string;
 		qualifications: string;
 		bio: string;
 		registrationNo: string;
 		image: string;
+		alt: string;
 		languages: Array<Partial<'english' | 'tamil' | 'hindi'>>;
 	}>
 >;
