@@ -7,7 +7,17 @@ import author from './schemas/author';
 import faq from './schemas/faq';
 import testimonial from './schemas/testimonial';
 import gallery from './schemas/gallery';
+import team from './schemas/team';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-	types: [post, author, category, blockContent, faq, testimonial, gallery],
+	types: [
+		post,
+		author,
+		category,
+		blockContent,
+		faq,
+		testimonial,
+		gallery,
+		team,
+	],
 };
