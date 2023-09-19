@@ -33,4 +33,16 @@ const COMMON_NAVIGATION: NavdataCollection = [
 
 export const NAVBAR_NAVIGATION = [...COMMON_NAVIGATION];
 
-export const FOOTER_NAVIGATION = [...COMMON_NAVIGATION];
+export const FOOTER_NAVIGATION = [
+	...COMMON_NAVIGATION,
+	{
+		name: 'Terms & Conditions',
+		url: '/terms-and-conditions',
+		target: '_self',
+	},
+	{
+		name: 'Privacy Policy',
+		url: '/privacy-policy',
+		target: '_self',
+	},
+];
