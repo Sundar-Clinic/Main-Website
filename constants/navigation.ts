@@ -20,6 +20,11 @@ const COMMON_NAVIGATION: NavdataCollection = [
 		target: '_self',
 	},
 	{
+		name: 'Contact',
+		url: '/contact',
+		target: '_self',
+	},
+	{
 		name: 'About',
 		url: '/about',
 		target: '_self',
