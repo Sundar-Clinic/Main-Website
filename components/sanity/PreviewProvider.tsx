@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import { suspend } from 'suspend-react';
 
+// @ts-ignore
 const LiveQueryProvider = dynamic(() => import('next-sanity/preview'));
 
 // suspend-react cache is global, so we use a unique key to avoid collisions
@@ -23,6 +24,7 @@ export default function PreviewProvider({
 		throw new TypeError('Missing token');
 	}
 	return (
+		// @ts-ignore
 		<LiveQueryProvider
 			client={client}
 			token={token}
