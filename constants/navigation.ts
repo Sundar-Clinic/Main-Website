@@ -45,4 +45,9 @@ export const FOOTER_NAVIGATION = [
 		url: '/privacy-policy',
 		target: '_self',
 	},
+	{
+		name: 'Legal',
+		url: '/legal',
+		target: '_self',
+	},
 ];

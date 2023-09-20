@@ -65,7 +65,7 @@ const Navbar = () => {
 														isActive
 															? 'text-primary-clinic'
 															: ''
-													} w-full`}
+													} w-full hover:text-primary-clinic transition-all`}
 												>
 													{link.name}
 												</Link>
@@ -126,7 +126,7 @@ const Navbar = () => {
 									target={link.target}
 									className={`${
 										isActive ? 'text-primary-clinic' : ''
-									}`}
+									} hover:text-primary-clinic transition-all`}
 								>
 									{link.name}
 								</Link>

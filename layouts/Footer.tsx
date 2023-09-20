@@ -34,14 +34,14 @@ export default function Footer() {
 						<p className='font-semibold'>Contacts</p>
 						<Link
 							href={`tel:${CONTACTS.phone}`}
-							className='underline underline-offset-2'
+							className='underline underline-offset-2 hover:text-primary-clinic transition-all'
 						>
 							{CONTACTS.phone}
 						</Link>
 						<p>Reception, Sundar Clinic</p>
 						<Link
 							href={`mailto:${CONTACTS.phone}`}
-							className='underline underline-offset-2'
+							className='underline underline-offset-2 hover:text-primary-clinic transition-all'
 						>
 							{CONTACTS.email}
 						</Link>
@@ -81,7 +81,11 @@ export default function Footer() {
 					<ul className='grid grid-cols-3 gap-2 place-items-center'>
 						{FOOTER_NAVIGATION.map((link) => (
 							<li key={`footer-${link.name}`}>
-								<Link href={link.url} target={link.target}>
+								<Link
+									href={link.url}
+									target={link.target}
+									className='w-full hover:text-primary-clinic transition-all hover:underline underline-offset-2'
+								>
 									{link.name}
 								</Link>
 							</li>
@@ -94,12 +98,14 @@ export default function Footer() {
 								target={'_blank'}
 								key={`footer-social-${link.name}`}
 								title={link.name}
+								className='group'
 							>
 								<Button asChild size='icon' variant={'ghost'}>
 									<li>
 										<link.Icon
 											strokeWidth={1.5}
 											size={20}
+											className='group-hover:text-primary-clinic transition-all'
 										/>
 									</li>
 								</Button>
