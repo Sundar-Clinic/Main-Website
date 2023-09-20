@@ -100,7 +100,7 @@ const Navbar = () => {
 						<Phone strokeWidth={1.5} size={20} />
 						<Link
 							href={`tel:${CONTACTS.phone}`}
-							className='text-sm md:text-base underline underline-offset-2'
+							className='text-sm md:text-base underline underline-offset-2 hover:text-primary-clinic transition-all'
 						>
 							{CONTACTS.phone}
 						</Link>
