@@ -78,7 +78,7 @@ export default function Footer() {
 			</section>
 			<section className='max-w-7xl mx-auto my-4'>
 				<div className='grid grid-cols-1 sm:grid-cols-2 place-items-center gap-4'>
-					<ul className='grid grid-cols-3 gap-2 place-items-center'>
+					<ul className='grid grid-cols-3 gap-2 place-items-center text-center'>
 						{FOOTER_NAVIGATION.map((link) => (
 							<li key={`footer-${link.name}`}>
 								<Link

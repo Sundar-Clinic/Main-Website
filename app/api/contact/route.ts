@@ -23,7 +23,6 @@ export async function POST(request: Request) {
 	const { value, status } =
 		z.OK<z.infer<typeof contactFormRequestSchema>>(body);
 	if (status === 'valid') {
-		console.log(value);
 		await transporter.sendMail({
 			from: process.env.GMAIL_EMAIL,
 			to: process.env.GMAIL_EMAIL,
