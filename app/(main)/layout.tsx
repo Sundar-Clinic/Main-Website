@@ -3,6 +3,7 @@ import { Source_Sans_3, Poppins } from 'next/font/google';
 import Navbar from '@/layouts/Navbar';
 import Footer from '@/layouts/Footer';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { Toaster } from '@/components/ui/toaster';
 
 import './globals.css';
 
@@ -44,6 +45,7 @@ export default function RootLayout({
 					{children}
 					<Footer />
 				</TooltipProvider>
+				<Toaster />
 			</body>
 		</html>
 	);

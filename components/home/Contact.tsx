@@ -1,11 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
 import {
 	Form,
 	FormControl,
@@ -29,6 +30,7 @@ const contactFormSchema = z.object({
 });
 
 const Contact = () => {
+	const [submitting, setSubmitting] = useState(false);
 	const form = useForm<z.infer<typeof contactFormSchema>>({
 		resolver: zodResolver(contactFormSchema),
 		defaultValues: {
@@ -40,7 +42,7 @@ const Contact = () => {
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof contactFormSchema>) {
+	async function onSubmit(values: z.infer<typeof contactFormSchema>) {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
 		console.log(values);
@@ -97,11 +99,12 @@ const Contact = () => {
 								name='fullName'
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Full Name</FormLabel>
+										<FormLabel>Full Name *</FormLabel>
 										<FormControl>
 											<Input
 												placeholder='John Doe'
 												type='text'
+												required
 												{...field}
 											/>
 										</FormControl>
@@ -114,11 +117,12 @@ const Contact = () => {
 								name='email'
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Email Address</FormLabel>
+										<FormLabel>Email Address *</FormLabel>
 										<FormControl>
 											<Input
 												placeholder='doe@gmail.com'
 												type='email'
+												required
 												{...field}
 											/>
 										</FormControl>
@@ -151,11 +155,12 @@ const Contact = () => {
 								name='subject'
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Subject</FormLabel>
+										<FormLabel>Subject *</FormLabel>
 										<FormControl>
 											<Input
 												placeholder='Subject'
 												type='text'
+												required
 												{...field}
 											/>
 										</FormControl>
@@ -168,18 +173,26 @@ const Contact = () => {
 								name='message'
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Message</FormLabel>
+										<FormLabel>Message *</FormLabel>
 										<FormControl>
 											<Textarea
 												placeholder='Enter your message'
 												{...field}
+												required
 											/>
 										</FormControl>
 										<FormMessage />
 									</FormItem>
 								)}
 							/>
-							<Button type='submit' disabled className='mt-auto'>
+							<p className='text-xs'>
+								(*) marks as required fields
+							</p>
+							<Button
+								type='submit'
+								disabled={submitting}
+								className='mt-auto'
+							>
 								Submit
 							</Button>
 						</form>
