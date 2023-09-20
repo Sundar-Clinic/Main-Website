@@ -37,10 +37,13 @@ const ALREADY_SUBMITTED_SESSION_STORAGE_KEY =
 const Contact = () => {
 	const [submitting, setSubmitting] = useState(false);
 	const [alreadySubmitted, setAlreadySubmitted] = useState(
-		Boolean(
-			sessionStorage.getItem(ALREADY_SUBMITTED_SESSION_STORAGE_KEY) ===
-				'true'
-		)
+		typeof window !== 'undefined'
+			? Boolean(
+					window.sessionStorage.getItem(
+						ALREADY_SUBMITTED_SESSION_STORAGE_KEY
+					) === 'true'
+			  )
+			: false
 	);
 	const { toast } = useToast();
 
@@ -71,10 +74,12 @@ const Contact = () => {
 						"Contact Form Submitted Successfully! We'll get back to you soon.",
 				});
 				setAlreadySubmitted(true);
-				sessionStorage.setItem(
-					ALREADY_SUBMITTED_SESSION_STORAGE_KEY,
-					'true'
-				);
+				if (typeof window !== 'undefined') {
+					window.sessionStorage.setItem(
+						ALREADY_SUBMITTED_SESSION_STORAGE_KEY,
+						'true'
+					);
+				}
 			}
 		} catch (error) {
 			toast({
