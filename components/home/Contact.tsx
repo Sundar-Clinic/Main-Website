@@ -1,11 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
 import {
 	Form,
 	FormControl,
@@ -18,6 +19,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { RotateCw } from 'lucide-react';
+import { useToast } from '@/components/ui/use-toast';
 import { CONTACTS } from '@/constants/clinic';
 
 const contactFormSchema = z.object({
@@ -28,7 +31,19 @@ const contactFormSchema = z.object({
 	message: z.string(),
 });
 
+const ALREADY_SUBMITTED_SESSION_STORAGE_KEY =
+	'sundar-clinic-already-submitted-contact-form';
+
 const Contact = () => {
+	const [submitting, setSubmitting] = useState(false);
+	const [alreadySubmitted, setAlreadySubmitted] = useState(
+		Boolean(
+			sessionStorage.getItem(ALREADY_SUBMITTED_SESSION_STORAGE_KEY) ===
+				'true'
+		)
+	);
+	const { toast } = useToast();
+
 	const form = useForm<z.infer<typeof contactFormSchema>>({
 		resolver: zodResolver(contactFormSchema),
 		defaultValues: {
@@ -40,10 +55,37 @@ const Contact = () => {
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof contactFormSchema>) {
-		// Do something with the form values.
-		// ✅ This will be type-safe and validated.
-		console.log(values);
+	async function onSubmit(values: z.infer<typeof contactFormSchema>) {
+		try {
+			setSubmitting(true);
+			const response = await axios.post<{ message: string }>(
+				'/api/contact',
+				values
+			);
+			if (
+				response.data.message === 'contact/form-submitted-succeessfully'
+			) {
+				toast({
+					title: 'Success',
+					description:
+						"Contact Form Submitted Successfully! We'll get back to you soon.",
+				});
+				setAlreadySubmitted(true);
+				sessionStorage.setItem(
+					ALREADY_SUBMITTED_SESSION_STORAGE_KEY,
+					'true'
+				);
+			}
+		} catch (error) {
+			toast({
+				title: 'Error',
+				description:
+					'Unable to submit form at the moment, try again later.',
+				variant: 'destructive',
+			});
+		} finally {
+			setSubmitting(false);
+		}
 	}
 
 	return (
@@ -74,7 +116,7 @@ const Contact = () => {
 						</Link>
 						.
 					</p>
-					<div className='mt-4 rounded-lg overflow-hidden relative'>
+					<div className='mt-4 rounded-lg overflow-hidden'>
 						<Image
 							src='/images/landing-contact.jpg'
 							alt='Sundar Clinic - Contact Image'
@@ -87,103 +129,145 @@ const Contact = () => {
 					</div>
 				</div>
 				<div className='w-full h-full p-2'>
-					<Form {...form}>
-						<form
-							onSubmit={form.handleSubmit(onSubmit)}
-							className='gap-2 h-full flex flex-col'
-						>
-							<FormField
-								control={form.control}
-								name='fullName'
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Full Name</FormLabel>
-										<FormControl>
-											<Input
-												placeholder='John Doe'
-												type='text'
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name='email'
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Email Address</FormLabel>
-										<FormControl>
-											<Input
-												placeholder='doe@gmail.com'
-												type='email'
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name='phone'
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Phone Number</FormLabel>
-										<FormControl>
-											<Input
-												placeholder='8939881708'
-												type='tel'
-												{...field}
-											/>
-										</FormControl>
-										<FormDescription>
-											Enter your 10 digit mobile number.
-										</FormDescription>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name='subject'
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Subject</FormLabel>
-										<FormControl>
-											<Input
-												placeholder='Subject'
-												type='text'
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name='message'
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Message</FormLabel>
-										<FormControl>
-											<Textarea
-												placeholder='Enter your message'
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<Button type='submit' disabled className='mt-auto'>
-								Submit
-							</Button>
-						</form>
-					</Form>
+					{alreadySubmitted ? (
+						<div>
+							<div className='mt-4 rounded-lg overflow-hidden'>
+								<Image
+									src='/images/landing-contact-success.png'
+									alt='Sundar Clinic - Contact Image'
+									width={100}
+									height={100}
+									className='w-full object-contain'
+									priority
+									unoptimized
+								/>
+							</div>
+							<p className='font-heading text-xl font-medium text-center'>
+								Submitted successfully!
+							</p>
+							<p className='text-lg text-center'>
+								We&apos;ll get back to you soon.
+							</p>
+						</div>
+					) : (
+						<Form {...form}>
+							<form
+								onSubmit={form.handleSubmit(onSubmit)}
+								className='gap-2 h-full flex flex-col'
+							>
+								<FormField
+									control={form.control}
+									name='fullName'
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Full Name *</FormLabel>
+											<FormControl>
+												<Input
+													placeholder='John Doe'
+													type='text'
+													required
+													{...field}
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<FormField
+									control={form.control}
+									name='email'
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>
+												Email Address *
+											</FormLabel>
+											<FormControl>
+												<Input
+													placeholder='doe@gmail.com'
+													type='email'
+													required
+													{...field}
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<FormField
+									control={form.control}
+									name='phone'
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Phone Number</FormLabel>
+											<FormControl>
+												<Input
+													placeholder='8939881708'
+													type='tel'
+													{...field}
+												/>
+											</FormControl>
+											<FormDescription>
+												Enter your 10 digit mobile
+												number.
+											</FormDescription>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<FormField
+									control={form.control}
+									name='subject'
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Subject *</FormLabel>
+											<FormControl>
+												<Input
+													placeholder='Subject'
+													type='text'
+													required
+													{...field}
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<FormField
+									control={form.control}
+									name='message'
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Message *</FormLabel>
+											<FormControl>
+												<Textarea
+													placeholder='Enter your message'
+													{...field}
+													required
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<p className='text-xs'>
+									(*) marks as required fields
+								</p>
+								<Button
+									type='submit'
+									disabled={submitting}
+									className='mt-auto gap-2'
+								>
+									{submitting && (
+										<RotateCw
+											size={16}
+											className='animate-spin'
+										/>
+									)}
+									{submitting ? 'Submitting...' : 'Submit'}
+								</Button>
+							</form>
+						</Form>
+					)}
 				</div>
 			</div>
 		</section>
