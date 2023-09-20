@@ -1,12 +1,39 @@
 import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 import z from 'zod';
 
-const contactFormRequestSchema = z.object({});
+const contactFormRequestSchema = z.object({
+	fullName: z.string(),
+	email: z.string().email(),
+	phone: z.string().max(10).optional(),
+	subject: z.string(),
+	message: z.string(),
+});
+
+const transporter = nodemailer.createTransport({
+	service: 'gmail',
+	auth: {
+		user: process.env.GMAIL_EMAIL,
+		pass: process.env.GMAIL_PASSWORD,
+	},
+});
 
 export async function POST(request: Request) {
 	const body = await request.json();
-	console.log(body);
-	return NextResponse.json({
-		message: 'contact/form-submitted-succeessfully',
-	});
+	const { value, status } =
+		z.OK<z.infer<typeof contactFormRequestSchema>>(body);
+	if (status === 'valid') {
+		console.log(value);
+		await transporter.sendMail({
+			from: process.env.GMAIL_EMAIL,
+			to: process.env.GMAIL_EMAIL,
+			subject: `${value.fullName} - ${value.email} - ${value.subject}`,
+			text: `${value.message}\nEmail: ${value.email}\nName:${value.fullName}\nPhone:${value.phone}\n\nThis message is sent from the websites contact form`,
+		});
+		return NextResponse.json({
+			message: 'contact/form-submitted-succeessfully',
+		});
+	} else {
+		return NextResponse.error();
+	}
 }
