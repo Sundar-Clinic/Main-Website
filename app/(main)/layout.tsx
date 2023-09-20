@@ -26,7 +26,22 @@ const poppins = Poppins({
 export const metadata: Metadata = {
 	title: 'Sundar Clinic',
 	description:
-		'Not just a better healthcare, but a better healthcare experience.',
+		'Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician.',
+	openGraph: {
+		title: 'Sundar Clinic',
+		description:
+			'Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician. Sundar Clinic is your partner in well-being.',
+		url: 'https://sundarclinic.vercel.app',
+		type: 'website',
+		siteName: 'Sundar Clinic',
+	},
+	twitter: {
+		title: 'Sundar Clinic',
+		description:
+			'Discover better healthcare and a superior healthcare experience at Sundar Clinic in Pappanchatiram, located on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, your trusted general physician. #Healthcare #SundarClinic',
+		site: '@SundarClinic',
+		creator: '@SundarClinic',
+	},
 };
 
 export default function RootLayout({
