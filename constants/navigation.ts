@@ -29,6 +29,11 @@ const COMMON_NAVIGATION: NavdataCollection = [
 		url: '/about',
 		target: '_self',
 	},
+	{
+		name: 'Gallery',
+		url: '/gallery',
+		target: '_self',
+	},
 ];
 
 export const NAVBAR_NAVIGATION = [...COMMON_NAVIGATION];
