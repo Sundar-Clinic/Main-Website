@@ -38,6 +38,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.46.1",
     "sanity": "3",
+    "schema-dts": "^1.1.2",
     "server-only": "^0.0.1",
     "sharp": "^0.32.6",
     "styled-components": "5.2",

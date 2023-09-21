@@ -4,6 +4,8 @@ import Navbar from '@/layouts/Navbar';
 import Footer from '@/layouts/Footer';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Toaster } from '@/components/ui/toaster';
+import { WithContext, MedicalBusiness } from 'schema-dts';
+import Script from 'next/script';
 
 import './globals.css';
 
@@ -44,6 +46,22 @@ export const metadata: Metadata = {
 	},
 };
 
+const jsonLd: WithContext<MedicalBusiness> = {
+	'@context': 'https://schema.org',
+	'@type': 'MedicalBusiness',
+	name: 'Sundar Clinic',
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: '1195A, Nehru Street',
+		addressLocality: 'Chennai',
+		addressRegion: 'Tamil Nadu',
+		postalCode: '600123',
+		addressCountry: 'India',
+	},
+	telephone: '+918939881702',
+	url: 'https://sundarclinic.vercel.app',
+};
+
 export default function RootLayout({
 	children,
 }: {
@@ -54,6 +72,11 @@ export default function RootLayout({
 			lang='en'
 			className={`${sourceSans3.variable} ${poppins.variable} font-sans`}
 		>
+			<Script
+				id='json-ld'
+				type='application/ld+json'
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+			/>
 			<body>
 				<TooltipProvider>
 					<Navbar />
