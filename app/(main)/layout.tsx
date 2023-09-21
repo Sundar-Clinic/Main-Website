@@ -26,6 +26,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+	metadataBase: new URL('https://sundarclinic.vercel.app'),
 	title: 'Sundar Clinic',
 	description:
 		'Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician.',
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
 		title: 'Sundar Clinic',
 		description:
 			'Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician. Sundar Clinic is your partner in well-being.',
-		url: 'https://sundarclinic.vercel.app',
+		url: '/',
 		type: 'website',
 		siteName: 'Sundar Clinic',
 	},
@@ -50,6 +51,9 @@ const jsonLd: WithContext<MedicalBusiness> = {
 	'@context': 'https://schema.org',
 	'@type': 'MedicalBusiness',
 	name: 'Sundar Clinic',
+	description:
+		'Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician.',
+	image: 'https://sundarclinic.vercel.app/opengraph-image.jpg',
 	address: {
 		'@type': 'PostalAddress',
 		streetAddress: '1195A, Nehru Street',
@@ -60,6 +64,7 @@ const jsonLd: WithContext<MedicalBusiness> = {
 	},
 	telephone: '+918939881702',
 	url: 'https://sundarclinic.vercel.app',
+	email: 'sundarclinic@gmail.com',
 };
 
 export default function RootLayout({
