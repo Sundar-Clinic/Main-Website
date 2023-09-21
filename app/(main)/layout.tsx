@@ -8,6 +8,7 @@ import { WithContext, MedicalBusiness } from 'schema-dts';
 import Script from 'next/script';
 
 import './globals.css';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 const sourceSans3 = Source_Sans_3({
 	display: 'swap',
@@ -77,6 +78,7 @@ export default function RootLayout({
 			lang='en'
 			className={`${sourceSans3.variable} ${poppins.variable} font-sans`}
 		>
+			<GoogleAnalytics GA_TRACKING_ID='G-4PGSJ6BVZ2' />
 			<Script
 				id='json-ld'
 				type='application/ld+json'
