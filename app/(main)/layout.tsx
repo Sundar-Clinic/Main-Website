@@ -27,7 +27,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-	metadataBase: new URL('https://sundarclinic.vercel.app'),
+	metadataBase: new URL('https://sundarclinic.com'),
 	title: 'Sundar Clinic',
 	description:
 		'Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician.',
@@ -54,7 +54,7 @@ const jsonLd: WithContext<MedicalBusiness> = {
 	name: 'Sundar Clinic',
 	description:
 		'Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician.',
-	image: 'https://sundarclinic.vercel.app/opengraph-image.jpg',
+	image: 'https://sundarclinic.com/opengraph-image.jpg',
 	address: {
 		'@type': 'PostalAddress',
 		streetAddress: '1195A, Nehru Street',
@@ -64,7 +64,7 @@ const jsonLd: WithContext<MedicalBusiness> = {
 		addressCountry: 'India',
 	},
 	telephone: '+918939881702',
-	url: 'https://sundarclinic.vercel.app',
+	url: 'https://sundarclinic.com',
 	email: 'sundarclinic@gmail.com',
 };
 

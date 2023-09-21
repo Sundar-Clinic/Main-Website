@@ -13,6 +13,6 @@ export default function robots(): MetadataRoute.Robots {
 				disallow: '/studio/',
 			},
 		],
-		sitemap: 'https://sundarclinic.vercel.app/sitemap.xml',
+		sitemap: 'https://sundarclinic.com/sitemap.xml',
 	};
 }
