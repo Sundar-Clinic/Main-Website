@@ -23,8 +23,12 @@ const FAQ: React.FC<FAQProps> = ({ faqs }) => {
 						key={`faq-${faq.question}`}
 						value={faq.question}
 					>
-						<AccordionTrigger>{faq.question}</AccordionTrigger>
-						<AccordionContent>{faq.answer}</AccordionContent>
+						<AccordionTrigger className='text-left'>
+							{faq.question}
+						</AccordionTrigger>
+						<AccordionContent className='text-left'>
+							{faq.answer}
+						</AccordionContent>
 					</AccordionItem>
 				))}
 			</Accordion>
