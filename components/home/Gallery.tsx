@@ -2,28 +2,28 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
 type GalleryProps = React.ComponentProps<'section'> & {
 	galleryImages: GalleryImageData;
 };
 
-type GalleryImageProps = React.ComponentProps<'li'> & GalleryImageData[number];
+type GalleryImageProps = GalleryImageData[number];
 
-const GalleryImage: React.FC<GalleryImageProps> = ({
-	image,
-	alt,
-	...props
-}) => {
+const GalleryImage: React.FC<GalleryImageProps> = ({ image, alt }) => {
 	return (
-		<li {...props} className='rounded-lg overflow-hidden mt-2'>
+		<ImageListItem className='rounded-lg overflow-hidden mt-2'>
 			<Image
 				src={image}
 				alt={alt}
 				width={100}
 				height={100}
 				className='w-full h-auto object-contain'
+				unoptimized
+				priority
 			/>
-		</li>
+		</ImageListItem>
 	);
 };
 
@@ -34,20 +34,22 @@ const Gallery: React.FC<GalleryProps> = ({ galleryImages, ...props }) => {
 				Gallery
 			</h3>
 			<hr className='border-b-4 max-w-[10rem] border-b-primary-clinic rounded-lg mx-auto mt-2' />
-			<ul className='mt-6 columns-2 md:columns-4 gap-4 max-h-[60vh] overflow-hidden relative'>
-				<div className='from-transparent to-white bg-gradient-to-b absolute w-full h-full'></div>
-				{galleryImages
-					.concat(Array(12).fill(galleryImages[0]))
-					.concat(Array(12).fill(galleryImages[1]))
+			<ImageList
+				variant='masonry'
+				cols={3}
+				gap={8}
+				className='mt-8 min-h-fit max-h-[60vh] overflow-hidden'
+			>
+				{[...galleryImages]
 					.sort(() => Math.random() - 0.5)
 					.map((image) => (
 						<GalleryImage key={`gallery-${image._id}`} {...image} />
 					))}
-			</ul>
+			</ImageList>
 			<Button
 				asChild
 				variant={'ghost'}
-				className='w-full text-center text-lg'
+				className='w-full text-center text-lg mt-4'
 			>
 				<Link href={'/gallery'}>View more</Link>
 			</Button>
