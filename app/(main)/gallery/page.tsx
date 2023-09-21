@@ -12,22 +12,23 @@ export default async function Gallery() {
     });
 
     return (
-        <section className="w-full bg-slate-950 p-4 md:px-16 lg:max-w-7xl md:mx-auto">
-            <Box sx={{ width: "100%", height: "100%"}}>
+        <section className="w-full p-4 md:px-16 lg:max-w-7xl md:mx-auto">
+            <Box sx={{ width: "100%", height: "100%" }}>
                 <ImageList variant="masonry" cols={3} gap={8}>
-                    {galleryImages.map((item) => (
-                        <ImageListItem key={item._id}>
-                            <Image
-                                width={100}
-                                height={100}
-                                // srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                src={`${item.image}?w=248&fit=crop&auto=format`}
-                                alt={item.alt}
-                                loading="lazy"
-                                className="w-full"
-                            />
-                        </ImageListItem>
-                    ))}
+                    {Array(30)
+                        .fill(galleryImages[1])
+                        .map((item) => (
+                            <ImageListItem key={item._id}>
+                                <Image
+                                    width={100}
+                                    height={100}
+                                    src={`${item.image}?w=248&fit=crop&auto=format`}
+                                    alt={item.alt}
+                                    priority
+                                    className="w-full"
+                                />
+                            </ImageListItem>
+                        ))}
                 </ImageList>
             </Box>
         </section>
