@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -20,6 +20,9 @@ import {
 
 const Navbar = () => {
 	const pathname = usePathname();
+	const [sheetOpen, setSheetOpen] = useState(false);
+
+	const handleCloseSheet = () => setSheetOpen(false);
 
 	return (
 		<nav className='w-full'>
@@ -35,7 +38,7 @@ const Navbar = () => {
 							priority
 						/>
 					</Link>
-					<Sheet>
+					<Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
 						<SheetTrigger asChild className='md:hidden'>
 							<Button variant={'outline'}>
 								<Menu />
@@ -57,6 +60,7 @@ const Navbar = () => {
 											<li
 												key={`nav-${link.name}`}
 												className='font-medium w-fit'
+												onClick={handleCloseSheet}
 											>
 												<Link
 													href={link.url}
@@ -73,7 +77,11 @@ const Navbar = () => {
 										);
 									})}
 								</ul>
-								<Button asChild className='mt-4 md:mt-0 w-full'>
+								<Button
+									asChild
+									className='mt-4 md:mt-0 w-full'
+									onClick={handleCloseSheet}
+								>
 									<Link
 										href={CONTACTS.googleLocation}
 										target='_blank'

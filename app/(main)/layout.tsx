@@ -4,8 +4,11 @@ import Navbar from '@/layouts/Navbar';
 import Footer from '@/layouts/Footer';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Toaster } from '@/components/ui/toaster';
+import { WithContext, MedicalBusiness } from 'schema-dts';
+import Script from 'next/script';
 
 import './globals.css';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 const sourceSans3 = Source_Sans_3({
 	display: 'swap',
@@ -24,6 +27,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+	metadataBase: new URL('https://sundarclinic.vercel.app'),
 	title: 'Sundar Clinic',
 	description:
 		'Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician.',
@@ -31,7 +35,7 @@ export const metadata: Metadata = {
 		title: 'Sundar Clinic',
 		description:
 			'Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician. Sundar Clinic is your partner in well-being.',
-		url: 'https://sundarclinic.vercel.app',
+		url: '/',
 		type: 'website',
 		siteName: 'Sundar Clinic',
 	},
@@ -44,6 +48,26 @@ export const metadata: Metadata = {
 	},
 };
 
+const jsonLd: WithContext<MedicalBusiness> = {
+	'@context': 'https://schema.org',
+	'@type': 'MedicalBusiness',
+	name: 'Sundar Clinic',
+	description:
+		'Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician.',
+	image: 'https://sundarclinic.vercel.app/opengraph-image.jpg',
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: '1195A, Nehru Street',
+		addressLocality: 'Chennai',
+		addressRegion: 'Tamil Nadu',
+		postalCode: '600123',
+		addressCountry: 'India',
+	},
+	telephone: '+918939881702',
+	url: 'https://sundarclinic.vercel.app',
+	email: 'sundarclinic@gmail.com',
+};
+
 export default function RootLayout({
 	children,
 }: {
@@ -54,6 +78,12 @@ export default function RootLayout({
 			lang='en'
 			className={`${sourceSans3.variable} ${poppins.variable} font-sans`}
 		>
+			<GoogleAnalytics GA_TRACKING_ID='G-4PGSJ6BVZ2' />
+			<Script
+				id='json-ld'
+				type='application/ld+json'
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+			/>
 			<body>
 				<TooltipProvider>
 					<Navbar />

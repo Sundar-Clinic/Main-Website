@@ -42,7 +42,7 @@ export const CONTACTS: ContactData = {
 	phone: '+918939881708',
 	googleLocation: 'https://goo.gl/maps/qp2T6itZ5gp7wCJr8',
 	address:
-		'1195A, Nehru Street, Bangalore, Bengaluru - Chennai Hwy, Pappanchathiram, Chennai, Tamil Nadu - 600123.',
+		'1195A, Nehru Street, Chennai, Bengaluru - Chennai Highway, Pappanchathiram, Chennai, Tamil Nadu - 600123.',
 	email: 'sundarclinic@gmail.com',
 };
 
