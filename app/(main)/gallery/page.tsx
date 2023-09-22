@@ -1,3 +1,4 @@
+import GalleryImage from '@/components/cards/GalleryImage';
 import { galleryImagesQuery } from '@/sanity/lib/queries';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
 import Box from '@mui/material/Box';
@@ -16,21 +17,11 @@ export default async function Gallery() {
 				<ImageList variant='masonry' cols={3} gap={8}>
 					{[...galleryImages]
 						.sort(() => Math.random() - 0.5)
-						.map((item) => (
-							<ImageListItem
-								key={item._id}
-								className='rounded-lg overflow-hidden'
-							>
-								<Image
-									width={100}
-									height={100}
-									src={`${item.image}?w=248&`}
-									alt={item.alt}
-									priority
-									className='w-full'
-									unoptimized
-								/>
-							</ImageListItem>
+						.map((image) => (
+							<GalleryImage
+								key={`gallery-${image._id}`}
+								{...image}
+							/>
 						))}
 				</ImageList>
 			</Box>

@@ -1,30 +1,11 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+import GalleryImage from '../cards/GalleryImage';
 
 type GalleryProps = React.ComponentProps<'section'> & {
 	galleryImages: GalleryImageData;
-};
-
-type GalleryImageProps = GalleryImageData[number];
-
-const GalleryImage: React.FC<GalleryImageProps> = ({ image, alt }) => {
-	return (
-		<ImageListItem className='rounded-lg overflow-hidden mt-2'>
-			<Image
-				src={image}
-				alt={alt}
-				width={100}
-				height={100}
-				className='w-full h-auto object-contain'
-				unoptimized
-				priority
-			/>
-		</ImageListItem>
-	);
 };
 
 const Gallery: React.FC<GalleryProps> = ({ galleryImages, ...props }) => {
