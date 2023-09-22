@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sundar Clinic Website
 
-## Getting Started
+Welcome to the Sundar Clinic Website repository. This website is built using modern web technologies and serves as an online platform for Sundar Clinic, a healthcare provider located in Pappanchatiram on the Bangalore-Chennai highway. The website offers information about the clinic, its services, team members, FAQs, and more.
 
-First, run the development server:
+<p align="center">
+  <img src="public/images/preview.gif" alt="Sundar Clinic Thumbnail" width="80%" height="auto" />
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Next.js 13
+- App Router
+- Sanity CMS
+- Tailwind CSS
+- Shadcn UI
+- Material-UI Image List Component
+- Zod
+- Nodemailer
+- Axios
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Landing
+- About
+- Gallery
+- Contact
+- Terms and Conditions
+- Privacy Policy
+- Legal Page
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+- Dynamic content management through Sanity CMS for FAQs, team members, testimonials, and gallery images.
+- Contact form with data collection and email notification using Nodemailer, Axios, and Next.js API routes.
+- Responsive design with Tailwind CSS and Shadcn UI for a clean and intuitive user experience.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Clone the repository: `git clone https://github.com/Sundar-Clinic/Main-Website.git`
+2. Install dependencies: `npm install` or `pnpm install`
+3. Create `.env.local` with reference to `.env.sample` variables before running the app (Sanity and gmail app password will be required)
+4. Start the development server: `npm run dev`
 
-## Deploy on Vercel
+## Contribution Guidelines
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If you would like to contribute to this project, please read our [Contributing Guidelines](CONTRIBUTING.md) for more information.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 🦸 Project Contributors
+
+<a href="https://github.com/Sundar-Clinic/Main-Website/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Sundar-Clinic/Main-Website" />
+</a>
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+### 🗡️ Forking this Repo?
+
+Many people have contacted us asking if they can use this code for their own websites. The answer to that question is usually "yes", with attribution. There are some cases, such as using this code for a business or something that is greater than a personal project, that we may be less comfortable saying yes to. If in doubt, please don't hesitate to ask us.
+
+We value keeping this project open source, but as you all know, plagiarism is bad. We actively spend a non-negligible amount of effort developing, designing, and trying to perfect this iteration of our project, and we are proud of it! All we ask is to not claim this effort as your own.
+
+So, feel free to fork this repo. If you do, please just give us proper credit by linking back to this repo, [https://github.com/Sundar-Clinic/Main-Website](https://github.com/Sundar-Clinic/Main-Website). Refer to this handy [quora](https://www.quora.com/Is-it-bad-to-copy-other-peoples-code) post if you're not sure what to do. Thanks!
