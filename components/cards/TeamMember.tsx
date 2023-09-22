@@ -4,17 +4,48 @@
 
 // Dependencies
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
+import z from 'zod';
+import { Button } from '@/components/ui/button';
+import {
+	LucideIcon,
+	Instagram,
+	Twitter,
+	Linkedin,
+	Mail,
+	Globe,
+	Youtube,
+} from 'lucide-react';
 
 type TeamMemberCardProps = React.ComponentProps<'div'> & {
 	member: TeamMemberData[number];
 };
 
+const userSocials = z
+	.array(
+		z.object({ Icon: z.custom<LucideIcon>(), url: z.string().or(z.null()) })
+	)
+	.transform((val) =>
+		val.filter((social) => social.url !== null && social.url.length !== 0)
+	);
+
+type UserSocials = z.infer<typeof userSocials>;
+
 const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
+	const socials: UserSocials = userSocials.parse([
+		{ Icon: Instagram, url: member.instagram },
+		{ Icon: Linkedin, url: member.linkedin },
+		{ Icon: Globe, url: member.website },
+		{ Icon: Youtube, url: member.youtube },
+		{ Icon: Twitter, url: member.twitter },
+		{ Icon: Mail, url: member.email ? `mailto:${member.email}` : null },
+	]);
+
 	return (
 		<div className='w-full overflow-hidden rounded-lg group bg-slate-100 z-20'>
 			<div className='relative'>
-				<span className='absolute bottom-4 left-4 bg-white text-slate-500 border border-slate-300 px-4 py-2 rounded-xl font-medium z-20'>
+				<span className='text-xs md:text-sm absolute bottom-4 left-4 bg-white text-slate-500 border border-slate-300 px-4 py-2 rounded-xl font-medium z-20'>
 					{member.role}
 				</span>
 				<div className='w-full overflow-hidden z-10'>
@@ -51,6 +82,27 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
 						{member.languages.join(', ')}
 					</span>
 				</p>
+				<ul className='flex w-full gap-2 items-center justify-center mt-4'>
+					{socials.map((social) => (
+						<Link
+							href={social.url!}
+							target={'_blank'}
+							key={`team-member-social-${member._id}-${social.url}`}
+							title={social.url!}
+							className='group/team'
+						>
+							<Button asChild size='icon' variant={'ghost'}>
+								<li>
+									<social.Icon
+										strokeWidth={1.5}
+										size={24}
+										className='group-hover/team:text-primary-clinic transition-all'
+									/>
+								</li>
+							</Button>
+						</Link>
+					))}
+				</ul>
 			</div>
 		</div>
 	);
