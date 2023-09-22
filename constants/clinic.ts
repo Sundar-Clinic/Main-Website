@@ -13,6 +13,7 @@ import {
 	Bed,
 	TestTube,
 	BadgePlus,
+	Github,
 } from 'lucide-react';
 
 type SocialData = ReadonlyArray<
@@ -28,6 +29,7 @@ type ContactData = Readonly<{
 	googleLocation: string;
 	address: string;
 	email: string;
+	codeRepositoryURL: string;
 }>;
 
 export type ServiceData = ReadonlyArray<
@@ -44,6 +46,7 @@ export const CONTACTS: ContactData = {
 	address:
 		'1195A, Nehru Street, Chennai, Bengaluru - Chennai Highway, Pappanchathiram, Chennai, Tamil Nadu - 600123.',
 	email: 'sundarclinic@gmail.com',
+	codeRepositoryURL: 'https://github.com/Sundar-Clinic/Main-Website',
 };
 
 export const SOCIALS: SocialData = [
@@ -76,6 +79,11 @@ export const SOCIALS: SocialData = [
 		name: 'Phone',
 		Icon: PhoneCall,
 		url: `tel:${CONTACTS.phone}`,
+	},
+	{
+		name: 'GitHub',
+		Icon: Github,
+		url: 'https://github.com/Sundar-Clinic',
 	},
 ];
 

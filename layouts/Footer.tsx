@@ -113,9 +113,23 @@ export default function Footer() {
 						))}
 					</ul>
 				</div>
-				<hr className='border-b mb-2 mt-4 border-b-slate-300 mx-auto' />
+				<hr className='border-b my-4 border-b-slate-300 mx-auto' />
 				<p className='text-center'>
-					2023. &copy; Sundar Clinic. All rights reserved
+					2023. &copy; Sundar Clinic. All rights reserved | Built in
+					Collaboration with{' '}
+					<Link
+						href={'https://codelancedevs.com'}
+						className='underline underline-offset-2 text-[#00e07b]'
+					>
+						Codelance Devs
+					</Link>{' '}
+					| Open Source in{' '}
+					<Link
+						href={CONTACTS.codeRepositoryURL}
+						className='underline underline-offset-2'
+					>
+						GitHub
+					</Link>
 				</p>
 			</section>
 		</footer>
