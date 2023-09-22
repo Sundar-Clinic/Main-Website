@@ -36,6 +36,15 @@ type TeamMemberData = ReadonlyArray<
 		image: string;
 		alt: string;
 		languages: Array<Partial<'english' | 'tamil' | 'hindi'>>;
+		startDate: Date;
+		endDate?: Date;
+		currentlyWorking: boolean;
+		instagram?: string;
+		twitter?: string;
+		linkedin?: string;
+		website?: string;
+		email?: string;
+		youtube?: string;
 	}>
 >;
 
