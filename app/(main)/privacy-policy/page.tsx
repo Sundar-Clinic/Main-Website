@@ -1,3 +1,8 @@
+/**
+ * Privacy Policy Page
+ */
+
+// Dependencies
 import { PRIVACY_POLICY } from '@/constants/clinic';
 
 export default function PrivacyPolicy() {

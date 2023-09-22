@@ -1,5 +1,11 @@
+/**
+ * Home Page - Contact Component
+ * Form Page - Contact Component
+ */
+
 'use client';
 
+// Dependencies
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';

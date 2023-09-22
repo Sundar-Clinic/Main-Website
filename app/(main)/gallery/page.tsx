@@ -1,10 +1,13 @@
+/**
+ * Gallery Page
+ */
+
+// Dependencies
 import GalleryImage from '@/components/cards/GalleryImage';
 import { galleryImagesQuery } from '@/sanity/lib/queries';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import Image from 'next/image';
 
 export default async function Gallery() {
 	const galleryImages = await sanityFetch<GalleryImageData>({

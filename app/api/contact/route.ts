@@ -1,3 +1,8 @@
+/**
+ * Contact Endpoint
+ */
+
+// Dependencies
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import z from 'zod';
@@ -10,6 +15,7 @@ const contactFormRequestSchema = z.object({
 	message: z.string(),
 });
 
+// Email Sender
 const transporter = nodemailer.createTransport({
 	service: 'gmail',
 	auth: {
@@ -18,6 +24,8 @@ const transporter = nodemailer.createTransport({
 	},
 });
 
+// POST: /contact endpoint to send email when
+// 		 someone submits contact form
 export async function POST(request: Request) {
 	const body = await request.json();
 	const { value, status } =

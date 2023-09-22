@@ -1,3 +1,8 @@
+/**
+ * Terms & Conditions Page
+ */
+
+// Dependencies
 import { TERMS_AND_CONDITIONS } from '@/constants/clinic';
 
 export default function TermsAndConditions() {

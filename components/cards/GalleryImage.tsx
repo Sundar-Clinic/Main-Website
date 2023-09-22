@@ -1,3 +1,8 @@
+/**
+ * Gallery Image Component
+ */
+
+// Dependencies
 import Image from 'next/image';
 import ImageListItem from '@mui/material/ImageListItem';
 

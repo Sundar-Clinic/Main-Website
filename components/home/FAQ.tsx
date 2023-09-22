@@ -1,3 +1,9 @@
+/**
+ * Home Page - FAQ Component
+ * Form Page - FAQ Component
+ */
+
+// Dependencies
 import React from 'react';
 import {
 	Accordion,

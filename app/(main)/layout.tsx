@@ -1,3 +1,8 @@
+/**
+ * Root Layout
+ */
+
+// Dependencies
 import type { Metadata } from 'next';
 import { Source_Sans_3, Poppins } from 'next/font/google';
 import Navbar from '@/layouts/Navbar';
@@ -5,10 +10,11 @@ import Footer from '@/layouts/Footer';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Toaster } from '@/components/ui/toaster';
 import { WithContext, MedicalBusiness } from 'schema-dts';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 import Script from 'next/script';
 
 import './globals.css';
-import GoogleAnalytics from '@/components/GoogleAnalytics';
+import { CONTACTS } from '@/constants/clinic';
 
 const sourceSans3 = Source_Sans_3({
 	display: 'swap',
@@ -63,9 +69,9 @@ const jsonLd: WithContext<MedicalBusiness> = {
 		postalCode: '600123',
 		addressCountry: 'India',
 	},
-	telephone: '+918939881702',
+	telephone: CONTACTS.phone,
 	url: 'https://sundarclinic.com',
-	email: 'sundarclinic@gmail.com',
+	email: CONTACTS.email,
 };
 
 export default function RootLayout({

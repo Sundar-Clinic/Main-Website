@@ -1,4 +1,8 @@
-import React from 'react';
+/**
+ * About Page - History Component
+ */
+
+// Dependencies
 
 const History = () => {
 	return (

@@ -1,8 +1,13 @@
+/**
+ * Home Page - Gallery Component
+ */
+
+// Dependencies
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import ImageList from '@mui/material/ImageList';
-import GalleryImage from '../cards/GalleryImage';
+import GalleryImage from '@/components/cards/GalleryImage';
 
 type GalleryProps = React.ComponentProps<'section'> & {
 	galleryImages: GalleryImageData;

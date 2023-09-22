@@ -1,3 +1,8 @@
+/**
+ * Team Member Component
+ */
+
+// Dependencies
 import Image from 'next/image';
 import React from 'react';
 

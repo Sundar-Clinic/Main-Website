@@ -1,3 +1,8 @@
+/**
+ * About Page - Team Members Component
+ */
+
+// Dependencies
 import React from 'react';
 import TeamMemberCard from '../cards/TeamMember';
 

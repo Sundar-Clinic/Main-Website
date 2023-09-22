@@ -1,4 +1,10 @@
+/**
+ * Goole Analytics Script Component
+ */
+
 'use client';
+
+// Dependencies
 import Script from 'next/script';
 
 const GoogleAnalytics = ({ GA_TRACKING_ID }: { GA_TRACKING_ID: string }) => {
