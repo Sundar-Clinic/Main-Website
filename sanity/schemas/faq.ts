@@ -9,11 +9,14 @@ export default defineType({
 			name: 'question',
 			title: 'Question',
 			type: 'string',
+			description: 'The frequently asked question itself.',
 		}),
 		defineField({
 			name: 'answer',
 			title: 'Answer',
 			type: 'text',
+			description:
+				'The detailed answer to the frequently asked question.',
 		}),
 	],
 });

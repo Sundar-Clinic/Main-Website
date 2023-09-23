@@ -9,6 +9,8 @@ export default defineType({
 			name: 'caption',
 			title: 'Caption',
 			type: 'string',
+			description:
+				'A brief caption or description for the gallery image.',
 		}),
 		defineField({
 			name: 'image',
@@ -22,8 +24,11 @@ export default defineType({
 					name: 'alt',
 					type: 'string',
 					title: 'Alternative Text',
+					description:
+						'A descriptive alternative text for the image.',
 				},
 			],
+			description: 'The image to be displayed in the gallery.',
 		}),
 	],
 });

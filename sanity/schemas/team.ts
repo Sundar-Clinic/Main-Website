@@ -27,33 +27,38 @@ export default defineType({
 			name: 'name',
 			title: 'Full Name',
 			type: 'string',
+			description: 'The full name of the team member.',
 		}),
 		defineField({
 			name: 'role',
 			title: 'Role',
 			type: 'string',
+			description: 'The role or position of the team member.',
 		}),
 		defineField({
 			name: 'qualifications',
 			title: 'Qualifications',
 			type: 'string',
+			description:
+				'The qualifications or certifications of the team member.',
 		}),
 		defineField({
 			name: 'bio',
 			title: 'Bio',
 			type: 'text',
+			description: 'A brief biography or description of the team member.',
 		}),
 		defineField({
 			name: 'registrationNo',
 			title: 'Registration No',
 			type: 'string',
-			description: 'Only for doctors registration no.',
+			description: 'The registration number (if applicable) for doctors.',
 		}),
 		defineField({
 			name: 'image',
 			title: 'Image',
 			type: 'image',
-			description: 'Make sure image has dimensions 500x276',
+			description: 'An image of the team member (500x276 recommended).',
 			options: {
 				hotspot: true,
 			},
@@ -62,6 +67,8 @@ export default defineType({
 					name: 'alt',
 					type: 'string',
 					title: 'Alternative Text',
+					description:
+						'A descriptive alternative text for the image.',
 				},
 			],
 			group: 'media',
@@ -71,17 +78,21 @@ export default defineType({
 			title: 'Is Currently Working?',
 			type: 'boolean',
 			initialValue: false,
+			description: 'Check if the team member is currently working.',
 		}),
 		defineField({
 			name: 'startDate',
 			title: 'Start Date',
 			type: 'date',
+			description: 'The date when the team member started working.',
 		}),
 		defineField({
 			name: 'endDate',
 			title: 'End Date',
 			type: 'date',
 			hidden: ({ document }) => Boolean(document?.currentlyWorking),
+			description:
+				'The date when the team member stopped working (if applicable).',
 		}),
 		defineField({
 			name: 'languages',
@@ -95,6 +106,7 @@ export default defineType({
 					{ title: 'Hindi', value: 'hindi' },
 				],
 			},
+			description: 'Languages spoken by the team member.',
 		}),
 		defineField({
 			name: 'instagram',
@@ -102,6 +114,7 @@ export default defineType({
 			type: 'url',
 			icon: Instagram,
 			group: 'social',
+			description: "The team member's Instagram profile URL.",
 		}),
 		defineField({
 			name: 'twitter',
@@ -109,6 +122,7 @@ export default defineType({
 			type: 'url',
 			icon: Twitter,
 			group: 'social',
+			description: "The team member's Twitter profile URL.",
 		}),
 		defineField({
 			name: 'linkedin',
@@ -116,6 +130,7 @@ export default defineType({
 			type: 'url',
 			icon: Linkedin,
 			group: 'social',
+			description: "The team member's LinkedIn profile URL.",
 		}),
 		defineField({
 			name: 'website',
@@ -123,6 +138,8 @@ export default defineType({
 			type: 'url',
 			icon: Globe,
 			group: 'social',
+			description:
+				"The team member's personal or professional website URL.",
 		}),
 		defineField({
 			name: 'email',
@@ -130,6 +147,7 @@ export default defineType({
 			type: 'string',
 			icon: Mail,
 			group: 'social',
+			description: "The team member's contact email address.",
 		}),
 		defineField({
 			name: 'youtube',
@@ -137,6 +155,7 @@ export default defineType({
 			type: 'url',
 			icon: Youtube,
 			group: 'social',
+			description: "The team member's YouTube channel URL.",
 		}),
 	],
 });
