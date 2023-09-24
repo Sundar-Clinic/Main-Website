@@ -110,7 +110,7 @@ export const SERVICES: ServiceData = [
 	{
 		title: 'Observation',
 		description:
-			'Our Observation service provides medical supervision for patients with specific conditions or post-procedural recovery. Reach out to us for details. Your health is our priority.',
+			'Our Observation service provides medical supervision for patients with specific conditions or post-procedural recovery.',
 		Icon: Eye,
 	},
 	{
