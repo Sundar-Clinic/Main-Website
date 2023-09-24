@@ -24,9 +24,12 @@ export default function Legal() {
 				</h2>
 				<hr className='border-b-2 max-w-[10rem] border-b-primary-clinic rounded-lg mt-2' />
 				<p className='mt-4'>
-					Sundar Clinic is a duly registered medical facility. Our
-					registration number is [NUMBER]. You can verify our
-					registration by visiting [LINK].
+					Sundar Clinic is a duly registered medical facility under
+					the Directorate of Medical and Health Services. Our
+					registration number is <strong>CHENALL20210029183</strong>.
+					You can verify our registration by visiting the Directorate
+					of Medical and Health Services Website or the Clinical
+					Establishments of India Website.
 				</p>
 			</section>
 			<section className='max-w-5xl mx-auto w-full p-4'>
