@@ -55,7 +55,7 @@ export default function Footer() {
 						<div className='flex items-center justify-center gap-4'>
 							<Clock />
 							<p className='flex flex-col'>
-								<span>Morning ‣ 9 a.m. - 1:30 p.m.</span>
+								<span>Morning ‣ 9:30 a.m. - 1:30 p.m.</span>
 								<span>Evening ‣ 4:00 p.m. - 9:30 p.m.</span>
 							</p>
 						</div>

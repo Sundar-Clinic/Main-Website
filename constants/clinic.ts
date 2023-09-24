@@ -14,6 +14,7 @@ import {
 	TestTube,
 	BadgePlus,
 	Github,
+	Eye,
 } from 'lucide-react';
 
 type SocialData = ReadonlyArray<
@@ -105,6 +106,12 @@ export const SERVICES: ServiceData = [
 		description:
 			'Access cutting-edge diagnostic tests and screenings to aid in accurate diagnoses and treatment plans.',
 		Icon: TestTube,
+	},
+	{
+		title: 'Observation',
+		description:
+			'Our Observation service provides medical supervision for patients with specific conditions or post-procedural recovery. Reach out to us for details. Your health is our priority.',
+		Icon: Eye,
 	},
 	{
 		title: 'Additional Services',

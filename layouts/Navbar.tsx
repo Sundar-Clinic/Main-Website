@@ -105,7 +105,7 @@ const Navbar = () => {
 					<div className='flex items-center justify-center gap-4'>
 						<Clock strokeWidth={1.5} size={20} />
 						<p className='flex flex-col text-sm md:text-base'>
-							<span>Morning ‣ 9 a.m. - 1:30 p.m.</span>
+							<span>Morning ‣ 9:30 a.m. - 1:30 p.m.</span>
 							<span>Evening ‣ 4:00 p.m. - 9:30 p.m.</span>
 						</p>
 					</div>
