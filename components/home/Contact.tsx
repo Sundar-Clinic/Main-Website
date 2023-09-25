@@ -169,6 +169,7 @@ const Contact = () => {
 								<FormField
 									control={form.control}
 									name='fullName'
+									disabled={submitting}
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>Full Name *</FormLabel>
@@ -187,6 +188,7 @@ const Contact = () => {
 								<FormField
 									control={form.control}
 									name='email'
+									disabled={submitting}
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>
@@ -207,6 +209,7 @@ const Contact = () => {
 								<FormField
 									control={form.control}
 									name='phone'
+									disabled={submitting}
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>Phone Number</FormLabel>
@@ -228,6 +231,7 @@ const Contact = () => {
 								<FormField
 									control={form.control}
 									name='subject'
+									disabled={submitting}
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>Subject *</FormLabel>
@@ -246,6 +250,7 @@ const Contact = () => {
 								<FormField
 									control={form.control}
 									name='message'
+									disabled={submitting}
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>Message *</FormLabel>
