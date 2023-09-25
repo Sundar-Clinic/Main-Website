@@ -67,6 +67,12 @@ const Contact = () => {
 	async function onSubmit(values: z.infer<typeof contactFormSchema>) {
 		try {
 			setSubmitting(true);
+			if (values?.phone && values?.phone.length !== 10) {
+				form.setError('phone', {
+					message: 'Phone no. must be contain 10 digits',
+				});
+				return;
+			}
 			const response = await axios.post<{ message: string }>(
 				'/api/contact',
 				values
