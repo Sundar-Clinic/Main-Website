@@ -3,8 +3,11 @@
  */
 
 // Dependencies
+import React from 'react';
 
-const History = () => {
+type HistoryProps = React.ComponentProps<'section'>;
+
+const History: React.FC<HistoryProps> = () => {
 	return (
 		<section className='w-full mt-8 bg-slate-100' id='history'>
 			<div className='px-4 py-8 max-w-7xl mx-auto h-full min-h-fit gap-2'>

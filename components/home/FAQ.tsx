@@ -12,9 +12,9 @@ import {
 	AccordionTrigger,
 } from '@/components/ui/accordion';
 
-interface FAQProps {
+type FAQProps = React.ComponentProps<'section'> & {
 	faqs: FAQData;
-}
+};
 
 const FAQ: React.FC<FAQProps> = ({ faqs }) => {
 	return (

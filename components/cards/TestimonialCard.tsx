@@ -11,9 +11,12 @@ import {
 import { Quote, Star } from 'lucide-react';
 import Link from 'next/link';
 
+type TestimonialCardProps = React.ComponentProps<'li'> &
+	TestimonailData[number];
+
 const MAX_TOTAL_STARS = 5;
 
-const TestimonialCard: React.FC<TestimonailData[number]> = ({
+const TestimonialCard: React.FC<TestimonialCardProps> = ({
 	name,
 	stars,
 	link,

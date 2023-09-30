@@ -6,9 +6,9 @@
 import React from 'react';
 import TestimonialCard from '@/components/cards/TestimonialCard';
 
-interface TestimonailsProps {
+type TestimonailsProps = React.ComponentProps<'section'> & {
 	testimonials: TestimonailData;
-}
+};
 
 const Testimonials: React.FC<TestimonailsProps> = ({ testimonials }) => {
 	return (

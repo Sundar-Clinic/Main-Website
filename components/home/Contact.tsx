@@ -29,6 +29,8 @@ import { RotateCw } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import { CONTACTS } from '@/constants/clinic';
 
+type ContactProps = React.ComponentProps<'section'>;
+
 const contactFormSchema = z.object({
 	fullName: z.string(),
 	email: z.string().email(),
@@ -40,7 +42,7 @@ const contactFormSchema = z.object({
 const ALREADY_SUBMITTED_SESSION_STORAGE_KEY =
 	'sundar-clinic-already-submitted-contact-form';
 
-const Contact = () => {
+const Contact: React.FC<ContactProps> = () => {
 	const [submitting, setSubmitting] = useState(false);
 	const [alreadySubmitted, setAlreadySubmitted] = useState(
 		typeof window !== 'undefined'
