@@ -3,9 +3,12 @@
  */
 
 // Dependencies
+import React from 'react';
 import { ServiceData } from '@/constants/clinic';
 
-const ServiceCard: React.FC<ServiceData[number]> = ({
+type ServiceCardProps = React.ComponentProps<'section'> & ServiceData[number];
+
+const ServiceCard: React.FC<ServiceCardProps> = ({
 	title,
 	description,
 	Icon,
