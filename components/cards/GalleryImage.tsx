@@ -3,10 +3,11 @@
  */
 
 // Dependencies
+import React from 'react';
 import Image from 'next/image';
 import ImageListItem from '@mui/material/ImageListItem';
 
-type GalleryImageProps = GalleryImageData[number];
+type GalleryImageProps = React.ComponentProps<'img'> & GalleryImageData[number];
 
 const GalleryImage: React.FC<GalleryImageProps> = ({ image, alt }) => {
 	return (

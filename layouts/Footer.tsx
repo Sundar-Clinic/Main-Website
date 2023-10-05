@@ -11,7 +11,9 @@ import { Clock } from 'lucide-react';
 import { FOOTER_NAVIGATION } from '@/constants/navigation';
 import { CONTACTS, SOCIALS } from '@/constants/clinic';
 
-export default function Footer() {
+type FooterProps = React.ComponentProps<'footer'>;
+
+const Footer: React.FC<FooterProps> = () => {
 	return (
 		<footer>
 			<section className='max-w-7xl mx-auto p-4 text-center md:text-left mt-8'>
@@ -139,4 +141,6 @@ export default function Footer() {
 			</section>
 		</footer>
 	);
-}
+};
+
+export default Footer;

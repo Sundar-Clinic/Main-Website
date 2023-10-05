@@ -23,7 +23,9 @@ import {
 	SheetFooter,
 } from '@/components/ui/sheet';
 
-const Navbar = () => {
+type NavbarProps = React.ComponentProps<'nav'>;
+
+const Navbar: React.FC<NavbarProps> = () => {
 	const pathname = usePathname();
 	const [sheetOpen, setSheetOpen] = useState(false);
 

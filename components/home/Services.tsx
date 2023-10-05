@@ -7,7 +7,9 @@ import React from 'react';
 import { SERVICES } from '@/constants/clinic';
 import ServiceCard from '@/components/cards/ServiceCard';
 
-const Services = () => {
+type ServiceProps = React.ComponentProps<'section'>;
+
+const Services: React.FC<ServiceProps> = () => {
 	return (
 		<section className='max-w-7xl mx-auto w-full p-4 mt-8' id='services'>
 			<h3 className='text-2xl font-heading text-center font-medium'>
