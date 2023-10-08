@@ -80,13 +80,6 @@ export default function RootLayout({
 			lang='en'
 			className={`${sourceSans3.variable} ${poppins.variable} font-sans`}
 		>
-			<head>
-				<link
-					rel='canonical'
-					href='https://sundarclinic.com'
-					key='canonical'
-				/>
-			</head>
 			<GoogleAnalytics GA_TRACKING_ID='G-4PGSJ6BVZ2' />
 			<Script
 				id='json-ld'
