@@ -41,6 +41,11 @@ export const NAVBAR_NAVIGATION = [...COMMON_NAVIGATION];
 export const FOOTER_NAVIGATION = [
 	...COMMON_NAVIGATION,
 	{
+		name: 'Team',
+		url: '/team',
+		target: '_self',
+	},
+	{
 		name: 'Terms & Conditions',
 		url: '/terms-and-conditions',
 		target: '_self',
