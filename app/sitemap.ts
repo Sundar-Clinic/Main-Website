@@ -20,6 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			priority: 0.8,
 		},
 		{
+			url: 'https://sundarclinic.com/team',
+			lastModified: new Date(),
+			changeFrequency: 'monthly',
+			priority: 0.5,
+		},
+		{
 			url: 'https://sundarclinic.com/gallery',
 			lastModified: new Date(),
 			changeFrequency: 'monthly',
