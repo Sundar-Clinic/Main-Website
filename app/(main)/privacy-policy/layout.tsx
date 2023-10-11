@@ -4,10 +4,12 @@
 
 // Dependencies
 import type { Metadata } from 'next';
-import Head from 'next/head';
 
 export const metadata: Metadata = {
 	title: 'Privacy Policy - Sundar Clinic',
+	alternates: {
+		canonical: 'https://sundarclinic.com/privacy-policy/',
+	},
 };
 
 export default function PrivacyPolicyLayout({
@@ -15,15 +17,5 @@ export default function PrivacyPolicyLayout({
 }: {
 	children: React.ReactNode;
 }) {
-	return (
-		<>
-			<Head>
-				<link
-					rel='canonical'
-					href='https://sundarclinic.com/privacy-policy/'
-				/>
-			</Head>
-			{children}
-		</>
-	);
+	return <>{children}</>;
 }

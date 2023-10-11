@@ -4,10 +4,12 @@
 
 // Dependencies
 import type { Metadata } from 'next';
-import Head from 'next/head';
 
 export const metadata: Metadata = {
 	title: 'Terms & Conditions - Sundar Clinic',
+	alternates: {
+		canonical: 'https://sundarclinic.com/terms-and-conditions/',
+	},
 };
 
 export default function TermsAndConditionsLayout({
@@ -15,15 +17,5 @@ export default function TermsAndConditionsLayout({
 }: {
 	children: React.ReactNode;
 }) {
-	return (
-		<>
-			<Head>
-				<link
-					rel='canonical'
-					href='https://sundarclinic.com/terms-and-conditions/'
-				/>
-			</Head>
-			{children}
-		</>
-	);
+	return <>{children}</>;
 }

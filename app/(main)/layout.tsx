@@ -5,9 +5,15 @@
 // Dependencies
 import Navbar from '@/layouts/Navbar';
 import Footer from '@/layouts/Footer';
+import type { Metadata } from 'next';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Toaster } from '@/components/ui/toaster';
-import Head from 'next/head';
+
+export const metadata: Metadata = {
+	alternates: {
+		canonical: 'https://sundarclinic.com/',
+	},
+};
 
 export default function RootLayout({
 	children,
@@ -16,9 +22,6 @@ export default function RootLayout({
 }) {
 	return (
 		<>
-			<Head>
-				<link rel='canonical' href='https://sundarclinic.com/' />
-			</Head>
 			<TooltipProvider>
 				<Navbar />
 				{children}

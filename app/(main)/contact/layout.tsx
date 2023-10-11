@@ -4,10 +4,12 @@
 
 // Dependencies
 import type { Metadata } from 'next';
-import Head from 'next/head';
 
 export const metadata: Metadata = {
 	title: 'Contact Us - Sundar Clinic',
+	alternates: {
+		canonical: 'https://sundarclinic.com/contact/',
+	},
 };
 
 export default function ContactLayout({
@@ -15,15 +17,5 @@ export default function ContactLayout({
 }: {
 	children: React.ReactNode;
 }) {
-	return (
-		<>
-			<Head>
-				<link
-					rel='canonical'
-					href='https://sundarclinic.com/contact/'
-				/>
-			</Head>
-			{children}
-		</>
-	);
+	return <>{children}</>;
 }
