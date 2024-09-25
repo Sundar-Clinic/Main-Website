@@ -8,9 +8,14 @@ import { Source_Sans_3, Poppins } from 'next/font/google';
 import { WithContext, MedicalBusiness } from 'schema-dts';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import Script from 'next/script';
+import Navbar from '@/layouts/Navbar';
+import Footer from '@/layouts/Footer';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { Toaster } from '@/components/ui/toaster';
 
-import './globals.css';
+import '../globals.css';
 import { CONTACTS } from '@/constants/clinic';
+import { locales } from '@/i18n/i18n';
 
 const sourceSans3 = Source_Sans_3({
 	display: 'swap',
@@ -48,6 +53,9 @@ export const metadata: Metadata = {
 		site: '@SundarClinic',
 		creator: '@SundarClinic',
 	},
+	alternates: {
+		canonical: 'https://sundarclinic.com/',
+	},
 };
 
 const jsonLd: WithContext<MedicalBusiness> = {
@@ -70,6 +78,10 @@ const jsonLd: WithContext<MedicalBusiness> = {
 	email: CONTACTS.email,
 };
 
+export function generateStaticParams() {
+	return locales.map((locale) => ({ locale }));
+}
+
 export default function RootLayout({
 	children,
 }: {
@@ -86,7 +98,14 @@ export default function RootLayout({
 				type='application/ld+json'
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 			/>
-			<body>{children}</body>
+			<body>
+				<TooltipProvider>
+					<Navbar />
+					{children}
+					<Footer />
+				</TooltipProvider>
+				<Toaster />
+			</body>
 		</html>
 	);
 }
