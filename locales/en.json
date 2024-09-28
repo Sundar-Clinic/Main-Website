@@ -28,6 +28,9 @@
 					"location": "Visit Now",
 					"about": "Learn more"
 				}
+			},
+			"services": {
+				"heading": "Our Services"
 			}
 		}
 	}

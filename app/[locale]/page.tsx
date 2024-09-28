@@ -30,7 +30,7 @@ export default async function Home({ params: { locale } }: PageProps) {
 	return (
 		<main className=''>
 			<Hero />
-			<Services />
+			<Services locale={locale} />
 			<Gallery galleryImages={galleryImages} />
 			<Testimonials testimonials={testimonials} />
 			<Contact />

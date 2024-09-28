@@ -35,8 +35,8 @@ type ContactData = Readonly<{
 
 export type ServiceData = ReadonlyArray<
 	Readonly<{
-		title: string;
-		description: string;
+		title: Record<LocaleLanguages, string>;
+		description: Record<LocaleLanguages, string>;
 		Icon: LucideIcon;
 	}>
 >;
@@ -90,33 +90,68 @@ export const SOCIALS: SocialData = [
 
 export const SERVICES: ServiceData = [
 	{
-		title: 'Consultation',
-		description:
-			'Receive expert medical guidance and personalized care from our dedicated healthcare team.',
+		title: {
+			en: 'Consultation',
+			ta: 'ஆலோசனை',
+			hi: 'परामर्श',
+		},
+		description: {
+			en: 'Receive expert medical guidance and personalized care from our dedicated healthcare team.',
+			ta: 'எங்களது அர்ப்பணிக்கப்பட்ட சுகாதார குழுவிடமிருந்து நிபுணர் மருத்துவ வழிகாட்டல் மற்றும் தனிப்பயன் பராமரிப்பைப் பெறுங்கள்.',
+			hi: 'हमारी समर्पित स्वास्थ्य टीम से विशेषज्ञ चिकित्सा मार्गदर्शन और व्यक्तिगत देखभाल प्राप्त करें।',
+		},
 		Icon: Plus,
 	},
 	{
-		title: 'Beds',
-		description:
-			'We offer beds for your comfort during outpatient visits, ensuring a convenient and comfortable experience.',
+		title: {
+			en: 'Beds',
+			ta: 'படுக்கைகள்',
+			hi: 'बिस्तर',
+		},
+		description: {
+			en: 'We offer beds for your comfort during outpatient visits, ensuring a convenient and comfortable experience.',
+			ta: 'வெளிநோயாளி சந்திப்புகளின் போது உங்கள் வசதிக்காக படுக்கைகளை வழங்குகிறோம், இது வசதியான மற்றும் ஆறுதலான அனுபவத்தை உறுதிசெய்கிறது.',
+			hi: 'हम बाह्य रोगी यात्राओं के दौरान आपकी सुविधा के लिए बिस्तर प्रदान करते हैं, यह एक सुविधाजनक और आरामदायक अनुभव सुनिश्चित करता है।',
+		},
 		Icon: Bed,
 	},
 	{
-		title: 'Lab Tests',
-		description:
-			'Access cutting-edge diagnostic tests and screenings to aid in accurate diagnoses and treatment plans.',
+		title: {
+			en: 'Lab Tests',
+			ta: 'பயிர் பரிசோதனைகள்',
+			hi: 'प्रयोगशाला परीक्षण',
+		},
+		description: {
+			en: 'Access cutting-edge diagnostic tests and screenings to aid in accurate diagnoses and treatment plans.',
+			ta: 'சரியான பரிசோதனைகளையும் சிகிச்சை திட்டங்களையும் ஆதரிக்க நவீன கண்டறிதல் பரிசோதனைகளையும் திரையிடல்களையும் அணுகுங்கள்.',
+			hi: 'सटीक निदान और उपचार योजनाओं में सहायता के लिए अत्याधुनिक नैदानिक परीक्षणों और स्क्रीनिंग्स तक पहुंचें।',
+		},
 		Icon: TestTube,
 	},
 	{
-		title: 'Observation',
-		description:
-			'Our Observation service provides medical supervision for patients with specific conditions or post-procedural recovery.',
+		title: {
+			en: 'Observation',
+			ta: 'கவனிப்பு',
+			hi: 'निरीक्षण',
+		},
+		description: {
+			en: 'Our Observation service provides medical supervision for patients with specific conditions or post-procedural recovery.',
+			ta: 'நாங்கள் வழங்கும் கவனிப்பு சேவை, குறிப்பிட்ட நிலைகளுடன் உள்ள நோயாளிகளுக்கு அல்லது சிகிச்சைக்குப் பிறகு மீட்கும் நோயாளிகளுக்கு மருத்துவ கண்காணிப்பை வழங்குகிறது.',
+			hi: 'हमारी निरीक्षण सेवा विशिष्ट परिस्थितियों वाले रोगियों या प्रक्रियाओं के बाद की वसूली के लिए चिकित्सा पर्यवेक्षण प्रदान करती है।',
+		},
 		Icon: Eye,
 	},
 	{
-		title: 'Additional Services',
-		description:
-			'Explore the full scope of our offerings by visiting us. We are continuously expanding our services to better serve you.',
+		title: {
+			en: 'Additional Services',
+			ta: 'கூடுதல் சேவைகள்',
+			hi: 'अतिरिक्त सेवाएँ',
+		},
+		description: {
+			en: 'Explore the full scope of our offerings by visiting us. We are continuously expanding our services to better serve you.',
+			ta: 'எங்களைச் சந்திப்பதன் மூலம் எங்களது அனைத்து சேவைகளையும் ஆராயுங்கள். உங்களை சிறப்பாகச் சேவையளிக்க எங்கள் சேவைகளை தொடர்ந்து விரிவாக்கி வருகின்றோம்.',
+			hi: 'हमसे मिलकर हमारी सभी सेवाओं का पता लगाएं। आपकी बेहतर सेवा के लिए हम अपनी सेवाओं का लगातार विस्तार कर रहे हैं।',
+		},
 		Icon: BadgePlus,
 	},
 ];
