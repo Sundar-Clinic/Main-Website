@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-literals */
 /**
  * Footer Component
  */
@@ -5,15 +6,20 @@
 // Dependencies
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/lib/routing';
 import { Button } from '@/components/ui/button';
 import { Clock } from 'lucide-react';
 import { FOOTER_NAVIGATION } from '@/constants/navigation';
 import { CONTACTS, SOCIALS } from '@/constants/clinic';
+import { useTranslations } from 'next-intl';
 
-type FooterProps = React.ComponentProps<'footer'>;
+interface FooterProps extends React.ComponentProps<'footer'> {
+	locale: LocaleLanguages;
+}
 
-const Footer: React.FC<FooterProps> = () => {
+const Footer: React.FC<FooterProps> = ({ locale }) => {
+	const t = useTranslations();
+
 	return (
 		<footer>
 			<section className='max-w-7xl mx-auto p-4 text-center md:text-left mt-8'>
@@ -30,22 +36,26 @@ const Footer: React.FC<FooterProps> = () => {
 							/>
 						</div>
 						<p className='text-slate-500 text-sm'>
-							2013 - {new Date().getFullYear()}
+							{2013} - {new Date().getFullYear()}
 						</p>
 					</div>
 					<div className='max-w-[40ch]'>
-						<p className='font-semibold'>Address</p>
+						<p className='font-semibold'>
+							{t('layouts.footer.address')}
+						</p>
 						<p>{CONTACTS.address}</p>
 					</div>
 					<div>
-						<p className='font-semibold'>Contacts</p>
+						<p className='font-semibold'>
+							{t('layouts.footer.contact.heading')}
+						</p>
 						<Link
 							href={`tel:${CONTACTS.phone}`}
 							className='underline underline-offset-2 hover:text-primary-clinic transition-all'
 						>
 							{CONTACTS.phone}
 						</Link>
-						<p>Reception, Sundar Clinic</p>
+						<p>{t('layouts.footer.contact.phone')}</p>
 						<Link
 							href={`mailto:${CONTACTS.phone}`}
 							className='underline underline-offset-2 hover:text-primary-clinic transition-all'
@@ -57,8 +67,8 @@ const Footer: React.FC<FooterProps> = () => {
 						<div className='flex items-center justify-center gap-4'>
 							<Clock />
 							<p className='flex flex-col'>
-								<span>Morning ‣ 9:30 a.m. - 1:30 p.m.</span>
-								<span>Evening ‣ 4:00 p.m. - 9:30 p.m.</span>
+								<span>{t('company.timings.morning')}</span>
+								<span>{t('company.timings.evening')}</span>
 							</p>
 						</div>
 						<Button asChild className=''>
@@ -66,7 +76,7 @@ const Footer: React.FC<FooterProps> = () => {
 								href={CONTACTS.googleLocation}
 								target='_blank'
 							>
-								Visit Now
+								{t('layouts.footer.cta')}
 							</Link>
 						</Button>
 					</div>
@@ -93,7 +103,7 @@ const Footer: React.FC<FooterProps> = () => {
 									target={link.target}
 									className='w-full hover:text-primary-clinic transition-all hover:underline underline-offset-2'
 								>
-									{link.name}
+									{link.name[locale]}
 								</Link>
 							</li>
 						))}
@@ -122,8 +132,8 @@ const Footer: React.FC<FooterProps> = () => {
 				</div>
 				<hr className='border-b my-4 border-b-slate-300 mx-auto' />
 				<p className='text-center'>
-					2023. &copy; Sundar Clinic. All rights reserved | Built in
-					Collaboration with{' '}
+					2023. &copy; {t('company.name')}. All rights reserved |
+					Built in Collaboration with{' '}
 					<Link
 						href={'https://codelancedevs.com'}
 						className='underline underline-offset-2 text-[#00e07b]'

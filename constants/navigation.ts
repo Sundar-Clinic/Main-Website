@@ -1,7 +1,7 @@
 // Navigation Data
 
 interface Navdata {
-	name: string;
+	name: Record<LocaleLanguages, string>;
 	url: string;
 	target: '_blank' | '_self';
 }
@@ -10,53 +10,89 @@ type NavdataCollection = ReadonlyArray<Navdata>;
 
 const COMMON_NAVIGATION: NavdataCollection = [
 	{
-		name: 'Home',
+		name: {
+			en: 'Home',
+			ta: 'முகப்பு',
+			hi: 'होम',
+		},
 		url: '/',
 		target: '_self',
 	},
 	{
-		name: 'Services',
+		name: {
+			en: 'Services',
+			ta: 'சேவைகள்',
+			hi: 'सेवाएं',
+		},
 		url: '/#services',
 		target: '_self',
 	},
 	{
-		name: 'Contact',
+		name: {
+			en: 'Contact',
+			ta: 'தொடர்பு',
+			hi: 'संपर्क',
+		},
 		url: '/contact',
 		target: '_self',
 	},
 	{
-		name: 'About',
+		name: {
+			en: 'About',
+			ta: 'பற்றி',
+			hi: 'के बारे में',
+		},
 		url: '/about',
 		target: '_self',
 	},
 	{
-		name: 'Gallery',
+		name: {
+			en: 'Gallery',
+			ta: 'கேலரி',
+			hi: 'गैलरी',
+		},
 		url: '/gallery',
 		target: '_self',
 	},
 ];
 
-export const NAVBAR_NAVIGATION = [...COMMON_NAVIGATION];
+export const NAVBAR_NAVIGATION: NavdataCollection = [...COMMON_NAVIGATION];
 
-export const FOOTER_NAVIGATION = [
+export const FOOTER_NAVIGATION: NavdataCollection = [
 	...COMMON_NAVIGATION,
 	{
-		name: 'Team',
+		name: {
+			en: 'Team',
+			ta: 'அணி',
+			hi: 'टीम',
+		},
 		url: '/team',
 		target: '_self',
 	},
 	{
-		name: 'Terms & Conditions',
+		name: {
+			en: 'Terms & Conditions',
+			ta: 'விதிகள் மற்றும் நிபந்தனைகள்',
+			hi: 'शर्तें और नियम',
+		},
 		url: '/terms-and-conditions',
 		target: '_self',
 	},
 	{
-		name: 'Privacy Policy',
+		name: {
+			en: 'Privacy Policy',
+			ta: 'தனியுரிமை கொள்கை',
+			hi: 'गोपनीयता नीति',
+		},
 		url: '/privacy-policy',
 		target: '_self',
 	},
 	{
-		name: 'Legal',
+		name: {
+			en: 'Legal',
+			ta: 'சட்டம்',
+			hi: 'कानूनी',
+		},
 		url: '/legal',
 		target: '_self',
 	},

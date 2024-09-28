@@ -23,9 +23,11 @@ import {
 import { Link, usePathname } from '@/lib/routing';
 import { useTranslations } from 'next-intl';
 
-type NavbarProps = React.ComponentProps<'nav'>;
+interface NavbarProps extends React.ComponentProps<'nav'> {
+	locale: LocaleLanguages;
+}
 
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 	const pathname = usePathname();
 	const [sheetOpen, setSheetOpen] = useState(false);
 
@@ -79,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 															: ''
 													} w-full hover:text-primary-clinic transition-all`}
 												>
-													{link.name}
+													{link.name[locale]}
 												</Link>
 											</li>
 										);
@@ -108,8 +110,8 @@ const Navbar: React.FC<NavbarProps> = () => {
 					<div className='flex items-center justify-center gap-4'>
 						<Clock strokeWidth={1.5} size={20} />
 						<p className='flex flex-col text-sm md:text-base'>
-							<span>Morning ‣ 9:30 a.m. - 1:30 p.m.</span>
-							<span>Evening ‣ 4:00 p.m. - 9:30 p.m.</span>
+							<span>{t('company.timings.morning')}</span>
+							<span>{t('company.timings.evening')}</span>
 						</p>
 					</div>
 					<div className='flex items-center justify-center gap-4'>
@@ -144,7 +146,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 										isActive ? 'text-primary-clinic' : ''
 									} hover:text-primary-clinic transition-all`}
 								>
-									{link.name}
+									{link.name[locale]}
 								</Link>
 							</li>
 						);

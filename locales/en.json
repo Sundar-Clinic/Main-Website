@@ -1,13 +1,24 @@
 {
 	"company": {
 		"name": "Sundar Clinic",
-		"tagline": "Not just a better healthcare, but a better healthcare experience."
+		"tagline": "Not just a better healthcare, but a better healthcare experience.",
+		"timings": {
+			"morning": "Morning ‣ 9:30 a.m. - 1:30 p.m.",
+			"evening": "Evening ‣ 4:00 p.m. - 9:30 p.m."
+		}
 	},
 	"layouts": {
 		"navbar": {
 			"cta": "Visit Now"
 		},
-		"footer": {}
+		"footer": {
+			"address": "Address",
+			"contact": {
+				"heading": "Contacts",
+				"phone": "Reception, Sundar Clinic"
+			},
+			"cta": "Visit Now"
+		}
 	},
 	"pages": {}
 }

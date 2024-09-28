@@ -12,6 +12,8 @@ import Navbar from '@/layouts/Navbar';
 import Footer from '@/layouts/Footer';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Toaster } from '@/components/ui/toaster';
+import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
+import { NextIntlClientProvider } from 'next-intl';
 
 import '../globals.css';
 import { CONTACTS } from '@/constants/clinic';
@@ -82,11 +84,16 @@ export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
 }
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
+	params: { locale },
 }: {
 	children: React.ReactNode;
-}) {
+} & PageProps) {
+	unstable_setRequestLocale(locale);
+
+	const messages = await getMessages();
+
 	return (
 		<html
 			lang='en'
@@ -99,12 +106,14 @@ export default function RootLayout({
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 			/>
 			<body>
-				<TooltipProvider>
-					<Navbar />
-					{children}
-					<Footer />
-				</TooltipProvider>
-				<Toaster />
+				<NextIntlClientProvider messages={messages}>
+					<TooltipProvider>
+						<Navbar locale={locale} />
+						{children}
+						<Footer  locale={locale}  />
+					</TooltipProvider>
+					<Toaster />
+				</NextIntlClientProvider>
 			</body>
 		</html>
 	);
