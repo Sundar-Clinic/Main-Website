@@ -5,34 +5,38 @@
 // Dependencies
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/lib/routing';
 import { Button } from '@/components/ui/button';
 import { CONTACTS } from '@/constants/clinic';
+import { useTranslations } from 'next-intl';
 
 type HeroProps = React.ComponentProps<'section'>;
 
 const Hero: React.FC<HeroProps> = () => {
+	const t = useTranslations();
+
 	return (
 		<section className='max-w-7xl mx-auto min-h-[60vh] grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-8 p-4 pt-8 md:pt-0'>
 			<div className='flex flex-col justify-center items-center md:items-start gap-8'>
 				<h1 className='text-4xl font-heading'>
-					Not just a better healthcare, but a better healthcare
-					experience.
+					{t('company.tagline')}
 				</h1>
-				<h2 className='text-lg text-slate-500'>
-					In Pappanchatirma, <b>Dr. Ekta Bharti (M.B.B.S)</b> at
-					Sundar Clinic is your trusted healthcare partner. With
-					personalized care, your health is our priority. Experience
-					exceptional healthcare with us today
-				</h2>
+				<h2
+					className='text-lg text-slate-500'
+					dangerouslySetInnerHTML={{
+						__html: t.raw('pages.home.hero.description'),
+					}}
+				/>
 				<div className='flex gap-4 items-center'>
 					<Button asChild className=''>
 						<Link href={CONTACTS.googleLocation} target='_blank'>
-							Visit Now
+							{t('pages.home.hero.cta.location')}
 						</Link>
 					</Button>
 					<Button asChild variant='outline'>
-						<Link href='/about'>Learn more</Link>
+						<Link href='/about'>
+							{t('pages.home.hero.cta.about')}
+						</Link>
 					</Button>
 				</div>
 			</div>

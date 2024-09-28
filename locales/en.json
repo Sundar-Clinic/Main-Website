@@ -20,5 +20,15 @@
 			"cta": "Visit Now"
 		}
 	},
-	"pages": {}
+	"pages": {
+		"home": {
+			"hero": {
+				"description": "In Pappanchatirma, <b>Dr. Ekta Bharti (M.B.B.S)</b> at Sundar Clinic is your trusted healthcare partner. With personalized care, your health is our priority. Experience exceptional healthcare with us today",
+				"cta": {
+					"location": "Visit Now",
+					"about": "Learn more"
+				}
+			}
+		}
+	}
 }

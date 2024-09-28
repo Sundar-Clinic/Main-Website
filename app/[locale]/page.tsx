@@ -15,8 +15,10 @@ import {
 	testimonialsQuery,
 } from '@/sanity/lib/queries';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export default async function Home() {
+export default async function Home({ params: { locale } }: PageProps) {
+	unstable_setRequestLocale(locale);
 	const faqs = await sanityFetch<FAQData>({ query: faqsQuery });
 	const testimonials = await sanityFetch<TestimonailData>({
 		query: testimonialsQuery,
