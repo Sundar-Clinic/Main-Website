@@ -1,6 +1,8 @@
 {
 	"extends": "next/core-web-vitals",
 	"rules": {
+		// Avoid hardcoded labels
+		"react/jsx-no-literals": "error",
 		// Consistently import navigation APIs from `@/lib/routing`
 		"no-restricted-imports": [
 			"error",

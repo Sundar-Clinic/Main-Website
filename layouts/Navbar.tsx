@@ -6,10 +6,8 @@
 
 // Dependencies
 import React, { useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { usePathname } from 'next/navigation';
 import { Clock, Menu, Phone } from 'lucide-react';
 import { NAVBAR_NAVIGATION } from '@/constants/navigation';
 import { CONTACTS } from '@/constants/clinic';
@@ -22,12 +20,16 @@ import {
 	SheetTrigger,
 	SheetFooter,
 } from '@/components/ui/sheet';
+import { Link, usePathname } from '@/lib/routing';
+import { useTranslations } from 'next-intl';
 
 type NavbarProps = React.ComponentProps<'nav'>;
 
 const Navbar: React.FC<NavbarProps> = () => {
 	const pathname = usePathname();
 	const [sheetOpen, setSheetOpen] = useState(false);
+
+	const t = useTranslations();
 
 	const handleCloseSheet = () => setSheetOpen(false);
 
@@ -53,10 +55,9 @@ const Navbar: React.FC<NavbarProps> = () => {
 						</SheetTrigger>
 						<SheetContent className='flex flex-col h-full md:hidden'>
 							<SheetHeader>
-								<SheetTitle>Sundar Clinic</SheetTitle>
+								<SheetTitle>{t('company.name')}</SheetTitle>
 								<SheetDescription>
-									Not just a better healthcare, but a better
-									healthcare experience.
+									{t('company.tagline')}
 								</SheetDescription>
 							</SheetHeader>
 							<div>
@@ -93,7 +94,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 										href={CONTACTS.googleLocation}
 										target='_blank'
 									>
-										Visit Now
+										{t('layouts.navbar.cta')}
 									</Link>
 								</Button>
 							</div>
@@ -123,7 +124,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 				</div>
 				<Button asChild className='hidden md:flex'>
 					<Link href={CONTACTS.googleLocation} target='_blank'>
-						Visit Now
+						{t('layouts.navbar.cta')}
 					</Link>
 				</Button>
 			</section>

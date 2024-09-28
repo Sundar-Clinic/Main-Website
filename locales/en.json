@@ -1,1 +1,13 @@
-{}
+{
+	"company": {
+		"name": "Sundar Clinic",
+		"tagline": "Not just a better healthcare, but a better healthcare experience."
+	},
+	"layouts": {
+		"navbar": {
+			"cta": "Visit Now"
+		},
+		"footer": {}
+	},
+	"pages": {}
+}
