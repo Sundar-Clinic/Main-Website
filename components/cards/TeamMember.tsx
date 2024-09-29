@@ -64,9 +64,9 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
 				</div>
 			</div>
 			<div className='flex flex-col items-center justify-center p-4 text-center'>
-				<h4 className='font-heading text-xl mt-4 font-medium'>
+				<h3 className='font-heading text-xl mt-4 font-medium'>
 					{member.name}
-				</h4>
+				</h3>
 				<p className='text-sm text-slate-500'>
 					<span>{member.qualifications}</span>{' '}
 					{member.registrationNo && (

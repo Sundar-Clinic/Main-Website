@@ -91,10 +91,11 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 					allowFullScreen
 					loading='lazy'
 					referrerPolicy='no-referrer-when-downgrade'
+					title='Sundar Clinic Location'
 				></iframe>
 			</section>
 			<section className='max-w-7xl mx-auto my-4'>
-				<div className='grid grid-cols-1 md:grid-cols-3 place-items-center gap-4'>
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-4'>
 					<ul className='grid grid-cols-3 gap-2 place-items-center text-center'>
 						{FOOTER_NAVIGATION.map((link) => (
 							<li key={`footer-${link.name}`}>
@@ -108,7 +109,7 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 							</li>
 						))}
 					</ul>
-					<ul className='flex gap-2 items-center w-fit'>
+					<div className='flex gap-2 items-center w-fit'>
 						{SOCIALS.map((link) => (
 							<Link
 								href={link.url}
@@ -118,17 +119,15 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 								className='group'
 							>
 								<Button asChild size='icon' variant={'ghost'}>
-									<li>
-										<link.Icon
-											strokeWidth={1.5}
-											size={20}
-											className='group-hover:text-primary-clinic transition-all'
-										/>
-									</li>
+									<link.Icon
+										strokeWidth={1.5}
+										size={20}
+										className='group-hover:text-primary-clinic transition-all'
+									/>
 								</Button>
 							</Link>
 						))}
-					</ul>
+					</div>
 					<LanguageSwitch locale={locale} />
 				</div>
 				<hr className='border-b my-4 border-b-slate-300 mx-auto' />

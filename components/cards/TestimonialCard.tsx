@@ -67,6 +67,12 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 									className='text-primary-clinic'
 								/>
 							))}
+						<span className='sr-only'>
+							{stars}
+							{'/'}
+							{MAX_TOTAL_STARS}
+							{t('stars')}
+						</span>
 					</TooltipTrigger>
 					<TooltipContent>
 						{stars}
