@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { Link } from '@/lib/routing';
 import { Button } from '@/components/ui/button';
 import { Clock } from 'lucide-react';
+import LanguageSwitch from './language-switch';
 import { FOOTER_NAVIGATION } from '@/constants/navigation';
 import { CONTACTS, SOCIALS } from '@/constants/clinic';
 import { useTranslations } from 'next-intl';
@@ -93,7 +94,7 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 				></iframe>
 			</section>
 			<section className='max-w-7xl mx-auto my-4'>
-				<div className='grid grid-cols-1 sm:grid-cols-2 place-items-center gap-4'>
+				<div className='grid grid-cols-1 md:grid-cols-3 place-items-center gap-4'>
 					<ul className='grid grid-cols-3 gap-2 place-items-center text-center'>
 						{FOOTER_NAVIGATION.map((link) => (
 							<li key={`footer-${link.name}`}>
@@ -128,6 +129,7 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 							</Link>
 						))}
 					</ul>
+					<LanguageSwitch locale={locale} />
 				</div>
 				<hr className='border-b my-4 border-b-slate-300 mx-auto' />
 				<p className='text-center'>
