@@ -43,7 +43,7 @@ export async function generateMetadata({
 			creator: '@SundarClinic',
 		},
 		alternates: {
-			canonical: '/',
+			canonical: '/en',
 			languages: Object.fromEntries(
 				locales.map((locale) => [locale, `/${locale}`])
 			),

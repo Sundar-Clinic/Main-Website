@@ -104,22 +104,50 @@
 			},
 			"team": {
 				"heading": "Meet our Dedicated Team"
+			},
+			"meta": {
+				"title": "About Us",
+				"description": "Discover the story of Sundar Clinic, a trusted healthcare provider in Pappanchatiram. Learn about our history, approach, and dedicated team led by Dr. Ekta Bharti M.B.B.S."
 			}
 		},
 		"team": {
-			"heading": "Meet Our Dedicated Team"
+			"heading": "Meet Our Dedicated Team",
+			"meta": {
+				"title": "Meet Our Team",
+				"description": "Meet the dedicated team at Sundar Clinic, led by Dr. Ekta Bharti M.B.B.S. Learn about our team's qualifications, experience, and commitment to providing exceptional healthcare."
+			}
+		},
+		"contact": {
+			"meta": {
+				"title": "Contact Us",
+				"description": "Get in touch with Sundar Clinic in Pappanchatiram. Call us at +918939881708  or drop us an email at sundarclinic@gmail.com"
+			}
+		},
+		"gallery": {
+			"meta": {
+				"title": "Gallery",
+				"description": "View the gallery of Sundar Clinic in Pappanchatiram. Discover our clinic's facilities, team, and the exceptional healthcare experience we offer."
+			}
 		},
 		"terms-and-conditions": {
 			"heading": "Terms & Conditions",
 			"date": "Effective Date:",
 			"description": "Welcome to Sundar Clinic's website. By accessing and using this website, you agree to comply with and be bound by these Terms and Conditions. Please read the following terms carefully.",
-			"confirmation": "By using our website, you acknowledge that you have read, understood, and agreed to these Terms and Conditions. If you do not agree to these terms, please do not use our website."
+			"confirmation": "By using our website, you acknowledge that you have read, understood, and agreed to these Terms and Conditions. If you do not agree to these terms, please do not use our website.",
+			"meta": {
+				"title": "Terms & Conditions",
+				"description": "Read the Terms and Conditions of Sundar Clinic's website. By using our website, you agree to comply with and be bound by these terms. Please read the following terms carefully."
+			}
 		},
 		"privacy-policy": {
 			"heading": "Privacy Policy",
 			"date": "Effective Date:",
 			"description": "At Sundar Clinic, your privacy is of utmost importance to us. This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you visit our website or interact with us through our contact form. By using our website and providing your information, you consent to the practices described in this policy.",
-			"confirmation": "By using our website, you acknowledge that you have read, understood, and agreed to these Terms and Conditions. If you do not agree to these terms, please do not use our website."
+			"confirmation": "By using our website, you acknowledge that you have read, understood, and agreed to these Terms and Conditions. If you do not agree to these terms, please do not use our website.",
+			"meta": {
+				"title": "Privacy Policy",
+				"description": "Read the Privacy Policy of Sundar Clinic's website. Learn how we collect, use, disclose, and protect your personal information when you visit our website or interact with us. By using our website, you consent to the practices described in this policy."
+			}
 		},
 		"legal": {
 			"heading": "Legal Information",
@@ -138,6 +166,10 @@
 				"start": "Please feel free to",
 				"cta": "contact us",
 				"end": "if you have any questions or require additional information regarding our legal status and the qualifications of our medical practitioner."
+			},
+			"meta": {
+				"title": "Legal Information",
+				"description": "Read the legal information of Sundar Clinic's website. Learn about our clinic registration, doctor's registration, and other relevant links. Contact us if you have any questions or require additional information."
 			}
 		}
 	},
