@@ -70,7 +70,11 @@
           "subject": "Subject",
           "message": "Message"
         },
-        "required": "marks as required fields"
+        "required": "marks as required fields",
+        "button": {
+          "submit": "Submit",
+          "submitting": "Submitting..."
+        }
       },
       "faq": {
         "heading": "Frequently Asked Questions"

@@ -297,7 +297,9 @@ const Contact: React.FC<ContactProps> = () => {
 											className='animate-spin'
 										/>
 									)}
-									{submitting ? 'Submitting...' : 'Submit'}
+									{submitting
+										? t('button.submitting')
+										: t('button.submit')}
 								</Button>
 							</form>
 						</Form>
