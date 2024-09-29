@@ -5,31 +5,29 @@
 // Dependencies
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/lib/routing';
 import { Button } from '@/components/ui/button';
+import { useTranslations } from 'next-intl';
 
 type HeroProps = React.ComponentProps<'section'>;
 
 const Hero: React.FC<HeroProps> = () => {
+	const t = useTranslations('pages.about.hero');
+
 	return (
 		<section className='max-w-7xl mx-auto w-full p-4 mt-8 relative min-h-[50vh] grid grid-cols-1 gap-8 md:grid-cols-2'>
 			<div className='flex flex-col gap-4'>
-				<p className='font-medium text-lg md:text-2xl'>About Us</p>
+				<p className='font-medium text-lg md:text-2xl'>
+					{t('subheading')}
+				</p>
 				<h1 className='font-heading font-medium text-2xl md:text-4xl max-w-3xl'>
-					Welcome to Sundar Clinic: Where Healthcare Meets Exceptional
-					Experience
+					{t('heading')}
 				</h1>
 				<p className='text-lg md:text-xl text-justify max-w-5xl text-slate-500'>
-					At Sundar Clinic, we&apos;re not just about healthcare;
-					we&apos;re about crafting a better healthcare experience.
-					Since our establishment in 2013, we&apos;ve been a
-					cornerstone of wellness in the vibrant community of
-					Pappanchatiram. Our guiding individual is Dr. Ekta Bharti
-					M.B.B.S., a dedicated general physician who has been leading
-					the way to better health for our community.
+					{t('description')}
 				</p>
 				<Button asChild size={'lg'}>
-					<Link href='#history'>Learn more</Link>
+					<Link href='#history'>{t('cta')}</Link>
 				</Button>
 			</div>
 			<div className='flex items-center justify-center'>

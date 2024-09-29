@@ -75,14 +75,27 @@
 			"faq": {
 				"heading": "Frequently Asked Questions"
 			}
-		}
-	},
-	"heapages": {
-		"home": {
-			"contact": {
-				"cta": {
-					"heading": "Let's connect, or got a query for us?"
+		},
+		"about": {
+			"hero": {
+				"heading": "Welcome to Sundar Clinic: Where Healthcare Meets Exceptional Experience",
+				"subheading": "About Us",
+				"description": "At Sundar Clinic, we're not just about healthcare; we're about crafting a better healthcare experience. Since our establishment in 2013, we've been a cornerstone of wellness in the vibrant community of Pappanchatiram. Our guiding individual is Dr. Ekta Bharti M.B.B.S., a dedicated general physician who has been leading the way to better health for our community.",
+				"cta": "Learn more"
+			},
+			"history": {
+				"heading": "History",
+				"journey": {
+					"heading": "Our Journey: Transforming Healthcare since 2013",
+					"description": "For nearly a decade, Sundar Clinic has been a trusted name in healthcare, committed to enhancing the well-being of Pappanchatiram's residents. Our journey began in 2013, and since then, we've evolved into a healthcare hub that's not just about treating illnesses but also creating memorable experiences for our patients."
+				},
+				"approach": {
+					"heading": "Our Approach",
+					"description": "Our approach is simple but profound: we provide accessible and high-quality healthcare with a personal touch. Situated in the heart of a developing area, we've been a beacon of hope for individuals seeking answers to their health-related concerns. At Sundar Clinic, we believe in the power of delegation, ensuring that every patient receives the care they deserve, precisely when they need it."
 				}
+			},
+			"team": {
+				"heading": "Meet our Dedicated Team"
 			}
 		}
 	}
