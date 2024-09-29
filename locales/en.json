@@ -100,6 +100,18 @@
     },
     "team": {
       "heading": "Meet Our Dedicated Team"
+    },
+    "terms-and-conditions": {
+      "heading": "Terms & Conditions",
+      "date": "Effective Date:",
+      "description": "Welcome to Sundar Clinic's website. By accessing and using this website, you agree to comply with and be bound by these Terms and Conditions. Please read the following terms carefully.",
+      "confirmation": "By using our website, you acknowledge that you have read, understood, and agreed to these Terms and Conditions. If you do not agree to these terms, please do not use our website."
+    },
+    "privacy-policy": {
+      "heading": "Privacy Policy",
+      "date": "Effective Date:",
+      "description": "At Sundar Clinic, your privacy is of utmost importance to us. This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you visit our website or interact with us through our contact form. By using our website and providing your information, you consent to the practices described in this policy.",
+      "confirmation": "By using our website, you acknowledge that you have read, understood, and agreed to these Terms and Conditions. If you do not agree to these terms, please do not use our website."
     }
   }
 }

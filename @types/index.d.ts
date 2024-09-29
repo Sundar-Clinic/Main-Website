@@ -49,8 +49,8 @@ type TeamMemberData = ReadonlyArray<
 >;
 
 type LegalDataBase = Readonly<{
-	title: string;
-	descriptions: Array<string>;
+	title: Record<LocaleLanguages, string>;
+	descriptions: Array<Record<LocaleLanguages, string>>;
 }>;
 
 type TermsAndConditionsData = ReadonlyArray<LegalDataBase>;
