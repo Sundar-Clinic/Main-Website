@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-literals */
 /**
  * Footer Component
  */
@@ -36,14 +35,14 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 							/>
 						</div>
 						<p className='text-slate-500 text-sm'>
-							{2013} - {new Date().getFullYear()}
+							{2013} {'-'} {new Date().getFullYear()}
 						</p>
 					</div>
 					<div className='max-w-[40ch]'>
 						<p className='font-semibold'>
 							{t('layouts.footer.address')}
 						</p>
-						<p>{CONTACTS.address}</p>
+						<p>{t('company.address')}</p>
 					</div>
 					<div>
 						<p className='font-semibold'>
@@ -132,20 +131,21 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 				</div>
 				<hr className='border-b my-4 border-b-slate-300 mx-auto' />
 				<p className='text-center'>
-					2023. &copy; {t('company.name')}. All rights reserved |
-					Built in Collaboration with{' '}
+					{`2023. ©️ ${t(
+						'company.name'
+					)}. All rights reserved | Built in Collaboration with `}
 					<Link
 						href={'https://codelancedevs.com'}
 						className='underline underline-offset-2 text-[#00e07b]'
 					>
-						Codelance Devs
-					</Link>{' '}
-					| Open Source in{' '}
+						{'Codelance Devs'}
+					</Link>
+					{' | Open Source in '}
 					<Link
 						href={CONTACTS.codeRepositoryURL}
 						className='underline underline-offset-2'
 					>
-						GitHub
+						{'GitHub'}
 					</Link>
 				</p>
 			</section>

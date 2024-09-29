@@ -5,7 +5,8 @@
 		"timings": {
 			"morning": "Morning ‣ 9:30 a.m. - 1:30 p.m.",
 			"evening": "Evening ‣ 4:00 p.m. - 9:30 p.m."
-		}
+		},
+		"address": "1195A, Nehru Street, Chennai, Bengaluru - Chennai Highway, Pappanchathiram, Chennai, Tamil Nadu - 600123."
 	},
 	"layouts": {
 		"navbar": {
@@ -18,6 +19,15 @@
 				"phone": "Reception, Sundar Clinic"
 			},
 			"cta": "Visit Now"
+		},
+		"global-error": {
+			"heading": "Something went wrong!",
+			"cta": "Try again"
+		},
+		"not-found": {
+			"heading": "Not Found",
+			"description": "Could not find requested resource",
+			"cta": "Return Home"
 		}
 	},
 	"pages": {
@@ -31,6 +41,48 @@
 			},
 			"services": {
 				"heading": "Our Services"
+			},
+			"gallery": {
+				"heading": "Gallery",
+				"cta": "View more"
+			},
+			"testimonials": {
+				"heading": "Testimonials"
+			},
+			"contact": {
+				"heading": "Contact Us",
+				"cta": {
+					"heading": "Let's connect, or got a query for us?",
+					"phone": "Call us at",
+					"email": "or drop us an email at"
+				},
+				"success": {
+					"heading": "Submitted successfully!",
+					"subheading": "We'll get back to you soon."
+				},
+				"fields": {
+					"name": "Full Name",
+					"email": "Email Address",
+					"phone": {
+						"label": "Phone Number",
+						"description": "Enter your 10 digit mobile number."
+					},
+					"subject": "Subject",
+					"message": "Message"
+				},
+				"required": "marks as required fields"
+			},
+			"faq": {
+				"heading": "Frequently Asked Questions"
+			}
+		}
+	},
+	"heapages": {
+		"home": {
+			"contact": {
+				"cta": {
+					"heading": "Let's connect, or got a query for us?"
+				}
 			}
 		}
 	}
