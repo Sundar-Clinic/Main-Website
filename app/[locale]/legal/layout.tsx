@@ -6,7 +6,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Legal Information - Sundar Clinic',
+	title: 'Legal Information ',
 	alternates: {
 		canonical: 'https://sundarclinic.com/legal/',
 	},

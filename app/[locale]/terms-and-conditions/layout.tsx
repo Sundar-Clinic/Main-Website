@@ -6,7 +6,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Terms & Conditions - Sundar Clinic',
+	title: 'Terms & Conditions',
 	alternates: {
 		canonical: 'https://sundarclinic.com/terms-and-conditions/',
 	},

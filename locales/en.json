@@ -6,7 +6,11 @@
 			"morning": "Morning ‣ 9:30 a.m. - 1:30 p.m.",
 			"evening": "Evening ‣ 4:00 p.m. - 9:30 p.m."
 		},
-		"address": "1195A, Nehru Street, Chennai, Bengaluru - Chennai Highway, Pappanchathiram, Chennai, Tamil Nadu - 600123."
+		"address": "1195A, Nehru Street, Chennai, Bengaluru - Chennai Highway, Pappanchathiram, Chennai, Tamil Nadu - 600123.",
+		"meta": {
+			"description": "Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician.",
+			"twitter": "Discover better healthcare and a superior healthcare experience at Sundar Clinic in Pappanchatiram, located on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, your trusted general physician. #Healthcare #SundarClinic"
+		}
 	},
 	"layouts": {
 		"navbar": {

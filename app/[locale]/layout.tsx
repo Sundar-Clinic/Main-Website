@@ -1,120 +1,76 @@
 /**
- * Root Layout
+ * Locale Layout
  */
 
 // Dependencies
 import type { Metadata } from 'next';
-import { Source_Sans_3, Poppins } from 'next/font/google';
-import { WithContext, MedicalBusiness } from 'schema-dts';
-import GoogleAnalytics from '@/components/GoogleAnalytics';
-import Script from 'next/script';
 import Navbar from '@/layouts/Navbar';
 import Footer from '@/layouts/Footer';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Toaster } from '@/components/ui/toaster';
-import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
+import {
+	getMessages,
+	getTranslations,
+	unstable_setRequestLocale,
+} from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 
-import '../globals.css';
-import { CONTACTS } from '@/constants/clinic';
 import { locales } from '@/i18n/i18n';
 
-const sourceSans3 = Source_Sans_3({
-	display: 'swap',
-	subsets: ['latin'],
-	variable: '--font-source-sans-3',
-	style: ['italic', 'normal'],
-	weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
-});
+export async function generateMetadata({
+	params: { locale },
+}: PageProps): Promise<Metadata> {
+	const t = await getTranslations({ locale });
 
-const poppins = Poppins({
-	display: 'swap',
-	subsets: ['latin'],
-	variable: '--font-poppins',
-	style: ['italic', 'normal'],
-	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-});
-
-export const metadata: Metadata = {
-	metadataBase: new URL('https://sundarclinic.com'),
-	title: 'Sundar Clinic',
-	description:
-		'Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician.',
-	openGraph: {
-		title: 'Sundar Clinic',
-		description:
-			'Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician. Sundar Clinic is your partner in well-being.',
-		url: '/',
-		type: 'website',
-		siteName: 'Sundar Clinic',
-	},
-	twitter: {
-		title: 'Sundar Clinic',
-		description:
-			'Discover better healthcare and a superior healthcare experience at Sundar Clinic in Pappanchatiram, located on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, your trusted general physician. #Healthcare #SundarClinic',
-		site: '@SundarClinic',
-		creator: '@SundarClinic',
-	},
-	alternates: {
-		canonical: 'https://sundarclinic.com/',
-	},
-};
-
-const jsonLd: WithContext<MedicalBusiness> = {
-	'@context': 'https://schema.org',
-	'@type': 'MedicalBusiness',
-	name: 'Sundar Clinic',
-	description:
-		'Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician.',
-	image: 'https://sundarclinic.com/opengraph-image.jpg',
-	address: {
-		'@type': 'PostalAddress',
-		streetAddress: '1195A, Nehru Street',
-		addressLocality: 'Chennai',
-		addressRegion: 'Tamil Nadu',
-		postalCode: '600123',
-		addressCountry: 'India',
-	},
-	telephone: CONTACTS.phone,
-	url: 'https://sundarclinic.com',
-	email: CONTACTS.email,
-};
+	return {
+		title: {
+			template: `%s - ${t('company.name')}`,
+			default: t('company.name'),
+		},
+		description: t('company.meta.description'),
+		category: 'healthcare',
+		openGraph: {
+			title: t('company.name'),
+			description: t('company.meta.description'),
+			url: '/',
+			type: 'website',
+			siteName: t('company.name'),
+		},
+		twitter: {
+			title: t('company.name'),
+			description: t('company.meta.twitter'),
+			site: '@SundarClinic',
+			creator: '@SundarClinic',
+		},
+		alternates: {
+			canonical: '/',
+			languages: Object.fromEntries(
+				locales.map((locale) => [locale, `/${locale}`])
+			),
+		},
+	};
+}
 
 export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
 }
 
-export default async function RootLayout({
+export default async function Layout({
 	children,
 	params: { locale },
-}: {
-	children: React.ReactNode;
-} & PageProps) {
+}: { children: React.ReactNode } & PageProps) {
 	unstable_setRequestLocale(locale);
 
 	const messages = await getMessages();
 
 	return (
-		<html
-			lang='en'
-			className={`${sourceSans3.variable} ${poppins.variable} font-sans`}
-		>
-			<GoogleAnalytics GA_TRACKING_ID='G-4PGSJ6BVZ2' />
-			<Script
-				id='json-ld'
-				type='application/ld+json'
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-			/>
-			<body>
-				<NextIntlClientProvider messages={messages}>
-					<TooltipProvider>
-						<Navbar locale={locale} />
-						{children}
-						<Footer  locale={locale}  />
-					</TooltipProvider>
-					<Toaster />
-				</NextIntlClientProvider>
-			</body>
-		</html>
+		<NextIntlClientProvider messages={messages}>
+			<TooltipProvider>
+				<Navbar locale={locale} />
+				{children}
+				<Footer locale={locale} />
+			</TooltipProvider>
+			<Toaster />
+		</NextIntlClientProvider>
 	);
 }
