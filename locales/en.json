@@ -112,6 +112,25 @@
       "date": "Effective Date:",
       "description": "At Sundar Clinic, your privacy is of utmost importance to us. This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you visit our website or interact with us through our contact form. By using our website and providing your information, you consent to the practices described in this policy.",
       "confirmation": "By using our website, you acknowledge that you have read, understood, and agreed to these Terms and Conditions. If you do not agree to these terms, please do not use our website."
+    },
+    "legal": {
+      "heading": "Legal Information",
+      "clinic": {
+        "heading": "Clinic Registration",
+        "description": "Sundar Clinic is a duly registered medical facility under the Directorate of Medical and Health Services. Our registration number is <strong>CHENALL20210029183</strong>. You can verify our registration by visiting the Directorate of Medical and Health Services Website or the Clinical Establishments of India Website."
+      },
+      "doctor": {
+        "heading": "Registered Doctor",
+        "description": "Sundar Clinic is operated by a qualified and registered medical practitioner. Our doctor&apos;s registration number is <strong>68812</strong>, which can be verified on the Indian Medical Register maintained by the National Medical Commission (NMC) by visiting"
+      },
+      "links": {
+        "heading": "Other relavent links"
+      },
+      "contact": {
+        "start": "Please feel free to",
+        "cta": "contact us",
+        "end": "if you have any questions or require additional information regarding our legal status and the qualifications of our medical practitioner."
+      }
     }
   }
 }

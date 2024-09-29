@@ -2,47 +2,68 @@
  * Legal Page
  */
 
-// Dependencies
-import Link from 'next/link';
+import { Link } from '@/lib/routing';
+import { useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export default function Legal() {
+// Dependencies
+
+export default function Legal({ params: { locale } }: PageProps) {
+	unstable_setRequestLocale(locale);
+
+	const t = useTranslations('pages.legal');
+
 	const relaventLinks = [
-		{ name: 'Terms & Conditions', href: '/terms', target: '_self' },
-		{ name: 'Privacy Policy', href: '/privacy', target: '_self' },
+		{
+			name: {
+				en: 'Terms & Conditions',
+				ta: 'விதிகள் மற்றும் நிபந்தனைகள்',
+				hi: 'शर्तें और नियम',
+			},
+			href: '/terms',
+			target: '_self',
+		},
+		{
+			name: {
+				en: 'Privacy Policy',
+				ta: 'தனியுரிமை கொள்கை',
+				hi: 'गोपनीयता नीति',
+			},
+			href: '/privacy',
+			target: '_self',
+		},
 	];
 	return (
 		<main>
 			<section className='max-w-5xl mx-auto w-full p-4 mt-8'>
 				<h1 className='text-2xl font-heading font-medium'>
-					Legal Information
+					{t('heading')}
 				</h1>
 				<hr className='border-b-4 max-w-[10rem] border-b-primary-clinic rounded-lg mt-2' />
 			</section>
 			<section className='max-w-5xl mx-auto w-full p-4'>
 				<h2 className='text-xl font-heading font-medium'>
-					Clinic Registration
+					{t('clinic.heading')}
 				</h2>
 				<hr className='border-b-2 max-w-[10rem] border-b-primary-clinic rounded-lg mt-2' />
-				<p className='mt-4'>
-					Sundar Clinic is a duly registered medical facility under
-					the Directorate of Medical and Health Services. Our
-					registration number is <strong>CHENALL20210029183</strong>.
-					You can verify our registration by visiting the Directorate
-					of Medical and Health Services Website or the Clinical
-					Establishments of India Website.
-				</p>
+				<p
+					className='mt-4'
+					dangerouslySetInnerHTML={{
+						__html: t.raw('clinic.description'),
+					}}
+				/>
 			</section>
 			<section className='max-w-5xl mx-auto w-full p-4'>
 				<h2 className='text-xl font-heading font-medium'>
-					Registered Doctor
+					{t('doctor.heading')}
 				</h2>
 				<hr className='border-b-2 max-w-[10rem] border-b-primary-clinic rounded-lg mt-2' />
 				<p className='mt-4'>
-					Sundar Clinic is operated by a qualified and registered
-					medical practitioner. Our doctor&apos;s registration number
-					is <strong>68812</strong>, which can be verified on the
-					Indian Medical Register maintained by the National Medical
-					Commission (NMC) by visiting{' '}
+					<span
+						dangerouslySetInnerHTML={{
+							__html: t.raw('doctor.description'),
+						}}
+					/>{' '}
 					<Link
 						href={
 							'https://www.nmc.org.in/information-desk/indian-medical-register/'
@@ -50,26 +71,26 @@ export default function Legal() {
 						className='text-secondary-clinic/80 transition-all hover:text-secondary-clinic underline underline-offset-2'
 						target='_blank'
 					>
-						https://www.nmc.org.in/information-desk/indian-medical-register/
+						{
+							'https://www.nmc.org.in/information-desk/indian-medical-register/'
+						}
 					</Link>
-					.
+					{'.'}
 				</p>
 				<p className='mt-4'>
-					Please feel free to{' '}
+					{t('contact.start')}{' '}
 					<Link
 						href='/contact'
 						className='text-secondary-clinic/80 transition-all hover:text-secondary-clinic underline underline-offset-2'
 					>
-						contact us
+						{t('contact.cta')}
 					</Link>{' '}
-					if you have any questions or require additional information
-					regarding our legal status and the qualifications of our
-					medical practitioner.
+					{t('contact.end')}
 				</p>
 			</section>
 			<section className='max-w-5xl mx-auto w-full p-4'>
 				<h2 className='text-xl font-heading font-medium'>
-					Other relavent links
+					{t('links.heading')}
 				</h2>
 				<hr className='border-b-2 max-w-[10rem] border-b-primary-clinic rounded-lg mt-2' />
 				<ul className='mt-4 list-disc ml-4'>
@@ -80,7 +101,7 @@ export default function Legal() {
 								target={link.target}
 								className='text-secondary-clinic/80 transition-all hover:text-secondary-clinic underline underline-offset-2'
 							>
-								{link.name}
+								{link.name[locale]}
 							</Link>
 						</li>
 					))}
