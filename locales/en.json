@@ -1,102 +1,105 @@
 {
-	"company": {
-		"name": "Sundar Clinic",
-		"tagline": "Not just a better healthcare, but a better healthcare experience.",
-		"timings": {
-			"morning": "Morning ‣ 9:30 a.m. - 1:30 p.m.",
-			"evening": "Evening ‣ 4:00 p.m. - 9:30 p.m."
-		},
-		"address": "1195A, Nehru Street, Chennai, Bengaluru - Chennai Highway, Pappanchathiram, Chennai, Tamil Nadu - 600123."
-	},
-	"layouts": {
-		"navbar": {
-			"cta": "Visit Now"
-		},
-		"footer": {
-			"address": "Address",
-			"contact": {
-				"heading": "Contacts",
-				"phone": "Reception, Sundar Clinic"
-			},
-			"cta": "Visit Now"
-		},
-		"global-error": {
-			"heading": "Something went wrong!",
-			"cta": "Try again"
-		},
-		"not-found": {
-			"heading": "Not Found",
-			"description": "Could not find requested resource",
-			"cta": "Return Home"
-		}
-	},
-	"pages": {
-		"home": {
-			"hero": {
-				"description": "In Pappanchatirma, <b>Dr. Ekta Bharti (M.B.B.S)</b> at Sundar Clinic is your trusted healthcare partner. With personalized care, your health is our priority. Experience exceptional healthcare with us today",
-				"cta": {
-					"location": "Visit Now",
-					"about": "Learn more"
-				}
-			},
-			"services": {
-				"heading": "Our Services"
-			},
-			"gallery": {
-				"heading": "Gallery",
-				"cta": "View more"
-			},
-			"testimonials": {
-				"heading": "Testimonials"
-			},
-			"contact": {
-				"heading": "Contact Us",
-				"cta": {
-					"heading": "Let's connect, or got a query for us?",
-					"phone": "Call us at",
-					"email": "or drop us an email at"
-				},
-				"success": {
-					"heading": "Submitted successfully!",
-					"subheading": "We'll get back to you soon."
-				},
-				"fields": {
-					"name": "Full Name",
-					"email": "Email Address",
-					"phone": {
-						"label": "Phone Number",
-						"description": "Enter your 10 digit mobile number."
-					},
-					"subject": "Subject",
-					"message": "Message"
-				},
-				"required": "marks as required fields"
-			},
-			"faq": {
-				"heading": "Frequently Asked Questions"
-			}
-		},
-		"about": {
-			"hero": {
-				"heading": "Welcome to Sundar Clinic: Where Healthcare Meets Exceptional Experience",
-				"subheading": "About Us",
-				"description": "At Sundar Clinic, we're not just about healthcare; we're about crafting a better healthcare experience. Since our establishment in 2013, we've been a cornerstone of wellness in the vibrant community of Pappanchatiram. Our guiding individual is Dr. Ekta Bharti M.B.B.S., a dedicated general physician who has been leading the way to better health for our community.",
-				"cta": "Learn more"
-			},
-			"history": {
-				"heading": "History",
-				"journey": {
-					"heading": "Our Journey: Transforming Healthcare since 2013",
-					"description": "For nearly a decade, Sundar Clinic has been a trusted name in healthcare, committed to enhancing the well-being of Pappanchatiram's residents. Our journey began in 2013, and since then, we've evolved into a healthcare hub that's not just about treating illnesses but also creating memorable experiences for our patients."
-				},
-				"approach": {
-					"heading": "Our Approach",
-					"description": "Our approach is simple but profound: we provide accessible and high-quality healthcare with a personal touch. Situated in the heart of a developing area, we've been a beacon of hope for individuals seeking answers to their health-related concerns. At Sundar Clinic, we believe in the power of delegation, ensuring that every patient receives the care they deserve, precisely when they need it."
-				}
-			},
-			"team": {
-				"heading": "Meet our Dedicated Team"
-			}
-		}
-	}
+  "company": {
+    "name": "Sundar Clinic",
+    "tagline": "Not just a better healthcare, but a better healthcare experience.",
+    "timings": {
+      "morning": "Morning ‣ 9:30 a.m. - 1:30 p.m.",
+      "evening": "Evening ‣ 4:00 p.m. - 9:30 p.m."
+    },
+    "address": "1195A, Nehru Street, Chennai, Bengaluru - Chennai Highway, Pappanchathiram, Chennai, Tamil Nadu - 600123."
+  },
+  "layouts": {
+    "navbar": {
+      "cta": "Visit Now"
+    },
+    "footer": {
+      "address": "Address",
+      "contact": {
+        "heading": "Contacts",
+        "phone": "Reception, Sundar Clinic"
+      },
+      "cta": "Visit Now"
+    },
+    "global-error": {
+      "heading": "Something went wrong!",
+      "cta": "Try again"
+    },
+    "not-found": {
+      "heading": "Not Found",
+      "description": "Could not find requested resource",
+      "cta": "Return Home"
+    }
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "description": "In Pappanchatirma, <b>Dr. Ekta Bharti (M.B.B.S)</b> at Sundar Clinic is your trusted healthcare partner. With personalized care, your health is our priority. Experience exceptional healthcare with us today",
+        "cta": {
+          "location": "Visit Now",
+          "about": "Learn more"
+        }
+      },
+      "services": {
+        "heading": "Our Services"
+      },
+      "gallery": {
+        "heading": "Gallery",
+        "cta": "View more"
+      },
+      "testimonials": {
+        "heading": "Testimonials"
+      },
+      "contact": {
+        "heading": "Contact Us",
+        "cta": {
+          "heading": "Let's connect, or got a query for us?",
+          "phone": "Call us at",
+          "email": "or drop us an email at"
+        },
+        "success": {
+          "heading": "Submitted successfully!",
+          "subheading": "We'll get back to you soon."
+        },
+        "fields": {
+          "name": "Full Name",
+          "email": "Email Address",
+          "phone": {
+            "label": "Phone Number",
+            "description": "Enter your 10 digit mobile number."
+          },
+          "subject": "Subject",
+          "message": "Message"
+        },
+        "required": "marks as required fields"
+      },
+      "faq": {
+        "heading": "Frequently Asked Questions"
+      }
+    },
+    "about": {
+      "hero": {
+        "heading": "Welcome to Sundar Clinic: Where Healthcare Meets Exceptional Experience",
+        "subheading": "About Us",
+        "description": "At Sundar Clinic, we're not just about healthcare; we're about crafting a better healthcare experience. Since our establishment in 2013, we've been a cornerstone of wellness in the vibrant community of Pappanchatiram. Our guiding individual is Dr. Ekta Bharti M.B.B.S., a dedicated general physician who has been leading the way to better health for our community.",
+        "cta": "Learn more"
+      },
+      "history": {
+        "heading": "History",
+        "journey": {
+          "heading": "Our Journey: Transforming Healthcare since 2013",
+          "description": "For nearly a decade, Sundar Clinic has been a trusted name in healthcare, committed to enhancing the well-being of Pappanchatiram's residents. Our journey began in 2013, and since then, we've evolved into a healthcare hub that's not just about treating illnesses but also creating memorable experiences for our patients."
+        },
+        "approach": {
+          "heading": "Our Approach",
+          "description": "Our approach is simple but profound: we provide accessible and high-quality healthcare with a personal touch. Situated in the heart of a developing area, we've been a beacon of hope for individuals seeking answers to their health-related concerns. At Sundar Clinic, we believe in the power of delegation, ensuring that every patient receives the care they deserve, precisely when they need it."
+        }
+      },
+      "team": {
+        "heading": "Meet our Dedicated Team"
+      }
+    },
+    "team": {
+      "heading": "Meet Our Dedicated Team"
+    }
+  }
 }
