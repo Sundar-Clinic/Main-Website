@@ -17,6 +17,7 @@ import { NextIntlClientProvider } from 'next-intl';
 
 import { CONTACTS } from '@/constants/clinic';
 import { locales } from '@/i18n/i18n';
+import { cn } from '@/lib/utils';
 
 const sourceSans3 = Source_Sans_3({
 	display: 'swap',
@@ -113,7 +114,11 @@ export default async function Layout({
 				type='application/ld+json'
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 			/>
-			<body>
+			<body
+				className={cn({
+					'[word-spacing:1rem]': locale !== 'en',
+				})}
+			>
 				<NextIntlClientProvider locale={locale} messages={messages}>
 					<TooltipProvider>
 						<Navbar locale={locale} />
