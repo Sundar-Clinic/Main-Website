@@ -15,7 +15,6 @@ import {
 } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 
-import '../globals.css';
 import { CONTACTS } from '@/constants/clinic';
 import { locales } from '@/i18n/i18n';
 

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import './globals.css';
+
 export async function generateMetadata(): Promise<Metadata> {
 	return {
 		metadataBase: new URL('https://sundarclinic.com'),
