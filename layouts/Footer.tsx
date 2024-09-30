@@ -5,15 +5,21 @@
 // Dependencies
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/lib/routing';
 import { Button } from '@/components/ui/button';
 import { Clock } from 'lucide-react';
+import LanguageSwitch from './language-switch';
 import { FOOTER_NAVIGATION } from '@/constants/navigation';
 import { CONTACTS, SOCIALS } from '@/constants/clinic';
+import { useTranslations } from 'next-intl';
 
-type FooterProps = React.ComponentProps<'footer'>;
+interface FooterProps extends React.ComponentProps<'footer'> {
+	locale: LocaleLanguages;
+}
 
-const Footer: React.FC<FooterProps> = () => {
+const Footer: React.FC<FooterProps> = ({ locale }) => {
+	const t = useTranslations();
+
 	return (
 		<footer>
 			<section className='max-w-7xl mx-auto p-4 text-center md:text-left mt-8'>
@@ -30,22 +36,26 @@ const Footer: React.FC<FooterProps> = () => {
 							/>
 						</div>
 						<p className='text-slate-500 text-sm'>
-							2013 - {new Date().getFullYear()}
+							{2013} {'-'} {new Date().getFullYear()}
 						</p>
 					</div>
 					<div className='max-w-[40ch]'>
-						<p className='font-semibold'>Address</p>
-						<p>{CONTACTS.address}</p>
+						<p className='font-semibold'>
+							{t('layouts.footer.address')}
+						</p>
+						<p>{t('company.address')}</p>
 					</div>
 					<div>
-						<p className='font-semibold'>Contacts</p>
+						<p className='font-semibold'>
+							{t('layouts.footer.contact.heading')}
+						</p>
 						<Link
 							href={`tel:${CONTACTS.phone}`}
 							className='underline underline-offset-2 hover:text-primary-clinic transition-all'
 						>
 							{CONTACTS.phone}
 						</Link>
-						<p>Reception, Sundar Clinic</p>
+						<p>{t('layouts.footer.contact.phone')}</p>
 						<Link
 							href={`mailto:${CONTACTS.phone}`}
 							className='underline underline-offset-2 hover:text-primary-clinic transition-all'
@@ -57,8 +67,8 @@ const Footer: React.FC<FooterProps> = () => {
 						<div className='flex items-center justify-center gap-4'>
 							<Clock />
 							<p className='flex flex-col'>
-								<span>Morning ‣ 9:30 a.m. - 1:30 p.m.</span>
-								<span>Evening ‣ 4:00 p.m. - 9:30 p.m.</span>
+								<span>{t('company.timings.morning')}</span>
+								<span>{t('company.timings.evening')}</span>
 							</p>
 						</div>
 						<Button asChild className=''>
@@ -66,7 +76,7 @@ const Footer: React.FC<FooterProps> = () => {
 								href={CONTACTS.googleLocation}
 								target='_blank'
 							>
-								Visit Now
+								{t('layouts.footer.cta')}
 							</Link>
 						</Button>
 					</div>
@@ -74,17 +84,18 @@ const Footer: React.FC<FooterProps> = () => {
 			</section>
 			<section>
 				<iframe
-					src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d124429.51674082068!2d80.0030849!3d12.9448011!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528ba6ba597489%3A0x266f1a52d95c4f1e!2sSundar%20Clinic!5e0!3m2!1sen!2sin!4v1694196169153!5m2!1sen!2sin'
+					src={`https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d124429.51674082068!2d80.0030849!3d12.9448011!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528ba6ba597489%3A0x266f1a52d95c4f1e!2sSundar%20Clinic!5e0!3m2!1sen!2sin!4v1694196169153!5m2!1s${locale}!2sin`}
 					width='100%'
 					height='320'
 					style={{ border: 0 }}
 					allowFullScreen
 					loading='lazy'
 					referrerPolicy='no-referrer-when-downgrade'
+					title='Sundar Clinic Location'
 				></iframe>
 			</section>
 			<section className='max-w-7xl mx-auto my-4'>
-				<div className='grid grid-cols-1 sm:grid-cols-2 place-items-center gap-4'>
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-4'>
 					<ul className='grid grid-cols-3 gap-2 place-items-center text-center'>
 						{FOOTER_NAVIGATION.map((link) => (
 							<li key={`footer-${link.name}`}>
@@ -93,49 +104,53 @@ const Footer: React.FC<FooterProps> = () => {
 									target={link.target}
 									className='w-full hover:text-primary-clinic transition-all hover:underline underline-offset-2'
 								>
-									{link.name}
+									{link.name[locale]}
 								</Link>
 							</li>
 						))}
 					</ul>
-					<ul className='flex gap-2 items-center w-fit'>
+					<div className='flex gap-2 items-center w-fit'>
 						{SOCIALS.map((link) => (
-							<Link
-								href={link.url}
-								target={'_blank'}
+							<Button
+								asChild
+								size='icon'
 								key={`footer-social-${link.name}`}
-								title={link.name}
-								className='group'
+								variant={'ghost'}
 							>
-								<Button asChild size='icon' variant={'ghost'}>
-									<li>
-										<link.Icon
-											strokeWidth={1.5}
-											size={20}
-											className='group-hover:text-primary-clinic transition-all'
-										/>
-									</li>
-								</Button>
-							</Link>
+								<Link
+									href={link.url}
+									target={'_blank'}
+									title={link.name}
+									className='group'
+								>
+									<link.Icon
+										strokeWidth={1.5}
+										size={20}
+										className='group-hover:text-primary-clinic transition-all'
+									/>
+								</Link>
+							</Button>
 						))}
-					</ul>
+					</div>
+					<LanguageSwitch locale={locale} />
 				</div>
 				<hr className='border-b my-4 border-b-slate-300 mx-auto' />
 				<p className='text-center'>
-					2023. &copy; Sundar Clinic. All rights reserved | Built in
-					Collaboration with{' '}
+					{`2023. ©️ ${t(
+						'company.name'
+					)}. All rights reserved | Built in Collaboration with `}
 					<Link
 						href={'https://codelancedevs.com'}
 						className='underline underline-offset-2 text-[#00e07b]'
 					>
-						Codelance Devs
-					</Link>{' '}
-					| Open Source in{' '}
+						{'Codelance Devs'}
+					</Link>
+					{' | Open Source in '}
 					<Link
 						href={CONTACTS.codeRepositoryURL}
 						className='underline underline-offset-2'
 					>
-						GitHub
+						{'GitHub'}
 					</Link>
 				</p>
 			</section>

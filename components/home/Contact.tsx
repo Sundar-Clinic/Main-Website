@@ -8,7 +8,7 @@
 // Dependencies
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/lib/routing';
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -28,6 +28,7 @@ import { Button } from '@/components/ui/button';
 import { RotateCw } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import { CONTACTS } from '@/constants/clinic';
+import { useTranslations } from 'next-intl';
 
 type ContactProps = React.ComponentProps<'section'>;
 
@@ -54,6 +55,8 @@ const Contact: React.FC<ContactProps> = () => {
 			: false
 	);
 	const { toast } = useToast();
+
+	const t = useTranslations('pages.home.contact');
 
 	const form = useForm<z.infer<typeof contactFormSchema>>({
 		resolver: zodResolver(contactFormSchema),
@@ -110,30 +113,30 @@ const Contact: React.FC<ContactProps> = () => {
 	return (
 		<section className='max-w-5xl mx-auto w-full p-4 mt-8'>
 			<h3 className='text-2xl font-heading text-center font-medium'>
-				Contact Us
+				{t('heading')}
 			</h3>
 			<hr className='border-b-4 max-w-[10rem] border-b-primary-clinic rounded-lg mx-auto mt-2' />
 			<div className='grid grid-cols-1 md:grid-cols-2 mt-8 gap-4 md:gap-8'>
 				<div className='w-full h-full flex flex-col items-center p-2'>
 					<p className='text-lg font-heading font-medium w-full'>
-						Let&apos;s connect, or got a query for us?
+						{t('cta.heading')}
 					</p>
 					<p className='mt-2'>
-						Call us at{' '}
+						{t('cta.phone')}{' '}
 						<Link
 							href={`tel:${CONTACTS.phone}`}
 							className='text-secondary-clinic underline underline-offset-2'
 						>
 							{CONTACTS.phone}
 						</Link>{' '}
-						or drop us an email at{' '}
+						{t('cta.email')}{' '}
 						<Link
 							href={`mailto:${CONTACTS.email}`}
 							className='text-secondary-clinic underline underline-offset-2'
 						>
 							{CONTACTS.email}
 						</Link>
-						.
+						{'.'}
 					</p>
 					<div className='mt-4 rounded-lg overflow-hidden'>
 						<Image
@@ -162,10 +165,10 @@ const Contact: React.FC<ContactProps> = () => {
 								/>
 							</div>
 							<p className='font-heading text-xl font-medium text-center'>
-								Submitted successfully!
+								{t('success.heading')}
 							</p>
 							<p className='text-lg text-center'>
-								We&apos;ll get back to you soon.
+								{t('success.subheading')}
 							</p>
 						</div>
 					) : (
@@ -180,7 +183,9 @@ const Contact: React.FC<ContactProps> = () => {
 									disabled={submitting}
 									render={({ field }) => (
 										<FormItem>
-											<FormLabel>Full Name *</FormLabel>
+											<FormLabel>
+												{t('fields.name')} {'*'}
+											</FormLabel>
 											<FormControl>
 												<Input
 													placeholder='John Doe'
@@ -200,7 +205,7 @@ const Contact: React.FC<ContactProps> = () => {
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>
-												Email Address *
+												{t('fields.email')} {'*'}
 											</FormLabel>
 											<FormControl>
 												<Input
@@ -220,7 +225,9 @@ const Contact: React.FC<ContactProps> = () => {
 									disabled={submitting}
 									render={({ field }) => (
 										<FormItem>
-											<FormLabel>Phone Number</FormLabel>
+											<FormLabel>
+												{t('fields.phone.label')}
+											</FormLabel>
 											<FormControl>
 												<Input
 													placeholder='8939881708'
@@ -229,8 +236,7 @@ const Contact: React.FC<ContactProps> = () => {
 												/>
 											</FormControl>
 											<FormDescription>
-												Enter your 10 digit mobile
-												number.
+												{t('fields.phone.description')}
 											</FormDescription>
 											<FormMessage />
 										</FormItem>
@@ -242,7 +248,9 @@ const Contact: React.FC<ContactProps> = () => {
 									disabled={submitting}
 									render={({ field }) => (
 										<FormItem>
-											<FormLabel>Subject *</FormLabel>
+											<FormLabel>
+												{t('fields.subject')} {'*'}
+											</FormLabel>
 											<FormControl>
 												<Input
 													placeholder='Subject'
@@ -261,7 +269,9 @@ const Contact: React.FC<ContactProps> = () => {
 									disabled={submitting}
 									render={({ field }) => (
 										<FormItem>
-											<FormLabel>Message *</FormLabel>
+											<FormLabel>
+												{t('fields.message')} {'*'}
+											</FormLabel>
 											<FormControl>
 												<Textarea
 													placeholder='Enter your message'
@@ -274,7 +284,7 @@ const Contact: React.FC<ContactProps> = () => {
 									)}
 								/>
 								<p className='text-xs'>
-									(*) marks as required fields
+									{'(*)'} {t('required')}
 								</p>
 								<Button
 									type='submit'
@@ -287,7 +297,9 @@ const Contact: React.FC<ContactProps> = () => {
 											className='animate-spin'
 										/>
 									)}
-									{submitting ? 'Submitting...' : 'Submit'}
+									{submitting
+										? t('button.submitting')
+										: t('button.submit')}
 								</Button>
 							</form>
 						</Form>

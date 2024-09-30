@@ -4,50 +4,46 @@
 
 // Dependencies
 import { MetadataRoute } from 'next';
+import { locales } from '@/i18n/i18n';
+
+const defaultLocale = 'en' as const;
+
+const host = 'https://sundarclinic.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	return [
-		{
-			url: 'https://sundarclinic.com',
-			lastModified: new Date(),
-			changeFrequency: 'monthly',
-			priority: 1,
-		},
-		{
-			url: 'https://sundarclinic.com/about',
-			lastModified: new Date(),
-			changeFrequency: 'monthly',
-			priority: 0.8,
-		},
-		{
-			url: 'https://sundarclinic.com/team',
-			lastModified: new Date(),
-			changeFrequency: 'monthly',
+		getEntry('/', { priority: 1, changeFrequency: 'monthly' }),
+		getEntry('/about', { priority: 0.8, changeFrequency: 'monthly' }),
+		getEntry('/team', { priority: 0.5, changeFrequency: 'monthly' }),
+		getEntry('/gallery', { priority: 0.5, changeFrequency: 'monthly' }),
+		getEntry('/privacy-policy', {
 			priority: 0.5,
-		},
-		{
-			url: 'https://sundarclinic.com/gallery',
-			lastModified: new Date(),
 			changeFrequency: 'monthly',
+		}),
+		getEntry('/terms-and-conditions', {
 			priority: 0.5,
-		},
-		{
-			url: 'https://sundarclinic.com/privacy-policy',
-			lastModified: new Date(),
 			changeFrequency: 'monthly',
-			priority: 0.5,
-		},
-		{
-			url: 'https://sundarclinic.com/terms-and-conditions',
-			lastModified: new Date(),
-			changeFrequency: 'monthly',
-			priority: 0.5,
-		},
-		{
-			url: 'https://sundarclinic.com/legal',
-			lastModified: new Date(),
-			changeFrequency: 'monthly',
-			priority: 0.5,
-		},
+		}),
+		getEntry('/legal', { priority: 0.5, changeFrequency: 'monthly' }),
 	];
+}
+
+function getEntry(
+	pathname: string,
+	overrides?: Partial<MetadataRoute.Sitemap[number]>
+) {
+	return {
+		url: getUrl(pathname, defaultLocale),
+		lastModified: new Date(),
+		alternates: {
+			languages: Object.fromEntries(
+				locales.map((locale) => [locale, getUrl(pathname, locale)])
+			),
+		},
+		...overrides,
+	};
+}
+
+function getUrl(pathname: string, locale: LocaleLanguages) {
+	return `${host}/${locale}${pathname === '/' ? '' : pathname}`;
 }

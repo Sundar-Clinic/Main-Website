@@ -4,8 +4,8 @@
 
 // Dependencies
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
+import { Link } from '@/lib/routing';
 import z from 'zod';
 import { Button } from '@/components/ui/button';
 import {
@@ -17,6 +17,7 @@ import {
 	Globe,
 	Youtube,
 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 type TeamMemberCardProps = React.ComponentProps<'div'> & {
 	member: TeamMemberData[number];
@@ -33,6 +34,8 @@ const userSocials = z
 type UserSocials = z.infer<typeof userSocials>;
 
 const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
+	const t = useTranslations('components.cards.team');
+
 	const socials: UserSocials = userSocials.parse([
 		{ Icon: Instagram, url: member.instagram },
 		{ Icon: Linkedin, url: member.linkedin },
@@ -61,14 +64,14 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
 				</div>
 			</div>
 			<div className='flex flex-col items-center justify-center p-4 text-center'>
-				<h4 className='font-heading text-xl mt-4 font-medium'>
+				<h3 className='font-heading text-xl mt-4 font-medium'>
 					{member.name}
-				</h4>
+				</h3>
 				<p className='text-sm text-slate-500'>
 					<span>{member.qualifications}</span>{' '}
 					{member.registrationNo && (
 						<>
-							•{' '}
+							{'•'}{' '}
 							<span title='Doctor Registration Number'>
 								{member.registrationNo}
 							</span>
@@ -77,7 +80,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
 				</p>
 				<p className='mt-2'>{member.bio}</p>
 				<p className='mt-2'>
-					Languages spoken:{' '}
+					{t('languages')}{' '}
 					<span className='font-medium'>
 						{member.languages.join(', ')}
 					</span>

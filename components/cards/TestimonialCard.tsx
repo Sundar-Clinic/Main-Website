@@ -8,8 +8,9 @@ import {
 	TooltipTrigger,
 	TooltipContent,
 } from '@/components/ui/tooltip';
+import { Link } from '@/lib/routing';
 import { Quote, Star } from 'lucide-react';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 type TestimonialCardProps = React.ComponentProps<'li'> &
 	TestimonailData[number];
@@ -23,6 +24,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 	_id,
 	review,
 }) => {
+	const t = useTranslations('components.cards.testimonial');
+
 	return (
 		<li className='w-full h-full block p-4 rounded-lg border border-slate-500 relative group hover:shadow-md transition-all hover:border-slate-700'>
 			<Quote
@@ -39,7 +42,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 					className='text-sm text-secondary-clinic/80 underline underline-offset-2 hover:text-secondary-clinic transition-all'
 					target='_blank'
 				>
-					View Review
+					{t('cta')}
 				</Link>
 				<Tooltip>
 					<TooltipTrigger className='flex gap-2 items-center'>
@@ -64,9 +67,17 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 									className='text-primary-clinic'
 								/>
 							))}
+						<span className='sr-only'>
+							{stars}
+							{'/'}
+							{MAX_TOTAL_STARS}
+							{t('stars')}
+						</span>
 					</TooltipTrigger>
 					<TooltipContent>
-						{stars}/{MAX_TOTAL_STARS} stars!
+						{stars}
+						{'/'}
+						{MAX_TOTAL_STARS} {t('stars')}
 					</TooltipContent>
 				</Tooltip>
 			</div>
