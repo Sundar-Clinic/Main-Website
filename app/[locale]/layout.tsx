@@ -1,9 +1,9 @@
-/**
- * Locale Layout
- */
-
 // Dependencies
 import type { Metadata } from 'next';
+import { Source_Sans_3, Poppins } from 'next/font/google';
+import { WithContext, MedicalBusiness } from 'schema-dts';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
+import Script from 'next/script';
 import Navbar from '@/layouts/Navbar';
 import Footer from '@/layouts/Footer';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -15,8 +15,47 @@ import {
 } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 
+import '../globals.css';
+import { CONTACTS } from '@/constants/clinic';
 import { locales } from '@/i18n/i18n';
 
+const sourceSans3 = Source_Sans_3({
+	display: 'swap',
+	subsets: ['latin'],
+	variable: '--font-source-sans-3',
+	style: ['italic', 'normal'],
+	weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
+});
+
+const poppins = Poppins({
+	display: 'swap',
+	subsets: ['latin'],
+	variable: '--font-poppins',
+	style: ['italic', 'normal'],
+	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
+
+const jsonLd: WithContext<MedicalBusiness> = {
+	'@context': 'https://schema.org',
+	'@type': 'MedicalBusiness',
+	name: 'Sundar Clinic',
+	description:
+		'Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician.',
+	image: 'https://sundarclinic.com/opengraph-image.jpg',
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: '1195A, Nehru Street',
+		addressLocality: 'Chennai',
+		addressRegion: 'Tamil Nadu',
+		postalCode: '600123',
+		addressCountry: 'India',
+	},
+	telephone: CONTACTS.phone,
+	url: 'https://sundarclinic.com',
+	email: CONTACTS.email,
+};
+
+// Generating metadata based on locale and site information
 export async function generateMetadata({
 	params: { locale },
 }: PageProps): Promise<Metadata> {
@@ -32,7 +71,7 @@ export async function generateMetadata({
 		openGraph: {
 			title: t('company.name'),
 			description: t('company.meta.description'),
-			url: '/',
+			url: '/en',
 			type: 'website',
 			siteName: t('company.name'),
 		},
@@ -51,6 +90,7 @@ export async function generateMetadata({
 	};
 }
 
+// Generating static params for locales
 export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
 }
@@ -64,13 +104,26 @@ export default async function Layout({
 	const messages = await getMessages();
 
 	return (
-		<NextIntlClientProvider messages={messages}>
-			<TooltipProvider>
-				<Navbar locale={locale} />
-				{children}
-				<Footer locale={locale} />
-			</TooltipProvider>
-			<Toaster />
-		</NextIntlClientProvider>
+		<html
+			lang={locale}
+			className={`${sourceSans3.variable} ${poppins.variable} font-sans`}
+		>
+			<GoogleAnalytics GA_TRACKING_ID='G-4PGSJ6BVZ2' />
+			<Script
+				id='json-ld'
+				type='application/ld+json'
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+			/>
+			<body>
+				<NextIntlClientProvider locale={locale} messages={messages}>
+					<TooltipProvider>
+						<Navbar locale={locale} />
+						{children}
+						<Footer locale={locale} />
+					</TooltipProvider>
+					<Toaster />
+				</NextIntlClientProvider>
+			</body>
+		</html>
 	);
 }

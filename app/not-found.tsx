@@ -1,12 +1,13 @@
-/* eslint-disable react/jsx-no-literals */
-import { Link } from '@/lib/routing';
+'use client';
+
+import Error from 'next/error';
 
 export default function NotFound() {
 	return (
-		<div>
-			<h2>Not Found</h2>
-			<p>Could not find requested resource</p>
-			<Link href='/'>Return home</Link>
-		</div>
+		<html lang='en'>
+			<body>
+				<Error statusCode={404} />
+			</body>
+		</html>
 	);
 }
