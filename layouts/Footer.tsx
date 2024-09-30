@@ -111,21 +111,25 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 					</ul>
 					<div className='flex gap-2 items-center w-fit'>
 						{SOCIALS.map((link) => (
-							<Link
-								href={link.url}
-								target={'_blank'}
+							<Button
+								asChild
+								size='icon'
 								key={`footer-social-${link.name}`}
-								title={link.name}
-								className='group'
+								variant={'ghost'}
 							>
-								<Button asChild size='icon' variant={'ghost'}>
+								<Link
+									href={link.url}
+									target={'_blank'}
+									title={link.name}
+									className='group'
+								>
 									<link.Icon
 										strokeWidth={1.5}
 										size={20}
 										className='group-hover:text-primary-clinic transition-all'
 									/>
-								</Button>
-							</Link>
+								</Link>
+							</Button>
 						))}
 					</div>
 					<LanguageSwitch locale={locale} />
