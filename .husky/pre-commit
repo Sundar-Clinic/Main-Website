@@ -1,3 +1,7 @@
 echo "Running pre-commit hook"
+
 echo "Linting files"
 npm run lint
+
+# echo "Running tests"
+# npm run test
