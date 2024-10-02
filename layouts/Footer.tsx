@@ -138,7 +138,7 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 				<p className='text-center'>
 					{`2023. ©️ ${t(
 						'company.name'
-					)}. All rights reserved | Built in Collaboration with `}
+					)}. {t('layouts.footer.rights-collab')} `}
 					<Link
 						href={'https://codelancedevs.com'}
 						className='underline underline-offset-2 text-[#00e07b]'
