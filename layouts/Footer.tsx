@@ -136,16 +136,16 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 				</div>
 				<hr className='border-b my-4 border-b-slate-300 mx-auto' />
 				<p className='text-center'>
-					{`2023. ©️ ${t(
-						'company.name'
-					)}. All rights reserved | Built in Collaboration with `}
+					{`2023. ©️ ${t('company.name')}. ${t(
+						'layouts.footer.rights-collab'
+					)} `}
 					<Link
 						href={'https://codelancedevs.com'}
 						className='underline underline-offset-2 text-[#00e07b]'
 					>
 						{'Codelance Devs'}
 					</Link>
-					{' | Open Source in '}
+					{` | ${t('layouts.footer.oss')} `}
 					<Link
 						href={CONTACTS.codeRepositoryURL}
 						className='underline underline-offset-2'
