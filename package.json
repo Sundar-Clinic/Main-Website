@@ -8,7 +8,8 @@
 		"start": "next start",
 		"lint": "next lint",
 		"build:analyze": "cross-env ANALYZE=true pnpm build",
-		"prepare": "husky"
+		"prepare": "husky",
+		"generate-types": "sanity schema extract && sanity typegen generate"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.11.1",
