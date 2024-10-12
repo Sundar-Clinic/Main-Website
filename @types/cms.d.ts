@@ -257,7 +257,7 @@ export type Testimonial = {
   _rev: string;
   stars?: number;
   name?: string;
-  review?: string;
+  review?: LocaleText;
   link?: string;
 };
 
@@ -483,7 +483,7 @@ export type TestimonialsQueryResult = Array<{
   _id: string;
   stars: number | null;
   name: string | null;
-  review: string | null;
+  review: LocaleText | null;
   link: string | null;
 }>;
 // Variable: galleryImagesQuery

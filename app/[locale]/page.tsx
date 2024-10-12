@@ -37,7 +37,7 @@ export default async function Home({ params: { locale } }: PageProps) {
 			<Hero />
 			<Services locale={locale} />
 			<Gallery galleryImages={galleryImages} />
-			<Testimonials testimonials={testimonials} />
+			<Testimonials testimonials={testimonials} locale={locale} />
 			<Contact />
 			<FAQ faqs={faqs} locale={locale} />
 		</main>

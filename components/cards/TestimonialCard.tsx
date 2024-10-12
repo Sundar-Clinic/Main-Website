@@ -14,7 +14,9 @@ import { useTranslations } from 'next-intl';
 import { TestimonialsQueryResult } from '@/@types/cms';
 
 type TestimonialCardProps = React.ComponentProps<'li'> &
-	TestimonialsQueryResult[number];
+	TestimonialsQueryResult[number] & {
+		locale: LocaleLanguages;
+	};
 
 const MAX_TOTAL_STARS = 5;
 
@@ -24,6 +26,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 	link,
 	_id,
 	review,
+	locale,
 }) => {
 	const t = useTranslations('components.cards.testimonial');
 
@@ -36,7 +39,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 				fill='white'
 			/>
 			<p className='font-medium font-heading text-sm'>{name ?? ''}</p>
-			<p className='italic mt-1'>{review ?? ''}</p>
+			<p className='italic mt-1'>{review?.[locale] ?? ''}</p>
 			<div className='flex gap-2 justify-between items-center mt-2'>
 				<Link
 					href={link ?? '#'}

@@ -10,9 +10,13 @@ import { TestimonialsQueryResult } from '@/@types/cms';
 
 type TestimonailsProps = React.ComponentProps<'section'> & {
 	testimonials: TestimonialsQueryResult;
+	locale: LocaleLanguages;
 };
 
-const Testimonials: React.FC<TestimonailsProps> = ({ testimonials }) => {
+const Testimonials: React.FC<TestimonailsProps> = ({
+	testimonials,
+	locale,
+}) => {
 	const t = useTranslations('pages.home.testimonials');
 
 	return (
@@ -26,6 +30,7 @@ const Testimonials: React.FC<TestimonailsProps> = ({ testimonials }) => {
 					testimonials?.map((testimonial) => (
 						<TestimonialCard
 							key={testimonial._id}
+							locale={locale}
 							{...testimonial}
 						/>
 					))}
