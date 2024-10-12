@@ -1,11 +1,3 @@
-type FAQData = ReadonlyArray<
-	Readonly<{
-		_id: string;
-		question: string;
-		answer: string;
-	}>
->;
-
 type TestimonailData = ReadonlyArray<
 	Readonly<{
 		_id: string;

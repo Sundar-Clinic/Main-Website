@@ -12,9 +12,10 @@ import {
 	AccordionTrigger,
 } from '@/components/ui/accordion';
 import { useTranslations } from 'next-intl';
+import { FaqsQueryResult } from '@/@types/cms.d';
 
 type FAQProps = React.ComponentProps<'section'> & {
-	faqs: FAQData;
+	faqs: FaqsQueryResult;
 };
 
 const FAQ: React.FC<FAQProps> = ({ faqs }) => {
@@ -30,13 +31,13 @@ const FAQ: React.FC<FAQProps> = ({ faqs }) => {
 				{faqs?.map((faq) => (
 					<AccordionItem
 						key={`faq-${faq.question}`}
-						value={faq.question}
+						value={faq?.question ?? ''}
 					>
 						<AccordionTrigger className='text-left'>
-							{faq.question}
+							{faq?.question ?? ''}
 						</AccordionTrigger>
 						<AccordionContent className='text-left'>
-							{faq.answer}
+							{faq?.answer ?? ''}
 						</AccordionContent>
 					</AccordionItem>
 				))}
