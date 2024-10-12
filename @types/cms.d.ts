@@ -162,20 +162,6 @@ export type LocaleBlockContent = {
   }>;
 };
 
-export type LocaleText = {
-  _type: "localeText";
-  en?: string;
-  ta?: string;
-  hi?: string;
-};
-
-export type LocaleString = {
-  _type: "localeString";
-  en?: string;
-  ta?: string;
-  hi?: string;
-};
-
 export type BlockContent = Array<{
   children?: Array<{
     marks?: Array<string>;
@@ -281,8 +267,22 @@ export type Faq = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  question?: string;
-  answer?: string;
+  question?: LocaleString;
+  answer?: LocaleText;
+};
+
+export type LocaleText = {
+  _type: "localeText";
+  en?: string;
+  ta?: string;
+  hi?: string;
+};
+
+export type LocaleString = {
+  _type: "localeString";
+  en?: string;
+  ta?: string;
+  hi?: string;
 };
 
 export type Category = {
@@ -435,7 +435,7 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | LocaleBlockContent | LocaleText | LocaleString | BlockContent | Team | Gallery | Testimonial | Faq | Category | Post | Author | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | LocaleBlockContent | BlockContent | Team | Gallery | Testimonial | Faq | LocaleText | LocaleString | Category | Post | Author | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
 // Variable: postsQuery
@@ -474,8 +474,8 @@ export type PostPathsQueryResult = Array<{
 // Query: *[_type == "faq"]{  _id, question, answer}
 export type FaqsQueryResult = Array<{
   _id: string;
-  question: string | null;
-  answer: string | null;
+  question: LocaleString | null;
+  answer: LocaleText | null;
 }>;
 // Variable: testimonialsQuery
 // Query: *[_type == "testimonial"]{  _id, stars, name, review, link}
