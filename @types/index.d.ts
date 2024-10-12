@@ -1,12 +1,3 @@
-type GalleryImageData = ReadonlyArray<
-	Readonly<{
-		_id: string;
-		caption: string;
-		image: string;
-		alt: string;
-	}>
->;
-
 type TeamMemberData = ReadonlyArray<
 	Readonly<{
 		_id: string;

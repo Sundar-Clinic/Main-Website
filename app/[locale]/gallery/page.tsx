@@ -8,9 +8,10 @@ import { galleryImagesQuery } from '@/sanity/lib/queries';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
+import { GalleryImagesQueryResult } from '@/@types/cms';
 
 export default async function Gallery() {
-	const galleryImages = await sanityFetch<GalleryImageData>({
+	const galleryImages = await sanityFetch<GalleryImagesQueryResult>({
 		query: galleryImagesQuery,
 	});
 
@@ -23,7 +24,7 @@ export default async function Gallery() {
 						.map((image) => (
 							<GalleryImage
 								key={`gallery-${image._id}`}
-								{...image}
+								image={image}
 							/>
 						))}
 				</ImageList>
