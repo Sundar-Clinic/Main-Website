@@ -16,14 +16,19 @@ import {
 } from '@/sanity/lib/queries';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import {
+	FaqsQueryResult,
+	TestimonialsQueryResult,
+	GalleryImagesQueryResult,
+} from '@/@types/cms.d';
 
 export default async function Home({ params: { locale } }: PageProps) {
 	unstable_setRequestLocale(locale);
-	const faqs = await sanityFetch<FAQData>({ query: faqsQuery });
-	const testimonials = await sanityFetch<TestimonailData>({
+	const faqs = await sanityFetch<FaqsQueryResult>({ query: faqsQuery });
+	const testimonials = await sanityFetch<TestimonialsQueryResult>({
 		query: testimonialsQuery,
 	});
-	const galleryImages = await sanityFetch<GalleryImageData>({
+	const galleryImages = await sanityFetch<GalleryImagesQueryResult>({
 		query: galleryImagesQuery,
 	});
 
@@ -32,9 +37,9 @@ export default async function Home({ params: { locale } }: PageProps) {
 			<Hero />
 			<Services locale={locale} />
 			<Gallery galleryImages={galleryImages} />
-			<Testimonials testimonials={testimonials} />
+			<Testimonials testimonials={testimonials} locale={locale} />
 			<Contact />
-			<FAQ faqs={faqs} />
+			<FAQ faqs={faqs} locale={locale} />
 		</main>
 	);
 }

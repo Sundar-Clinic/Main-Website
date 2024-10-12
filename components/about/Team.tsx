@@ -6,9 +6,10 @@
 import React from 'react';
 import TeamMemberCard from '../cards/TeamMember';
 import { useTranslations } from 'next-intl';
+import { TeamMembersQueryResult } from '@/@types/cms';
 
 type TeamProps = React.ComponentProps<'section'> & {
-	teamMembers: TeamMemberData;
+	teamMembers: TeamMembersQueryResult;
 };
 
 const Team: React.FC<TeamProps> = ({ teamMembers }) => {

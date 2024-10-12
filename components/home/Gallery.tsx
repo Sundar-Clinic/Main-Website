@@ -9,9 +9,10 @@ import { Link } from '@/lib/routing';
 import ImageList from '@mui/material/ImageList';
 import GalleryImage from '@/components/cards/GalleryImage';
 import { useTranslations } from 'next-intl';
+import { GalleryImagesQueryResult } from '@/@types/cms';
 
 type GalleryProps = React.ComponentProps<'section'> & {
-	galleryImages: GalleryImageData;
+	galleryImages: GalleryImagesQueryResult;
 };
 
 const Gallery: React.FC<GalleryProps> = ({ galleryImages, ...props }) => {
@@ -32,7 +33,10 @@ const Gallery: React.FC<GalleryProps> = ({ galleryImages, ...props }) => {
 				{[...galleryImages]
 					.sort(() => Math.random() - 0.5)
 					.map((image) => (
-						<GalleryImage key={`gallery-${image._id}`} {...image} />
+						<GalleryImage
+							key={`gallery-${image._id}`}
+							image={image}
+						/>
 					))}
 			</ImageList>
 			<Button

@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import { baseLanguage } from '../lib/locale';
 
 export default defineType({
 	name: 'faq',
@@ -8,15 +9,27 @@ export default defineType({
 		defineField({
 			name: 'question',
 			title: 'Question',
-			type: 'string',
+			type: 'localeString',
 			description: 'The frequently asked question itself.',
 		}),
 		defineField({
 			name: 'answer',
 			title: 'Answer',
-			type: 'text',
+			type: 'localeText',
 			description:
 				'The detailed answer to the frequently asked question.',
 		}),
 	],
+	preview: {
+		select: {
+			title: `question.${baseLanguage?.id}`,
+			subtitle: `answer.${baseLanguage?.id}`,
+		},
+		prepare({ title, subtitle }) {
+			return {
+				title,
+				subtitle,
+			};
+		},
+	},
 });

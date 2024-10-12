@@ -25,7 +25,7 @@ export default defineType({
 		defineField({
 			name: 'review',
 			title: 'Review',
-			type: 'text',
+			type: 'localeText',
 			description: 'The text of the testimonial or review.',
 		}),
 		defineField({

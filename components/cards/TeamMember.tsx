@@ -18,9 +18,10 @@ import {
 	Youtube,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { TeamMembersQueryResult } from '@/@types/cms';
 
 type TeamMemberCardProps = React.ComponentProps<'div'> & {
-	member: TeamMemberData[number];
+	member: TeamMembersQueryResult[number];
 };
 
 const userSocials = z
@@ -37,24 +38,24 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
 	const t = useTranslations('components.cards.team');
 
 	const socials: UserSocials = userSocials.parse([
-		{ Icon: Instagram, url: member.instagram },
-		{ Icon: Linkedin, url: member.linkedin },
-		{ Icon: Globe, url: member.website },
-		{ Icon: Youtube, url: member.youtube },
-		{ Icon: Twitter, url: member.twitter },
-		{ Icon: Mail, url: member.email ? `mailto:${member.email}` : null },
+		{ Icon: Instagram, url: member?.instagram },
+		{ Icon: Linkedin, url: member?.linkedin },
+		{ Icon: Globe, url: member?.website },
+		{ Icon: Youtube, url: member?.youtube },
+		{ Icon: Twitter, url: member?.twitter },
+		{ Icon: Mail, url: member?.email ? `mailto:${member.email}` : null },
 	]);
 
 	return (
 		<div className='w-full overflow-hidden rounded-lg group bg-slate-100 z-20'>
 			<div className='relative'>
 				<span className='text-xs md:text-sm absolute bottom-4 left-4 bg-white text-slate-500 border border-slate-300 px-4 py-2 rounded-xl font-medium z-20'>
-					{member.role}
+					{member?.role}
 				</span>
 				<div className='w-full overflow-hidden z-10'>
 					<Image
-						src={member.image}
-						alt={member.alt}
+						src={member?.image ?? ''}
+						alt={member?.alt ?? ''}
 						width={100}
 						height={100}
 						className='w-full h-auto object-contain group-hover:scale-105 transition-all duration-300'
@@ -65,24 +66,24 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
 			</div>
 			<div className='flex flex-col items-center justify-center p-4 text-center'>
 				<h3 className='font-heading text-xl mt-4 font-medium'>
-					{member.name}
+					{member?.name}
 				</h3>
 				<p className='text-sm text-slate-500'>
-					<span>{member.qualifications}</span>{' '}
-					{member.registrationNo && (
+					<span>{member?.qualifications}</span>{' '}
+					{member?.registrationNo && (
 						<>
 							{'•'}{' '}
 							<span title='Doctor Registration Number'>
-								{member.registrationNo}
+								{member?.registrationNo}
 							</span>
 						</>
 					)}
 				</p>
-				<p className='mt-2'>{member.bio}</p>
+				<p className='mt-2'>{member?.bio}</p>
 				<p className='mt-2'>
 					{t('languages')}{' '}
 					<span className='font-medium'>
-						{member.languages.join(', ')}
+						{member?.languages?.join(', ')}
 					</span>
 				</p>
 				<ul className='flex w-full gap-2 items-center justify-center mt-4'>

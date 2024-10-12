@@ -11,9 +11,12 @@ import {
 import { Link } from '@/lib/routing';
 import { Quote, Star } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { TestimonialsQueryResult } from '@/@types/cms';
 
 type TestimonialCardProps = React.ComponentProps<'li'> &
-	TestimonailData[number];
+	TestimonialsQueryResult[number] & {
+		locale: LocaleLanguages;
+	};
 
 const MAX_TOTAL_STARS = 5;
 
@@ -23,6 +26,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 	link,
 	_id,
 	review,
+	locale,
 }) => {
 	const t = useTranslations('components.cards.testimonial');
 
@@ -34,11 +38,11 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 				className='absolute -top-[10px] right-4 text-slate-500 group-hover:fill-slate-700 transition-all group-hover:text-slate-700'
 				fill='white'
 			/>
-			<p className='font-medium font-heading text-sm'>{name}</p>
-			<p className='italic mt-1'>{review}</p>
+			<p className='font-medium font-heading text-sm'>{name ?? ''}</p>
+			<p className='italic mt-1'>{review?.[locale] ?? ''}</p>
 			<div className='flex gap-2 justify-between items-center mt-2'>
 				<Link
-					href={link}
+					href={link ?? '#'}
 					className='text-sm text-secondary-clinic/80 underline underline-offset-2 hover:text-secondary-clinic transition-all'
 					target='_blank'
 				>
@@ -46,7 +50,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 				</Link>
 				<Tooltip>
 					<TooltipTrigger className='flex gap-2 items-center'>
-						{Array(stars)
+						{Array(stars ?? 0)
 							.fill(true)
 							.map((_, i) => (
 								<Star
@@ -57,7 +61,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 									fill='#D90000'
 								/>
 							))}
-						{Array(MAX_TOTAL_STARS - stars)
+						{Array(MAX_TOTAL_STARS - (stars ?? 0))
 							.fill(true)
 							.map((_, i) => (
 								<Star
