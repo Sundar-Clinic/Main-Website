@@ -9,7 +9,9 @@
 		"lint": "next lint",
 		"build:analyze": "cross-env ANALYZE=true pnpm build",
 		"prepare": "husky",
-		"generate-types": "sanity schema extract && sanity typegen generate"
+		"generate-types": "sanity schema extract && sanity typegen generate",
+		"test": "jest",
+		"test:watch": "jest --watch"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.11.1",
@@ -38,8 +40,8 @@
 		"clsx": "^2.0.0",
 		"eslint": "8.48.0",
 		"eslint-config-next": "13.4.19",
-		"lucide-react": "^0.274.0",
-		"next": "13.4.19",
+		"lucide-react": "^0.277.0",
+		"next": "13.5.7",
 		"next-intl": "^3.20.0",
 		"next-sanity": "^5.5.11",
 		"nodemailer": "^6.9.5",
@@ -61,8 +63,14 @@
 	},
 	"devDependencies": {
 		"@tailwindcss/typography": "^0.5.9",
+		"@testing-library/jest-dom": "^6.5.0",
+		"@testing-library/react": "^16.0.1",
 		"@types/nodemailer": "^6.4.10",
 		"cross-env": "^7.0.3",
-		"husky": "^9.1.6"
+		"dotenv": "^16.4.5",
+		"husky": "^9.1.6",
+		"jest": "^29.7.0",
+		"jest-environment-jsdom": "^29.7.0",
+		"ts-node": "^10.9.2"
 	}
 }
