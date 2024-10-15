@@ -91,6 +91,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 									asChild
 									className='mt-4 md:mt-0 w-full'
 									onClick={handleCloseSheet}
+									id='sheet-nav-cta-button'
 								>
 									<Link
 										href={CONTACTS.googleLocation}
@@ -125,7 +126,11 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 					</div>
 				</div>
 				<Button asChild className='hidden md:flex'>
-					<Link href={CONTACTS.googleLocation} target='_blank'>
+					<Link
+						href={CONTACTS.googleLocation}
+						target='_blank'
+						id='nav-cta-button'
+					>
 						{t('layouts.navbar.cta')}
 					</Link>
 				</Button>

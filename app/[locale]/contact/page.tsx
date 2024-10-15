@@ -13,7 +13,7 @@ export default async function ContactPage({ params: { locale } }: PageProps) {
 	const faqs = await sanityFetch<FaqsQueryResult>({ query: faqsQuery });
 	return (
 		<main>
-			<Contact />
+			<Contact page />
 			<FAQ faqs={faqs} locale={locale} />
 		</main>
 	);

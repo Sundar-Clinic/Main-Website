@@ -9,7 +9,14 @@
 		"lint": "next lint",
 		"build:analyze": "cross-env ANALYZE=true pnpm build",
 		"prepare": "husky",
-		"generate-types": "sanity schema extract && sanity typegen generate"
+		"generate-types": "sanity schema extract && sanity typegen generate",
+		"test:e2e": "start-server-and-test start http://localhost:3000 \"cypress run --e2e\"",
+		"test:component": "start-server-and-test start http://localhost:3000 \"cypress run --component\"",
+		"cypress:open": "cypress open",
+		"e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
+		"e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
+		"component": "cypress open --component",
+		"component:headless": "cypress run --component"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.11.1",
@@ -38,8 +45,8 @@
 		"clsx": "^2.0.0",
 		"eslint": "8.48.0",
 		"eslint-config-next": "13.4.19",
-		"lucide-react": "^0.274.0",
-		"next": "13.4.19",
+		"lucide-react": "^0.277.0",
+		"next": "13.5.7",
 		"next-intl": "^3.20.0",
 		"next-sanity": "^5.5.11",
 		"nodemailer": "^6.9.5",
@@ -61,8 +68,11 @@
 	},
 	"devDependencies": {
 		"@tailwindcss/typography": "^0.5.9",
+		"@testing-library/react": "^16.0.1",
 		"@types/nodemailer": "^6.4.10",
 		"cross-env": "^7.0.3",
-		"husky": "^9.1.6"
+		"cypress": "^13.15.0",
+		"husky": "^9.1.6",
+		"start-server-and-test": "^2.0.8"
 	}
 }

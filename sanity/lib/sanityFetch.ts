@@ -1,3 +1,7 @@
+/**
+ * @jest-environment node
+ */
+
 import 'server-only';
 
 import type { FilteredResponseQueryOptions, QueryParams } from '@sanity/client';
