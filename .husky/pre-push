@@ -3,5 +3,8 @@ echo "Running pre-push hook"
 echo "Running code build"
 npm run build
 
-echo "Running tests"
-npm run test
+echo "Running component tests"
+npm run test:component
+
+echo "Running e2e tests"
+npm run test:e2e
