@@ -30,7 +30,9 @@ import { useToast } from '@/components/ui/use-toast';
 import { CONTACTS } from '@/constants/clinic';
 import { useTranslations } from 'next-intl';
 
-type ContactProps = React.ComponentProps<'section'>;
+type ContactProps = React.ComponentProps<'section'> & {
+	page?: boolean | undefined;
+};
 
 const contactFormSchema = z.object({
 	fullName: z.string(),
@@ -43,7 +45,7 @@ const contactFormSchema = z.object({
 const ALREADY_SUBMITTED_SESSION_STORAGE_KEY =
 	'sundar-clinic-already-submitted-contact-form';
 
-const Contact: React.FC<ContactProps> = () => {
+const Contact: React.FC<ContactProps> = ({ page }) => {
 	const [submitting, setSubmitting] = useState(false);
 	const [alreadySubmitted, setAlreadySubmitted] = useState(
 		typeof window !== 'undefined'
@@ -51,7 +53,7 @@ const Contact: React.FC<ContactProps> = () => {
 					window.sessionStorage.getItem(
 						ALREADY_SUBMITTED_SESSION_STORAGE_KEY
 					) === 'true'
-			  )
+				)
 			: false
 	);
 	const { toast } = useToast();
@@ -112,9 +114,15 @@ const Contact: React.FC<ContactProps> = () => {
 
 	return (
 		<section className='max-w-5xl mx-auto w-full p-4 mt-8'>
-			<h3 className='text-2xl font-heading text-center font-medium'>
-				{t('heading')}
-			</h3>
+			{page ? (
+				<h1 className='text-2xl font-heading text-center font-medium'>
+					{t('heading')}
+				</h1>
+			) : (
+				<h3 className='text-2xl font-heading text-center font-medium'>
+					{t('heading')}
+				</h3>
+			)}
 			<hr className='border-b-4 max-w-[10rem] border-b-primary-clinic rounded-lg mx-auto mt-2' />
 			<div className='grid grid-cols-1 md:grid-cols-2 mt-8 gap-4 md:gap-8'>
 				<div className='w-full h-full flex flex-col items-center p-2'>

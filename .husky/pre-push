@@ -2,3 +2,6 @@ echo "Running pre-push hook"
 
 echo "Running code build"
 npm run build
+
+echo "Running tests"
+npm run test
