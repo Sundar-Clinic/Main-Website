@@ -39,7 +39,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 		<nav className='w-full'>
 			<section className='max-w-7xl mx-auto p-4 flex w-full items-center justify-between flex-col md:flex-row gap-4'>
 				<div className='flex items-center justify-between w-full md:w-fit'>
-					<Link href={'/'} className='block w-28'>
+					<Link href={'/'} className='block w-28' prefetch={false}>
 						<Image
 							src='/logo/logo-fit.png'
 							alt='Sundar Clinic'
@@ -73,6 +73,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 												onClick={handleCloseSheet}
 											>
 												<Link
+													prefetch={false}
 													href={link.url}
 													target={link.target}
 													className={`${
@@ -145,6 +146,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 								className='font-medium w-fit'
 							>
 								<Link
+									prefetch={false}
 									href={link.url}
 									target={link.target}
 									className={`${

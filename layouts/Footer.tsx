@@ -103,6 +103,7 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 									href={link.url}
 									target={link.target}
 									className='w-full hover:text-primary-clinic transition-all hover:underline underline-offset-2'
+									prefetch={false}
 								>
 									{link.name[locale]}
 								</Link>
