@@ -51,8 +51,12 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 					</Link>
 					<Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
 						<SheetTrigger asChild className='md:hidden'>
-							<Button variant={'outline'}>
+							<Button
+								variant={'outline'}
+								aria-label={t('sr-menu')}
+							>
 								<Menu />
+								<span className='sr-only'>{t('sr-menu')}</span>
 							</Button>
 						</SheetTrigger>
 						<SheetContent className='flex flex-col h-full md:hidden'>
