@@ -153,8 +153,8 @@ const Contact: React.FC<ContactProps> = ({ page }) => {
 							width={100}
 							height={100}
 							className='w-full object-contain'
-							priority
 							unoptimized
+							loading='lazy'
 						/>
 					</div>
 				</div>
@@ -168,8 +168,8 @@ const Contact: React.FC<ContactProps> = ({ page }) => {
 									width={100}
 									height={100}
 									className='w-full object-contain'
-									priority
 									unoptimized
+									loading='lazy'
 								/>
 							</div>
 							<p className='font-heading text-xl font-medium text-center'>

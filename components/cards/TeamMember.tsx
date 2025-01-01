@@ -59,8 +59,8 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
 						width={100}
 						height={100}
 						className='w-full h-auto object-contain group-hover:scale-105 transition-all duration-300'
-						priority
 						unoptimized
+						loading='lazy'
 					></Image>
 				</div>
 			</div>

@@ -46,7 +46,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 							width={100}
 							height={100}
 							className='w-full h-auto object-contain'
-							priority
+							loading='lazy'
 						/>
 					</Link>
 					<Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
