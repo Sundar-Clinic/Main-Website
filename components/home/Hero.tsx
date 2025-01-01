@@ -34,7 +34,11 @@ const Hero: React.FC<HeroProps> = () => {
 						</Link>
 					</Button>
 					<Button asChild variant='outline'>
-						<Link href='/about'>
+						<Link
+							href='/about'
+							prefetch={false}
+							aria-label={t('pages.home.hero.cta.about')}
+						>
 							{t('pages.home.hero.cta.about')}
 						</Link>
 					</Button>

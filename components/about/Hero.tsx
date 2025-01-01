@@ -27,7 +27,9 @@ const Hero: React.FC<HeroProps> = () => {
 					{t('description')}
 				</p>
 				<Button asChild size={'lg'}>
-					<Link href='#history'>{t('cta')}</Link>
+					<Link href='#history' prefetch={false}>
+						{t('cta')}
+					</Link>
 				</Button>
 			</div>
 			<div className='flex items-center justify-center'>
@@ -38,8 +40,8 @@ const Hero: React.FC<HeroProps> = () => {
 						width={100}
 						height={100}
 						className='w-full h-auto object-contain z-10 relative'
-						priority
 						unoptimized
+						loading='lazy'
 					/>
 				</div>
 			</div>

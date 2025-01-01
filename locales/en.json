@@ -14,7 +14,8 @@
   },
   "layouts": {
     "navbar": {
-      "cta": "Visit Now"
+      "cta": "Visit Now",
+      "sr-menu": "Open Menu"
     },
     "footer": {
       "address": "Address",
@@ -185,5 +186,6 @@
         "stars": "stars!"
       }
     }
-  }
+  },
+  "sr-menu": "Open Menu"
 }

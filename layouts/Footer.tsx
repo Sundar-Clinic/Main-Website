@@ -32,7 +32,7 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 								width={100}
 								height={100}
 								className='w-full h-auto object-contain'
-								priority
+								loading='lazy'
 							/>
 						</div>
 						<p className='text-slate-500 text-sm'>
@@ -103,6 +103,7 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 									href={link.url}
 									target={link.target}
 									className='w-full hover:text-primary-clinic transition-all hover:underline underline-offset-2'
+									prefetch={false}
 								>
 									{link.name[locale]}
 								</Link>

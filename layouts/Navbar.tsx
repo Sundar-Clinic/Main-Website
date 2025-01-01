@@ -39,20 +39,24 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 		<nav className='w-full'>
 			<section className='max-w-7xl mx-auto p-4 flex w-full items-center justify-between flex-col md:flex-row gap-4'>
 				<div className='flex items-center justify-between w-full md:w-fit'>
-					<Link href={'/'} className='block w-28'>
+					<Link href={'/'} className='block w-28' prefetch={false}>
 						<Image
 							src='/logo/logo-fit.png'
 							alt='Sundar Clinic'
 							width={100}
 							height={100}
 							className='w-full h-auto object-contain'
-							priority
+							loading='lazy'
 						/>
 					</Link>
 					<Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
 						<SheetTrigger asChild className='md:hidden'>
-							<Button variant={'outline'}>
+							<Button
+								variant={'outline'}
+								aria-label={t('sr-menu')}
+							>
 								<Menu />
+								<span className='sr-only'>{t('sr-menu')}</span>
 							</Button>
 						</SheetTrigger>
 						<SheetContent className='flex flex-col h-full md:hidden'>
@@ -73,6 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 												onClick={handleCloseSheet}
 											>
 												<Link
+													prefetch={false}
 													href={link.url}
 													target={link.target}
 													className={`${
@@ -145,6 +150,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 								className='font-medium w-fit'
 							>
 								<Link
+									prefetch={false}
 									href={link.url}
 									target={link.target}
 									className={`${

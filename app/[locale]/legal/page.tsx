@@ -82,6 +82,7 @@ export default function Legal({ params: { locale } }: PageProps) {
 					<Link
 						href='/contact'
 						className='text-secondary-clinic/80 transition-all hover:text-secondary-clinic underline underline-offset-2'
+						prefetch={false}
 					>
 						{t('contact.cta')}
 					</Link>{' '}
@@ -100,6 +101,7 @@ export default function Legal({ params: { locale } }: PageProps) {
 								href={link.href}
 								target={link.target}
 								className='text-secondary-clinic/80 transition-all hover:text-secondary-clinic underline underline-offset-2'
+								prefetch={false}
 							>
 								{link.name[locale]}
 							</Link>
