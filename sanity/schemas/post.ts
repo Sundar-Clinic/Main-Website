@@ -29,7 +29,7 @@ export default defineType({
 			type: 'slug',
 			description: 'The unique identifier for the post.',
 			options: {
-				source: 'title',
+				source: `title.${baseLanguage?.id}`,
 				maxLength: 96,
 				isUnique: async (slug, context) => {
 					const query = `*[_type == "post" && slug.current == $slug]`;
