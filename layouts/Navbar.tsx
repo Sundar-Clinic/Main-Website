@@ -72,7 +72,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 										const isActive = pathname === link.url;
 										return (
 											<li
-												key={`nav-${link.name}`}
+												key={`nav-${link.name[locale]}`}
 												className='font-medium w-fit'
 												onClick={handleCloseSheet}
 											>
@@ -146,7 +146,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 						const isActive = pathname === link.url;
 						return (
 							<li
-								key={`nav-${link.name}`}
+								key={`nav-${link.name[locale]}`}
 								className='font-medium w-fit'
 							>
 								<Link
