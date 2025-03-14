@@ -68,6 +68,7 @@ export default defineType({
 					validation: (Rule) => Rule.required(),
 				},
 			],
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'categories',
