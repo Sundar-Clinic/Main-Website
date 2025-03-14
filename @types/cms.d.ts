@@ -315,24 +315,130 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
 // Variable: postSlugsQuery
-// Query: *[_type == "post" && defined(slug.current)]{    slug  }
+// Query: *[_type == "post" && defined(slug.current) && publishedAt <= now()]{    slug}
 export type PostSlugsQueryResult = Array<{
   slug: Slug | null;
 }>;
-// Variable: postQuery
-// Query: *[_type == "post" && slug.current == $slug][0]{     title, mainImage, body  }
-export type PostQueryResult = {
-  title: LocaleString | null;
-  mainImage: null;
-  body: LocaleBlockContent | null;
-} | null;
-// Variable: postPathsQuery
-// Query: *[_type == "post" && defined(slug.current)][]{    "params": { "slug": slug.current }  }
-export type PostPathsQueryResult = Array<{
-  params: {
-    slug: string | null;
+// Variable: featuredPostsQuery
+// Query: *[_type == "post" && featured == true && publishedAt <= now()][0...3]{  ...} | order(publishedAt desc)
+export type FeaturedPostsQueryResult = Array<{
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: LocaleString;
+  description?: LocaleText;
+  slug?: Slug;
+  author?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "team";
   };
+  thumbnail?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  featured?: boolean;
+  publishedAt?: string;
+  body?: LocaleBlockContent;
 }>;
+// Variable: getAllPostsQuery
+// Query: *[_type == "post" && publishedAt <= now()]{  ...} | order(publishedAt desc)
+export type GetAllPostsQueryResult = Array<{
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: LocaleString;
+  description?: LocaleText;
+  slug?: Slug;
+  author?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "team";
+  };
+  thumbnail?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  featured?: boolean;
+  publishedAt?: string;
+  body?: LocaleBlockContent;
+}>;
+// Variable: postQuery
+// Query: *[_type == "post" && slug.current == $slug && publishedAt <= now()][0]{   ...}
+export type PostQueryResult = {
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: LocaleString;
+  description?: LocaleText;
+  slug?: Slug;
+  author?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "team";
+  };
+  thumbnail?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  featured?: boolean;
+  publishedAt?: string;
+  body?: LocaleBlockContent;
+} | null;
 // Variable: faqsQuery
 // Query: *[_type == "faq"]{  _id, question, answer}
 export type FaqsQueryResult = Array<{
@@ -405,9 +511,10 @@ export type TeamMembersQueryResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"post\" && defined(slug.current)]{\n    slug\n  }": PostSlugsQueryResult;
-    "*[_type == \"post\" && slug.current == $slug][0]{ \n    title, mainImage, body\n  }": PostQueryResult;
-    "*[_type == \"post\" && defined(slug.current)][]{\n    \"params\": { \"slug\": slug.current }\n  }": PostPathsQueryResult;
+    "*[_type == \"post\" && defined(slug.current) && publishedAt <= now()]{\n    slug\n}": PostSlugsQueryResult;
+    "*[_type == \"post\" && featured == true && publishedAt <= now()][0...3]{\n  ...\n} | order(publishedAt desc)": FeaturedPostsQueryResult;
+    "*[_type == \"post\" && publishedAt <= now()]{\n  ...\n} | order(publishedAt desc)": GetAllPostsQueryResult;
+    "*[_type == \"post\" && slug.current == $slug && publishedAt <= now()][0]{ \n  ...\n}": PostQueryResult;
     "*[_type == \"faq\"]{\n  _id, question, answer\n}": FaqsQueryResult;
     "*[_type == \"testimonial\"]{\n  _id, stars, name, review, link\n}": TestimonialsQueryResult;
     "*[_type == \"gallery\"]{\n  _id, caption, image\n}": GalleryImagesQueryResult;

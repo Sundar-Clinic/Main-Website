@@ -2,20 +2,21 @@
 
 import { groq } from 'next-sanity';
 
-// Get all posts
-export const postSlugsQuery = groq`*[_type == "post" && defined(slug.current)]{
+export const postSlugsQuery = groq`*[_type == "post" && defined(slug.current) && publishedAt <= now()]{
     slug
-  }`;
+}`;
 
-// Get a single post by its slug
-export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{ 
-    title, mainImage, body
-  }`;
+export const featuredPostsQuery = groq`*[_type == "post" && featured == true && publishedAt <= now()][0...3]{
+  ...
+} | order(publishedAt desc)`;
 
-// Get all post slugs
-export const postPathsQuery = groq`*[_type == "post" && defined(slug.current)][]{
-    "params": { "slug": slug.current }
-  }`;
+export const getAllPostsQuery = groq`*[_type == "post" && publishedAt <= now()]{
+  ...
+} | order(publishedAt desc)`;
+
+export const postQuery = groq`*[_type == "post" && slug.current == $slug && publishedAt <= now()][0]{ 
+  ...
+}`;
 
 export const faqsQuery = groq`*[_type == "faq"]{
   _id, question, answer
