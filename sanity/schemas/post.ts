@@ -57,6 +57,7 @@ export default defineType({
 			type: 'image',
 			description:
 				'The main image for the post. This will be used as the preview image for social media. Recommended ratio: 16:9.',
+			validation: (Rule) => Rule.required(),
 			options: {
 				hotspot: true,
 			},

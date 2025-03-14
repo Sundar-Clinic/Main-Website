@@ -86,6 +86,9 @@
 					"submitting": "Submitting..."
 				}
 			},
+			"featured-blogs": {
+				"heading": "Featured Blogs"
+			},
 			"faq": {
 				"heading": "Frequently Asked Questions"
 			}

@@ -9,8 +9,10 @@ import Gallery from '@/components/home/Gallery';
 import Hero from '@/components/home/Hero';
 import Services from '@/components/home/Services';
 import Testimonials from '@/components/home/Testimonials';
+import FeaturedBlogs from '@/components/home/FeaturedBlogs';
 import {
 	faqsQuery,
+	featuredPostsQuery,
 	galleryImagesQuery,
 	testimonialsQuery,
 } from '@/sanity/lib/queries';
@@ -20,6 +22,7 @@ import {
 	FaqsQueryResult,
 	TestimonialsQueryResult,
 	GalleryImagesQueryResult,
+	FeaturedPostsQueryResult,
 } from '@/@types/cms.d';
 
 export default async function Home({ params: { locale } }: PageProps) {
@@ -31,6 +34,9 @@ export default async function Home({ params: { locale } }: PageProps) {
 	const galleryImages = await sanityFetch<GalleryImagesQueryResult>({
 		query: galleryImagesQuery,
 	});
+	const featuredPosts = await sanityFetch<FeaturedPostsQueryResult>({
+		query: featuredPostsQuery,
+	});
 
 	return (
 		<main className=''>
@@ -39,6 +45,7 @@ export default async function Home({ params: { locale } }: PageProps) {
 			<Gallery galleryImages={galleryImages} />
 			<Testimonials testimonials={testimonials} locale={locale} />
 			<Contact />
+			<FeaturedBlogs posts={featuredPosts} locale={locale} />
 			<FAQ faqs={faqs} locale={locale} />
 		</main>
 	);
