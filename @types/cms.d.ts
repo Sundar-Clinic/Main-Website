@@ -314,11 +314,9 @@ export type LocaleString = {
 export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | BlockContent | Gallery | Testimonial | Faq | Category | Post | LocaleBlockContent | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | LocaleText | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
-// Variable: postsQuery
-// Query: *[_type == "post" && defined(slug.current)]{    _id, title, slug  }
-export type PostsQueryResult = Array<{
-  _id: string;
-  title: LocaleString | null;
+// Variable: postSlugsQuery
+// Query: *[_type == "post" && defined(slug.current)]{    slug  }
+export type PostSlugsQueryResult = Array<{
   slug: Slug | null;
 }>;
 // Variable: postQuery
@@ -407,7 +405,7 @@ export type TeamMembersQueryResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"post\" && defined(slug.current)]{\n    _id, title, slug\n  }": PostsQueryResult;
+    "*[_type == \"post\" && defined(slug.current)]{\n    slug\n  }": PostSlugsQueryResult;
     "*[_type == \"post\" && slug.current == $slug][0]{ \n    title, mainImage, body\n  }": PostQueryResult;
     "*[_type == \"post\" && defined(slug.current)][]{\n    \"params\": { \"slug\": slug.current }\n  }": PostPathsQueryResult;
     "*[_type == \"faq\"]{\n  _id, question, answer\n}": FaqsQueryResult;
