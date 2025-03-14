@@ -11,6 +11,7 @@ export default defineType({
 			type: 'string',
 			description:
 				'A brief caption or description for the gallery image.',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'image',
@@ -26,9 +27,11 @@ export default defineType({
 					title: 'Alternative Text',
 					description:
 						'A descriptive alternative text for the image.',
+					validation: (Rule) => Rule.required(),
 				},
 			],
 			description: 'The image to be displayed in the gallery.',
+			validation: (Rule) => Rule.required(),
 		}),
 	],
 });

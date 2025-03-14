@@ -152,13 +152,6 @@ export type Category = {
   description?: LocaleText;
 };
 
-export type LocaleText = {
-  _type: "localeText";
-  en?: string;
-  ta?: string;
-  hi?: string;
-};
-
 export type Post = {
   _id: string;
   _type: "post";
@@ -166,6 +159,7 @@ export type Post = {
   _updatedAt: string;
   _rev: string;
   title?: LocaleString;
+  description?: LocaleText;
   slug?: Slug;
   author?: {
     _ref: string;
@@ -173,7 +167,7 @@ export type Post = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "team";
   };
-  mainImage?: {
+  thumbnail?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -192,6 +186,7 @@ export type Post = {
     _key: string;
     [internalGroqTypeReferenceTo]?: "category";
   }>;
+  featured?: boolean;
   publishedAt?: string;
   body?: LocaleBlockContent;
 };
@@ -302,6 +297,13 @@ export type Slug = {
   source?: string;
 };
 
+export type LocaleText = {
+  _type: "localeText";
+  en?: string;
+  ta?: string;
+  hi?: string;
+};
+
 export type LocaleString = {
   _type: "localeString";
   en?: string;
@@ -309,7 +311,7 @@ export type LocaleString = {
   hi?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | BlockContent | Gallery | Testimonial | Faq | Category | LocaleText | Post | LocaleBlockContent | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | LocaleString;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | BlockContent | Gallery | Testimonial | Faq | Category | Post | LocaleBlockContent | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | LocaleText | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
 // Variable: postsQuery
@@ -323,18 +325,7 @@ export type PostsQueryResult = Array<{
 // Query: *[_type == "post" && slug.current == $slug][0]{     title, mainImage, body  }
 export type PostQueryResult = {
   title: LocaleString | null;
-  mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  } | null;
+  mainImage: null;
   body: LocaleBlockContent | null;
 } | null;
 // Variable: postPathsQuery

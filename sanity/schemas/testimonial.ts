@@ -21,12 +21,14 @@ export default defineType({
 			title: 'Name',
 			type: 'string',
 			description: 'The name of the person providing the testimonial.',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'review',
 			title: 'Review',
 			type: 'localeText',
 			description: 'The text of the testimonial or review.',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'link',
