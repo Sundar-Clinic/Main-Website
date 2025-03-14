@@ -361,15 +361,25 @@ export type TestimonialsQueryResult = Array<{
   link: string | null;
 }>;
 // Variable: galleryImagesQuery
-// Query: *[_type == "gallery"]{  _id, caption, "image": image.asset->url, "alt": image.alt}
+// Query: *[_type == "gallery"]{  _id, caption, image}
 export type GalleryImagesQueryResult = Array<{
   _id: string;
   caption: string | null;
-  image: string | null;
-  alt: string | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
 }>;
 // Variable: teamMembersQuery
-// Query: *[_type == "team"]{  _id, _createdAt, name, role, qualifications, bio, registrationNo, languages, "image": image.asset->url, "alt": image.alt, startDate, endDate, currentlyWorking, instagram, twitter, linkedin, website, email, youtube} | order(_createdAt asc)
+// Query: *[_type == "team"]{  _id, _createdAt, name, role, qualifications, bio, registrationNo, languages, image, startDate, endDate, currentlyWorking, instagram, twitter, linkedin, website, email, youtube} | order(_createdAt asc)
 export type TeamMembersQueryResult = Array<{
   _id: string;
   _createdAt: string;
@@ -379,8 +389,18 @@ export type TeamMembersQueryResult = Array<{
   bio: string | null;
   registrationNo: string | null;
   languages: Array<string> | null;
-  image: string | null;
-  alt: string | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
   startDate: string | null;
   endDate: string | null;
   currentlyWorking: boolean | null;
@@ -401,7 +421,7 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && defined(slug.current)][]{\n    \"params\": { \"slug\": slug.current }\n  }": PostPathsQueryResult;
     "*[_type == \"faq\"]{\n  _id, question, answer\n}": FaqsQueryResult;
     "*[_type == \"testimonial\"]{\n  _id, stars, name, review, link\n}": TestimonialsQueryResult;
-    "*[_type == \"gallery\"]{\n  _id, caption, \"image\": image.asset->url, \"alt\": image.alt\n}": GalleryImagesQueryResult;
-    "*[_type == \"team\"]{\n  _id, _createdAt, name, role, qualifications, bio, registrationNo, languages, \"image\": image.asset->url, \"alt\": image.alt, startDate, endDate, currentlyWorking, instagram, twitter, linkedin, website, email, youtube\n} | order(_createdAt asc)": TeamMembersQueryResult;
+    "*[_type == \"gallery\"]{\n  _id, caption, image\n}": GalleryImagesQueryResult;
+    "*[_type == \"team\"]{\n  _id, _createdAt, name, role, qualifications, bio, registrationNo, languages, image, startDate, endDate, currentlyWorking, instagram, twitter, linkedin, website, email, youtube\n} | order(_createdAt asc)": TeamMembersQueryResult;
   }
 }
