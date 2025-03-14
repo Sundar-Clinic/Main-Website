@@ -22,6 +22,15 @@ export default defineType({
 			description: 'The full name of the team member.',
 		}),
 		defineField({
+			name: 'slug',
+			title: 'Slug',
+			type: 'slug',
+			options: {
+				source: 'name',
+				maxLength: 96,
+			},
+		}),
+		defineField({
 			name: 'role',
 			title: 'Role',
 			type: 'string',

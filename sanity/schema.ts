@@ -16,7 +16,6 @@ import { localeBlockContent } from './schemas/localeBlockContent';
 export const schema: { types: SchemaTypeDefinition[] } = {
 	types: [
 		post,
-		author,
 		category,
 		faq,
 		testimonial,
