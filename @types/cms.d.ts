@@ -68,100 +68,6 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type LocaleBlockContent = {
-  _type: "localeBlockContent";
-  en?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-  ta?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-  hi?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-};
-
 export type BlockContent = Array<{
   children?: Array<{
     marks?: Array<string>;
@@ -253,20 +159,13 @@ export type LocaleText = {
   hi?: string;
 };
 
-export type LocaleString = {
-  _type: "localeString";
-  en?: string;
-  ta?: string;
-  hi?: string;
-};
-
 export type Post = {
   _id: string;
   _type: "post";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
+  title?: LocaleString;
   slug?: Slug;
   author?: {
     _ref: string;
@@ -294,7 +193,14 @@ export type Post = {
     [internalGroqTypeReferenceTo]?: "category";
   }>;
   publishedAt?: string;
-  body?: BlockContent;
+  body?: LocaleBlockContent;
+};
+
+export type LocaleBlockContent = {
+  _type: "localeBlockContent";
+  en?: BlockContent;
+  ta?: BlockContent;
+  hi?: BlockContent;
 };
 
 export type Team = {
@@ -396,20 +302,27 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | LocaleBlockContent | BlockContent | Gallery | Testimonial | Faq | Category | LocaleText | LocaleString | Post | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type LocaleString = {
+  _type: "localeString";
+  en?: string;
+  ta?: string;
+  hi?: string;
+};
+
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | BlockContent | Gallery | Testimonial | Faq | Category | LocaleText | Post | LocaleBlockContent | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
 // Variable: postsQuery
 // Query: *[_type == "post" && defined(slug.current)]{    _id, title, slug  }
 export type PostsQueryResult = Array<{
   _id: string;
-  title: string | null;
+  title: LocaleString | null;
   slug: Slug | null;
 }>;
 // Variable: postQuery
 // Query: *[_type == "post" && slug.current == $slug][0]{     title, mainImage, body  }
 export type PostQueryResult = {
-  title: string | null;
+  title: LocaleString | null;
   mainImage: {
     asset?: {
       _ref: string;
@@ -422,7 +335,7 @@ export type PostQueryResult = {
     alt?: string;
     _type: "image";
   } | null;
-  body: BlockContent | null;
+  body: LocaleBlockContent | null;
 } | null;
 // Variable: postPathsQuery
 // Query: *[_type == "post" && defined(slug.current)][]{    "params": { "slug": slug.current }  }

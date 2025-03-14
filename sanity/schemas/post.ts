@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import { baseLanguage } from '../lib/locale';
 
 export default defineType({
 	name: 'post',
@@ -8,7 +9,7 @@ export default defineType({
 		defineField({
 			name: 'title',
 			title: 'Title',
-			type: 'string',
+			type: 'localeString',
 		}),
 		defineField({
 			name: 'slug',
@@ -54,13 +55,13 @@ export default defineType({
 		defineField({
 			name: 'body',
 			title: 'Body',
-			type: 'blockContent',
+			type: 'localeBlockContent',
 		}),
 	],
 
 	preview: {
 		select: {
-			title: 'title',
+			title: `title.${baseLanguage?.id}`,
 			author: 'author.name',
 			media: 'mainImage',
 		},

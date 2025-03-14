@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import { baseLanguage } from '../lib/locale';
 
 export default defineType({
 	name: 'category',
@@ -16,4 +17,16 @@ export default defineType({
 			type: 'localeText',
 		}),
 	],
+	preview: {
+		select: {
+			title: `title.${baseLanguage?.id}`,
+			subtitle: `description.${baseLanguage?.id}`,
+		},
+		prepare({ title, subtitle }) {
+			return {
+				title,
+				subtitle,
+			};
+		},
+	},
 });
