@@ -193,41 +193,6 @@ export type BlockContent = Array<{
   _key: string;
 }>;
 
-export type Team = {
-  _id: string;
-  _type: "team";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  role?: string;
-  qualifications?: string;
-  bio?: string;
-  registrationNo?: string;
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  currentlyWorking?: boolean;
-  startDate?: string;
-  endDate?: string;
-  languages?: Array<string>;
-  instagram?: string;
-  twitter?: string;
-  linkedin?: string;
-  website?: string;
-  email?: string;
-  youtube?: string;
-};
-
 export type Gallery = {
   _id: string;
   _type: "gallery";
@@ -271,6 +236,16 @@ export type Faq = {
   answer?: LocaleText;
 };
 
+export type Category = {
+  _id: string;
+  _type: "category";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: LocaleString;
+  description?: LocaleText;
+};
+
 export type LocaleText = {
   _type: "localeText";
   en?: string;
@@ -285,16 +260,6 @@ export type LocaleString = {
   hi?: string;
 };
 
-export type Category = {
-  _id: string;
-  _type: "category";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  description?: string;
-};
-
 export type Post = {
   _id: string;
   _type: "post";
@@ -307,7 +272,7 @@ export type Post = {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "author";
+    [internalGroqTypeReferenceTo]?: "team";
   };
   mainImage?: {
     asset?: {
@@ -332,14 +297,18 @@ export type Post = {
   body?: BlockContent;
 };
 
-export type Author = {
+export type Team = {
   _id: string;
-  _type: "author";
+  _type: "team";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   name?: string;
   slug?: Slug;
+  role?: string;
+  qualifications?: string;
+  bio?: string;
+  registrationNo?: string;
   image?: {
     asset?: {
       _ref: string;
@@ -352,24 +321,16 @@ export type Author = {
     alt?: string;
     _type: "image";
   };
-  bio?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal";
-    listItem?: never;
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
+  currentlyWorking?: boolean;
+  startDate?: string;
+  endDate?: string;
+  languages?: Array<string>;
+  instagram?: string;
+  twitter?: string;
+  linkedin?: string;
+  website?: string;
+  email?: string;
+  youtube?: string;
 };
 
 export type SanityImageCrop = {
@@ -435,7 +396,7 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | LocaleBlockContent | BlockContent | Team | Gallery | Testimonial | Faq | LocaleText | LocaleString | Category | Post | Author | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | LocaleBlockContent | BlockContent | Gallery | Testimonial | Faq | Category | LocaleText | LocaleString | Post | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
 // Variable: postsQuery
