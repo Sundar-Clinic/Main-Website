@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { TeamMembersQueryResult } from '@/@types/cms';
+import { urlForImage } from '@/sanity/lib/image';
 
 type TeamMemberCardProps = React.ComponentProps<'div'> & {
 	member: TeamMembersQueryResult[number];
@@ -54,8 +55,12 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
 				</span>
 				<div className='w-full overflow-hidden z-10'>
 					<Image
-						src={member?.image ?? ''}
-						alt={member?.alt ?? ''}
+						src={
+							(member?.image &&
+								urlForImage(member?.image).url()) ??
+							''
+						}
+						alt={member?.image?.alt ?? ''}
 						width={100}
 						height={100}
 						className='w-full h-auto object-contain group-hover:scale-105 transition-all duration-300'

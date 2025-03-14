@@ -1,4 +1,6 @@
 import { defineField, defineType } from 'sanity';
+import { apiVersion } from '../env';
+import { Team } from '@/@types/cms';
 
 export default defineType({
 	name: 'team',
@@ -20,12 +22,35 @@ export default defineType({
 			title: 'Full Name',
 			type: 'string',
 			description: 'The full name of the team member.',
+			validation: (Rule) => Rule.required(),
+		}),
+		defineField({
+			name: 'slug',
+			title: 'Slug',
+			type: 'slug',
+			options: {
+				source: 'name',
+				maxLength: 96,
+				isUnique: async (slug, context) => {
+					const query = `*[_type == "team" && slug.current == $slug]`;
+					const documents = await context
+						.getClient({ apiVersion })
+						.fetch<Team[]>(query, {
+							slug,
+						});
+					// Returns true if no documents are found, false otherwise
+					return documents.length <= 1;
+				},
+			},
+			validation: (Rule) => Rule.required(),
+			description: 'The unique identifier for the team member.',
 		}),
 		defineField({
 			name: 'role',
 			title: 'Role',
 			type: 'string',
 			description: 'The role or position of the team member.',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'qualifications',
@@ -33,6 +58,7 @@ export default defineType({
 			type: 'string',
 			description:
 				'The qualifications or certifications of the team member.',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'bio',
@@ -51,6 +77,7 @@ export default defineType({
 			title: 'Image',
 			type: 'image',
 			description: 'An image of the team member (500x276 recommended).',
+			validation: (Rule) => Rule.required(),
 			options: {
 				hotspot: true,
 			},
@@ -61,6 +88,7 @@ export default defineType({
 					title: 'Alternative Text',
 					description:
 						'A descriptive alternative text for the image.',
+					validation: (Rule) => Rule.required(),
 				},
 			],
 			group: 'media',
@@ -77,6 +105,7 @@ export default defineType({
 			title: 'Start Date',
 			type: 'date',
 			description: 'The date when the team member started working.',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'endDate',

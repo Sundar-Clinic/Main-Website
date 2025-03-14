@@ -11,6 +11,7 @@ export default defineType({
 			title: 'Question',
 			type: 'localeString',
 			description: 'The frequently asked question itself.',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'answer',
@@ -18,6 +19,7 @@ export default defineType({
 			type: 'localeText',
 			description:
 				'The detailed answer to the frequently asked question.',
+			validation: (Rule) => Rule.required(),
 		}),
 	],
 	preview: {

@@ -68,100 +68,6 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type LocaleBlockContent = {
-  _type: "localeBlockContent";
-  en?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-  ta?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-  hi?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-};
-
 export type BlockContent = Array<{
   children?: Array<{
     marks?: Array<string>;
@@ -192,41 +98,6 @@ export type BlockContent = Array<{
   _type: "image";
   _key: string;
 }>;
-
-export type Team = {
-  _id: string;
-  _type: "team";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  role?: string;
-  qualifications?: string;
-  bio?: string;
-  registrationNo?: string;
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  currentlyWorking?: boolean;
-  startDate?: string;
-  endDate?: string;
-  languages?: Array<string>;
-  instagram?: string;
-  twitter?: string;
-  linkedin?: string;
-  website?: string;
-  email?: string;
-  youtube?: string;
-};
 
 export type Gallery = {
   _id: string;
@@ -271,28 +142,14 @@ export type Faq = {
   answer?: LocaleText;
 };
 
-export type LocaleText = {
-  _type: "localeText";
-  en?: string;
-  ta?: string;
-  hi?: string;
-};
-
-export type LocaleString = {
-  _type: "localeString";
-  en?: string;
-  ta?: string;
-  hi?: string;
-};
-
 export type Category = {
   _id: string;
   _type: "category";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
-  description?: string;
+  title?: LocaleString;
+  description?: LocaleText;
 };
 
 export type Post = {
@@ -301,15 +158,16 @@ export type Post = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
+  title?: LocaleString;
+  description?: LocaleText;
   slug?: Slug;
   author?: {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "author";
+    [internalGroqTypeReferenceTo]?: "team";
   };
-  mainImage?: {
+  thumbnail?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -328,18 +186,30 @@ export type Post = {
     _key: string;
     [internalGroqTypeReferenceTo]?: "category";
   }>;
+  featured?: boolean;
   publishedAt?: string;
-  body?: BlockContent;
+  body?: LocaleBlockContent;
 };
 
-export type Author = {
+export type LocaleBlockContent = {
+  _type: "localeBlockContent";
+  en?: BlockContent;
+  ta?: BlockContent;
+  hi?: BlockContent;
+};
+
+export type Team = {
   _id: string;
-  _type: "author";
+  _type: "team";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   name?: string;
   slug?: Slug;
+  role?: string;
+  qualifications?: string;
+  bio?: string;
+  registrationNo?: string;
   image?: {
     asset?: {
       _ref: string;
@@ -352,24 +222,16 @@ export type Author = {
     alt?: string;
     _type: "image";
   };
-  bio?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal";
-    listItem?: never;
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
+  currentlyWorking?: boolean;
+  startDate?: string;
+  endDate?: string;
+  languages?: Array<string>;
+  instagram?: string;
+  twitter?: string;
+  linkedin?: string;
+  website?: string;
+  email?: string;
+  youtube?: string;
 };
 
 export type SanityImageCrop = {
@@ -435,21 +297,46 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | LocaleBlockContent | BlockContent | Team | Gallery | Testimonial | Faq | LocaleText | LocaleString | Category | Post | Author | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type LocaleText = {
+  _type: "localeText";
+  en?: string;
+  ta?: string;
+  hi?: string;
+};
+
+export type LocaleString = {
+  _type: "localeString";
+  en?: string;
+  ta?: string;
+  hi?: string;
+};
+
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | BlockContent | Gallery | Testimonial | Faq | Category | Post | LocaleBlockContent | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | LocaleText | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
-// Variable: postsQuery
-// Query: *[_type == "post" && defined(slug.current)]{    _id, title, slug  }
-export type PostsQueryResult = Array<{
-  _id: string;
-  title: string | null;
+// Variable: postSlugsQuery
+// Query: *[_type == "post" && defined(slug.current) && publishedAt <= now()]{    slug}
+export type PostSlugsQueryResult = Array<{
   slug: Slug | null;
 }>;
-// Variable: postQuery
-// Query: *[_type == "post" && slug.current == $slug][0]{     title, mainImage, body  }
-export type PostQueryResult = {
-  title: string | null;
-  mainImage: {
+// Variable: featuredPostsQuery
+// Query: *[_type == "post" && featured == true && publishedAt <= now()][0...3]{  ...} | order(publishedAt desc)
+export type FeaturedPostsQueryResult = Array<{
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: LocaleString;
+  description?: LocaleText;
+  slug?: Slug;
+  author?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "team";
+  };
+  thumbnail?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -460,16 +347,98 @@ export type PostQueryResult = {
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
-  } | null;
-  body: BlockContent | null;
-} | null;
-// Variable: postPathsQuery
-// Query: *[_type == "post" && defined(slug.current)][]{    "params": { "slug": slug.current }  }
-export type PostPathsQueryResult = Array<{
-  params: {
-    slug: string | null;
   };
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  featured?: boolean;
+  publishedAt?: string;
+  body?: LocaleBlockContent;
 }>;
+// Variable: getAllPostsQuery
+// Query: *[_type == "post" && publishedAt <= now()]{  ...} | order(publishedAt desc)
+export type GetAllPostsQueryResult = Array<{
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: LocaleString;
+  description?: LocaleText;
+  slug?: Slug;
+  author?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "team";
+  };
+  thumbnail?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  featured?: boolean;
+  publishedAt?: string;
+  body?: LocaleBlockContent;
+}>;
+// Variable: postQuery
+// Query: *[_type == "post" && slug.current == $slug && publishedAt <= now()][0]{   ...}
+export type PostQueryResult = {
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: LocaleString;
+  description?: LocaleText;
+  slug?: Slug;
+  author?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "team";
+  };
+  thumbnail?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  featured?: boolean;
+  publishedAt?: string;
+  body?: LocaleBlockContent;
+} | null;
 // Variable: faqsQuery
 // Query: *[_type == "faq"]{  _id, question, answer}
 export type FaqsQueryResult = Array<{
@@ -487,15 +456,25 @@ export type TestimonialsQueryResult = Array<{
   link: string | null;
 }>;
 // Variable: galleryImagesQuery
-// Query: *[_type == "gallery"]{  _id, caption, "image": image.asset->url, "alt": image.alt}
+// Query: *[_type == "gallery"]{  _id, caption, image}
 export type GalleryImagesQueryResult = Array<{
   _id: string;
   caption: string | null;
-  image: string | null;
-  alt: string | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
 }>;
 // Variable: teamMembersQuery
-// Query: *[_type == "team"]{  _id, _createdAt, name, role, qualifications, bio, registrationNo, languages, "image": image.asset->url, "alt": image.alt, startDate, endDate, currentlyWorking, instagram, twitter, linkedin, website, email, youtube} | order(_createdAt asc)
+// Query: *[_type == "team"]{  _id, _createdAt, name, role, qualifications, bio, registrationNo, languages, image, startDate, endDate, currentlyWorking, instagram, twitter, linkedin, website, email, youtube} | order(_createdAt asc)
 export type TeamMembersQueryResult = Array<{
   _id: string;
   _createdAt: string;
@@ -505,8 +484,18 @@ export type TeamMembersQueryResult = Array<{
   bio: string | null;
   registrationNo: string | null;
   languages: Array<string> | null;
-  image: string | null;
-  alt: string | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
   startDate: string | null;
   endDate: string | null;
   currentlyWorking: boolean | null;
@@ -522,12 +511,13 @@ export type TeamMembersQueryResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"post\" && defined(slug.current)]{\n    _id, title, slug\n  }": PostsQueryResult;
-    "*[_type == \"post\" && slug.current == $slug][0]{ \n    title, mainImage, body\n  }": PostQueryResult;
-    "*[_type == \"post\" && defined(slug.current)][]{\n    \"params\": { \"slug\": slug.current }\n  }": PostPathsQueryResult;
+    "*[_type == \"post\" && defined(slug.current) && publishedAt <= now()]{\n    slug\n}": PostSlugsQueryResult;
+    "*[_type == \"post\" && featured == true && publishedAt <= now()][0...3]{\n  ...\n} | order(publishedAt desc)": FeaturedPostsQueryResult;
+    "*[_type == \"post\" && publishedAt <= now()]{\n  ...\n} | order(publishedAt desc)": GetAllPostsQueryResult;
+    "*[_type == \"post\" && slug.current == $slug && publishedAt <= now()][0]{ \n  ...\n}": PostQueryResult;
     "*[_type == \"faq\"]{\n  _id, question, answer\n}": FaqsQueryResult;
     "*[_type == \"testimonial\"]{\n  _id, stars, name, review, link\n}": TestimonialsQueryResult;
-    "*[_type == \"gallery\"]{\n  _id, caption, \"image\": image.asset->url, \"alt\": image.alt\n}": GalleryImagesQueryResult;
-    "*[_type == \"team\"]{\n  _id, _createdAt, name, role, qualifications, bio, registrationNo, languages, \"image\": image.asset->url, \"alt\": image.alt, startDate, endDate, currentlyWorking, instagram, twitter, linkedin, website, email, youtube\n} | order(_createdAt asc)": TeamMembersQueryResult;
+    "*[_type == \"gallery\"]{\n  _id, caption, image\n}": GalleryImagesQueryResult;
+    "*[_type == \"team\"]{\n  _id, _createdAt, name, role, qualifications, bio, registrationNo, languages, image, startDate, endDate, currentlyWorking, instagram, twitter, linkedin, website, email, youtube\n} | order(_createdAt asc)": TeamMembersQueryResult;
   }
 }
