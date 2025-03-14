@@ -9,7 +9,7 @@
 		"lint": "next lint",
 		"build:analyze": "cross-env ANALYZE=true pnpm build",
 		"prepare": "husky",
-		"generate-types": "sanity schema extract && sanity typegen generate",
+		"generate:types": "sanity schema extract && sanity typegen generate",
 		"test:e2e": "start-server-and-test start http://localhost:3000 \"cypress run --e2e\"",
 		"test:component": "start-server-and-test start http://localhost:3000 \"cypress run --component\"",
 		"cypress:open": "cypress open",
