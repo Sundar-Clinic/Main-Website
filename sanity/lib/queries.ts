@@ -31,5 +31,5 @@ export const galleryImagesQuery = groq`*[_type == "gallery"]{
 }`;
 
 export const teamMembersQuery = groq`*[_type == "team"]{
-  _id, _createdAt, name, role, qualifications, bio, registrationNo, languages, image, startDate, endDate, currentlyWorking, instagram, twitter, linkedin, website, email, youtube
+  ...
 } | order(_createdAt asc)`;

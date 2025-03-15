@@ -186,6 +186,9 @@
 			"categories": {
 				"heading": "Categories"
 			},
+			"author": {
+				"heading": "Written by"
+			},
 			"meta": {
 				"title": "Blogs",
 				"description": "Read the latest blogs from Sundar Clinic. Stay updated with the latest healthcare trends, tips, and news from our expert team."

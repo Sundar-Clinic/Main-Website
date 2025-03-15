@@ -75,8 +75,8 @@ export type BlockContent = Array<{
     _type: "span";
     _key: string;
   }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-  listItem?: "bullet";
+  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+  listItem?: "bullet" | "number";
   markDefs?: Array<{
     href?: string;
     _type: "link";
@@ -567,17 +567,20 @@ export type GalleryImagesQueryResult = Array<{
   } | null;
 }>;
 // Variable: teamMembersQuery
-// Query: *[_type == "team"]{  _id, _createdAt, name, role, qualifications, bio, registrationNo, languages, image, startDate, endDate, currentlyWorking, instagram, twitter, linkedin, website, email, youtube} | order(_createdAt asc)
+// Query: *[_type == "team"]{  ...} | order(_createdAt asc)
 export type TeamMembersQueryResult = Array<{
   _id: string;
+  _type: "team";
   _createdAt: string;
-  name: string | null;
-  role: string | null;
-  qualifications: string | null;
-  bio: string | null;
-  registrationNo: string | null;
-  languages: Array<string> | null;
-  image: {
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  role?: string;
+  qualifications?: string;
+  bio?: string;
+  registrationNo?: string;
+  image?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -588,16 +591,17 @@ export type TeamMembersQueryResult = Array<{
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
-  } | null;
-  startDate: string | null;
-  endDate: string | null;
-  currentlyWorking: boolean | null;
-  instagram: string | null;
-  twitter: string | null;
-  linkedin: string | null;
-  website: string | null;
-  email: string | null;
-  youtube: string | null;
+  };
+  currentlyWorking?: boolean;
+  startDate?: string;
+  endDate?: string;
+  languages?: Array<string>;
+  instagram?: string;
+  twitter?: string;
+  linkedin?: string;
+  website?: string;
+  email?: string;
+  youtube?: string;
 }>;
 
 // Query TypeMap
@@ -611,6 +615,6 @@ declare module "@sanity/client" {
     "*[_type == \"faq\"]{\n  _id, question, answer\n}": FaqsQueryResult;
     "*[_type == \"testimonial\"]{\n  _id, stars, name, review, link\n}": TestimonialsQueryResult;
     "*[_type == \"gallery\"]{\n  _id, caption, image\n}": GalleryImagesQueryResult;
-    "*[_type == \"team\"]{\n  _id, _createdAt, name, role, qualifications, bio, registrationNo, languages, image, startDate, endDate, currentlyWorking, instagram, twitter, linkedin, website, email, youtube\n} | order(_createdAt asc)": TeamMembersQueryResult;
+    "*[_type == \"team\"]{\n  ...\n} | order(_createdAt asc)": TeamMembersQueryResult;
   }
 }

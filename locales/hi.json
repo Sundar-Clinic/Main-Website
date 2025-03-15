@@ -188,6 +188,9 @@
       "heading": "समाचार",
       "categories": {
         "heading": "श्रेणियां"
+      },
+      "author": {
+        "heading": "द्वारा लिखित"
       }
     }
   },

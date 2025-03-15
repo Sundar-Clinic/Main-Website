@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import BlogHeader from '@/components/blogs/Header';
 import BlogContent from '@/components/blogs/Content';
 import BlogCategories from '@/components/blogs/Categories';
+import BlogAuthor from '@/components/blogs/Author';
 
 type IndividualBlogLayoutProps = {
 	params: {
@@ -28,7 +29,10 @@ const IndividualBlogPage: React.FC<IndividualBlogLayoutProps> = async ({
 		<article className='w-full'>
 			<BlogHeader post={post} locale={locale} />
 			<BlogContent post={post} locale={locale} />
-			<BlogCategories post={post} locale={locale} />
+			{post.categories && post.categories.length > 0 && (
+				<BlogCategories post={post} locale={locale} />
+			)}
+			{post.author && <BlogAuthor post={post} locale={locale} />}
 		</article>
 	);
 };

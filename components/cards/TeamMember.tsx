@@ -39,11 +39,11 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
 	const t = useTranslations('components.cards.team');
 
 	const socials: UserSocials = userSocials.parse([
-		{ Icon: Instagram, url: member?.instagram },
-		{ Icon: Linkedin, url: member?.linkedin },
-		{ Icon: Globe, url: member?.website },
-		{ Icon: Youtube, url: member?.youtube },
-		{ Icon: Twitter, url: member?.twitter },
+		{ Icon: Instagram, url: member?.instagram ?? null },
+		{ Icon: Linkedin, url: member?.linkedin ?? null },
+		{ Icon: Globe, url: member?.website ?? null },
+		{ Icon: Youtube, url: member?.youtube ?? null },
+		{ Icon: Twitter, url: member?.twitter ?? null },
 		{ Icon: Mail, url: member?.email ? `mailto:${member.email}` : null },
 	]);
 

@@ -188,6 +188,9 @@
       "heading": "செய்தி",
       "categories": {
         "heading": "வகைகள்"
+      },
+      "author": {
+        "heading": "எழுதியவர்"
       }
     }
   },
