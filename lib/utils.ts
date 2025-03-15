@@ -6,7 +6,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function dateFormatter(date: string) {
-	const currentUserLocale = navigator.language;
+	let currentUserLocale = 'en-IN';
+	if (typeof window !== 'undefined') {
+		currentUserLocale = navigator.language;
+	}
 	const currentUserTimeZone =
 		Intl.DateTimeFormat().resolvedOptions().timeZone;
 	const formatter = new Intl.DateTimeFormat(currentUserLocale, {
