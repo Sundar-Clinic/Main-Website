@@ -45,7 +45,7 @@ export default async function Home({ params: { locale } }: PageProps) {
 			<Gallery galleryImages={galleryImages} />
 			<Testimonials testimonials={testimonials} locale={locale} />
 			<Contact />
-			<FeaturedBlogs posts={featuredPosts} locale={locale} />
+			{featuredPosts && featuredPosts.length > 0 && <FeaturedBlogs posts={featuredPosts} locale={locale} />}
 			<FAQ faqs={faqs} locale={locale} />
 		</main>
 	);

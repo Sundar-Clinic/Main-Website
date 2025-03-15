@@ -19,19 +19,9 @@ const FeaturedBlogs: React.FC<Props> = ({ posts, locale }) => {
 			<div className='mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3'>
 				{posts &&
 					posts.length > 0 &&
-					posts
-						.concat(
-							Array.from<FeaturedPostsQueryResult[number]>({
-								length: 2,
-							}).fill(posts[0])
-						)
-						.map((post) => (
-							<BlogCard
-								key={post._id}
-								post={post}
-								locale={locale}
-							/>
-						))}
+					posts.map((post) => (
+						<BlogCard key={post._id} post={post} locale={locale} />
+					))}
 			</div>
 		</section>
 	);

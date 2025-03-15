@@ -5,6 +5,7 @@ import { sanityFetch } from '@/sanity/lib/sanityFetch';
 import { notFound } from 'next/navigation';
 import BlogHeader from '@/components/blogs/Header';
 import BlogContent from '@/components/blogs/Content';
+import BlogCategories from '@/components/blogs/Categories';
 
 type IndividualBlogLayoutProps = {
 	params: {
@@ -27,6 +28,7 @@ const IndividualBlogPage: React.FC<IndividualBlogLayoutProps> = async ({
 		<article className='w-full'>
 			<BlogHeader post={post} locale={locale} />
 			<BlogContent post={post} locale={locale} />
+			<BlogCategories post={post} locale={locale} />
 		</article>
 	);
 };
