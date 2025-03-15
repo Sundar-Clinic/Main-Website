@@ -4,9 +4,9 @@ import { PostQueryResult } from '@/@types/cms';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
 import { notFound } from 'next/navigation';
 import BlogHeader from '@/components/blogs/Header';
-import BlogContent from '@/components/blogs/Content';
-import BlogCategories from '@/components/blogs/Categories';
 import BlogAuthor from '@/components/blogs/Author';
+import BlogCategories from '@/components/blogs/Categories';
+import BlogContent from '@/components/blogs/Content';
 
 type IndividualBlogLayoutProps = {
 	params: {
