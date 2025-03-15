@@ -86,6 +86,9 @@
 					"submitting": "Submitting..."
 				}
 			},
+			"featured-blogs": {
+				"heading": "Featured Blogs"
+			},
 			"faq": {
 				"heading": "Frequently Asked Questions"
 			}
@@ -176,6 +179,19 @@
 			"meta": {
 				"title": "Legal Information",
 				"description": "Read the legal information of Sundar Clinic's website. Learn about our clinic registration, doctor's registration, and other relevant links. Contact us if you have any questions or require additional information."
+			}
+		},
+		"blogs": {
+			"heading": "Blogs",
+			"categories": {
+				"heading": "Categories"
+			},
+			"author": {
+				"heading": "Written by"
+			},
+			"meta": {
+				"title": "Blogs",
+				"description": "Read the latest blogs from Sundar Clinic. Stay updated with the latest healthcare trends, tips, and news from our expert team."
 			}
 		}
 	},

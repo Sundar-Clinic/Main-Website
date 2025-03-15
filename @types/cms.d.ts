@@ -75,8 +75,8 @@ export type BlockContent = Array<{
     _type: "span";
     _key: string;
   }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-  listItem?: "bullet";
+  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+  listItem?: "bullet" | "number";
   markDefs?: Array<{
     href?: string;
     _type: "link";
@@ -320,7 +320,7 @@ export type PostSlugsQueryResult = Array<{
   slug: Slug | null;
 }>;
 // Variable: featuredPostsQuery
-// Query: *[_type == "post" && featured == true && publishedAt <= now()][0...3]{  ...} | order(publishedAt desc)
+// Query: *[_type == "post" && featured == true && publishedAt <= now()][0...3]{  ..., author->{...}, categories[]->{...}} | order(publishedAt desc)
 export type FeaturedPostsQueryResult = Array<{
   _id: string;
   _type: "post";
@@ -330,12 +330,41 @@ export type FeaturedPostsQueryResult = Array<{
   title?: LocaleString;
   description?: LocaleText;
   slug?: Slug;
-  author?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "team";
-  };
+  author: {
+    _id: string;
+    _type: "team";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    name?: string;
+    slug?: Slug;
+    role?: string;
+    qualifications?: string;
+    bio?: string;
+    registrationNo?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    currentlyWorking?: boolean;
+    startDate?: string;
+    endDate?: string;
+    languages?: Array<string>;
+    instagram?: string;
+    twitter?: string;
+    linkedin?: string;
+    website?: string;
+    email?: string;
+    youtube?: string;
+  } | null;
   thumbnail?: {
     asset?: {
       _ref: string;
@@ -348,19 +377,21 @@ export type FeaturedPostsQueryResult = Array<{
     alt?: string;
     _type: "image";
   };
-  categories?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
+  categories: Array<{
+    _id: string;
+    _type: "category";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    title?: LocaleString;
+    description?: LocaleText;
+  }> | null;
   featured?: boolean;
   publishedAt?: string;
   body?: LocaleBlockContent;
 }>;
 // Variable: getAllPostsQuery
-// Query: *[_type == "post" && publishedAt <= now()]{  ...} | order(publishedAt desc)
+// Query: *[_type == "post" && publishedAt <= now()]{  ..., author->{...}, categories[]->{...}} | order(publishedAt desc)
 export type GetAllPostsQueryResult = Array<{
   _id: string;
   _type: "post";
@@ -370,12 +401,41 @@ export type GetAllPostsQueryResult = Array<{
   title?: LocaleString;
   description?: LocaleText;
   slug?: Slug;
-  author?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "team";
-  };
+  author: {
+    _id: string;
+    _type: "team";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    name?: string;
+    slug?: Slug;
+    role?: string;
+    qualifications?: string;
+    bio?: string;
+    registrationNo?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    currentlyWorking?: boolean;
+    startDate?: string;
+    endDate?: string;
+    languages?: Array<string>;
+    instagram?: string;
+    twitter?: string;
+    linkedin?: string;
+    website?: string;
+    email?: string;
+    youtube?: string;
+  } | null;
   thumbnail?: {
     asset?: {
       _ref: string;
@@ -388,19 +448,21 @@ export type GetAllPostsQueryResult = Array<{
     alt?: string;
     _type: "image";
   };
-  categories?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
+  categories: Array<{
+    _id: string;
+    _type: "category";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    title?: LocaleString;
+    description?: LocaleText;
+  }> | null;
   featured?: boolean;
   publishedAt?: string;
   body?: LocaleBlockContent;
 }>;
 // Variable: postQuery
-// Query: *[_type == "post" && slug.current == $slug && publishedAt <= now()][0]{   ...}
+// Query: *[_type == "post" && slug.current == $slug && publishedAt <= now()][0]{   ..., author->{...}, categories[]->{...}}
 export type PostQueryResult = {
   _id: string;
   _type: "post";
@@ -410,12 +472,41 @@ export type PostQueryResult = {
   title?: LocaleString;
   description?: LocaleText;
   slug?: Slug;
-  author?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "team";
-  };
+  author: {
+    _id: string;
+    _type: "team";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    name?: string;
+    slug?: Slug;
+    role?: string;
+    qualifications?: string;
+    bio?: string;
+    registrationNo?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    currentlyWorking?: boolean;
+    startDate?: string;
+    endDate?: string;
+    languages?: Array<string>;
+    instagram?: string;
+    twitter?: string;
+    linkedin?: string;
+    website?: string;
+    email?: string;
+    youtube?: string;
+  } | null;
   thumbnail?: {
     asset?: {
       _ref: string;
@@ -428,13 +519,15 @@ export type PostQueryResult = {
     alt?: string;
     _type: "image";
   };
-  categories?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
+  categories: Array<{
+    _id: string;
+    _type: "category";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    title?: LocaleString;
+    description?: LocaleText;
+  }> | null;
   featured?: boolean;
   publishedAt?: string;
   body?: LocaleBlockContent;
@@ -474,17 +567,20 @@ export type GalleryImagesQueryResult = Array<{
   } | null;
 }>;
 // Variable: teamMembersQuery
-// Query: *[_type == "team"]{  _id, _createdAt, name, role, qualifications, bio, registrationNo, languages, image, startDate, endDate, currentlyWorking, instagram, twitter, linkedin, website, email, youtube} | order(_createdAt asc)
+// Query: *[_type == "team"]{  ...} | order(_createdAt asc)
 export type TeamMembersQueryResult = Array<{
   _id: string;
+  _type: "team";
   _createdAt: string;
-  name: string | null;
-  role: string | null;
-  qualifications: string | null;
-  bio: string | null;
-  registrationNo: string | null;
-  languages: Array<string> | null;
-  image: {
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  role?: string;
+  qualifications?: string;
+  bio?: string;
+  registrationNo?: string;
+  image?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -495,16 +591,17 @@ export type TeamMembersQueryResult = Array<{
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
-  } | null;
-  startDate: string | null;
-  endDate: string | null;
-  currentlyWorking: boolean | null;
-  instagram: string | null;
-  twitter: string | null;
-  linkedin: string | null;
-  website: string | null;
-  email: string | null;
-  youtube: string | null;
+  };
+  currentlyWorking?: boolean;
+  startDate?: string;
+  endDate?: string;
+  languages?: Array<string>;
+  instagram?: string;
+  twitter?: string;
+  linkedin?: string;
+  website?: string;
+  email?: string;
+  youtube?: string;
 }>;
 
 // Query TypeMap
@@ -512,12 +609,12 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"post\" && defined(slug.current) && publishedAt <= now()]{\n    slug\n}": PostSlugsQueryResult;
-    "*[_type == \"post\" && featured == true && publishedAt <= now()][0...3]{\n  ...\n} | order(publishedAt desc)": FeaturedPostsQueryResult;
-    "*[_type == \"post\" && publishedAt <= now()]{\n  ...\n} | order(publishedAt desc)": GetAllPostsQueryResult;
-    "*[_type == \"post\" && slug.current == $slug && publishedAt <= now()][0]{ \n  ...\n}": PostQueryResult;
+    "*[_type == \"post\" && featured == true && publishedAt <= now()][0...3]{\n  ..., author->{...}, categories[]->{...}\n} | order(publishedAt desc)": FeaturedPostsQueryResult;
+    "*[_type == \"post\" && publishedAt <= now()]{\n  ..., author->{...}, categories[]->{...}\n} | order(publishedAt desc)": GetAllPostsQueryResult;
+    "*[_type == \"post\" && slug.current == $slug && publishedAt <= now()][0]{ \n  ..., author->{...}, categories[]->{...}\n}": PostQueryResult;
     "*[_type == \"faq\"]{\n  _id, question, answer\n}": FaqsQueryResult;
     "*[_type == \"testimonial\"]{\n  _id, stars, name, review, link\n}": TestimonialsQueryResult;
     "*[_type == \"gallery\"]{\n  _id, caption, image\n}": GalleryImagesQueryResult;
-    "*[_type == \"team\"]{\n  _id, _createdAt, name, role, qualifications, bio, registrationNo, languages, image, startDate, endDate, currentlyWorking, instagram, twitter, linkedin, website, email, youtube\n} | order(_createdAt asc)": TeamMembersQueryResult;
+    "*[_type == \"team\"]{\n  ...\n} | order(_createdAt asc)": TeamMembersQueryResult;
   }
 }

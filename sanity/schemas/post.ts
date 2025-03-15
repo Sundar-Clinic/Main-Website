@@ -29,10 +29,10 @@ export default defineType({
 			type: 'slug',
 			description: 'The unique identifier for the post.',
 			options: {
-				source: 'title',
+				source: `title.${baseLanguage?.id}`,
 				maxLength: 96,
 				isUnique: async (slug, context) => {
-					const query = `*[_type == "post" && slug.current == $slug]`;
+					const query = `*[_type == "post" && slug.current == $slug && id != ^.id]`;
 					const documents = await context
 						.getClient({ apiVersion })
 						.fetch<Post[]>(query, {
@@ -57,6 +57,7 @@ export default defineType({
 			type: 'image',
 			description:
 				'The main image for the post. This will be used as the preview image for social media. Recommended ratio: 16:9.',
+			validation: (Rule) => Rule.required(),
 			options: {
 				hotspot: true,
 			},

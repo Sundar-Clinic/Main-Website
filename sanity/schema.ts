@@ -2,7 +2,6 @@ import { type SchemaTypeDefinition } from 'sanity';
 
 import category from './schemas/category';
 import post from './schemas/post';
-import author from './schemas/author';
 import faq from './schemas/faq';
 import testimonial from './schemas/testimonial';
 import gallery from './schemas/gallery';

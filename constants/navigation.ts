@@ -54,6 +54,15 @@ const COMMON_NAVIGATION: NavdataCollection = [
 		url: '/gallery',
 		target: '_self',
 	},
+	{
+		name: {
+			en: 'Blog',
+			ta: 'செய்தி',
+			hi: 'समाचार',
+		},
+		url: '/blogs',
+		target: '_self',
+	},
 ];
 
 export const NAVBAR_NAVIGATION: NavdataCollection = [...COMMON_NAVIGATION];

@@ -7,15 +7,15 @@ export const postSlugsQuery = groq`*[_type == "post" && defined(slug.current) &&
 }`;
 
 export const featuredPostsQuery = groq`*[_type == "post" && featured == true && publishedAt <= now()][0...3]{
-  ...
+  ..., author->{...}, categories[]->{...}
 } | order(publishedAt desc)`;
 
 export const getAllPostsQuery = groq`*[_type == "post" && publishedAt <= now()]{
-  ...
+  ..., author->{...}, categories[]->{...}
 } | order(publishedAt desc)`;
 
 export const postQuery = groq`*[_type == "post" && slug.current == $slug && publishedAt <= now()][0]{ 
-  ...
+  ..., author->{...}, categories[]->{...}
 }`;
 
 export const faqsQuery = groq`*[_type == "faq"]{
@@ -31,5 +31,5 @@ export const galleryImagesQuery = groq`*[_type == "gallery"]{
 }`;
 
 export const teamMembersQuery = groq`*[_type == "team"]{
-  _id, _createdAt, name, role, qualifications, bio, registrationNo, languages, image, startDate, endDate, currentlyWorking, instagram, twitter, linkedin, website, email, youtube
+  ...
 } | order(_createdAt asc)`;
