@@ -10,7 +10,7 @@ interface Props extends React.ComponentProps<'section'> {
 
 const BlogContent: React.FC<Props> = ({ post, locale }) => {
 	return (
-		<section className='max-w-7xl mx-auto w-full p-4 mt-8 prose'>
+		<section className='max-w-5xl mx-auto w-full p-4 mt-8 prose'>
 			{post?.body?.[locale] && (
 				<PortableText
 					value={post.body?.[locale]}

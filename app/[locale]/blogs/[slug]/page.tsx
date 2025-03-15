@@ -24,7 +24,7 @@ const IndividualBlogPage: React.FC<IndividualBlogLayoutProps> = async ({
 		return notFound();
 	}
 	return (
-		<article>
+		<article className='w-full'>
 			<BlogHeader post={post} locale={locale} />
 			<BlogContent post={post} locale={locale} />
 		</article>

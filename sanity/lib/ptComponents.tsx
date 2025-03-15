@@ -17,6 +17,13 @@ export const ptComponents: Partial<PortableTextReactComponents> = {
 			<div className='text-justify'>{children}</div>
 		),
 	},
+	block: {
+		h1: ({ children }: any) => <h2>{children}</h2>,
+		h2: ({ children }: any) => <h3>{children}</h3>,
+		h3: ({ children }: any) => <h4>{children}</h4>,
+		h4: ({ children }: any) => <h5>{children}</h5>,
+		h5: ({ children }: any) => <h6>{children}</h6>,
+	},
 	types: {
 		image: ({
 			value,
@@ -42,8 +49,11 @@ export const ptComponents: Partial<PortableTextReactComponents> = {
 					style={{
 						width: '100%',
 						marginBottom: '24px',
+						maxWidth: '36rem',
+						borderRadius: '0.5rem',
+						margin: '0 auto 1.5rem ',
 					}}
-					className='max-w-3xl rounded-lg mx-auto'
+					className='rounded-lg mx-auto'
 				/>
 			);
 		},
