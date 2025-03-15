@@ -32,7 +32,7 @@ export default defineType({
 				source: `title.${baseLanguage?.id}`,
 				maxLength: 96,
 				isUnique: async (slug, context) => {
-					const query = `*[_type == "post" && slug.current == $slug]`;
+					const query = `*[_type == "post" && slug.current == $slug && id != ^.id]`;
 					const documents = await context
 						.getClient({ apiVersion })
 						.fetch<Post[]>(query, {

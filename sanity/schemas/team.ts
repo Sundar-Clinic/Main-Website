@@ -32,7 +32,7 @@ export default defineType({
 				source: 'name',
 				maxLength: 96,
 				isUnique: async (slug, context) => {
-					const query = `*[_type == "team" && slug.current == $slug]`;
+					const query = `*[_type == "team" && slug.current == $slug && id != ^.id]`;
 					const documents = await context
 						.getClient({ apiVersion })
 						.fetch<Team[]>(query, {

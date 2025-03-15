@@ -34,30 +34,7 @@ const BlogCard: React.FC<Props> = ({ post, locale }) => {
 				<time dateTime={post.publishedAt} className='mr-8'>
 					{dateFormatter(post.publishedAt ?? '')}
 				</time>
-				<div className='-ml-4 flex items-center gap-x-4'>
-					<svg
-						viewBox='0 0 2 2'
-						className='-ml-0.5 w-0.5 h-0.5 flex-none fill-white/50'
-					>
-						<circle r={1} cx={1} cy={1} />
-					</svg>
-					<div className='flex gap-x-2.5'>
-						<Image
-							width={100}
-							height={100}
-							alt={author?.name ?? ''}
-							src={
-								(author?.image &&
-									urlForImage(author?.image)
-										.format('webp')
-										.url()) ??
-								''
-							}
-							className='w-6 h-6 flex-none rounded-full bg-white/10 object-cover'
-						/>
-						{author?.name}
-					</div>
-				</div>
+				{author && <Author author={author} />}
 			</div>
 			<h3 className='mt-3 text-2xl/6 font-semibold text-white'>
 				<Link prefetch={false} href={`/blogs/${post.slug?.current}`}>
@@ -83,3 +60,34 @@ const BlogCard: React.FC<Props> = ({ post, locale }) => {
 };
 
 export default BlogCard;
+
+function Author({
+	author,
+}: {
+	author: NonNullable<PostQueryResult>['author'];
+}) {
+	return (
+		<div className='-ml-4 flex items-center gap-x-4'>
+			<svg
+				viewBox='0 0 2 2'
+				className='-ml-0.5 w-0.5 h-0.5 flex-none fill-white/50'
+			>
+				<circle r={1} cx={1} cy={1} />
+			</svg>
+			<div className='flex gap-x-2.5'>
+				<Image
+					width={100}
+					height={100}
+					alt={author?.name ?? ''}
+					src={
+						(author?.image &&
+							urlForImage(author?.image).format('webp').url()) ??
+						''
+					}
+					className='w-6 h-6 flex-none rounded-full bg-white/10 object-cover'
+				/>
+				{author?.name}
+			</div>
+		</div>
+	);
+}

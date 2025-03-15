@@ -22,7 +22,7 @@ const AllBlogs: React.FC<Props> = ({ posts, locale }) => {
 					posts
 						.concat(
 							Array.from<GetAllPostsQueryResult[number]>({
-								length: 2,
+								length: 5,
 							}).fill(posts[0])
 						)
 						.map((post) => (
