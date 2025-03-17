@@ -1,13 +1,13 @@
 // Clinic Constant Data
 
 // Dependencies
+import WhatsAppIcon from '@/components/icons/WhatsApp';
 import {
 	LucideIcon,
 	Instagram,
 	Twitter,
 	Linkedin,
 	Mail,
-	Phone,
 	PhoneCall,
 	Plus,
 	Bed,
@@ -17,11 +17,15 @@ import {
 	Eye,
 } from 'lucide-react';
 
+import { FunctionComponent, SVGProps } from 'react';
+
+type SocialIcon = LucideIcon | FunctionComponent<SVGProps<SVGSVGElement>>;
+
 type SocialData = ReadonlyArray<
 	Readonly<{
 		name: string;
 		url: string;
-		Icon: LucideIcon;
+		Icon: SocialIcon;
 	}>
 >;
 
@@ -73,7 +77,7 @@ export const SOCIALS: SocialData = [
 	},
 	{
 		name: 'WhatsApp',
-		Icon: Phone,
+		Icon: WhatsAppIcon,
 		url: `https://wa.me/${CONTACTS.phone}`,
 	},
 	{
