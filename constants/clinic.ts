@@ -1,13 +1,13 @@
 // Clinic Constant Data
 
 // Dependencies
+import WhatsAppIcon from '@/components/icons/WhatsApp';
 import {
 	LucideIcon,
 	Instagram,
 	Twitter,
 	Linkedin,
 	Mail,
-	Phone,
 	PhoneCall,
 	Plus,
 	Bed,
@@ -17,11 +17,15 @@ import {
 	Eye,
 } from 'lucide-react';
 
+import { FunctionComponent, SVGProps } from 'react';
+
+type SocialIcon = LucideIcon | FunctionComponent<SVGProps<SVGSVGElement>>;
+
 type SocialData = ReadonlyArray<
 	Readonly<{
 		name: string;
 		url: string;
-		Icon: LucideIcon;
+		Icon: SocialIcon;
 	}>
 >;
 
@@ -31,6 +35,7 @@ type ContactData = Readonly<{
 	address: string;
 	email: string;
 	codeRepositoryURL: string;
+	whatsAppChannelURL: string;
 }>;
 
 export type ServiceData = ReadonlyArray<
@@ -48,6 +53,7 @@ export const CONTACTS: ContactData = {
 		'1195A, Nehru Street, Chennai, Bengaluru - Chennai Highway, Pappanchathiram, Chennai, Tamil Nadu - 600123.',
 	email: 'sundarclinic@gmail.com',
 	codeRepositoryURL: 'https://github.com/Sundar-Clinic/Main-Website',
+	whatsAppChannelURL: 'https://whatsapp.com/channel/0029Vb4rKoTKGGGHPLKowW26',
 };
 
 export const SOCIALS: SocialData = [
@@ -73,7 +79,7 @@ export const SOCIALS: SocialData = [
 	},
 	{
 		name: 'WhatsApp',
-		Icon: Phone,
+		Icon: WhatsAppIcon,
 		url: `https://wa.me/${CONTACTS.phone}`,
 	},
 	{
