@@ -50,7 +50,12 @@
 				}
 			},
 			"services": {
-				"heading": "Our Services"
+				"heading": "Our Services",
+				"whatsapp-channel": {
+					"heading": "WhatsApp Channel",
+					"description": "Join our WhatsApp channel for quick updates, health tips, and expert care. Connect with us today!",
+					"cta": "Join Now"
+				}
 			},
 			"gallery": {
 				"heading": "Gallery",
@@ -203,6 +208,17 @@
 			"testimonial": {
 				"cta": "View Review",
 				"stars": "stars!"
+			},
+			"cta": {
+				"whatsapp-channel": {
+					"eyebrow": "Trusted Healthcare Support",
+					"heading": "We're here to help",
+					"description": "Join our WhatsApp channel to stay informed with timely updates, valuable health tips, and expert medical advice from Dr. Ekta Bharti (M.B.B.S) and The Sundar Clinic team. Experience exceptional, and personalized healthcare tailored to your needs. Connect with us today for trusted medical support!",
+					"button": {
+						"start": "Join",
+						"end": "channel now"
+					}
+				}
 			}
 		}
 	},

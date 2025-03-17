@@ -128,6 +128,12 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 										strokeWidth={1.5}
 										size={20}
 										className='group-hover:text-primary-clinic transition-all'
+										{...(['WhatsApp'].includes(
+											link.name
+										) && {
+											width: 28,
+											height: 28,
+										})}
 									/>
 								</Link>
 							</Button>
