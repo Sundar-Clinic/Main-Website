@@ -35,6 +35,7 @@ type ContactData = Readonly<{
 	address: string;
 	email: string;
 	codeRepositoryURL: string;
+	whatsAppChannelURL: string;
 }>;
 
 export type ServiceData = ReadonlyArray<
@@ -52,6 +53,7 @@ export const CONTACTS: ContactData = {
 		'1195A, Nehru Street, Chennai, Bengaluru - Chennai Highway, Pappanchathiram, Chennai, Tamil Nadu - 600123.',
 	email: 'sundarclinic@gmail.com',
 	codeRepositoryURL: 'https://github.com/Sundar-Clinic/Main-Website',
+	whatsAppChannelURL: 'https://whatsapp.com/channel/0029Vb4rKoTKGGGHPLKowW26',
 };
 
 export const SOCIALS: SocialData = [
