@@ -12,7 +12,7 @@ import { Link } from '@/lib/routing';
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import {
 	Form,
 	FormControl,
@@ -53,7 +53,7 @@ const Contact: React.FC<ContactProps> = ({ page }) => {
 					window.sessionStorage.getItem(
 						ALREADY_SUBMITTED_SESSION_STORAGE_KEY
 					) === 'true'
-				)
+			  )
 			: false
 	);
 	const { toast } = useToast();
@@ -85,7 +85,9 @@ const Contact: React.FC<ContactProps> = ({ page }) => {
 				values
 			);
 			if (
-				response.data.message === 'contact/form-submitted-succeessfully'
+				response.data.message ===
+					'contact/form-submitted-succeessfully' &&
+				response.status === 200
 			) {
 				toast({
 					title: 'Success',
@@ -101,12 +103,33 @@ const Contact: React.FC<ContactProps> = ({ page }) => {
 				}
 			}
 		} catch (error) {
-			toast({
-				title: 'Error',
-				description:
-					'Unable to submit form at the moment, try again later.',
-				variant: 'destructive',
-			});
+			if (error instanceof AxiosError) {
+				switch (error.response?.data?.message) {
+					case 'contact/too-many-requests': {
+						toast({
+							title: 'Error',
+							description: 'Too many requests, try again later.',
+							variant: 'destructive',
+						});
+						break;
+					}
+					default: {
+						toast({
+							title: 'Error',
+							description:
+								'Unable to submit form at the moment, try again later.',
+							variant: 'destructive',
+						});
+					}
+				}
+			} else if (error instanceof Error) {
+				toast({
+					title: 'Error',
+					description:
+						'Unable to submit form at the moment, try again later.',
+					variant: 'destructive',
+				});
+			}
 		} finally {
 			setSubmitting(false);
 		}
