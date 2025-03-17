@@ -42,11 +42,10 @@ const Services: React.FC<ServiceProps> = ({ locale }) => {
 						/>
 					</span>
 					<h4 className='font-heading text-lg font-medium'>
-						WhatsApp Channel
+						{t('whatsapp-channel.heading')}
 					</h4>
 					<p className='text-slate-500'>
-						Join our WhatsApp channel for quick updates, health
-						tips, and expert care. Connect with us today!
+						{t('whatsapp-channel.description')}
 					</p>
 					<Button
 						asChild
@@ -58,7 +57,7 @@ const Services: React.FC<ServiceProps> = ({ locale }) => {
 							target='_blank'
 							rel='noopener noreferrer'
 						>
-							Join Now
+							{t('whatsapp-channel.cta')}
 						</Link>
 					</Button>
 				</li>

@@ -4,18 +4,20 @@ import WhatsAppIcon from '../icons/WhatsApp';
 import { Link } from '@/lib/routing';
 import { CONTACTS } from '@/constants/clinic';
 import { Button } from '../ui/button';
+import { useTranslations } from 'next-intl';
 
 export default function WhatsAppChannelCTA() {
+	const t = useTranslations('components.cards.cta.whatsapp-channel');
 	return (
 		<section className='max-w-7xl mx-auto w-full p-4 mt-8'>
 			<div className='relative bg-gray-900 rounded-lg overflow-hidden'>
 				<div className='relative h-80 overflow-hidden md:absolute md:left-0 md:h-full md:w-1/3 lg:w-1/2'>
 					<Image
 						alt=''
-						src='/images/whatsapp-channel.webp'
+						src='/images/whatsapp-channel.jpg'
 						className='w-full h-full object-cover'
-						width={500}
-						height={500}
+						width={1000}
+						height={1000}
 					/>
 					<svg
 						viewBox='0 0 926 676'
@@ -45,19 +47,13 @@ export default function WhatsAppChannelCTA() {
 				<div className='relative mx-auto max-w-7xl py-24 sm:py-32 lg:px-8 lg:py-40'>
 					<div className='pl-6 pr-6 md:ml-auto md:w-2/3 md:pl-16 lg:w-1/2 lg:pl-24 lg:pr-0 xl:pl-32'>
 						<h2 className='text-base/7 font-semibold text-white'>
-							Trusted Healthcare Support
+							{t('eyebrow')}
 						</h2>
 						<p className='mt-2 text-4xl font-semibold tracking-tight text-white sm:text-5xl'>
-							We&apos;re here to help
+							{t('heading')}
 						</p>
 						<p className='mt-6 text-base/7 text-gray-300'>
-							Join our WhatsApp channel to stay informed with
-							timely updates, valuable health tips, and expert
-							medical advice from Dr. Ekta Bharti (M.B.B.S) and
-							the Sundar Clinic team. Experience exceptional,
-							personalized healthcare tailored to your needs.
-							Connect with us today for trusted and compassionate
-							medical support!
+							{t('description')}
 						</p>
 						<div className='mt-8'>
 							<Button
@@ -70,14 +66,14 @@ export default function WhatsAppChannelCTA() {
 									target='_blank'
 									rel='noopener noreferrer'
 								>
-									<span>Join</span>
+									<span>{t('button.start')}</span>
 									<WhatsAppIcon
 										className='shrink-0'
 										width={20}
 										height={20}
 									/>
 									<span className='shrink-0'>
-										channel now
+										{t('button.end')}
 									</span>
 								</Link>
 							</Button>
