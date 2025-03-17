@@ -9,8 +9,8 @@ import { useTranslations } from 'next-intl';
 export default function WhatsAppChannelCTA() {
 	const t = useTranslations('components.cards.cta.whatsapp-channel');
 	return (
-		<section className='max-w-7xl mx-auto w-full p-4 mt-8'>
-			<div className='relative bg-gray-900 rounded-lg overflow-hidden'>
+		<section className='max-w-7xl mx-auto w-full p-0 md:p-4 mt-8'>
+			<div className='relative bg-gray-900 md:rounded-lg overflow-hidden'>
 				<div className='relative h-80 overflow-hidden md:absolute md:left-0 md:h-full md:w-1/3 lg:w-1/2'>
 					<Image
 						alt=''
@@ -44,7 +44,7 @@ export default function WhatsAppChannelCTA() {
 						</defs>
 					</svg>
 				</div>
-				<div className='relative mx-auto max-w-7xl py-24 sm:py-32 lg:px-8 lg:py-40'>
+				<div className='relative mx-auto max-w-7xl py-12 md:py-24 lg:px-8'>
 					<div className='pl-6 pr-6 md:ml-auto md:w-2/3 md:pl-16 lg:w-1/2 lg:pl-24 lg:pr-0 xl:pl-32'>
 						<h2 className='text-base/7 font-semibold text-white'>
 							{t('eyebrow')}
