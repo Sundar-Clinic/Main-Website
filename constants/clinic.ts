@@ -17,7 +17,7 @@ import {
 	Eye,
 } from 'lucide-react';
 
-import { FunctionComponent, SVGProps } from 'react';
+import { FunctionComponent, HTMLAttributeAnchorTarget, SVGProps } from 'react';
 
 type SocialIcon = LucideIcon | FunctionComponent<SVGProps<SVGSVGElement>>;
 
@@ -43,6 +43,11 @@ export type ServiceData = ReadonlyArray<
 		title: Record<LocaleLanguages, string>;
 		description: Record<LocaleLanguages, string>;
 		Icon: LucideIcon;
+		cta?: {
+			url: string;
+			text: Record<LocaleLanguages, string>;
+			targert: HTMLAttributeAnchorTarget;
+		};
 	}>
 >;
 
@@ -133,6 +138,15 @@ export const SERVICES: ServiceData = [
 			hi: 'सटीक निदान और उपचार योजनाओं में सहायता के लिए अत्याधुनिक नैदानिक परीक्षणों और स्क्रीनिंग्स तक पहुंचें।',
 		},
 		Icon: TestTube,
+		cta: {
+			url: '/lab',
+			text: {
+				en: 'View Tests',
+				ta: 'பரிசோதனைகளைக் காண்க',
+				hi: 'परीक्षण देखें',
+			},
+			targert: '_self',
+		},
 	},
 	{
 		title: {
