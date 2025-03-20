@@ -50,7 +50,7 @@ const Services: React.FC<ServiceProps> = ({ locale }) => {
 					<Button
 						asChild
 						size={'sm'}
-						className='bg-green-500 hover:bg-green-600'
+						className='bg-green-500 hover:bg-green-600 w-full'
 					>
 						<Link
 							href={CONTACTS.whatsAppChannelURL}
