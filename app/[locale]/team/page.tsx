@@ -18,7 +18,7 @@ export default async function Team({ params: { locale } }: PageProps) {
 	const t = await getTranslations('pages.team');
 
 	return (
-		<section className='max-w-7xl mx-auto w-full p-4 mt-8'>
+		<section className='container'>
 			<h2 className='font-heading font-medium text-lg md:text-2xl max-w-3xl'>
 				{t('heading')}
 			</h2>

@@ -33,3 +33,11 @@ export const galleryImagesQuery = groq`*[_type == "gallery"]{
 export const teamMembersQuery = groq`*[_type == "team"]{
   ...
 } | order(_createdAt asc)`;
+
+export const labTestsQuery = groq`*[_type == "lab-tests" && currentlyAvailable == true]{
+  ...
+}`;
+
+export const labTestQuery = groq`*[_type == "lab-tests" && slug.current == $slug && currentlyAvailable == true][0]{
+  ...
+}`;

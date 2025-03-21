@@ -1,5 +1,5 @@
 /**
- * About Page - Hero Component
+ * Lab Page - Hero Component
  */
 
 // Dependencies
@@ -12,7 +12,7 @@ import { useTranslations } from 'next-intl';
 type HeroProps = React.ComponentProps<'section'>;
 
 const Hero: React.FC<HeroProps> = () => {
-	const t = useTranslations('pages.about.hero');
+	const t = useTranslations('pages.lab.hero');
 
 	return (
 		<section className='container relative min-h-[50vh] grid grid-cols-1 gap-8 md:grid-cols-2'>
@@ -26,17 +26,24 @@ const Hero: React.FC<HeroProps> = () => {
 				<p className='text-lg md:text-xl text-justify max-w-5xl text-slate-500'>
 					{t('description')}
 				</p>
-				<Button asChild size={'lg'}>
-					<Link href='#history' prefetch={false}>
-						{t('cta')}
-					</Link>
-				</Button>
+				<div className='w-full flex items-center gap-4'>
+					<Button asChild size={'lg'}>
+						<Link href={'#tests'} prefetch={false}>
+							{t('cta.tests')}
+						</Link>
+					</Button>
+					<Button asChild size={'lg'} variant={'outline'}>
+						<Link href='/contact' prefetch={false}>
+							{t('cta.contact')}
+						</Link>
+					</Button>
+				</div>
 			</div>
 			<div className='flex items-center justify-center'>
 				<div className='md:max-w-[80%] rounded-lg overflow-hidden'>
 					<Image
-						src='/images/about.svg'
-						alt='Sundar Clinic'
+						src='/images/lab.svg'
+						alt='Sundar Clinic Lab'
 						width={100}
 						height={100}
 						className='w-full h-auto object-contain z-10 relative'

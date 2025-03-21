@@ -13,17 +13,14 @@ export default function GlobalError({
 	error: Error & { digest?: string };
 	reset: () => void;
 } & PageProps) {
-
-  const t = useTranslations('layouts.global-error');
+	const t = useTranslations('layouts.global-error');
 
 	return (
 		<html>
 			<body>
 				<Navbar locale={locale} />
-				<section className='max-w-7xl mx-auto w-full p-4 mt-8 text-center'>
-					<h2 className='text-2xl font-heading'>
-						{t('heading')}
-					</h2>
+				<section className='container text-center'>
+					<h2 className='text-2xl font-heading'>{t('heading')}</h2>
 					<Button onClick={() => reset()} className='mt-2'>
 						{t('cta')}
 					</Button>
