@@ -198,6 +198,21 @@
 				"title": "Blogs",
 				"description": "Read the latest blogs from Sundar Clinic. Stay updated with the latest healthcare trends, tips, and news from our expert team."
 			}
+		},
+		"lab": {
+			"hero": {
+				"heading": "Advanced Diagnostic Testing for Better Health",
+				"subheading": "Lab Services",
+				"description": "At Sundar Clinic, we offer a wide range of lab services to help diagnose and treat various health conditions. Our lab is equipped with the latest technology and staffed by experienced professionals who are dedicated to providing accurate and timely results. Whether you need a routine blood test or a more complex diagnostic procedure, you can count on us to deliver the highest quality care.",
+				"cta": {
+					"tests": "View Tests",
+					"contact": "Contact us"
+				}
+			},
+			"meta": {
+				"title": "Lab Services",
+				"description": "Learn about the lab services offered at Sundar Clinic. Our lab is equipped with the latest technology and staffed by experienced professionals who are dedicated to providing accurate and timely results."
+			}
 		}
 	},
 	"components": {
