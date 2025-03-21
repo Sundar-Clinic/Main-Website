@@ -6,6 +6,7 @@ import faq from './schemas/faq';
 import testimonial from './schemas/testimonial';
 import gallery from './schemas/gallery';
 import team from './schemas/team';
+import labTests from './schemas/labTests';
 
 import blockContent from './schemas/blockContent';
 import { localeString } from './schemas/localeStringType';
@@ -20,6 +21,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 		testimonial,
 		gallery,
 		team,
+		labTests,
 		blockContent,
 		localeString,
 		localeText,
