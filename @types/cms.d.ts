@@ -660,6 +660,35 @@ export type LabTestsQueryResult = Array<{
   body?: LocaleBlockContent;
   currentlyAvailable?: boolean;
 }>;
+// Variable: labTestQuery
+// Query: *[_type == "lab-tests" && slug.current == $slug && currentlyAvailable == true][0]{  ...}
+export type LabTestQueryResult = {
+  _id: string;
+  _type: "lab-tests";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: LocaleString;
+  shortDescription?: LocaleString;
+  description?: LocaleText;
+  preparation?: LocaleString;
+  turnaround?: LocaleString;
+  slug?: Slug;
+  thumbnail?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  body?: LocaleBlockContent;
+  currentlyAvailable?: boolean;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -674,5 +703,6 @@ declare module "@sanity/client" {
     "*[_type == \"gallery\"]{\n  _id, caption, image\n}": GalleryImagesQueryResult;
     "*[_type == \"team\"]{\n  ...\n} | order(_createdAt asc)": TeamMembersQueryResult;
     "*[_type == \"lab-tests\" && currentlyAvailable == true]{\n  ...\n}": LabTestsQueryResult;
+    "*[_type == \"lab-tests\" && slug.current == $slug && currentlyAvailable == true][0]{\n  ...\n}": LabTestQueryResult;
   }
 }

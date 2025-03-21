@@ -37,3 +37,7 @@ export const teamMembersQuery = groq`*[_type == "team"]{
 export const labTestsQuery = groq`*[_type == "lab-tests" && currentlyAvailable == true]{
   ...
 }`;
+
+export const labTestQuery = groq`*[_type == "lab-tests" && slug.current == $slug && currentlyAvailable == true][0]{
+  ...
+}`;
