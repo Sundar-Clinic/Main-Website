@@ -7,6 +7,7 @@ import BlogHeader from '@/components/blogs/Header';
 import BlogAuthor from '@/components/blogs/Author';
 import BlogCategories from '@/components/blogs/Categories';
 import BlogContent from '@/components/blogs/Content';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 type IndividualBlogLayoutProps = {
 	params: {
@@ -18,6 +19,7 @@ type IndividualBlogLayoutProps = {
 const IndividualBlogPage: React.FC<IndividualBlogLayoutProps> = async ({
 	params: { locale, slug },
 }) => {
+	unstable_setRequestLocale(locale);
 	const post = await sanityFetch<PostQueryResult>({
 		query: postQuery,
 		params: { slug },

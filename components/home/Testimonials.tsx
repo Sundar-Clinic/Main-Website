@@ -20,7 +20,7 @@ const Testimonials: React.FC<TestimonailsProps> = ({
 	const t = useTranslations('pages.home.testimonials');
 
 	return (
-		<section className='max-w-7xl mx-auto w-full p-4 mt-8'>
+		<section className='container'>
 			<h3 className='text-2xl font-heading text-center font-medium'>
 				{t('heading')}
 			</h3>

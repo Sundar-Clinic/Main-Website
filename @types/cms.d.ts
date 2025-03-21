@@ -99,6 +99,34 @@ export type BlockContent = Array<{
   _key: string;
 }>;
 
+export type LabTests = {
+  _id: string;
+  _type: "lab-tests";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: LocaleString;
+  shortDescription?: LocaleString;
+  description?: LocaleText;
+  preparation?: LocaleString;
+  turnaround?: LocaleString;
+  slug?: Slug;
+  thumbnail?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  body?: LocaleBlockContent;
+  currentlyAvailable?: boolean;
+};
+
 export type Gallery = {
   _id: string;
   _type: "gallery";
@@ -311,7 +339,7 @@ export type LocaleString = {
   hi?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | BlockContent | Gallery | Testimonial | Faq | Category | Post | LocaleBlockContent | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | LocaleText | LocaleString;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | BlockContent | LabTests | Gallery | Testimonial | Faq | Category | Post | LocaleBlockContent | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | LocaleText | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
 // Variable: postSlugsQuery
@@ -603,6 +631,64 @@ export type TeamMembersQueryResult = Array<{
   email?: string;
   youtube?: string;
 }>;
+// Variable: labTestsQuery
+// Query: *[_type == "lab-tests" && currentlyAvailable == true]{  ...}
+export type LabTestsQueryResult = Array<{
+  _id: string;
+  _type: "lab-tests";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: LocaleString;
+  shortDescription?: LocaleString;
+  description?: LocaleText;
+  preparation?: LocaleString;
+  turnaround?: LocaleString;
+  slug?: Slug;
+  thumbnail?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  body?: LocaleBlockContent;
+  currentlyAvailable?: boolean;
+}>;
+// Variable: labTestQuery
+// Query: *[_type == "lab-tests" && slug.current == $slug && currentlyAvailable == true][0]{  ...}
+export type LabTestQueryResult = {
+  _id: string;
+  _type: "lab-tests";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: LocaleString;
+  shortDescription?: LocaleString;
+  description?: LocaleText;
+  preparation?: LocaleString;
+  turnaround?: LocaleString;
+  slug?: Slug;
+  thumbnail?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  body?: LocaleBlockContent;
+  currentlyAvailable?: boolean;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -616,5 +702,7 @@ declare module "@sanity/client" {
     "*[_type == \"testimonial\"]{\n  _id, stars, name, review, link\n}": TestimonialsQueryResult;
     "*[_type == \"gallery\"]{\n  _id, caption, image\n}": GalleryImagesQueryResult;
     "*[_type == \"team\"]{\n  ...\n} | order(_createdAt asc)": TeamMembersQueryResult;
+    "*[_type == \"lab-tests\" && currentlyAvailable == true]{\n  ...\n}": LabTestsQueryResult;
+    "*[_type == \"lab-tests\" && slug.current == $slug && currentlyAvailable == true][0]{\n  ...\n}": LabTestQueryResult;
   }
 }

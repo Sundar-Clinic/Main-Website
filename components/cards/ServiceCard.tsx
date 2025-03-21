@@ -5,6 +5,8 @@
 // Dependencies
 import React from 'react';
 import { ServiceData } from '@/constants/clinic';
+import { Button } from '@/components/ui/button';
+import { Link } from '@/lib/routing';
 
 interface ServiceCardProps extends React.ComponentProps<'section'> {
 	service: ServiceData[number];
@@ -25,6 +27,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, locale }) => {
 				{service.title[locale]}
 			</h4>
 			<p className='text-slate-500'>{service.description[locale]}</p>
+			{service?.cta && (
+				<Button asChild className='w-full'>
+					<Link href={service.cta?.url} target={service.cta?.targert}>
+						{service.cta?.text[locale]}
+					</Link>
+				</Button>
+			)}
 		</li>
 	);
 };

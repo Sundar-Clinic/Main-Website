@@ -16,7 +16,7 @@ const Hero: React.FC<HeroProps> = () => {
 	const t = useTranslations();
 
 	return (
-		<section className='max-w-7xl mx-auto min-h-[60vh] grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-8 p-4 pt-8 md:pt-0'>
+		<section className='container mt-0 min-h-[60vh] grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-8 pt-8 md:pt-0'>
 			<div className='flex flex-col justify-center items-center md:items-start gap-8'>
 				<h1 className='text-4xl font-heading'>
 					{t('company.tagline')}

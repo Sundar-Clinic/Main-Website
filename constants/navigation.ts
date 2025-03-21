@@ -47,6 +47,15 @@ const COMMON_NAVIGATION: NavdataCollection = [
 	},
 	{
 		name: {
+			en: 'Lab',
+			ta: 'ஆய்வகம்',
+			hi: 'लैब',
+		},
+		url: '/lab',
+		target: '_self',
+	},
+	{
+		name: {
 			en: 'Gallery',
 			ta: 'கேலரி',
 			hi: 'गैलरी',

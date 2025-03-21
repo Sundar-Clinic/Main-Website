@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl';
 export default function WhatsAppChannelCTA() {
 	const t = useTranslations('components.cards.cta.whatsapp-channel');
 	return (
-		<section className='max-w-7xl mx-auto w-full p-0 md:p-4 mt-8'>
+		<section className='container p-0 md:p-4'>
 			<div className='relative bg-gray-900 md:rounded-lg overflow-hidden'>
 				<div className='relative h-80 overflow-hidden md:absolute md:left-0 md:h-full md:w-1/3 lg:w-1/2'>
 					<Image

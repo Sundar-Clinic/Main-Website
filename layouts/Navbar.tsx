@@ -37,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 
 	return (
 		<nav className='w-full'>
-			<section className='max-w-7xl mx-auto p-4 flex w-full items-center justify-between flex-col md:flex-row gap-4'>
+			<section className='container mt-0 flex items-center justify-between flex-col md:flex-row gap-4'>
 				<div className='flex items-center justify-between w-full md:w-fit'>
 					<Link href={'/'} className='block w-28' prefetch={false}>
 						<Image
@@ -141,7 +141,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 				</Button>
 			</section>
 			<section className='w-full bg-secondary-clinic/5 px-4 py-2 hidden md:block'>
-				<ul className='max-w-7xl mx-auto flex gap-8 items-center justify-center font-heading'>
+				<ul className='container mt-0 p-0 flex gap-8 items-center justify-center font-heading'>
 					{NAVBAR_NAVIGATION.map((link) => {
 						const isActive = pathname === link.url;
 						return (

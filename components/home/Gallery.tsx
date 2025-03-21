@@ -19,7 +19,7 @@ const Gallery: React.FC<GalleryProps> = ({ galleryImages, ...props }) => {
 	const t = useTranslations('pages.home.gallery');
 
 	return (
-		<section className='max-w-7xl mx-auto w-full p-4 mt-8' {...props}>
+		<section className='container' {...props}>
 			<h3 className='text-2xl font-heading text-center font-medium'>
 				{t('heading')}
 			</h3>
