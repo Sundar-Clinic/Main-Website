@@ -20,7 +20,7 @@ const Services: React.FC<ServiceProps> = ({ locale }) => {
 	const t = useTranslations('pages.home.services');
 
 	return (
-		<section className='max-w-7xl mx-auto w-full p-4 mt-8' id='services'>
+		<section className='container' id='services'>
 			<h3 className='text-2xl font-heading text-center font-medium'>
 				{t('heading')}
 			</h3>

@@ -15,7 +15,7 @@ const Hero: React.FC<HeroProps> = () => {
 	const t = useTranslations('pages.about.hero');
 
 	return (
-		<section className='max-w-7xl mx-auto w-full p-4 mt-8 relative min-h-[50vh] grid grid-cols-1 gap-8 md:grid-cols-2'>
+		<section className='container relative min-h-[50vh] grid grid-cols-1 gap-8 md:grid-cols-2'>
 			<div className='flex flex-col gap-4'>
 				<p className='font-medium text-lg md:text-2xl'>
 					{t('subheading')}

@@ -11,7 +11,7 @@ interface Props extends React.ComponentProps<'section'> {
 const Tests: React.FC<Props> = ({ tests, locale }) => {
 	const t = useTranslations('pages.lab.tests');
 	return (
-		<section className='max-w-7xl mx-auto w-full p-4 mt-8' id='tests'>
+		<section className='container' id='tests'>
 			<h3 className='text-2xl font-heading text-center font-medium'>
 				{t('heading')}
 			</h3>

@@ -11,7 +11,7 @@ interface Props extends React.ComponentProps<'section'> {
 const AllBlogs: React.FC<Props> = ({ posts, locale }) => {
 	const t = useTranslations('pages.blogs');
 	return (
-		<section className='max-w-7xl mx-auto w-full p-4 mt-8'>
+		<section className='container'>
 			<h1 className='text-2xl font-heading text-center font-medium'>
 				{t('heading')}
 			</h1>

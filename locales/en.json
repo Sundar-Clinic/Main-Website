@@ -212,6 +212,18 @@
 			"tests": {
 				"heading": "Our Diagnostic Tests"
 			},
+			"slug": {
+				"cta": {
+					"return": "Back to All Tests",
+					"contact": "Contact us"
+				},
+				"sections": {
+					"heading": "Test Information",
+					"description": "Description",
+					"preparation": "Preparation",
+					"turnaround": "Turnaround Time"
+				}
+			},
 			"meta": {
 				"title": "Lab Services",
 				"description": "Learn about the lab services offered at Sundar Clinic. Our lab is equipped with the latest technology and staffed by experienced professionals who are dedicated to providing accurate and timely results."

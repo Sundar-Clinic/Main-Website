@@ -59,7 +59,7 @@ export const CONTACTS: ContactData = {
 	email: 'sundarclinic@gmail.com',
 	codeRepositoryURL: 'https://github.com/Sundar-Clinic/Main-Website',
 	whatsAppChannelURL: 'https://whatsapp.com/channel/0029Vb4rKoTKGGGHPLKowW26',
-};
+} as const;
 
 export const SOCIALS: SocialData = [
 	{
