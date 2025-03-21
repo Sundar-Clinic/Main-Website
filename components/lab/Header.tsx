@@ -15,7 +15,11 @@ const LabTestHeader: React.FC<Props> = ({ test, locale }) => {
 	return (
 		<header className='container mt-0 mb-8'>
 			<Button variant='ghost' asChild className='mb-4'>
-				<Link href='/lab/#tests' className='flex items-center gap-2'>
+				<Link
+					href='/lab/#tests'
+					className='flex items-center gap-2'
+					prefetch={false}
+				>
 					<ChevronLeft className='h-4 w-4' />
 					{t('cta.return')}
 				</Link>

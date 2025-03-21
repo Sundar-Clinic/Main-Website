@@ -60,7 +60,10 @@ const LabTestCard: React.FC<Props> = ({
 			</CardContent>
 			<CardFooter>
 				<Button variant='outline' className='w-full'>
-					<Link href={`/lab/tests/${test.slug?.current}`}>
+					<Link
+						href={`/lab/tests/${test.slug?.current}`}
+						prefetch={false}
+					>
 						{t('cta')}
 					</Link>
 				</Button>
