@@ -16,6 +16,17 @@ export const ptComponents: Partial<PortableTextReactComponents> = {
 		justify: ({ children }: any) => (
 			<div className='text-justify'>{children}</div>
 		),
+		link: ({ value, children }) => {
+			// Read https://css-tricks.com/use-target_blank/
+			const { blank, href } = value;
+			return blank ? (
+				<a href={href} target='_blank' rel='noopener'>
+					{children}
+				</a>
+			) : (
+				<a href={href}>{children}</a>
+			);
+		},
 	},
 	block: {
 		h1: ({ children }: any) => <h2>{children}</h2>,

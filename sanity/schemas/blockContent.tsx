@@ -99,7 +99,7 @@ export default defineType({
 				// Annotations can be any object structure – e.g. a link or a footnote.
 				annotations: [
 					{
-						title: 'URL',
+						title: 'External link',
 						name: 'link',
 						type: 'object',
 						fields: [
@@ -108,8 +108,15 @@ export default defineType({
 								name: 'href',
 								type: 'url',
 							},
+							{
+								title: 'Open in new tab',
+								name: 'blank',
+								description:
+									'Read https://css-tricks.com/use-target_blank/',
+								type: 'boolean',
+							},
 						],
-					},
+					}
 				],
 			},
 		}),

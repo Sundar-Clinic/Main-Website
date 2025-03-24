@@ -79,6 +79,7 @@ export type BlockContent = Array<{
   listItem?: "bullet" | "number";
   markDefs?: Array<{
     href?: string;
+    blank?: boolean;
     _type: "link";
     _key: string;
   }>;
@@ -658,7 +659,7 @@ export type TeamMembersQueryResult = Array<{
   youtube?: string;
 }>;
 // Variable: labTestsQuery
-// Query: *[_type == "lab-tests" && currentlyAvailable == true]{  ...}
+// Query: *[_type == "lab-tests" && currentlyAvailable == true]{  ...} | order(_createdAt asc)
 export type LabTestsQueryResult = Array<{
   _id: string;
   _type: "lab-tests";
@@ -687,7 +688,7 @@ export type LabTestsQueryResult = Array<{
   currentlyAvailable?: boolean;
 }>;
 // Variable: labTestQuery
-// Query: *[_type == "lab-tests" && slug.current == $slug && currentlyAvailable == true][0]{  ...}
+// Query: *[_type == "lab-tests" && slug.current == $slug && currentlyAvailable == true][0]{  ...} | order(_createdAt asc)
 export type LabTestQueryResult = {
   _id: string;
   _type: "lab-tests";
@@ -756,8 +757,8 @@ declare module "@sanity/client" {
     "*[_type == \"testimonial\"]{\n  _id, stars, name, review, link\n}": TestimonialsQueryResult;
     "*[_type == \"gallery\"]{\n  _id, caption, image\n}": GalleryImagesQueryResult;
     "*[_type == \"team\"]{\n  ...\n} | order(_createdAt asc)": TeamMembersQueryResult;
-    "*[_type == \"lab-tests\" && currentlyAvailable == true]{\n  ...\n}": LabTestsQueryResult;
-    "*[_type == \"lab-tests\" && slug.current == $slug && currentlyAvailable == true][0]{\n  ...\n}": LabTestQueryResult;
+    "*[_type == \"lab-tests\" && currentlyAvailable == true]{\n  ...\n} | order(_createdAt asc)": LabTestsQueryResult;
+    "*[_type == \"lab-tests\" && slug.current == $slug && currentlyAvailable == true][0]{\n  ...\n} | order(_createdAt asc)": LabTestQueryResult;
     "*[_type == \"partner-labs\"]{\n  ...\n}": PartnerLabsQueryResult;
     "*[_type == \"lab-tests\" && defined(slug.current) && currentlyAvailable == true]{\n  slug\n}": LabTestSlugsQueryResult;
   }

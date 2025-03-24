@@ -36,11 +36,11 @@ export const teamMembersQuery = groq`*[_type == "team"]{
 
 export const labTestsQuery = groq`*[_type == "lab-tests" && currentlyAvailable == true]{
   ...
-}`;
+} | order(_createdAt asc)`;
 
 export const labTestQuery = groq`*[_type == "lab-tests" && slug.current == $slug && currentlyAvailable == true][0]{
   ...
-} | order(_createdAt asc)`;
+}`;
 
 export const partnerLabsQuery = groq`*[_type == "partner-labs"]{
   ...
