@@ -53,7 +53,7 @@ export async function generateMetadata({
 			}),
 		},
 		alternates: {
-			canonical: `/en/lab/tests/${slug}`,
+			canonical: `/${locale}/lab/tests/${slug}`,
 			languages: Object.fromEntries(
 				locales.map((locale) => [
 					locale,

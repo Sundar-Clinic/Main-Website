@@ -15,7 +15,7 @@ export async function generateMetadata({
 		title: t('pages.terms-and-conditions.meta.title'),
 		description: t('pages.terms-and-conditions.meta.description'),
 		alternates: {
-			canonical: '/en/terms-and-conditions',
+			canonical: `/${locale}/terms-and-conditions`,
 			languages: Object.fromEntries(
 				locales.map((locale) => [
 					locale,
