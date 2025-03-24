@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { urlForImage } from '@/sanity/lib/image';
 import { PortableText } from '@portabletext/react';
 import { ptComponents } from '@/sanity/lib/ptComponents';
+import LocationCTA from '../cta/LocationCTA';
 
 interface Props extends React.ComponentProps<'div'> {
 	test: NonNullable<LabTestQueryResult>;
@@ -34,6 +35,7 @@ const TestBody: React.FC<Props> = ({ test, locale }) => {
 					/>
 				)}
 			</div>
+			<LocationCTA />
 		</div>
 	);
 };

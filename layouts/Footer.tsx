@@ -23,7 +23,7 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 	return (
 		<footer>
 			<section className='container text-center md:text-left'>
-				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 place-items-center w-full justify-between gap-8'>
+				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 place-items-center w-full justify-between gap-8 pb-4'>
 					<div className='flex flex-col items-center justify-center gap-2 w-fit'>
 						<div className='w-28'>
 							<Image
@@ -95,7 +95,7 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 				></iframe>
 			</section>
 			<section className='container my-4 mt-0 p-0'>
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-4'>
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-4 py-4'>
 					<ul className='grid grid-cols-3 gap-2 place-items-center text-center'>
 						{FOOTER_NAVIGATION.map((link) => (
 							<li key={`footer-${link.name[locale]}`}>

@@ -12,6 +12,7 @@ import blockContent from './schemas/blockContent';
 import { localeString } from './schemas/localeStringType';
 import { localeText } from './schemas/localeTextType';
 import { localeBlockContent } from './schemas/localeBlockContent';
+import partnerLab from './schemas/partnerLab';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
 	types: [
@@ -22,6 +23,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 		gallery,
 		team,
 		labTests,
+		partnerLab,
 		blockContent,
 		localeString,
 		localeText,

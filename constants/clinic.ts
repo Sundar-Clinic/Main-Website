@@ -36,6 +36,7 @@ type ContactData = Readonly<{
 	email: string;
 	codeRepositoryURL: string;
 	whatsAppChannelURL: string;
+	newsletterURL: string;
 }>;
 
 export type ServiceData = ReadonlyArray<
@@ -51,6 +52,8 @@ export type ServiceData = ReadonlyArray<
 	}>
 >;
 
+export const WEBSITE_URL = 'https://sundarclinic.com' as const;
+
 export const CONTACTS: ContactData = {
 	phone: '+918939881708',
 	googleLocation: 'https://goo.gl/maps/qp2T6itZ5gp7wCJr8',
@@ -59,6 +62,7 @@ export const CONTACTS: ContactData = {
 	email: 'sundarclinic@gmail.com',
 	codeRepositoryURL: 'https://github.com/Sundar-Clinic/Main-Website',
 	whatsAppChannelURL: 'https://whatsapp.com/channel/0029Vb4rKoTKGGGHPLKowW26',
+	newsletterURL: 'https://sundarclinic.substack.com/',
 } as const;
 
 export const SOCIALS: SocialData = [

@@ -48,7 +48,9 @@ const LabTestCard: React.FC<Props> = ({
 				/>
 			</div>
 			<CardHeader>
-				<CardTitle>{test.name?.[locale]}</CardTitle>
+				<CardTitle>
+					<h3>{test.name?.[locale]}</h3>
+				</CardTitle>
 				<CardDescription>
 					{test.shortDescription?.[locale]}
 				</CardDescription>
@@ -59,7 +61,7 @@ const LabTestCard: React.FC<Props> = ({
 				</p>
 			</CardContent>
 			<CardFooter>
-				<Button variant='outline' className='w-full'>
+				<Button variant='outline' className='w-full' asChild>
 					<Link
 						href={`/lab/tests/${test.slug?.current}`}
 						prefetch={false}

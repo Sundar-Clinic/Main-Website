@@ -194,6 +194,10 @@
 			"author": {
 				"heading": "Written by"
 			},
+			"share": {
+				"heading": "Share with...",
+				"copy": "Copy Link"
+			},
 			"meta": {
 				"title": "Blogs",
 				"description": "Read the latest blogs from Sundar Clinic. Stay updated with the latest healthcare trends, tips, and news from our expert team."
@@ -211,6 +215,9 @@
 			},
 			"tests": {
 				"heading": "Our Diagnostic Tests"
+			},
+			"partner-labs": {
+				"heading": "Our Partner Labs"
 			},
 			"slug": {
 				"cta": {
@@ -250,6 +257,26 @@
 					"button": {
 						"start": "Join",
 						"end": "channel now"
+					}
+				},
+				"location": {
+					"heading": "Visit Us Today!",
+					"description": "Your health is our priority. Stop by our clinic for personalized care and expert medical services. We're here to help you feel your best.",
+					"cta": "Get Directions"
+				},
+				"newsletter": {
+					"heading": "Subscribe to our newsletter",
+					"description": "Stay informed and inspired with Sundar Clinic Insights—your trusted source for the latest in healthcare tips medical news, and wellness strategies. Join our community take the first step toward a better healthcare experience.",
+					"cta": "Subscribe on Substack",
+					"info": {
+						"frequency": {
+							"heading": "Weekly articles",
+							"description": "Get exclusive access to expert advice, patient stories, and actionable tips delivered straight to your inbox every week. Your journey to better health starts here."
+						},
+						"spam": {
+							"heading": "No spam",
+							"description": "We respect your inbox. Expect only meaningful content—no spam, no clutter. Just insights to help you live your healthiest life."
+						}
 					}
 				}
 			}
