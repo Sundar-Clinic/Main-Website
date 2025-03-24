@@ -734,6 +734,11 @@ export type PartnerLabsQueryResult = Array<{
     _type: "image";
   };
 }>;
+// Variable: labTestSlugsQuery
+// Query: *[_type == "lab-tests" && defined(slug.current) && currentlyAvailable == true]{  slug}
+export type LabTestSlugsQueryResult = Array<{
+  slug: Slug | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -750,5 +755,6 @@ declare module "@sanity/client" {
     "*[_type == \"lab-tests\" && currentlyAvailable == true]{\n  ...\n}": LabTestsQueryResult;
     "*[_type == \"lab-tests\" && slug.current == $slug && currentlyAvailable == true][0]{\n  ...\n}": LabTestQueryResult;
     "*[_type == \"partner-labs\"]{\n  ...\n}": PartnerLabsQueryResult;
+    "*[_type == \"lab-tests\" && defined(slug.current) && currentlyAvailable == true]{\n  slug\n}": LabTestSlugsQueryResult;
   }
 }

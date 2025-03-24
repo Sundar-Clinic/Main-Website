@@ -6,8 +6,8 @@
 import { MetadataRoute } from 'next';
 import { locales } from '@/i18n/i18n';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
-import { postSlugsQuery } from '@/sanity/lib/queries';
-import { PostSlugsQueryResult } from '@/@types/cms';
+import { labTestSlugsQuery, postSlugsQuery } from '@/sanity/lib/queries';
+import { LabTestSlugsQueryResult, PostSlugsQueryResult } from '@/@types/cms';
 
 const defaultLocale = 'en' as const;
 
@@ -35,12 +35,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			query: postSlugsQuery,
 		});
 		const posts = postSlugs.map(({ slug }) =>
-			getEntry(`/blogs/${slug}`, {
+			getEntry(`/blogs/${slug?.current}`, {
 				priority: 0.5,
 				changeFrequency: 'monthly',
 			})
 		);
-		return [...DEFAULT_SITEMAP, ...posts];
+		const labTestSlugs = await sanityFetch<LabTestSlugsQueryResult>({
+			query: labTestSlugsQuery,
+		});
+		const labTests = labTestSlugs.map(({ slug }) =>
+			getEntry(`/lab/tests/${slug?.current}`, {
+				priority: 0.5,
+				changeFrequency: 'monthly',
+			})
+		);
+		return [...DEFAULT_SITEMAP, ...posts, ...labTests];
 	} catch (error) {
 		return DEFAULT_SITEMAP;
 	}
