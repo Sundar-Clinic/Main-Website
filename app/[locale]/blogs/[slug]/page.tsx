@@ -9,6 +9,7 @@ import BlogCategories from '@/components/blogs/Categories';
 import BlogContent from '@/components/blogs/Content';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import CTA from '@/components/cta/CTA';
+import SocialShare from '@/components/blogs/SocialShare';
 
 type IndividualBlogLayoutProps = {
 	params: {
@@ -36,6 +37,7 @@ const IndividualBlogPage: React.FC<IndividualBlogLayoutProps> = async ({
 				<BlogCategories post={post} locale={locale} />
 			)}
 			{post.author && <BlogAuthor post={post} locale={locale} />}
+			<SocialShare post={post} locale={locale} />
 			<CTA cta={post.cta} />
 		</article>
 	);

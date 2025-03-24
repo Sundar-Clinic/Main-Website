@@ -97,6 +97,8 @@ export default defineType({
 					{ title: 'Newsletter', value: 'newsletter' },
 				],
 			},
+			initialValue: 'location',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'publishedAt',

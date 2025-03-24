@@ -52,6 +52,8 @@ export type ServiceData = ReadonlyArray<
 	}>
 >;
 
+export const WEBSITE_URL = 'https://sundarclinic.com' as const;
+
 export const CONTACTS: ContactData = {
 	phone: '+918939881708',
 	googleLocation: 'https://goo.gl/maps/qp2T6itZ5gp7wCJr8',
