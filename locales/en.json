@@ -212,6 +212,9 @@
 			"tests": {
 				"heading": "Our Diagnostic Tests"
 			},
+			"partner-labs": {
+				"heading": "Our Partner Labs"
+			},
 			"slug": {
 				"cta": {
 					"return": "Back to All Tests",
