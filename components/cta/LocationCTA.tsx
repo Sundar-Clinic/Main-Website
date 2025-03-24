@@ -10,7 +10,7 @@ export default function LocationCTA() {
 	return (
 		<section className='container p-0 md:p-4'>
 			<div className='bg-gray-900 md:rounded-lg overflow-hidden text-white'>
-				<div className='py-12'>
+				<div className='py-12 px-6 lg:px-8'>
 					<div className='mx-auto max-w-2xl text-center'>
 						<h2 className='text-balance text-4xl font-semibold tracking-tight text-gay-900 sm:text-5xl'>
 							{t('heading')}

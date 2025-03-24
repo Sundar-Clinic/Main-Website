@@ -18,6 +18,19 @@ export const postQuery = groq`*[_type == "post" && slug.current == $slug && publ
   ..., author->{...}, categories[]->{...}
 }`;
 
+export const postPublishedYearsQuery = groq`array::unique(
+  *[_type == "post" && defined(publishedAt)]{
+    "year": string::split(publishedAt, '-')[0]
+  }.year
+) | order(@ desc)`;
+
+export const getAllPostsByYearQuery = groq`
+  *[_type == "post" && string::startsWith(publishedAt, $year)]{
+    slug,
+    _updatedAt
+  } | order(publishedAt desc)
+`;
+
 export const faqsQuery = groq`*[_type == "faq"]{
   _id, question, answer
 }`;
@@ -36,7 +49,7 @@ export const teamMembersQuery = groq`*[_type == "team"]{
 
 export const labTestsQuery = groq`*[_type == "lab-tests" && currentlyAvailable == true]{
   ...
-}`;
+} | order(_createdAt asc)`;
 
 export const labTestQuery = groq`*[_type == "lab-tests" && slug.current == $slug && currentlyAvailable == true][0]{
   ...
@@ -47,5 +60,5 @@ export const partnerLabsQuery = groq`*[_type == "partner-labs"]{
 }`;
 
 export const labTestSlugsQuery = groq`*[_type == "lab-tests" && defined(slug.current) && currentlyAvailable == true]{
-  slug
+  slug, _updatedAt
 }`;

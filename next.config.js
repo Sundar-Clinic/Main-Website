@@ -31,6 +31,18 @@ const nextConfig = {
       },
     ]
   },
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap-posts.xml',
+        destination: '/sitemap-posts',
+      },
+      {
+        source: '/sitemap-posts-:year.xml',
+        destination: '/sitemap-posts/:year',
+      },
+    ]
+  },
   trailingSlash: true
 }
 

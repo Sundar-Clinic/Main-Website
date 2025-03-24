@@ -15,7 +15,7 @@ export async function generateMetadata({
 		title: t('pages.lab.meta.title'),
 		description: t('pages.lab.meta.description'),
 		alternates: {
-			canonical: '/en/lab',
+			canonical: `/${locale}/lab`,
 			languages: Object.fromEntries(
 				locales.map((locale) => [locale, `/${locale}/lab`])
 			),
