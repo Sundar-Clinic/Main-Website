@@ -1368,6 +1368,27 @@
         },
         "optional": true
       },
+      "cta": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "whatsapp-channel"
+            },
+            {
+              "type": "string",
+              "value": "location"
+            },
+            {
+              "type": "string",
+              "value": "newsletter"
+            }
+          ]
+        },
+        "optional": true
+      },
       "publishedAt": {
         "type": "objectAttribute",
         "value": {

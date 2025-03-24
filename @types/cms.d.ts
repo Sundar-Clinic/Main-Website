@@ -237,6 +237,7 @@ export type Post = {
     [internalGroqTypeReferenceTo]?: "category";
   }>;
   featured?: boolean;
+  cta?: "whatsapp-channel" | "location" | "newsletter";
   publishedAt?: string;
   body?: LocaleBlockContent;
 };
@@ -437,6 +438,7 @@ export type FeaturedPostsQueryResult = Array<{
     description?: LocaleText;
   }> | null;
   featured?: boolean;
+  cta?: "location" | "newsletter" | "whatsapp-channel";
   publishedAt?: string;
   body?: LocaleBlockContent;
 }>;
@@ -508,6 +510,7 @@ export type GetAllPostsQueryResult = Array<{
     description?: LocaleText;
   }> | null;
   featured?: boolean;
+  cta?: "location" | "newsletter" | "whatsapp-channel";
   publishedAt?: string;
   body?: LocaleBlockContent;
 }>;
@@ -579,6 +582,7 @@ export type PostQueryResult = {
     description?: LocaleText;
   }> | null;
   featured?: boolean;
+  cta?: "location" | "newsletter" | "whatsapp-channel";
   publishedAt?: string;
   body?: LocaleBlockContent;
 } | null;

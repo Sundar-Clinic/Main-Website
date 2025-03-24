@@ -85,6 +85,20 @@ export default defineType({
 			description: 'Whether the post should be featured on the homepage.',
 		}),
 		defineField({
+			name: 'cta',
+			title: 'Call to Action (CTA)',
+			type: 'string',
+			description:
+				'Select the call to action for the post. This will disply the CTA at the end of the post.',
+			options: {
+				list: [
+					{ title: 'WhatsApp Channel', value: 'whatsapp-channel' },
+					{ title: 'Location', value: 'location' },
+					{ title: 'Newsletter', value: 'newsletter' },
+				],
+			},
+		}),
+		defineField({
 			name: 'publishedAt',
 			title: 'Published at',
 			type: 'datetime',
