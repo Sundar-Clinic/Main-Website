@@ -36,6 +36,7 @@ type ContactData = Readonly<{
 	email: string;
 	codeRepositoryURL: string;
 	whatsAppChannelURL: string;
+	newsletterURL: string;
 }>;
 
 export type ServiceData = ReadonlyArray<
@@ -59,6 +60,7 @@ export const CONTACTS: ContactData = {
 	email: 'sundarclinic@gmail.com',
 	codeRepositoryURL: 'https://github.com/Sundar-Clinic/Main-Website',
 	whatsAppChannelURL: 'https://whatsapp.com/channel/0029Vb4rKoTKGGGHPLKowW26',
+	newsletterURL: 'https://sundarclinic.substack.com/',
 } as const;
 
 export const SOCIALS: SocialData = [

@@ -11,6 +11,7 @@ import Services from '@/components/home/Services';
 import WhatsAppChannelCTA from '@/components/cta/WhatsAppChannel';
 import Testimonials from '@/components/home/Testimonials';
 import FeaturedBlogs from '@/components/home/FeaturedBlogs';
+import NewsLetterCTA from '@/components/cta/NewsletterCTA';
 import {
 	faqsQuery,
 	featuredPostsQuery,
@@ -50,6 +51,7 @@ export default async function Home({ params: { locale } }: PageProps) {
 			{featuredPosts && featuredPosts.length > 0 && (
 				<FeaturedBlogs posts={featuredPosts} locale={locale} />
 			)}
+			<NewsLetterCTA />
 			<FAQ faqs={faqs} locale={locale} />
 		</main>
 	);
