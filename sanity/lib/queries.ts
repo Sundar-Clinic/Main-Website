@@ -40,7 +40,7 @@ export const labTestsQuery = groq`*[_type == "lab-tests" && currentlyAvailable =
 
 export const labTestQuery = groq`*[_type == "lab-tests" && slug.current == $slug && currentlyAvailable == true][0]{
   ...
-}`;
+} | order(_createdAt asc)`;
 
 export const partnerLabsQuery = groq`*[_type == "partner-labs"]{
   ...
