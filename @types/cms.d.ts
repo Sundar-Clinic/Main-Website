@@ -587,6 +587,15 @@ export type PostQueryResult = {
   publishedAt?: string;
   body?: LocaleBlockContent;
 } | null;
+// Variable: postPublishedYearsQuery
+// Query: array::unique(  *[_type == "post" && defined(publishedAt)]{    "year": string::split(publishedAt, '-')[0]  }.year) | order(@ desc)
+export type PostPublishedYearsQueryResult = Array<string | null>;
+// Variable: getAllPostsByYearQuery
+// Query: *[_type == "post" && string::startsWith(publishedAt, $year)]{    slug,    _updatedAt  } | order(publishedAt desc)
+export type GetAllPostsByYearQueryResult = Array<{
+  slug: Slug | null;
+  _updatedAt: string;
+}>;
 // Variable: faqsQuery
 // Query: *[_type == "faq"]{  _id, question, answer}
 export type FaqsQueryResult = Array<{
@@ -688,7 +697,7 @@ export type LabTestsQueryResult = Array<{
   currentlyAvailable?: boolean;
 }>;
 // Variable: labTestQuery
-// Query: *[_type == "lab-tests" && slug.current == $slug && currentlyAvailable == true][0]{  ...} | order(_createdAt asc)
+// Query: *[_type == "lab-tests" && slug.current == $slug && currentlyAvailable == true][0]{  ...}
 export type LabTestQueryResult = {
   _id: string;
   _type: "lab-tests";
@@ -740,9 +749,10 @@ export type PartnerLabsQueryResult = Array<{
   };
 }>;
 // Variable: labTestSlugsQuery
-// Query: *[_type == "lab-tests" && defined(slug.current) && currentlyAvailable == true]{  slug}
+// Query: *[_type == "lab-tests" && defined(slug.current) && currentlyAvailable == true]{  slug, _updatedAt}
 export type LabTestSlugsQueryResult = Array<{
   slug: Slug | null;
+  _updatedAt: string;
 }>;
 
 // Query TypeMap
@@ -753,13 +763,15 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && featured == true && publishedAt <= now()][0...3]{\n  ..., author->{...}, categories[]->{...}\n} | order(publishedAt desc)": FeaturedPostsQueryResult;
     "*[_type == \"post\" && publishedAt <= now()]{\n  ..., author->{...}, categories[]->{...}\n} | order(publishedAt desc)": GetAllPostsQueryResult;
     "*[_type == \"post\" && slug.current == $slug && publishedAt <= now()][0]{ \n  ..., author->{...}, categories[]->{...}\n}": PostQueryResult;
+    "array::unique(\n  *[_type == \"post\" && defined(publishedAt)]{\n    \"year\": string::split(publishedAt, '-')[0]\n  }.year\n) | order(@ desc)": PostPublishedYearsQueryResult;
+    "\n  *[_type == \"post\" && string::startsWith(publishedAt, $year)]{\n    slug,\n    _updatedAt\n  } | order(publishedAt desc)\n": GetAllPostsByYearQueryResult;
     "*[_type == \"faq\"]{\n  _id, question, answer\n}": FaqsQueryResult;
     "*[_type == \"testimonial\"]{\n  _id, stars, name, review, link\n}": TestimonialsQueryResult;
     "*[_type == \"gallery\"]{\n  _id, caption, image\n}": GalleryImagesQueryResult;
     "*[_type == \"team\"]{\n  ...\n} | order(_createdAt asc)": TeamMembersQueryResult;
     "*[_type == \"lab-tests\" && currentlyAvailable == true]{\n  ...\n} | order(_createdAt asc)": LabTestsQueryResult;
-    "*[_type == \"lab-tests\" && slug.current == $slug && currentlyAvailable == true][0]{\n  ...\n} | order(_createdAt asc)": LabTestQueryResult;
+    "*[_type == \"lab-tests\" && slug.current == $slug && currentlyAvailable == true][0]{\n  ...\n}": LabTestQueryResult;
     "*[_type == \"partner-labs\"]{\n  ...\n}": PartnerLabsQueryResult;
-    "*[_type == \"lab-tests\" && defined(slug.current) && currentlyAvailable == true]{\n  slug\n}": LabTestSlugsQueryResult;
+    "*[_type == \"lab-tests\" && defined(slug.current) && currentlyAvailable == true]{\n  slug, _updatedAt\n}": LabTestSlugsQueryResult;
   }
 }

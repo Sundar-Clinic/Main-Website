@@ -6,8 +6,8 @@
 import type { Metadata } from 'next';
 import { locales } from '@/i18n/i18n';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
-import { getAllPostsQuery, postQuery } from '@/sanity/lib/queries';
-import { GetAllPostsQueryResult, PostQueryResult } from '@/@types/cms';
+import { postQuery } from '@/sanity/lib/queries';
+import { PostQueryResult } from '@/@types/cms';
 import { urlForImage } from '@/sanity/lib/image';
 import { notFound } from 'next/navigation';
 
@@ -61,18 +61,18 @@ export async function generateMetadata({
 	};
 }
 
-export async function generateStaticParams() {
-	const posts = await sanityFetch<GetAllPostsQueryResult>({
-		query: getAllPostsQuery,
-	});
-	const params: Array<IndividualBlogLayoutProps['params']> = [];
-	for (const post of posts) {
-		for (const locale of locales) {
-			params.push({ locale, slug: post?.slug?.current! });
-		}
-	}
-	return params;
-}
+// export async function generateStaticParams() {
+// 	const posts = await sanityFetch<GetAllPostsQueryResult>({
+// 		query: getAllPostsQuery,
+// 	});
+// 	const params: Array<IndividualBlogLayoutProps['params']> = [];
+// 	for (const post of posts) {
+// 		for (const locale of locales) {
+// 			params.push({ locale, slug: post?.slug?.current! });
+// 		}
+// 	}
+// 	return params;
+// }
 
 export default function IndividualBlogLayout({
 	children,

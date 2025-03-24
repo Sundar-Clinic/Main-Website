@@ -59,6 +59,7 @@
 		"schema-dts": "^1.1.2",
 		"server-only": "^0.0.1",
 		"sharp": "^0.32.6",
+		"sitemap": "^8.0.0",
 		"styled-components": "^6.1.13",
 		"suspend-react": "^0.1.3",
 		"tailwind-merge": "^1.14.0",

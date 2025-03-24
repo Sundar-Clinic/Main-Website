@@ -26,7 +26,7 @@ export async function sanityFetch<QueryResponse>({
 	options?: FilteredResponseQueryOptions & NextFetchRequestConfig;
 }): Promise<QueryResponse> {
 	return client
-		.withConfig({ useCdn: true })
+		.withConfig({ useCdn: true, perspective: 'published' })
 		.fetch<QueryResponse>(query, params, {
 			...(options.cache && {
 				cache: options.cache,
