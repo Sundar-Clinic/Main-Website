@@ -4,6 +4,7 @@
 
 // Dependencies
 import { LabTestsQueryResult, PartnerLabsQueryResult } from '@/@types/cms';
+import LocationCTA from '@/components/cta/LocationCTA';
 import Hero from '@/components/lab/Hero';
 import PartnerLabs from '@/components/lab/PartnerLabs';
 import Tests from '@/components/lab/Tests';
@@ -26,6 +27,7 @@ export default async function Lab({ params: { locale } }: PageProps) {
 			<Hero />
 			<Tests tests={tests} locale={locale} />
 			<PartnerLabs partnerLabs={partnerLabs} />
+			<LocationCTA />
 		</main>
 	);
 }

@@ -254,6 +254,11 @@
 						"start": "Join",
 						"end": "channel now"
 					}
+				},
+				"location": {
+					"heading": "Visit Us Today!",
+					"description": "Your health is our priority. Stop by our clinic for personalized care and expert medical services. We're here to help you feel your best.",
+					"cta": "Get Directions"
 				}
 			}
 		}
