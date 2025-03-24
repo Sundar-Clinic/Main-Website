@@ -43,7 +43,7 @@ const nextConfig = {
       },
     ]
   },
-  trailingSlash: true
+  trailingSlash: false
 }
 
 module.exports = withBundleAnalyzer(withNextIntl(nextConfig))
