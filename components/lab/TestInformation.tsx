@@ -1,6 +1,6 @@
 import React from 'react';
 import { LabTestQueryResult } from '@/@types/cms';
-import { Card } from '@/components/ui/card';
+import { Card, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/lib/routing';
@@ -64,13 +64,7 @@ const TestInformation: React.FC<Props> = ({ test, locale }) => {
 							</Link>
 						</div>
 					</div>
-
-					<Button
-						variant='outline'
-						size='lg'
-						className='w-full'
-						asChild
-					>
+					<Button className='w-full' asChild>
 						<Link href='/contact'>{t('cta.contact')}</Link>
 					</Button>
 				</div>

@@ -12,9 +12,9 @@ const Tests: React.FC<Props> = ({ tests, locale }) => {
 	const t = useTranslations('pages.lab.tests');
 	return (
 		<section className='container' id='tests'>
-			<h3 className='text-2xl font-heading text-center font-medium'>
+			<h2 className='text-2xl font-heading text-center font-medium'>
 				{t('heading')}
-			</h3>
+			</h2>
 			<hr className='border-b-4 max-w-[10rem] border-b-primary-clinic rounded-lg mx-auto mt-2' />
 			<div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8 w-full'>
 				{tests &&

@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
+import { WEBSITE_URL } from '@/constants/clinic';
 
 import './globals.css';
 
 export async function generateMetadata(): Promise<Metadata> {
 	return {
-		metadataBase: new URL('https://sundarclinic.com'),
+		metadataBase: new URL(WEBSITE_URL),
 	};
 }
 

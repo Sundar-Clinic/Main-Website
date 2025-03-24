@@ -41,3 +41,11 @@ export const labTestsQuery = groq`*[_type == "lab-tests" && currentlyAvailable =
 export const labTestQuery = groq`*[_type == "lab-tests" && slug.current == $slug && currentlyAvailable == true][0]{
   ...
 }`;
+
+export const partnerLabsQuery = groq`*[_type == "partner-labs"]{
+  ...
+}`;
+
+export const labTestSlugsQuery = groq`*[_type == "lab-tests" && defined(slug.current) && currentlyAvailable == true]{
+  slug
+}`;
