@@ -61,12 +61,18 @@ const LabTestCard: React.FC<Props> = ({
 				</p>
 			</CardContent>
 			<CardFooter>
-				<Button variant='outline' className='w-full' asChild>
+				<Button
+					variant='outline'
+					className='w-full'
+					asChild
+					aria-label={`Learn more about ${test.name?.[locale]}`}
+				>
 					<Link
 						href={`/lab/tests/${test.slug?.current}`}
 						prefetch={false}
 					>
-						{t('cta')}
+						{t('cta')}{' '}
+						<span className='sr-only'>{test.name?.[locale]}</span>
 					</Link>
 				</Button>
 			</CardFooter>
