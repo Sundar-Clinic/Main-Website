@@ -37,7 +37,7 @@ const Hero: React.FC<HeroProps> = () => {
 						<Link
 							href='/about'
 							prefetch={false}
-							aria-label={t('pages.home.hero.cta.about')}
+							aria-label={`Learn more about ${t('company.name')}`}
 						>
 							{t('pages.home.hero.cta.about')}
 						</Link>
