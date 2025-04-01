@@ -45,7 +45,7 @@ const SocialShare: React.FC<SocialShareProps> = ({ post, locale }) => {
 	};
 
 	return (
-		<section className='mt-8'>
+		<section className='mt-8 max-w-5xl mx-auto w-full p-4'>
 			<h3 className='font-medium'>{t('heading')}</h3>
 			<div className='flex items-center gap-2 flex-wrap mt-2'>
 				<Button
