@@ -41,16 +41,6 @@ const DEFAULT_SITEMAP: MetadataRoute.Sitemap = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	try {
-		// const postSlugs = await sanityFetch<PostSlugsQueryResult>({
-		// 	query: postSlugsQuery,
-		// });
-		// const posts = postSlugs.map(({ slug }) =>
-		// 	getEntry(`/blogs/${slug?.current}`, {
-		// 		priority: 0.5,
-		// 		changeFrequency: 'monthly',
-		// 	})
-		// );
-
 		return [...DEFAULT_SITEMAP];
 	} catch (error) {
 		return DEFAULT_SITEMAP;
