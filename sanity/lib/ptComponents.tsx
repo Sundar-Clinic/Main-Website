@@ -30,10 +30,6 @@ export const ptComponents: Partial<PortableTextReactComponents> = {
 	},
 	block: {
 		h1: ({ children }: any) => <h2>{children}</h2>,
-		h2: ({ children }: any) => <h3>{children}</h3>,
-		h3: ({ children }: any) => <h4>{children}</h4>,
-		h4: ({ children }: any) => <h5>{children}</h5>,
-		h5: ({ children }: any) => <h6>{children}</h6>,
 	},
 	types: {
 		image: ({
