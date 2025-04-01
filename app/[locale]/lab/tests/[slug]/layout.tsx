@@ -8,8 +8,8 @@ import { locales } from '@/i18n/i18n';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
 import { urlForImage } from '@/sanity/lib/image';
 import { notFound } from 'next/navigation';
-import { LabTestQueryResult, LabTestsQueryResult } from '@/@types/cms';
-import { labTestQuery, labTestsQuery } from '@/sanity/lib/queries';
+import { LabTestQueryResult } from '@/@types/cms';
+import { labTestQuery } from '@/sanity/lib/queries';
 
 type IndividualLabTestLayoutProps = {
 	params: {
@@ -62,19 +62,6 @@ export async function generateMetadata({
 			),
 		},
 	};
-}
-
-export async function generateStaticParams() {
-	const tests = await sanityFetch<LabTestsQueryResult>({
-		query: labTestsQuery,
-	});
-	const params: Array<IndividualLabTestLayoutProps['params']> = [];
-	for (const post of tests) {
-		for (const locale of locales) {
-			params.push({ locale, slug: post?.slug?.current! });
-		}
-	}
-	return params;
 }
 
 export default function IndividualLabTestLayout({
