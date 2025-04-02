@@ -26,7 +26,7 @@ type SocialShareProps = React.ComponentProps<'section'> & {
  * @returns {JSX.Element} The rendered social share section.
  */
 const SocialShare: React.FC<SocialShareProps> = ({ post, locale }) => {
-	const LINK = `${WEBSITE_URL}/${locale}/blogs/${post.slug}`;
+	const LINK = `${WEBSITE_URL}/${locale}/blogs/${post.slug?.current}`;
 	const SHARE_TEXT = encodeURI(post.title?.[locale] ?? '');
 	const SHARE_LINK = encodeURI(LINK);
 
