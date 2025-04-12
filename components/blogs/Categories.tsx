@@ -22,7 +22,7 @@ const BlogCategories: React.FC<Props> = ({ post, locale }) => {
       <hr className="border-b-4 max-w-[10rem] border-b-primary-clinic rounded-lg mt-2" />
       <div className="flex flex-wrap gap-4 mt-8">
         {post?.categories?.map((category) => (
-          <Tooltip key={post._id}>
+          <Tooltip key={category._id}>
             <TooltipTrigger className="cursor-pointer">
               <Badge className="flex items-center gap-1">
                 <InfoIcon size={16} />
