@@ -3,62 +3,64 @@
  */
 
 // Dependencies
-import type { Metadata } from 'next';
-import { locales } from '@/i18n/i18n';
-import { sanityFetch } from '@/sanity/lib/sanityFetch';
-import { postQuery } from '@/sanity/lib/queries';
-import { PostQueryResult } from '@/@types/cms';
-import { urlForImage } from '@/sanity/lib/image';
-import { notFound } from 'next/navigation';
+import type { Metadata } from "next";
+import { locales } from "@/i18n/i18n";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
+import { postQuery } from "@/sanity/lib/queries";
+import { PostQueryResult } from "@/@types/cms";
+import { urlForImage } from "@/sanity/lib/image";
+import { notFound } from "next/navigation";
+
+export const revalidate = 3600;
 
 type IndividualBlogLayoutProps = {
-	params: {
-		locale: LocaleLanguages;
-		slug: string;
-	};
+  params: {
+    locale: LocaleLanguages;
+    slug: string;
+  };
 };
 
 export async function generateMetadata({
-	params: { locale, slug },
+  params: { locale, slug },
 }: IndividualBlogLayoutProps): Promise<Metadata> {
-	const post = await sanityFetch<PostQueryResult>({
-		query: postQuery,
-		params: { slug },
-	});
-	if (!post) {
-		return notFound();
-	}
-	return {
-		title: post?.title?.[locale],
-		description: post?.description?.[locale],
-		openGraph: {
-			...(post?.thumbnail && {
-				images: [
-					{
-						url: urlForImage(post?.thumbnail).format('webp').url(),
-						alt: post?.thumbnail?.alt,
-					},
-				],
-			}),
-		},
-		twitter: {
-			card: 'summary_large_image',
-			...(post?.thumbnail && {
-				images: [
-					{
-						url: urlForImage(post?.thumbnail).format('webp').url(),
-						alt: post?.thumbnail?.alt,
-					},
-				],
-			}),
-		},
-		alternates: {
-			canonical: `/${locale}/blogs/${slug}`,
-			languages: Object.fromEntries(
-				locales.map((locale) => [locale, `/${locale}/blogs/${slug}`])
-			),
-		},
-	};
+  const post = await sanityFetch<PostQueryResult>({
+    query: postQuery,
+    params: { slug },
+  });
+  if (!post) {
+    return notFound();
+  }
+  return {
+    title: post?.title?.[locale],
+    description: post?.description?.[locale],
+    openGraph: {
+      ...(post?.thumbnail && {
+        images: [
+          {
+            url: urlForImage(post?.thumbnail).format("webp").url(),
+            alt: post?.thumbnail?.alt,
+          },
+        ],
+      }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      ...(post?.thumbnail && {
+        images: [
+          {
+            url: urlForImage(post?.thumbnail).format("webp").url(),
+            alt: post?.thumbnail?.alt,
+          },
+        ],
+      }),
+    },
+    alternates: {
+      canonical: `/${locale}/blogs/${slug}`,
+      languages: Object.fromEntries(
+        locales.map((locale) => [locale, `/${locale}/blogs/${slug}`])
+      ),
+    },
+  };
 }
 
 // export async function generateStaticParams() {
@@ -75,9 +77,9 @@ export async function generateMetadata({
 // }
 
 export default function IndividualBlogLayout({
-	children,
+  children,
 }: {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-	return <>{children}</>;
+  return <>{children}</>;
 }
