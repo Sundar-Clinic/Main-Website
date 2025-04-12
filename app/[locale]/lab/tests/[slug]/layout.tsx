@@ -11,8 +11,6 @@ import { notFound } from "next/navigation";
 import { LabTestQueryResult } from "@/@types/cms";
 import { labTestQuery } from "@/sanity/lib/queries";
 
-export const revalidate = 3600;
-
 type IndividualLabTestLayoutProps = {
   params: {
     locale: LocaleLanguages;

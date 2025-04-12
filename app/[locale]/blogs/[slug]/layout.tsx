@@ -11,8 +11,6 @@ import { PostQueryResult } from "@/@types/cms";
 import { urlForImage } from "@/sanity/lib/image";
 import { notFound } from "next/navigation";
 
-export const revalidate = 3600;
-
 type IndividualBlogLayoutProps = {
   params: {
     locale: LocaleLanguages;
