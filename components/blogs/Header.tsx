@@ -2,6 +2,7 @@ import type React from "react";
 import type { PostQueryResult } from "@/@types/cms";
 import Image from "next/image";
 import { urlForImage } from "@/sanity/lib/image";
+import { dateFormatter } from "@/lib/utils";
 
 interface Props extends React.ComponentProps<"header"> {
   post: NonNullable<PostQueryResult>;
@@ -13,6 +14,12 @@ const BlogHeader: React.FC<Props> = ({ post, locale }) => {
     <header className="max-w-3xl mx-auto w-full p-4 mt-8">
       <section className="flex flex-col gap-4">
         <div className="flex flex-col justify-center gap-4">
+          <time
+            className="text-sm lg:text-base text-slate-500"
+            dateTime={post?.publishedAt ?? ""}
+          >
+            {dateFormatter(post?.publishedAt ?? "")}
+          </time>
           <h1 className="font-heading font-medium text-2xl lg:text-4xl lg:text-left text-center">
             {post?.title?.[locale]}
           </h1>
