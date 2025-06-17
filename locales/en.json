@@ -1,286 +1,289 @@
 {
-	"company": {
-		"name": "Sundar Clinic",
-		"tagline": "Not just a better healthcare, but a better healthcare experience.",
-		"timings": {
-			"morning": "Morning ‣ 8:00 a.m. - 1:30 p.m.",
-			"evening": "Evening ‣ 4:00 p.m. - 9:30 p.m."
-		},
-		"address": "1195A, Nehru Street, Chennai, Bengaluru - Chennai Highway, Pappanchathiram, Chennai, Tamil Nadu - 600123.",
-		"meta": {
-			"description": "Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician.",
-			"twitter": "Discover better healthcare and a superior healthcare experience at Sundar Clinic in Pappanchatiram, located on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, your trusted general physician. #Healthcare #SundarClinic"
-		}
-	},
-	"layouts": {
-		"navbar": {
-			"cta": "Visit Now",
-			"sr-menu": "Open Menu"
-		},
-		"footer": {
-			"address": "Address",
-			"contact": {
-				"heading": "Contacts",
-				"phone": "Reception, Sundar Clinic"
-			},
-			"cta": "Visit Now",
-			"rights-collab": "All rights reserved | Built in Collaboration with",
-			"oss": "Open Source in"
-		},
-		"global-error": {
-			"heading": "Something went wrong!",
-			"cta": "Try again"
-		},
-		"not-found": {
-			"heading": "Page not found",
-			"description": "Sorry, we couldn't find the page you're looking for.",
-			"cta": {
-				"home": "Go back to home",
-				"contact": "Contact us"
-			}
-		}
-	},
-	"pages": {
-		"home": {
-			"hero": {
-				"description": "In Pappanchatirma, <b>Dr. Ekta Bharti (M.B.B.S)</b> at Sundar Clinic is your trusted healthcare partner. With personalized care, your health is our priority. Experience exceptional healthcare with us today",
-				"cta": {
-					"location": "Visit Now",
-					"about": "Learn more"
-				}
-			},
-			"services": {
-				"heading": "Our Services",
-				"whatsapp-channel": {
-					"heading": "WhatsApp Channel",
-					"description": "Join our WhatsApp channel for quick updates, health tips, and expert care. Connect with us today!",
-					"cta": "Join Now"
-				}
-			},
-			"gallery": {
-				"heading": "Gallery",
-				"cta": "View more"
-			},
-			"testimonials": {
-				"heading": "Testimonials"
-			},
-			"contact": {
-				"heading": "Contact Us",
-				"cta": {
-					"heading": "Let's connect, or got a query for us?",
-					"phone": "Call us at",
-					"email": "or drop us an email at"
-				},
-				"success": {
-					"heading": "Submitted successfully!",
-					"subheading": "We'll get back to you soon."
-				},
-				"fields": {
-					"name": "Full Name",
-					"email": "Email Address",
-					"phone": {
-						"label": "Phone Number",
-						"description": "Enter your 10 digit mobile number."
-					},
-					"subject": "Subject",
-					"message": "Message"
-				},
-				"required": "marks as required fields",
-				"button": {
-					"submit": "Submit",
-					"submitting": "Submitting..."
-				}
-			},
-			"featured-blogs": {
-				"heading": "Featured Blogs"
-			},
-			"faq": {
-				"heading": "Frequently Asked Questions"
-			}
-		},
-		"about": {
-			"hero": {
-				"heading": "Welcome to Sundar Clinic: Where Healthcare Meets Exceptional Experience",
-				"subheading": "About Us",
-				"description": "At Sundar Clinic, we're not just about healthcare; we're about crafting a better healthcare experience. Since our establishment in 2013, we've been a cornerstone of wellness in the vibrant community of Pappanchatiram. Our guiding individual is Dr. Ekta Bharti M.B.B.S., a dedicated general physician who has been leading the way to better health for our community.",
-				"cta": "Learn more"
-			},
-			"history": {
-				"heading": "History",
-				"journey": {
-					"heading": "Our Journey: Transforming Healthcare since 2013",
-					"description": "For nearly a decade, Sundar Clinic has been a trusted name in healthcare, committed to enhancing the well-being of Pappanchatiram's residents. Our journey began in 2013, and since then, we've evolved into a healthcare hub that's not just about treating illnesses but also creating memorable experiences for our patients."
-				},
-				"approach": {
-					"heading": "Our Approach",
-					"description": "Our approach is simple but profound: we provide accessible and high-quality healthcare with a personal touch. Situated in the heart of a developing area, we've been a beacon of hope for individuals seeking answers to their health-related concerns. At Sundar Clinic, we believe in the power of delegation, ensuring that every patient receives the care they deserve, precisely when they need it."
-				}
-			},
-			"team": {
-				"heading": "Meet our Dedicated Team"
-			},
-			"meta": {
-				"title": "About Us",
-				"description": "Discover the story of Sundar Clinic, a trusted healthcare provider in Pappanchatiram. Learn about our history, approach, and dedicated team led by Dr. Ekta Bharti M.B.B.S."
-			}
-		},
-		"team": {
-			"heading": "Meet Our Dedicated Team",
-			"meta": {
-				"title": "Meet Our Team",
-				"description": "Meet the dedicated team at Sundar Clinic, led by Dr. Ekta Bharti M.B.B.S. Learn about our team's qualifications, experience, and commitment to providing exceptional healthcare."
-			}
-		},
-		"contact": {
-			"meta": {
-				"title": "Contact Us",
-				"description": "Get in touch with Sundar Clinic in Pappanchatiram. Call us at +918939881708  or drop us an email at sundarclinic@gmail.com"
-			}
-		},
-		"gallery": {
-			"meta": {
-				"title": "Gallery",
-				"description": "View the gallery of Sundar Clinic in Pappanchatiram. Discover our clinic's facilities, team, and the exceptional healthcare experience we offer."
-			}
-		},
-		"terms-and-conditions": {
-			"heading": "Terms & Conditions",
-			"date": "Effective Date:",
-			"description": "Welcome to Sundar Clinic's website. By accessing and using this website, you agree to comply with and be bound by these Terms and Conditions. Please read the following terms carefully.",
-			"confirmation": "By using our website, you acknowledge that you have read, understood, and agreed to these Terms and Conditions. If you do not agree to these terms, please do not use our website.",
-			"meta": {
-				"title": "Terms & Conditions",
-				"description": "Read the Terms and Conditions of Sundar Clinic's website. By using our website, you agree to comply with and be bound by these terms. Please read the following terms carefully."
-			}
-		},
-		"privacy-policy": {
-			"heading": "Privacy Policy",
-			"date": "Effective Date:",
-			"description": "At Sundar Clinic, your privacy is of utmost importance to us. This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you visit our website or interact with us through our contact form. By using our website and providing your information, you consent to the practices described in this policy.",
-			"confirmation": "By using our website, you acknowledge that you have read, understood, and agreed to these Terms and Conditions. If you do not agree to these terms, please do not use our website.",
-			"meta": {
-				"title": "Privacy Policy",
-				"description": "Read the Privacy Policy of Sundar Clinic's website. Learn how we collect, use, disclose, and protect your personal information when you visit our website or interact with us. By using our website, you consent to the practices described in this policy."
-			}
-		},
-		"legal": {
-			"heading": "Legal Information",
-			"clinic": {
-				"heading": "Clinic Registration",
-				"description": "Sundar Clinic is a duly registered medical facility under the Directorate of Medical and Health Services. Our registration number is <strong>CHENALL20210029183</strong>. You can verify our registration by visiting the Directorate of Medical and Health Services Website or the Clinical Establishments of India Website."
-			},
-			"doctor": {
-				"heading": "Registered Doctor",
-				"description": "Sundar Clinic is operated by a qualified and registered medical practitioner. Our doctor&apos;s registration number is <strong>68812</strong>, which can be verified on the Indian Medical Register maintained by the National Medical Commission (NMC) by visiting"
-			},
-			"links": {
-				"heading": "Other relavent links"
-			},
-			"contact": {
-				"start": "Please feel free to",
-				"cta": "contact us",
-				"end": "if you have any questions or require additional information regarding our legal status and the qualifications of our medical practitioner."
-			},
-			"meta": {
-				"title": "Legal Information",
-				"description": "Read the legal information of Sundar Clinic's website. Learn about our clinic registration, doctor's registration, and other relevant links. Contact us if you have any questions or require additional information."
-			}
-		},
-		"blogs": {
-			"heading": "Blogs",
-			"categories": {
-				"heading": "Categories"
-			},
-			"author": {
-				"heading": "Written by"
-			},
-			"share": {
-				"heading": "Share with...",
-				"copy": "Copy Link"
-			},
-			"meta": {
-				"title": "Blogs",
-				"description": "Read the latest blogs from Sundar Clinic. Stay updated with the latest healthcare trends, tips, and news from our expert team."
-			}
-		},
-		"lab": {
-			"hero": {
-				"heading": "Advanced Diagnostic Testing for Better Health",
-				"subheading": "Lab Services",
-				"description": "At Sundar Clinic, we offer a wide range of lab services to diagnose and treat various health conditions. Our lab is equipped with the latest technology and staffed by experienced professionals who are dedicated to providing accurate and timely results. Whether you need a routine blood test or a more complex diagnostic procedure, you can count on us to deliver the highest quality care.",
-				"cta": {
-					"tests": "View Tests",
-					"contact": "Contact us"
-				}
-			},
-			"tests": {
-				"heading": "Our Diagnostic Tests"
-			},
-			"partner-labs": {
-				"heading": "Our Partner Labs"
-			},
-			"slug": {
-				"cta": {
-					"return": "Back to All Tests",
-					"contact": "Contact us"
-				},
-				"sections": {
-					"heading": "Test Information",
-					"description": "Description",
-					"preparation": "Preparation",
-					"turnaround": "Turnaround Time"
-				}
-			},
-			"meta": {
-				"title": "Lab Services",
-				"description": "Learn about the lab services offered at Sundar Clinic. Our lab is equipped with the latest technology and staffed by experienced professionals who are dedicated to providing accurate and timely results."
-			}
-		}
-	},
-	"components": {
-		"cards": {
-			"team": {
-				"languages": "Languages spoken:"
-			},
-			"testimonial": {
-				"cta": "View Review",
-				"stars": "stars!"
-			},
-			"test": {
-				"cta": "Learn more"
-			},
-			"cta": {
-				"whatsapp-channel": {
-					"eyebrow": "Trusted Healthcare Support",
-					"heading": "We're here to help",
-					"description": "Join our WhatsApp channel to stay informed with timely updates, valuable health tips, and expert medical advice from Dr. Ekta Bharti (M.B.B.S) and The Sundar Clinic team. Experience exceptional, and personalized healthcare tailored to your needs. Connect with us today for trusted medical support!",
-					"button": {
-						"start": "Join",
-						"end": "channel now"
-					}
-				},
-				"location": {
-					"heading": "Visit Us Today!",
-					"description": "Your health is our priority. Stop by our clinic for personalized care and expert medical services. We're here to help you feel your best.",
-					"cta": "Get Directions"
-				},
-				"newsletter": {
-					"heading": "Subscribe to our newsletter",
-					"description": "Stay informed and inspired with Sundar Clinic Insights—your trusted source for the latest in healthcare tips medical news, and wellness strategies. Join our community take the first step toward a better healthcare experience.",
-					"cta": "Subscribe on Substack",
-					"info": {
-						"frequency": {
-							"heading": "Weekly articles",
-							"description": "Get exclusive access to expert advice, patient stories, and actionable tips delivered straight to your inbox every week. Your journey to better health starts here."
-						},
-						"spam": {
-							"heading": "No spam",
-							"description": "We respect your inbox. Expect only meaningful content—no spam, no clutter. Just insights to help you live your healthiest life."
-						}
-					}
-				}
-			}
-		}
-	},
-	"sr-menu": "Open Menu"
+  "company": {
+    "name": "Sundar Clinic",
+    "tagline": "Not just a better healthcare, but a better healthcare experience.",
+    "timings": {
+      "morning": "Morning ‣ 8:00 a.m. - 1:30 p.m.",
+      "evening": "Evening ‣ 4:00 p.m. - 9:30 p.m."
+    },
+    "address": "1195A, Nehru Street, Chennai, Bengaluru - Chennai Highway, Pappanchathiram, Chennai, Tamil Nadu - 600123.",
+    "meta": {
+      "description": "Not just a better healthcare, but a better healthcare experience in Pappanchatiram, situated on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, a trusted general physician.",
+      "twitter": "Discover better healthcare and a superior healthcare experience at Sundar Clinic in Pappanchatiram, located on the Bangalore-Chennai highway. Led by Dr. Ekta Bharti, your trusted general physician. #Healthcare #SundarClinic"
+    }
+  },
+  "layouts": {
+    "navbar": {
+      "cta": "Visit Now",
+      "sr-menu": "Open Menu"
+    },
+    "footer": {
+      "address": "Address",
+      "contact": {
+        "heading": "Contacts",
+        "phone": "Reception, Sundar Clinic"
+      },
+      "cta": "Visit Now",
+      "rights-collab": "All rights reserved | Built in Collaboration with",
+      "oss": "Open Source in"
+    },
+    "global-error": {
+      "heading": "Something went wrong!",
+      "cta": "Try again"
+    },
+    "not-found": {
+      "heading": "Page not found",
+      "description": "Sorry, we couldn't find the page you're looking for.",
+      "cta": {
+        "home": "Go back to home",
+        "contact": "Contact us"
+      }
+    }
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "description": "In Pappanchatirma, <b>Dr. Ekta Bharti (M.B.B.S)</b> at Sundar Clinic is your trusted healthcare partner. With personalized care, your health is our priority. Experience exceptional healthcare with us today",
+        "cta": {
+          "location": "Visit Now",
+          "about": "Learn more"
+        }
+      },
+      "services": {
+        "heading": "Our Services",
+        "whatsapp-channel": {
+          "heading": "WhatsApp Channel",
+          "description": "Join our WhatsApp channel for quick updates, health tips, and expert care. Connect with us today!",
+          "cta": "Join Now"
+        }
+      },
+      "gallery": {
+        "heading": "Gallery",
+        "cta": "View more"
+      },
+      "testimonials": {
+        "heading": "Testimonials"
+      },
+      "contact": {
+        "heading": "Contact Us",
+        "cta": {
+          "heading": "Let's connect, or got a query for us?",
+          "phone": "Call us at",
+          "email": "or drop us an email at"
+        },
+        "success": {
+          "heading": "Submitted successfully!",
+          "subheading": "We'll get back to you soon."
+        },
+        "fields": {
+          "name": "Full Name",
+          "email": "Email Address",
+          "phone": {
+            "label": "Phone Number",
+            "description": "Enter your 10 digit mobile number."
+          },
+          "subject": "Subject",
+          "message": "Message"
+        },
+        "required": "marks as required fields",
+        "button": {
+          "submit": "Submit",
+          "submitting": "Submitting..."
+        }
+      },
+      "featured-blogs": {
+        "heading": "Featured Blogs"
+      },
+      "faq": {
+        "heading": "Frequently Asked Questions"
+      }
+    },
+    "about": {
+      "hero": {
+        "heading": "Welcome to Sundar Clinic: Where Healthcare Meets Exceptional Experience",
+        "subheading": "About Us",
+        "description": "At Sundar Clinic, we're not just about healthcare; we're about crafting a better healthcare experience. Since our establishment in 2013, we've been a cornerstone of wellness in the vibrant community of Pappanchatiram. Our guiding individual is Dr. Ekta Bharti M.B.B.S., a dedicated general physician who has been leading the way to better health for our community.",
+        "cta": "Learn more"
+      },
+      "history": {
+        "heading": "History",
+        "journey": {
+          "heading": "Our Journey: Transforming Healthcare since 2013",
+          "description": "For nearly a decade, Sundar Clinic has been a trusted name in healthcare, committed to enhancing the well-being of Pappanchatiram's residents. Our journey began in 2013, and since then, we've evolved into a healthcare hub that's not just about treating illnesses but also creating memorable experiences for our patients."
+        },
+        "approach": {
+          "heading": "Our Approach",
+          "description": "Our approach is simple but profound: we provide accessible and high-quality healthcare with a personal touch. Situated in the heart of a developing area, we've been a beacon of hope for individuals seeking answers to their health-related concerns. At Sundar Clinic, we believe in the power of delegation, ensuring that every patient receives the care they deserve, precisely when they need it."
+        }
+      },
+      "team": {
+        "heading": "Meet our Dedicated Team"
+      },
+      "meta": {
+        "title": "About Us",
+        "description": "Discover the story of Sundar Clinic, a trusted healthcare provider in Pappanchatiram. Learn about our history, approach, and dedicated team led by Dr. Ekta Bharti M.B.B.S."
+      }
+    },
+    "team": {
+      "heading": "Meet Our Dedicated Team",
+      "meta": {
+        "title": "Meet Our Team",
+        "description": "Meet the dedicated team at Sundar Clinic, led by Dr. Ekta Bharti M.B.B.S. Learn about our team's qualifications, experience, and commitment to providing exceptional healthcare."
+      }
+    },
+    "contact": {
+      "meta": {
+        "title": "Contact Us",
+        "description": "Get in touch with Sundar Clinic in Pappanchatiram. Call us at +918939881708  or drop us an email at sundarclinic@gmail.com"
+      }
+    },
+    "gallery": {
+      "meta": {
+        "title": "Gallery",
+        "description": "View the gallery of Sundar Clinic in Pappanchatiram. Discover our clinic's facilities, team, and the exceptional healthcare experience we offer."
+      }
+    },
+    "terms-and-conditions": {
+      "heading": "Terms & Conditions",
+      "date": "Effective Date:",
+      "description": "Welcome to Sundar Clinic's website. By accessing and using this website, you agree to comply with and be bound by these Terms and Conditions. Please read the following terms carefully.",
+      "confirmation": "By using our website, you acknowledge that you have read, understood, and agreed to these Terms and Conditions. If you do not agree to these terms, please do not use our website.",
+      "meta": {
+        "title": "Terms & Conditions",
+        "description": "Read the Terms and Conditions of Sundar Clinic's website. By using our website, you agree to comply with and be bound by these terms. Please read the following terms carefully."
+      }
+    },
+    "privacy-policy": {
+      "heading": "Privacy Policy",
+      "date": "Effective Date:",
+      "description": "At Sundar Clinic, your privacy is of utmost importance to us. This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you visit our website or interact with us through our contact form. By using our website and providing your information, you consent to the practices described in this policy.",
+      "confirmation": "By using our website, you acknowledge that you have read, understood, and agreed to these Terms and Conditions. If you do not agree to these terms, please do not use our website.",
+      "meta": {
+        "title": "Privacy Policy",
+        "description": "Read the Privacy Policy of Sundar Clinic's website. Learn how we collect, use, disclose, and protect your personal information when you visit our website or interact with us. By using our website, you consent to the practices described in this policy."
+      }
+    },
+    "legal": {
+      "heading": "Legal Information",
+      "clinic": {
+        "heading": "Clinic Registration",
+        "description": "Sundar Clinic is a duly registered medical facility under the Directorate of Medical and Health Services. Our registration number is <strong>CHENALL20210029183</strong>. You can verify our registration by visiting the Directorate of Medical and Health Services Website or the Clinical Establishments of India Website."
+      },
+      "doctor": {
+        "heading": "Registered Doctor",
+        "description": "Sundar Clinic is operated by a qualified and registered medical practitioner. Our doctor&apos;s registration number is <strong>68812</strong>, which can be verified on the Indian Medical Register maintained by the National Medical Commission (NMC) by visiting"
+      },
+      "links": {
+        "heading": "Other relavent links"
+      },
+      "contact": {
+        "start": "Please feel free to",
+        "cta": "contact us",
+        "end": "if you have any questions or require additional information regarding our legal status and the qualifications of our medical practitioner."
+      },
+      "meta": {
+        "title": "Legal Information",
+        "description": "Read the legal information of Sundar Clinic's website. Learn about our clinic registration, doctor's registration, and other relevant links. Contact us if you have any questions or require additional information."
+      }
+    },
+    "blogs": {
+      "heading": "Blogs",
+      "categories": {
+        "heading": "Categories"
+      },
+      "author": {
+        "heading": "Written by"
+      },
+      "share": {
+        "heading": "Share with...",
+        "copy": "Copy Link"
+      },
+      "meta": {
+        "title": "Blogs",
+        "description": "Read the latest blogs from Sundar Clinic. Stay updated with the latest healthcare trends, tips, and news from our expert team."
+      }
+    },
+    "lab": {
+      "hero": {
+        "heading": "Advanced Diagnostic Testing for Better Health",
+        "subheading": "Lab Services",
+        "description": "At Sundar Clinic, we offer a wide range of lab services to diagnose and treat various health conditions. Our lab is equipped with the latest technology and staffed by experienced professionals who are dedicated to providing accurate and timely results. Whether you need a routine blood test or a more complex diagnostic procedure, you can count on us to deliver the highest quality care.",
+        "cta": {
+          "tests": "View Tests",
+          "contact": "Contact us"
+        }
+      },
+      "tests": {
+        "heading": "Our Diagnostic Tests"
+      },
+      "partner-labs": {
+        "heading": "Our Partner Labs"
+      },
+      "slug": {
+        "cta": {
+          "return": "Back to All Tests",
+          "contact": "Contact us"
+        },
+        "sections": {
+          "heading": "Test Information",
+          "description": "Description",
+          "preparation": "Preparation",
+          "turnaround": "Turnaround Time"
+        }
+      },
+      "meta": {
+        "title": "Lab Services",
+        "description": "Learn about the lab services offered at Sundar Clinic. Our lab is equipped with the latest technology and staffed by experienced professionals who are dedicated to providing accurate and timely results."
+      }
+    }
+  },
+  "components": {
+    "cards": {
+      "team": {
+        "languages": "Languages spoken:"
+      },
+      "testimonial": {
+        "cta": "View Review",
+        "stars": "stars!",
+        "googleReviews": "Google Reviews",
+        "googleReviewCta": "Share your experience with us on Google!",
+        "rateUs": "Rate Us"
+      },
+      "test": {
+        "cta": "Learn more"
+      },
+      "cta": {
+        "whatsapp-channel": {
+          "eyebrow": "Trusted Healthcare Support",
+          "heading": "We're here to help",
+          "description": "Join our WhatsApp channel to stay informed with timely updates, valuable health tips, and expert medical advice from Dr. Ekta Bharti (M.B.B.S) and The Sundar Clinic team. Experience exceptional, and personalized healthcare tailored to your needs. Connect with us today for trusted medical support!",
+          "button": {
+            "start": "Join",
+            "end": "channel now"
+          }
+        },
+        "location": {
+          "heading": "Visit Us Today!",
+          "description": "Your health is our priority. Stop by our clinic for personalized care and expert medical services. We're here to help you feel your best.",
+          "cta": "Get Directions"
+        },
+        "newsletter": {
+          "heading": "Subscribe to our newsletter",
+          "description": "Stay informed and inspired with Sundar Clinic Insights—your trusted source for the latest in healthcare tips medical news, and wellness strategies. Join our community take the first step toward a better healthcare experience.",
+          "cta": "Subscribe on Substack",
+          "info": {
+            "frequency": {
+              "heading": "Weekly articles",
+              "description": "Get exclusive access to expert advice, patient stories, and actionable tips delivered straight to your inbox every week. Your journey to better health starts here."
+            },
+            "spam": {
+              "heading": "No spam",
+              "description": "We respect your inbox. Expect only meaningful content—no spam, no clutter. Just insights to help you live your healthiest life."
+            }
+          }
+        }
+      }
+    }
+  },
+  "sr-menu": "Open Menu"
 }
