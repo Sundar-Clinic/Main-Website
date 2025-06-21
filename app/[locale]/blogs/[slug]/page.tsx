@@ -10,6 +10,7 @@ import BlogContent from "@/components/blogs/Content";
 import { unstable_setRequestLocale } from "next-intl/server";
 import CTA from "@/components/cta/CTA";
 import SocialShare from "@/components/blogs/SocialShare";
+import { unstable_cache } from "next/cache";
 
 export const revalidate = 3600;
 
@@ -20,14 +21,28 @@ type IndividualBlogLayoutProps = {
   };
 };
 
+const ONE_DAY_IN_SECONDS = 86400;
+
+const getPost = (slug: string) =>
+  unstable_cache(
+    async () => {
+      const post = await sanityFetch<PostQueryResult>({
+        query: postQuery,
+        params: { slug },
+      });
+      return post;
+    },
+    ["post", slug],
+    {
+      revalidate: ONE_DAY_IN_SECONDS,
+      tags: ["post", slug],
+    }
+  );
 const IndividualBlogPage: React.FC<IndividualBlogLayoutProps> = async ({
   params: { locale, slug },
 }) => {
   unstable_setRequestLocale(locale);
-  const post = await sanityFetch<PostQueryResult>({
-    query: postQuery,
-    params: { slug },
-  });
+  const post = await getPost(slug)();
   if (!post) {
     return notFound();
   }
