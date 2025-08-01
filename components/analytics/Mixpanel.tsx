@@ -9,7 +9,7 @@ const MixpanelAnalytics = () => {
   useEffect(() => {
     if (!MIXPANEL_TOKEN) return;
     mixpanel.init(MIXPANEL_TOKEN, {
-      debug: true,
+      debug: process.env.NODE_ENV === 'development',
       track_pageview: true,
       persistence: "localStorage",
       autocapture: true,
