@@ -8,6 +8,7 @@ const HOTJAR_VERSION = 6;
 
 const HotjarAnalytics = () => {
   useEffect(() => {
+    if (!HOTJAR_ID) return;
     Hotjar.init(HOTJAR_ID, HOTJAR_VERSION);
   }, []);
 
