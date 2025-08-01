@@ -95,6 +95,9 @@ importers:
       lucide-react:
         specifier: ^0.277.0
         version: 0.277.0(react@18.2.0)
+      mixpanel-browser:
+        specifier: ^2.67.0
+        version: 2.67.0
       next:
         specifier: 13.5.7
         version: 13.5.7(@babel/core@7.25.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -2133,6 +2136,12 @@ packages:
       react: ^18
       react-dom: ^18
 
+  '@rrweb/types@2.0.0-alpha.18':
+    resolution: {integrity: sha512-iMH3amHthJZ9x3gGmBPmdfim7wLGygC2GciIkw2A6SO8giSn8PHYtRT8OKNH4V+k3SZ6RSnYHcTQxBA7pSWZ3Q==}
+
+  '@rrweb/utils@2.0.0-alpha.18':
+    resolution: {integrity: sha512-qV8azQYo9RuwW4NGRtOiQfTBdHNL1B0Q//uRLMbCSjbaKqJYd88Js17Bdskj65a0Vgp2dwTLPIZ0gK47dfjfaA==}
+
   '@rushstack/eslint-patch@1.3.3':
     resolution: {integrity: sha512-0xd7qez0AQ+MbHatZTlI1gu5vkG8r7MYRUJAHPAHJBmGLs16zpkrpAVLvjQKQOqaXPDUBwOiJzNc00znHSCVBw==}
 
@@ -2424,6 +2433,9 @@ packages:
   '@types/babel__traverse@7.20.6':
     resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
 
+  '@types/css-font-loading-module@0.0.7':
+    resolution: {integrity: sha512-nl09VhutdjINdWyXxHWN/w9zlNCfr60JUqJbd24YXUuCwgeL0TpFSdElCwb6cxfB6ybE19Gjj4g0jsgkXxKv1Q==}
+
   '@types/event-source-polyfill@1.0.2':
     resolution: {integrity: sha512-qE5zrFd73BRs5oSjVys6g/5GboqOMbzLRTUFPAhfULvvvbRAOXw9m4Wk+p1BtoZm4JgW7TljGGfVabBqvi3eig==}
 
@@ -2599,6 +2611,9 @@ packages:
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0
+
+  '@xstate/fsm@1.6.5':
+    resolution: {integrity: sha512-b5o1I6aLNeYlU/3CPlj/Z91ybk1gUsKT+5NAJI+2W4UjvS5KLG28K9v5UvNoFVjHV8PajVZ00RH3vnjyQO7ZAw==}
 
   abort-controller@3.0.0:
     resolution: {integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==}
@@ -2832,6 +2847,10 @@ packages:
 
   bare-events@2.5.0:
     resolution: {integrity: sha512-/E8dDe9dsbLyh2qrZ64PEPadOQ0F4gbl1sUJOrmph7xOiIxfY8vwab/4bFLh4Y88/Hk/ujKcrQKc+ps0mv873A==}
+
+  base64-arraybuffer@1.0.2:
+    resolution: {integrity: sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==}
+    engines: {node: '>= 0.6.0'}
 
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
@@ -4714,6 +4733,12 @@ packages:
     resolution: {integrity: sha512-7PujJ3Te6GGg9lG1nfw5jYCPV6/BsoAT0nCQwb6w+ROuromXYxI6jc/CQSlD82Z/OUMSBX1SoaqhTE+vXiLQzQ==}
     engines: {node: '>=4.0.0'}
 
+  mitt@3.0.1:
+    resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
+
+  mixpanel-browser@2.67.0:
+    resolution: {integrity: sha512-LudY4eRIkvjEpAlIAg10i2T2mbtiKZ4XlMGbTyF1kcAhEqMa9JhEEdEcjxYPwiKhuMVSBM3RVkNCZaNqcnE4ww==}
+
   mkdirp-classic@0.5.3:
     resolution: {integrity: sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==}
 
@@ -5531,11 +5556,20 @@ packages:
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
 
+  rrdom@2.0.0-alpha.18:
+    resolution: {integrity: sha512-fSFzFFxbqAViITyYVA4Z0o5G6p1nEqEr/N8vdgSKie9Rn0FJxDSNJgjV0yiCIzcDs0QR+hpvgFhpbdZ6JIr5Nw==}
+
   rrweb-cssom@0.6.0:
     resolution: {integrity: sha512-APM0Gt1KoXBz0iIkkdB/kfvGOwC4UuJFeG/c+yV7wSc7q96cG/kJ0HiYCnzivD9SB53cLV1MlHFNfOuPaadYSw==}
 
   rrweb-cssom@0.7.1:
     resolution: {integrity: sha512-TrEMa7JGdVm0UThDJSx7ddw5nVm3UJS9o9CCIZ72B1vSyEZoziDqBYP3XIoi/12lKrJR8rE3jeFHMok2F/Mnsg==}
+
+  rrweb-snapshot@2.0.0-alpha.18:
+    resolution: {integrity: sha512-hBHZL/NfgQX6wO1D9mpwqFu1NJPpim+moIcKhFEjVTZVRUfCln+LOugRc4teVTCISYHN8Cw5e2iNTWCSm+SkoA==}
+
+  rrweb@2.0.0-alpha.18:
+    resolution: {integrity: sha512-1mjZcB+LVoGSx1+i9E2ZdAP90fS3MghYVix2wvGlZvrgRuLCbTCCOZMztFCkKpgp7/EeCdYM4nIHJkKX5J1Nmg==}
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
@@ -8550,6 +8584,10 @@ snapshots:
       react-lifecycles-compat: 3.0.4
       react-style-proptype: 3.2.2
 
+  '@rrweb/types@2.0.0-alpha.18': {}
+
+  '@rrweb/utils@2.0.0-alpha.18': {}
+
   '@rushstack/eslint-patch@1.3.3': {}
 
   '@sanity/asset-utils@2.0.6': {}
@@ -9065,6 +9103,8 @@ snapshots:
     dependencies:
       '@babel/types': 7.25.8
 
+  '@types/css-font-loading-module@0.0.7': {}
+
   '@types/event-source-polyfill@1.0.2': {}
 
   '@types/event-source-polyfill@1.0.5': {}
@@ -9254,6 +9294,8 @@ snapshots:
       vite: 4.5.5(@types/node@20.5.9)
     transitivePeerDependencies:
       - supports-color
+
+  '@xstate/fsm@1.6.5': {}
 
   abort-controller@3.0.0:
     dependencies:
@@ -9518,6 +9560,8 @@ snapshots:
 
   bare-events@2.5.0:
     optional: true
+
+  base64-arraybuffer@1.0.2: {}
 
   base64-js@1.5.1: {}
 
@@ -11646,6 +11690,12 @@ snapshots:
       stream-each: 1.2.3
       through2: 3.0.2
 
+  mitt@3.0.1: {}
+
+  mixpanel-browser@2.67.0:
+    dependencies:
+      rrweb: 2.0.0-alpha.18
+
   mkdirp-classic@0.5.3: {}
 
   mkdirp@3.0.1: {}
@@ -12479,9 +12529,28 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
+  rrdom@2.0.0-alpha.18:
+    dependencies:
+      rrweb-snapshot: 2.0.0-alpha.18
+
   rrweb-cssom@0.6.0: {}
 
   rrweb-cssom@0.7.1: {}
+
+  rrweb-snapshot@2.0.0-alpha.18:
+    dependencies:
+      postcss: 8.4.38
+
+  rrweb@2.0.0-alpha.18:
+    dependencies:
+      '@rrweb/types': 2.0.0-alpha.18
+      '@rrweb/utils': 2.0.0-alpha.18
+      '@types/css-font-loading-module': 0.0.7
+      '@xstate/fsm': 1.6.5
+      base64-arraybuffer: 1.0.2
+      mitt: 3.0.1
+      rrdom: 2.0.0-alpha.18
+      rrweb-snapshot: 2.0.0-alpha.18
 
   run-parallel@1.2.0:
     dependencies:

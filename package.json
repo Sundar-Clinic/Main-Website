@@ -48,6 +48,7 @@
 		"eslint-config-next": "13.4.19",
 		"lru-cache": "^11.1.0",
 		"lucide-react": "^0.277.0",
+		"mixpanel-browser": "^2.67.0",
 		"next": "13.5.7",
 		"next-intl": "^3.20.0",
 		"next-sanity": "^5.5.11",

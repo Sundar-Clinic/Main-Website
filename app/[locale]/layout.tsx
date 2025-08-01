@@ -2,8 +2,9 @@
 import type { Metadata } from "next";
 import { Source_Sans_3, Poppins } from "next/font/google";
 import { WithContext, MedicalBusiness } from "schema-dts";
-import HotjarAnalytics from "@/components/analytics/Hotjar";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import HotjarAnalytics from "@/components/analytics/Hotjar";
+import MixpanelAnalytics from "@/components/analytics/Mixpanel";
 import Script from "next/script";
 import Navbar from "@/layouts/Navbar";
 import Footer from "@/layouts/Footer";
@@ -110,6 +111,7 @@ export default async function Layout({
       className={`${sourceSans3.variable} ${poppins.variable} font-sans`}
     >
       <HotjarAnalytics />
+      <MixpanelAnalytics />
       <GoogleAnalytics GA_TRACKING_ID="G-4PGSJ6BVZ2" />
       <Script
         id="json-ld"
