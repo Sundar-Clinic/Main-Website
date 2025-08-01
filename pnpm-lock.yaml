@@ -17,6 +17,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.3.1
         version: 3.3.1(react-hook-form@7.46.1(react@18.2.0))
+      '@hotjar/browser':
+        specifier: ^1.0.9
+        version: 1.0.9
       '@mui/material':
         specifier: ^5.14.10
         version: 5.14.10(@emotion/react@11.11.1(@types/react@18.2.21)(react@18.2.0))(@emotion/styled@11.11.0(@emotion/react@11.11.1(@types/react@18.2.21)(react@18.2.0))(@types/react@18.2.21)(react@18.2.0))(@types/react@18.2.21)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -1286,6 +1289,9 @@ packages:
     resolution: {integrity: sha512-K7KCKRKjymxIB90nHDQ7b9nli474ru99ZbqxiqDAWYsYhOsU3/4qLxW91y+1n04ic13ajjZ66L3aXbNef8PELQ==}
     peerDependencies:
       react-hook-form: ^7.0.0
+
+  '@hotjar/browser@1.0.9':
+    resolution: {integrity: sha512-n9akDMod8BLGpYEQCrHwlYWWd63c1HlhUSXNIDfClZtKYXbUjIUOFlNZNNcUxgHTCsi4l2i+SWKsGsO0t93S8w==}
 
   '@humanwhocodes/config-array@0.11.11':
     resolution: {integrity: sha512-N2brEuAadi0CcdeMXUkhbZB84eskAc8MEX1By6qEchoVywSgXPIjou4rYsl0V3Hj0ZnuGycGCjdNgockbzeWNA==}
@@ -7731,6 +7737,8 @@ snapshots:
   '@hookform/resolvers@3.3.1(react-hook-form@7.46.1(react@18.2.0))':
     dependencies:
       react-hook-form: 7.46.1(react@18.2.0)
+
+  '@hotjar/browser@1.0.9': {}
 
   '@humanwhocodes/config-array@0.11.11':
     dependencies:

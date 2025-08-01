@@ -22,6 +22,7 @@
 		"@emotion/react": "^11.11.1",
 		"@emotion/styled": "^11.11.0",
 		"@hookform/resolvers": "^3.3.1",
+		"@hotjar/browser": "^1.0.9",
 		"@mui/material": "^5.14.10",
 		"@next/bundle-analyzer": "^14.2.13",
 		"@portabletext/react": "^3.1.0",
