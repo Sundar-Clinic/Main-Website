@@ -45,7 +45,7 @@ export const galleryImagesQuery = groq`*[_type == "gallery"]{
 
 export const teamMembersQuery = groq`*[_type == "team"]{
   ...
-} | order(_createdAt asc)`;
+} | order(priority asc)`;
 
 export const labTestsQuery = groq`*[_type == "lab-tests" && currentlyAvailable == true]{
   ...
