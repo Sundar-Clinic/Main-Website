@@ -130,6 +130,14 @@ export default defineType({
 			description: 'Languages spoken by the team member.',
 		}),
 		defineField({
+			name: 'priority',
+			title: 'Priority',
+			type: 'number',
+			initialValue: 1,
+			description: 'Display priority (1 = highest priority, 2 = second highest, etc.). Lower numbers appear first.',
+			validation: (Rule) => Rule.required().min(1).integer(),
+		}),
+		defineField({
 			name: 'instagram',
 			title: 'Instagram Profile',
 			type: 'url',
