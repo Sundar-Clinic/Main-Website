@@ -22,6 +22,7 @@ import {
 } from '@/components/ui/sheet';
 import { Link, usePathname } from '@/lib/routing';
 import { useTranslations } from 'next-intl';
+import LanguageSwitch from './language-switch';
 
 interface NavbarProps extends React.ComponentProps<'nav'> {
 	locale: LocaleLanguages;
@@ -105,6 +106,9 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 										{t('layouts.navbar.cta')}
 									</Link>
 								</Button>
+								<div className='mt-4 flex items-center justify-center'>
+									<LanguageSwitch locale={locale} />
+								</div>
 							</div>
 							<SheetFooter className='mt-auto text-xs'>
 								{CONTACTS.address}
@@ -130,15 +134,18 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
 						</Link>
 					</div>
 				</div>
-				<Button asChild className='hidden md:flex'>
-					<Link
-						href={CONTACTS.googleLocation}
-						target='_blank'
-						id='nav-cta-button'
-					>
-						{t('layouts.navbar.cta')}
-					</Link>
-				</Button>
+				<div className='flex items-center gap-4'>
+					<LanguageSwitch locale={locale} />
+					<Button asChild className='hidden md:flex'>
+						<Link
+							href={CONTACTS.googleLocation}
+							target='_blank'
+							id='nav-cta-button'
+						>
+							{t('layouts.navbar.cta')}
+						</Link>
+					</Button>
+				</div>
 			</section>
 			<section className='w-full bg-secondary-clinic/5 px-4 py-2 hidden md:block'>
 				<ul className='container mt-0 p-0 flex gap-8 items-center justify-center font-heading'>
