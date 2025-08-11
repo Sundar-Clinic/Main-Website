@@ -128,7 +128,9 @@ const Navbar: React.FC<NavbarProps> = ({ locale }) => {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <LanguageSwitch locale={locale} triggerClassName="hidden md:flex" />
+          <div className="hidden md:flex">
+            <LanguageSwitch locale={locale} />
+          </div>
           <Button asChild className="hidden md:flex">
             <Link
               href={CONTACTS.googleLocation}
