@@ -8,7 +8,6 @@ import Image from 'next/image';
 import { Link } from '@/lib/routing';
 import { Button } from '@/components/ui/button';
 import { Clock } from 'lucide-react';
-import LanguageSwitch from './language-switch';
 import { FOOTER_NAVIGATION } from '@/constants/navigation';
 import { CONTACTS, SOCIALS } from '@/constants/clinic';
 import { useTranslations } from 'next-intl';
@@ -139,7 +138,6 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 							</Button>
 						))}
 					</div>
-					<LanguageSwitch locale={locale} />
 				</div>
 				<hr className='border-b my-4 border-b-slate-300 mx-auto' />
 				<p className='text-center'>
