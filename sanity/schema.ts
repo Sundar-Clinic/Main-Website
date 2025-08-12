@@ -13,9 +13,11 @@ import { localeString } from './schemas/localeStringType';
 import { localeText } from './schemas/localeTextType';
 import { localeBlockContent } from './schemas/localeBlockContent';
 import partnerLab from './schemas/partnerLab';
+import { siteConfigType } from './schemas/siteConfig';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
 	types: [
+		siteConfigType,
 		post,
 		category,
 		faq,

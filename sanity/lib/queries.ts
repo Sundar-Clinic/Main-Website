@@ -62,3 +62,8 @@ export const partnerLabsQuery = groq`*[_type == "partner-labs"]{
 export const labTestSlugsQuery = groq`*[_type == "lab-tests" && defined(slug.current) && currentlyAvailable == true]{
   slug, _updatedAt
 }`;
+
+export const siteConfigQuery = groq`*[_type == "siteConfig"][0]{
+  _id,
+  socials
+}`;

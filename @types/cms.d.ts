@@ -278,6 +278,7 @@ export type Team = {
   startDate?: string;
   endDate?: string;
   languages?: Array<string>;
+  priority?: number;
   instagram?: string;
   twitter?: string;
   linkedin?: string;
@@ -363,7 +364,21 @@ export type LocaleString = {
   hi?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | BlockContent | PartnerLabs | LabTests | Gallery | Testimonial | Faq | Category | Post | LocaleBlockContent | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | LocaleText | LocaleString;
+export type SiteConfig = {
+  _id: string;
+  _type: "siteConfig";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  socials?: Array<{
+    name?: "instagram" | "facebook" | "twitter" | "linkedin" | "youtube" | "mail" | "whatsapp" | "phone" | "github";
+    url?: string;
+    _type: "socialLink";
+    _key: string;
+  }>;
+};
+
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | BlockContent | PartnerLabs | LabTests | Gallery | Testimonial | Faq | Category | Post | LocaleBlockContent | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | LocaleText | LocaleString | SiteConfig;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
 // Variable: postSlugsQuery
@@ -410,6 +425,7 @@ export type FeaturedPostsQueryResult = Array<{
     startDate?: string;
     endDate?: string;
     languages?: Array<string>;
+    priority?: number;
     instagram?: string;
     twitter?: string;
     linkedin?: string;
@@ -482,6 +498,7 @@ export type GetAllPostsQueryResult = Array<{
     startDate?: string;
     endDate?: string;
     languages?: Array<string>;
+    priority?: number;
     instagram?: string;
     twitter?: string;
     linkedin?: string;
@@ -554,6 +571,7 @@ export type PostQueryResult = {
     startDate?: string;
     endDate?: string;
     languages?: Array<string>;
+    priority?: number;
     instagram?: string;
     twitter?: string;
     linkedin?: string;
@@ -631,7 +649,7 @@ export type GalleryImagesQueryResult = Array<{
   } | null;
 }>;
 // Variable: teamMembersQuery
-// Query: *[_type == "team"]{  ...} | order(_createdAt asc)
+// Query: *[_type == "team"]{  ...} | order(priority asc)
 export type TeamMembersQueryResult = Array<{
   _id: string;
   _type: "team";
@@ -660,6 +678,7 @@ export type TeamMembersQueryResult = Array<{
   startDate?: string;
   endDate?: string;
   languages?: Array<string>;
+  priority?: number;
   instagram?: string;
   twitter?: string;
   linkedin?: string;
@@ -754,6 +773,17 @@ export type LabTestSlugsQueryResult = Array<{
   slug: Slug | null;
   _updatedAt: string;
 }>;
+// Variable: siteConfigQuery
+// Query: *[_type == "siteConfig"][0]{  _id,  socials}
+export type SiteConfigQueryResult = {
+  _id: string;
+  socials: Array<{
+    name?: "facebook" | "github" | "instagram" | "linkedin" | "mail" | "phone" | "twitter" | "whatsapp" | "youtube";
+    url?: string;
+    _type: "socialLink";
+    _key: string;
+  }> | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -768,10 +798,11 @@ declare module "@sanity/client" {
     "*[_type == \"faq\"]{\n  _id, question, answer\n}": FaqsQueryResult;
     "*[_type == \"testimonial\"]{\n  _id, stars, name, review, link\n}": TestimonialsQueryResult;
     "*[_type == \"gallery\"]{\n  _id, caption, image\n}": GalleryImagesQueryResult;
-    "*[_type == \"team\"]{\n  ...\n} | order(_createdAt asc)": TeamMembersQueryResult;
+    "*[_type == \"team\"]{\n  ...\n} | order(priority asc)": TeamMembersQueryResult;
     "*[_type == \"lab-tests\" && currentlyAvailable == true]{\n  ...\n} | order(_createdAt asc)": LabTestsQueryResult;
     "*[_type == \"lab-tests\" && slug.current == $slug && currentlyAvailable == true][0]{\n  ...\n}": LabTestQueryResult;
     "*[_type == \"partner-labs\"]{\n  ...\n}": PartnerLabsQueryResult;
     "*[_type == \"lab-tests\" && defined(slug.current) && currentlyAvailable == true]{\n  slug, _updatedAt\n}": LabTestSlugsQueryResult;
+    "*[_type == \"siteConfig\"][0]{\n  _id,\n  socials\n}": SiteConfigQueryResult;
   }
 }
