@@ -371,7 +371,7 @@ export type SiteConfig = {
   _updatedAt: string;
   _rev: string;
   socials?: Array<{
-    name?: "instagram" | "facebook" | "twitter" | "linkedin" | "youtube";
+    name?: "instagram" | "facebook" | "twitter" | "linkedin" | "youtube" | "mail" | "whatsapp" | "phone" | "github";
     url?: string;
     _type: "socialLink";
     _key: string;
@@ -773,6 +773,17 @@ export type LabTestSlugsQueryResult = Array<{
   slug: Slug | null;
   _updatedAt: string;
 }>;
+// Variable: siteConfigQuery
+// Query: *[_type == "siteConfig"][0]{  _id,  socials}
+export type SiteConfigQueryResult = {
+  _id: string;
+  socials: Array<{
+    name?: "facebook" | "github" | "instagram" | "linkedin" | "mail" | "phone" | "twitter" | "whatsapp" | "youtube";
+    url?: string;
+    _type: "socialLink";
+    _key: string;
+  }> | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -792,5 +803,6 @@ declare module "@sanity/client" {
     "*[_type == \"lab-tests\" && slug.current == $slug && currentlyAvailable == true][0]{\n  ...\n}": LabTestQueryResult;
     "*[_type == \"partner-labs\"]{\n  ...\n}": PartnerLabsQueryResult;
     "*[_type == \"lab-tests\" && defined(slug.current) && currentlyAvailable == true]{\n  slug, _updatedAt\n}": LabTestSlugsQueryResult;
+    "*[_type == \"siteConfig\"][0]{\n  _id,\n  socials\n}": SiteConfigQueryResult;
   }
 }

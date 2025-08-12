@@ -2189,6 +2189,22 @@
                     {
                       "type": "string",
                       "value": "youtube"
+                    },
+                    {
+                      "type": "string",
+                      "value": "mail"
+                    },
+                    {
+                      "type": "string",
+                      "value": "whatsapp"
+                    },
+                    {
+                      "type": "string",
+                      "value": "phone"
+                    },
+                    {
+                      "type": "string",
+                      "value": "github"
                     }
                   ]
                 },

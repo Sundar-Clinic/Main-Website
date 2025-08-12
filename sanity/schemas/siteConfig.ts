@@ -26,6 +26,10 @@ export const siteConfigType = defineType({
                   { title: 'Twitter/X', value: 'twitter' },
                   { title: 'LinkedIn', value: 'linkedin' },
                   { title: 'YouTube', value: 'youtube' },
+                  { title: 'Email', value: 'mail' },
+                  { title: 'WhatsApp', value: 'whatsapp' },
+                  { title: 'Phone', value: 'phone' },
+                  { title: 'GitHub', value: 'github' },
                 ],
                 layout: 'dropdown',
               },
@@ -40,9 +44,9 @@ export const siteConfigType = defineType({
                 Rule.required()
                   .uri({
                     allowRelative: false,
-                    scheme: ['http', 'https'],
+                    scheme: ['http', 'https', 'mailto', 'tel'],
                   })
-                  .error('A valid URL is required'),
+                  .error('A valid URL is required (http/https for web links, mailto: for email, tel: for phone)'),
             },
           ],
           preview: {

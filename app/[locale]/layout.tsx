@@ -20,6 +20,9 @@ import { NextIntlClientProvider } from "next-intl";
 import { CONTACTS } from "@/constants/clinic";
 import { locales } from "@/i18n/i18n";
 import { cn } from "@/lib/utils";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
+import { siteConfigQuery } from "@/sanity/lib/queries";
+import type { SiteConfigQueryResult } from "@/@types/cms";
 
 const sourceSans3 = Source_Sans_3({
   display: "swap",
@@ -104,6 +107,11 @@ export default async function Layout({
   unstable_setRequestLocale(locale);
 
   const messages = await getMessages();
+  
+  // Fetch site configuration
+  const siteConfig = await sanityFetch<SiteConfigQueryResult>({
+    query: siteConfigQuery,
+  });
 
   return (
     <html
@@ -127,7 +135,7 @@ export default async function Layout({
           <TooltipProvider>
             <Navbar locale={locale} />
             {children}
-            <Footer locale={locale} />
+            <Footer locale={locale} siteConfig={siteConfig} />
           </TooltipProvider>
           <Toaster />
         </NextIntlClientProvider>

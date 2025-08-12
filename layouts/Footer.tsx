@@ -9,14 +9,17 @@ import { Link } from '@/lib/routing';
 import { Button } from '@/components/ui/button';
 import { Clock } from 'lucide-react';
 import { FOOTER_NAVIGATION } from '@/constants/navigation';
-import { CONTACTS, SOCIALS } from '@/constants/clinic';
+import { CONTACTS } from '@/constants/clinic';
+import { SOCIAL_PLATFORM_CONFIG, type SocialPlatform } from '@/constants/socials';
 import { useTranslations } from 'next-intl';
+import type { SiteConfigQueryResult } from '@/@types/cms';
 
 interface FooterProps extends React.ComponentProps<'footer'> {
 	locale: LocaleLanguages;
+	siteConfig?: SiteConfigQueryResult | null;
 }
 
-const Footer: React.FC<FooterProps> = ({ locale }) => {
+const Footer: React.FC<FooterProps> = ({ locale, siteConfig }) => {
 	const t = useTranslations();
 
 	return (
@@ -110,33 +113,43 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
 						))}
 					</ul>
 					<div className='flex gap-2 items-center w-fit'>
-						{SOCIALS.map((link) => (
-							<Button
-								asChild
-								size='icon'
-								key={`footer-social-${link.name}`}
-								variant={'ghost'}
-							>
-								<Link
-									href={link.url}
-									target={'_blank'}
-									title={link.name}
-									className='group'
-								>
-									<link.Icon
-										strokeWidth={1.5}
-										size={20}
-										className='group-hover:text-primary-clinic transition-all'
-										{...(['WhatsApp'].includes(
-											link.name
-										) && {
-											width: 28,
-											height: 28,
-										})}
-									/>
-								</Link>
-							</Button>
-						))}
+						{siteConfig?.socials
+							?.filter((social): social is NonNullable<typeof social> =>
+								Boolean(social?.name && social?.url)
+							)
+							.map((social) => {
+								const platformName = social.name as SocialPlatform;
+								const config = SOCIAL_PLATFORM_CONFIG[platformName];
+								if (!config) return null;
+
+								const IconComponent = config.icon;
+
+								return (
+									<Button
+										asChild
+										size='icon'
+										key={`footer-social-${social._key}`}
+										variant={'ghost'}
+									>
+										<Link
+											href={social.url!}
+											target={'_blank'}
+											title={config.name}
+											className='group'
+										>
+											<IconComponent
+												strokeWidth={1.5}
+												size={20}
+												className={`group-hover:text-primary-clinic transition-all ${config.color} ${config.hoverColor}`}
+												{...(platformName === 'whatsapp' && {
+													width: 28,
+													height: 28,
+												})}
+											/>
+										</Link>
+									</Button>
+								);
+							})}
 					</div>
 				</div>
 				<hr className='border-b my-4 border-b-slate-300 mx-auto' />
