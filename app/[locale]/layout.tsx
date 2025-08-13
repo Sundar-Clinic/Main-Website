@@ -16,6 +16,7 @@ import {
   unstable_setRequestLocale,
 } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import { GoogleReCaptchaProvider } from "@/components/home/GoogleReCaptchaProvider";
 
 import { CONTACTS } from "@/constants/clinic";
 import { locales } from "@/i18n/i18n";
@@ -107,7 +108,7 @@ export default async function Layout({
   unstable_setRequestLocale(locale);
 
   const messages = await getMessages();
-  
+
   // Fetch site configuration
   const siteConfig = await sanityFetch<SiteConfigQueryResult>({
     query: siteConfigQuery,
@@ -132,12 +133,14 @@ export default async function Layout({
         })}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <TooltipProvider>
-            <Navbar locale={locale} />
-            {children}
-            <Footer locale={locale} siteConfig={siteConfig} />
-          </TooltipProvider>
-          <Toaster />
+          <GoogleReCaptchaProvider locale={locale}>
+            <TooltipProvider>
+              <Navbar locale={locale} />
+              {children}
+              <Footer locale={locale} siteConfig={siteConfig} />
+            </TooltipProvider>
+            <Toaster />
+          </GoogleReCaptchaProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -122,6 +122,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-google-recaptcha-v3:
+        specifier: ^1.11.0
+        version: 1.11.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-hook-form:
         specifier: ^7.46.1
         version: 7.46.1(react@18.2.0)
@@ -5312,6 +5315,12 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  react-google-recaptcha-v3@1.11.0:
+    resolution: {integrity: sha512-kLQqpz/77m8+trpBwzqcxNtvWZYoZ/YO6Vm2cVTHW8hs80BWUfDpC7RDwuAvpswwtSYApWfaSpIDFWAIBNIYxQ==}
+    peerDependencies:
+      react: ^16.3 || ^17.0 || ^18.0 || ^19.0
+      react-dom: ^17.0 || ^18.0 || ^19.0
 
   react-hook-form@7.46.1:
     resolution: {integrity: sha512-0GfI31LRTBd5tqbXMGXT1Rdsv3rnvy0FjEk8Gn9/4tp6+s77T7DPZuGEpBRXOauL+NhyGT5iaXzdIM2R6F/E+w==}
@@ -12259,6 +12268,12 @@ snapshots:
       use-sidecar: 1.1.2(@types/react@18.2.21)(react@18.2.0)
     optionalDependencies:
       '@types/react': 18.2.21
+
+  react-google-recaptcha-v3@1.11.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+    dependencies:
+      hoist-non-react-statics: 3.3.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
 
   react-hook-form@7.46.1(react@18.2.0):
     dependencies:
