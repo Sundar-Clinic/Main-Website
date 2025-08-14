@@ -8,6 +8,21 @@ import nodemailer from "nodemailer";
 import z from "zod";
 import NodeCache from "node-cache";
 import { createRateLimiter } from "@/lib/rate-limit";
+import { assertValue } from "@/lib/utils";
+
+// Constants
+const RECAPTCHA_SECRET_KEY = assertValue(
+  process.env.RECAPTCHA_SECRET_KEY,
+  "RECAPTCHA_SECRET_KEY is not set"
+);
+const GMAIL_EMAIL = assertValue(
+  process.env.GMAIL_EMAIL,
+  "GMAIL_EMAIL is not set"
+);
+const GMAIL_PASSWORD = assertValue(
+  process.env.GMAIL_PASSWORD,
+  "GMAIL_PASSWORD is not set"
+);
 
 // Rate limiter for revalidation (lax limit: 10 requests per minute)
 const rateLimitCache = new NodeCache({ stdTTL: 60, checkperiod: 60 });
@@ -26,8 +41,8 @@ const contactFormRequestSchema = z.object({
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.GMAIL_EMAIL,
-    pass: process.env.GMAIL_PASSWORD,
+    user: GMAIL_EMAIL,
+    pass: GMAIL_PASSWORD,
   },
 });
 
@@ -48,12 +63,20 @@ export async function POST(request: Request) {
     );
   }
 
-  const body = await request.json();
-  const { value, status } =
-    z.OK<z.infer<typeof contactFormRequestSchema>>(body);
+  const body = (await request.json()) as z.infer<
+    typeof contactFormRequestSchema
+  >;
+  const { success } = contactFormRequestSchema.safeParse(body);
+
+  if (!success) {
+    return NextResponse.json(
+      { message: "contact/invalid-request" },
+      { status: 400 }
+    );
+  }
 
   const reCAPTCHAResponse = await fetch(
-    `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${value.token}`,
+    `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET_KEY}&response=${body.token}`,
     { method: "POST" }
   );
   const reCAPTCHAData = await reCAPTCHAResponse.json();
@@ -65,22 +88,18 @@ export async function POST(request: Request) {
     );
   }
 
-  if (status === "valid") {
-    await transporter.sendMail({
-      from: process.env.GMAIL_EMAIL,
-      to: process.env.GMAIL_EMAIL,
-      subject: `${value.fullName} - ${value.email} - ${value.subject}`,
-      text: `${value.message}\nEmail: ${value.email}\nName:${value.fullName}\nPhone:${value.phone}\n\nThis message is sent from the websites contact form`,
-    });
-    return NextResponse.json(
-      {
-        message: "contact/form-submitted-succeessfully",
-      },
-      {
-        status: 200,
-      }
-    );
-  } else {
-    return NextResponse.error();
-  }
+  await transporter.sendMail({
+    from: GMAIL_EMAIL,
+    to: GMAIL_EMAIL,
+    subject: `${body.fullName} - ${body.email} - ${body.subject}`,
+    text: `${body.message}\nEmail: ${body.email}\nName:${body.fullName}\nPhone:${body.phone}\n\nThis message is sent from the websites contact form`,
+  });
+  return NextResponse.json(
+    {
+      message: "contact/form-submitted-succeessfully",
+    },
+    {
+      status: 200,
+    }
+  );
 }
