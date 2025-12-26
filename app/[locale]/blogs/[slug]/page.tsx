@@ -10,9 +10,8 @@ import BlogContent from "@/components/blogs/Content";
 import { unstable_setRequestLocale } from "next-intl/server";
 import CTA from "@/components/cta/CTA";
 import SocialShare from "@/components/blogs/SocialShare";
-import { unstable_cache } from "next/cache";
-
 export const revalidate = 3600;
+export const dynamicParams = true;
 
 type IndividualBlogLayoutProps = {
   params: {
@@ -21,28 +20,22 @@ type IndividualBlogLayoutProps = {
   };
 };
 
-const ONE_DAY_IN_SECONDS = 86400;
+const POST_REVALIDATE_SECONDS = 3600;
 
-const getPost = (slug: string) =>
-  unstable_cache(
-    async () => {
-      const post = await sanityFetch<PostQueryResult>({
-        query: postQuery,
-        params: { slug },
-      });
-      return post;
+const getPost = async (slug: string) =>
+  sanityFetch<PostQueryResult>({
+    query: postQuery,
+    params: { slug },
+    tags: ["post", slug],
+    options: {
+      revalidate: POST_REVALIDATE_SECONDS,
     },
-    ["post", slug],
-    {
-      revalidate: ONE_DAY_IN_SECONDS,
-      tags: ["post", slug],
-    }
-  );
+  });
 const IndividualBlogPage: React.FC<IndividualBlogLayoutProps> = async ({
   params: { locale, slug },
 }) => {
   unstable_setRequestLocale(locale);
-  const post = await getPost(slug)();
+  const post = await getPost(slug);
   if (!post) {
     return notFound();
   }
