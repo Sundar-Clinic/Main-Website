@@ -194,11 +194,19 @@
       "author": {
         "heading": "Written by"
       },
-      "share": {
-        "heading": "Share with...",
-        "copy": "Copy Link"
-      },
-      "meta": {
+  "share": {
+    "heading": "Share with...",
+    "copy": "Copy Link"
+  },
+  "filters": {
+    "searchLabel": "Search by title",
+    "searchPlaceholder": "Search blog posts",
+    "categoryLabel": "Filter by category",
+    "allCategories": "All categories",
+    "results": "{count} posts found",
+    "empty": "No posts match your filters yet."
+  },
+  "meta": {
         "title": "Blogs",
         "description": "Read the latest blogs from Sundar Clinic. Stay updated with the latest healthcare trends, tips, and news from our expert team."
       }

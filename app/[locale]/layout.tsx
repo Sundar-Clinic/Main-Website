@@ -17,6 +17,7 @@ import {
 } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { GoogleReCaptchaProvider } from "@/components/home/GoogleReCaptchaProvider";
+import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 
 import { CONTACTS, WEBSITE_URL } from "@/constants/clinic";
 import { locales } from "@/i18n/i18n";
@@ -144,14 +145,16 @@ export default async function Layout({
         })}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <GoogleReCaptchaProvider locale={locale}>
-            <TooltipProvider>
-              <Navbar locale={locale} />
-              {children}
-              <Footer locale={locale} siteConfig={siteConfig} />
-            </TooltipProvider>
-            <Toaster />
-          </GoogleReCaptchaProvider>
+          <ReactQueryProvider>
+            <GoogleReCaptchaProvider locale={locale}>
+              <TooltipProvider>
+                <Navbar locale={locale} />
+                {children}
+                <Footer locale={locale} siteConfig={siteConfig} />
+              </TooltipProvider>
+              <Toaster />
+            </GoogleReCaptchaProvider>
+          </ReactQueryProvider>
         </NextIntlClientProvider>
       </body>
     </html>

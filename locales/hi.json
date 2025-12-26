@@ -200,6 +200,14 @@
       "share": {
         "heading": "के साथ शेयर करें...",
         "copy": "लिंक की प्रतिलिपि करें"
+      },
+      "filters": {
+        "searchLabel": "शीर्षक से खोजें",
+        "searchPlaceholder": "ब्लॉग पोस्ट खोजें",
+        "categoryLabel": "श्रेणी से फ़िल्टर करें",
+        "allCategories": "सभी श्रेणियां",
+        "results": "{count} पोस्ट मिले",
+        "empty": "आपके फ़िल्टर से कोई पोस्ट नहीं मिले।"
       }
     },
     "lab": {
