@@ -20,7 +20,7 @@ export const blogListingQuery = groq`{
     && publishedAt <= now()
     && ($categoryId == "all" || $categoryId in categories[]._ref)
     && ($search == "" || title[$locale] match $search)
-  ] | order(publishedAt desc)[$offset...$end]{
+  ] | order(publishedAt desc)[$offset...($offset + $limit)]{
     ..., author->{...}, categories[]->{...}
   },
   "total": count(*[

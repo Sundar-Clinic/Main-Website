@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { BlogListingQueryResult } from '@/@types/cms';
+import { getPaginationParams } from '@/lib/blogs/blogListing';
 import BlogCard from '../cards/BlogCard';
 import { Input } from '@/components/ui/input';
 import {
@@ -25,13 +25,12 @@ import { useBlogs } from '@/lib/hooks/useBlogs';
 import { cn } from '@/lib/utils';
 
 interface Props extends React.ComponentProps<'section'> {
-	initialData: BlogListingQueryResult;
 	locale: LocaleLanguages;
 }
 
 export const POSTS_PER_PAGE = 9;
 
-const AllBlogs: React.FC<Props> = ({ initialData, locale }) => {
+const AllBlogs: React.FC<Props> = ({ locale }) => {
 	const t = useTranslations('pages.blogs');
 	const [searchInput, setSearchInput] = useState('');
 	const [searchTerm, setSearchTerm] = useState('');
@@ -51,19 +50,15 @@ const AllBlogs: React.FC<Props> = ({ initialData, locale }) => {
 	}, [searchTerm, selectedCategoryId]);
 
 	const searchQuery = searchTerm ? `*${searchTerm}*` : '';
-	const offset = (currentPage - 1) * POSTS_PER_PAGE;
-	const end = offset + POSTS_PER_PAGE;
+	const { offset, limit } = getPaginationParams(currentPage, POSTS_PER_PAGE);
 
-	const { data, isFetching } = useBlogs(
-		{
-			locale,
-			categoryId: selectedCategoryId,
-			search: searchQuery,
-			offset,
-			end,
-		},
-		initialData
-	);
+	const { data, isFetching } = useBlogs({
+		locale,
+		categoryId: selectedCategoryId,
+		search: searchQuery,
+		offset,
+		limit,
+	});
 
 	const posts = data?.items ?? [];
 	const totalPosts = data?.total ?? 0;
