@@ -204,7 +204,8 @@
     "categoryLabel": "Filter by category",
     "allCategories": "All categories",
     "results": "{count} posts found",
-    "empty": "No posts match your filters yet."
+    "empty": "No posts match your filters yet.",
+    "loading": "Refreshing posts..."
   },
   "meta": {
         "title": "Blogs",

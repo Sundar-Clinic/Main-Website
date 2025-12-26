@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { GetAllPostsQueryResult } from '@/@types/cms';
+import { BlogListingQueryResult } from '@/@types/cms';
 import BlogCard from '../cards/BlogCard';
 import { Input } from '@/components/ui/input';
 import {
@@ -25,71 +25,56 @@ import { useBlogs } from '@/lib/hooks/useBlogs';
 import { cn } from '@/lib/utils';
 
 interface Props extends React.ComponentProps<'section'> {
-	posts: GetAllPostsQueryResult;
+	initialData: BlogListingQueryResult;
 	locale: LocaleLanguages;
 }
 
-const POSTS_PER_PAGE = 9;
+export const POSTS_PER_PAGE = 9;
 
-const AllBlogs: React.FC<Props> = ({ posts, locale }) => {
+const AllBlogs: React.FC<Props> = ({ initialData, locale }) => {
 	const t = useTranslations('pages.blogs');
-	const { data: allPosts = [] } = useBlogs(posts);
+	const [searchInput, setSearchInput] = useState('');
 	const [searchTerm, setSearchTerm] = useState('');
 	const [selectedCategoryId, setSelectedCategoryId] = useState('all');
 	const [currentPage, setCurrentPage] = useState(1);
 
-	const categories = useMemo(() => {
-		const categoryMap = new Map<
-			string,
-			NonNullable<GetAllPostsQueryResult[number]['categories']>[number]
-		>();
+	useEffect(() => {
+		const handle = setTimeout(() => {
+			setSearchTerm(searchInput.trim());
+		}, 300);
 
-		allPosts.forEach((post) => {
-			post.categories?.forEach((category) => {
-				if (category?._id && !categoryMap.has(category._id)) {
-					categoryMap.set(category._id, category);
-				}
-			});
-		});
-
-		return Array.from(categoryMap.values()).sort((a, b) =>
-			(a?.title?.[locale] ?? '').localeCompare(b?.title?.[locale] ?? '')
-		);
-	}, [allPosts, locale]);
-
-	const filteredPosts = useMemo(() => {
-		const normalizedSearch = searchTerm.trim().toLowerCase();
-
-		return allPosts.filter((post) => {
-			const title = post?.title?.[locale] ?? '';
-			const matchesSearch = normalizedSearch
-				? title.toLowerCase().includes(normalizedSearch)
-				: true;
-			const matchesCategory =
-				selectedCategoryId === 'all'
-					? true
-					: post.categories?.some((category) => category?._id === selectedCategoryId);
-
-			return matchesSearch && matchesCategory;
-		});
-	}, [allPosts, locale, searchTerm, selectedCategoryId]);
-
-	const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
+		return () => clearTimeout(handle);
+	}, [searchInput]);
 
 	useEffect(() => {
 		setCurrentPage(1);
 	}, [searchTerm, selectedCategoryId]);
+
+	const searchQuery = searchTerm ? `*${searchTerm}*` : '';
+	const offset = (currentPage - 1) * POSTS_PER_PAGE;
+	const end = offset + POSTS_PER_PAGE;
+
+	const { data, isFetching } = useBlogs(
+		{
+			locale,
+			categoryId: selectedCategoryId,
+			search: searchQuery,
+			offset,
+			end,
+		},
+		initialData
+	);
+
+	const posts = data?.items ?? [];
+	const totalPosts = data?.total ?? 0;
+	const totalPages = Math.max(1, Math.ceil(totalPosts / POSTS_PER_PAGE));
+	const categories = data?.categories ?? [];
 
 	useEffect(() => {
 		if (currentPage > totalPages) {
 			setCurrentPage(totalPages);
 		}
 	}, [currentPage, totalPages]);
-
-	const paginatedPosts = useMemo(() => {
-		const start = (currentPage - 1) * POSTS_PER_PAGE;
-		return filteredPosts.slice(start, start + POSTS_PER_PAGE);
-	}, [currentPage, filteredPosts]);
 
 	const pageItems = useMemo(() => {
 		if (totalPages <= 1) {
@@ -131,8 +116,8 @@ const AllBlogs: React.FC<Props> = ({ posts, locale }) => {
 						{t('filters.searchLabel')}
 					</label>
 					<Input
-						value={searchTerm}
-						onChange={(event) => setSearchTerm(event.target.value)}
+						value={searchInput}
+						onChange={(event) => setSearchInput(event.target.value)}
 						placeholder={t('filters.searchPlaceholder')}
 						className='mt-2'
 					/>
@@ -159,12 +144,12 @@ const AllBlogs: React.FC<Props> = ({ posts, locale }) => {
 					</Select>
 				</div>
 				<div className='text-sm font-medium text-muted-foreground md:text-right'>
-					{t('filters.results', { count: filteredPosts.length })}
+					{t('filters.results', { count: totalPosts })}
 				</div>
 			</div>
 			<div className='mx-auto mt-12 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3'>
-				{paginatedPosts.length > 0 ? (
-					paginatedPosts.map((post) => (
+				{posts.length > 0 ? (
+					posts.map((post) => (
 						<BlogCard key={post._id} post={post} locale={locale} />
 					))
 				) : (
@@ -229,6 +214,11 @@ const AllBlogs: React.FC<Props> = ({ posts, locale }) => {
 						</PaginationItem>
 					</PaginationContent>
 				</Pagination>
+			)}
+			{isFetching && (
+				<div className='mt-6 text-center text-xs text-muted-foreground'>
+					{t('filters.loading')}
+				</div>
 			)}
 		</section>
 	);

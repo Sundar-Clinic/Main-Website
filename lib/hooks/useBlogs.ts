@@ -2,16 +2,34 @@
 
 import { useQuery } from "@tanstack/react-query"
 
-import type { GetAllPostsQueryResult } from "@/@types/cms"
+import type { BlogListingQueryResult } from "@/@types/cms"
 import { client } from "@/sanity/lib/client"
-import { getAllPostsQuery } from "@/sanity/lib/queries"
+import { blogListingQuery } from "@/sanity/lib/queries"
 
-const fetchBlogs = async () =>
-  client.fetch<GetAllPostsQueryResult>(getAllPostsQuery)
+export interface BlogListingParams {
+  locale: LocaleLanguages
+  categoryId: string
+  search: string
+  offset: number
+  end: number
+}
 
-export const useBlogs = (initialData?: GetAllPostsQueryResult) =>
+const fetchBlogs = async (params: BlogListingParams) =>
+  client.fetch<BlogListingQueryResult>(blogListingQuery, params)
+
+export const useBlogs = (
+  params: BlogListingParams,
+  initialData?: BlogListingQueryResult
+) =>
   useQuery({
-    queryKey: ["blogs"],
-    queryFn: fetchBlogs,
+    queryKey: [
+      "blogs",
+      params.locale,
+      params.categoryId,
+      params.search,
+      params.offset,
+      params.end,
+    ],
+    queryFn: () => fetchBlogs(params),
     initialData,
   })

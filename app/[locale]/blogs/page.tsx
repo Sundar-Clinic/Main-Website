@@ -1,18 +1,25 @@
 import React from 'react';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
-import { getAllPostsQuery } from '@/sanity/lib/queries';
-import { GetAllPostsQueryResult } from '@/@types/cms';
-import AllBlogs from '@/components/blogs/AllBlogs';
+import { blogListingQuery } from '@/sanity/lib/queries';
+import { BlogListingQueryResult } from '@/@types/cms';
+import AllBlogs, { POSTS_PER_PAGE } from '@/components/blogs/AllBlogs';
 import { unstable_setRequestLocale } from 'next-intl/server';
 
 const BlogsPage = async ({ params: { locale } }: PageProps) => {
 	unstable_setRequestLocale(locale);
-	const posts = await sanityFetch<GetAllPostsQueryResult>({
-		query: getAllPostsQuery,
+	const initialData = await sanityFetch<BlogListingQueryResult>({
+		query: blogListingQuery,
+		params: {
+			locale,
+			categoryId: 'all',
+			search: '',
+			offset: 0,
+			end: POSTS_PER_PAGE,
+		},
 	});
 	return (
 		<main>
-			<AllBlogs posts={posts} locale={locale} />
+			<AllBlogs initialData={initialData} locale={locale} />
 		</main>
 	);
 };

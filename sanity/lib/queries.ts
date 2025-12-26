@@ -14,6 +14,28 @@ export const getAllPostsQuery = groq`*[_type == "post" && publishedAt <= now()]{
   ..., author->{...}, categories[]->{...}
 } | order(publishedAt desc)`;
 
+export const blogListingQuery = groq`{
+  "items": *[
+    _type == "post"
+    && publishedAt <= now()
+    && ($categoryId == "all" || $categoryId in categories[]._ref)
+    && ($search == "" || title[$locale] match $search)
+  ] | order(publishedAt desc)[$offset...$end]{
+    ..., author->{...}, categories[]->{...}
+  },
+  "total": count(*[
+    _type == "post"
+    && publishedAt <= now()
+    && ($categoryId == "all" || $categoryId in categories[]._ref)
+    && ($search == "" || title[$locale] match $search)
+  ]),
+  "categories": *[_type == "category"]{
+    _id,
+    title,
+    description
+  } | order(title[$locale] asc)
+}`;
+
 export const postQuery = groq`*[_type == "post" && slug.current == $slug && publishedAt <= now()][0]{ 
   ..., author->{...}, categories[]->{...}
 }`;
