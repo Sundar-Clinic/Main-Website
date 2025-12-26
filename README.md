@@ -41,6 +41,56 @@ Welcome to the Sundar Clinic Website repository. This website is built using mod
 3. Create `.env.local` with reference to `.env.sample` variables before running the app (Sanity and gmail app password will be required)
 4. Start the development server: `npm run dev`
 
+## Localization (next-intl)
+
+This project uses [`next-intl`](https://next-intl-docs.vercel.app/) with App Router and locale-based routes.
+
+### How localization is wired
+
+- Locale routing is configured in:
+  - `i18n/i18n.ts` (`locales` array + `getRequestConfig` loading messages).
+  - `lib/routing.ts` (`defineRouting` + `createSharedPathnamesNavigation`).
+  - `middleware.ts` (matcher and default locale routing).
+- Translation messages live in `locales/*.json`.
+- Providers are configured in `app/[locale]/layout.tsx` via `NextIntlClientProvider`.
+
+### Add a new locale
+
+1. Add a new locale JSON file in `locales/` (e.g., `locales/es.json`).
+2. Register the locale in:
+   - `i18n/i18n.ts` → `export const locales = ['en', 'ta', 'hi', 'es']`.
+   - `lib/routing.ts` → `locales: ['en', 'ta', 'hi', 'es']`.
+   - `middleware.ts` → update the matcher to include the new locale (e.g., `/(en|ta|hi|es)/:path*`).
+3. Add translations for the new locale by mirroring keys from `locales/en.json`.
+
+### Use translations in components and pages
+
+**Client components**
+
+```tsx
+import { useTranslations } from 'next-intl';
+
+const t = useTranslations('pages.home');
+return <h1>{t('hero.title')}</h1>;
+```
+
+**Server components/pages**
+
+```tsx
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+
+export default async function Page({ params: { locale } }) {
+  unstable_setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: 'pages.home' });
+  return <h1>{t('hero.title')}</h1>;
+}
+```
+
+### Add new translation keys
+
+1. Add the new key to `locales/en.json` (and copy the key to other locale files).
+2. Reference the key with `useTranslations`/`getTranslations` in the component or page.
+
 ## Testing
 
 This project uses Cypress for both end-to-end and component tests.
