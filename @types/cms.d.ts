@@ -532,6 +532,87 @@ export type GetAllPostsQueryResult = Array<{
   publishedAt?: string;
   body?: LocaleBlockContent;
 }>;
+// Variable: blogListingQuery
+// Query: {  "items": *[    _type == "post"    && publishedAt <= now()    && ($categoryId == "all" || $categoryId in categories[]._ref)    && ($search == "" || title[$locale] match $search)  ] | order(publishedAt desc)[$offset...$end]{    ..., author->{...}, categories[]->{...}  },  "total": count(*[    _type == "post"    && publishedAt <= now()    && ($categoryId == "all" || $categoryId in categories[]._ref)    && ($search == "" || title[$locale] match $search)  ]),  "categories": *[_type == "category"]{    _id,    title,    description  } | order(title[$locale] asc)}
+export type BlogListingQueryResult = {
+  items: Array<{
+    _id: string;
+    _type: "post";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    title?: LocaleString;
+    description?: LocaleText;
+    slug?: Slug;
+    author: {
+      _id: string;
+      _type: "team";
+      _createdAt: string;
+      _updatedAt: string;
+      _rev: string;
+      name?: string;
+      slug?: Slug;
+      role?: string;
+      qualifications?: string;
+      bio?: string;
+      registrationNo?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      currentlyWorking?: boolean;
+      startDate?: string;
+      endDate?: string;
+      languages?: Array<string>;
+      priority?: number;
+      instagram?: string;
+      twitter?: string;
+      linkedin?: string;
+      website?: string;
+      email?: string;
+      youtube?: string;
+    } | null;
+    thumbnail?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    categories: Array<{
+      _id: string;
+      _type: "category";
+      _createdAt: string;
+      _updatedAt: string;
+      _rev: string;
+      title?: LocaleString;
+      description?: LocaleText;
+    }> | null;
+    featured?: boolean;
+    cta?: "location" | "newsletter" | "whatsapp-channel";
+    publishedAt?: string;
+    body?: LocaleBlockContent;
+  }>;
+  total: number;
+  categories: Array<{
+    _id: string;
+    title?: LocaleString;
+    description?: LocaleText;
+  }>;
+};
 // Variable: postQuery
 // Query: *[_type == "post" && slug.current == $slug && publishedAt <= now()][0]{   ..., author->{...}, categories[]->{...}}
 export type PostQueryResult = {
@@ -792,6 +873,7 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && defined(slug.current) && publishedAt <= now()]{\n    slug\n}": PostSlugsQueryResult;
     "*[_type == \"post\" && featured == true && publishedAt <= now()][0...3]{\n  ..., author->{...}, categories[]->{...}\n} | order(publishedAt desc)": FeaturedPostsQueryResult;
     "*[_type == \"post\" && publishedAt <= now()]{\n  ..., author->{...}, categories[]->{...}\n} | order(publishedAt desc)": GetAllPostsQueryResult;
+    "{\n  \"items\": *[\n    _type == \"post\"\n    && publishedAt <= now()\n    && ($categoryId == \"all\" || $categoryId in categories[]._ref)\n    && ($search == \"\" || title[$locale] match $search)\n  ] | order(publishedAt desc)[$offset...$end]{\n    ..., author->{...}, categories[]->{...}\n  },\n  \"total\": count(*[\n    _type == \"post\"\n    && publishedAt <= now()\n    && ($categoryId == \"all\" || $categoryId in categories[]._ref)\n    && ($search == \"\" || title[$locale] match $search)\n  ]),\n  \"categories\": *[_type == \"category\"]{\n    _id,\n    title,\n    description\n  } | order(title[$locale] asc)\n}": BlogListingQueryResult;
     "*[_type == \"post\" && slug.current == $slug && publishedAt <= now()][0]{ \n  ..., author->{...}, categories[]->{...}\n}": PostQueryResult;
     "array::unique(\n  *[_type == \"post\" && defined(publishedAt)]{\n    \"year\": string::split(publishedAt, '-')[0]\n  }.year\n) | order(@ desc)": PostPublishedYearsQueryResult;
     "\n  *[_type == \"post\" && string::startsWith(publishedAt, $year)]{\n    slug,\n    _updatedAt\n  } | order(publishedAt desc)\n": GetAllPostsByYearQueryResult;
