@@ -18,7 +18,7 @@ import {
 import { NextIntlClientProvider } from "next-intl";
 import { GoogleReCaptchaProvider } from "@/components/home/GoogleReCaptchaProvider";
 
-import { CONTACTS } from "@/constants/clinic";
+import { CONTACTS, WEBSITE_URL } from "@/constants/clinic";
 import { locales } from "@/i18n/i18n";
 import { cn } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
@@ -66,8 +66,17 @@ export async function generateMetadata({
   params: { locale },
 }: PageProps): Promise<Metadata> {
   const t = await getTranslations({ locale });
+  const metadataBase = new URL(WEBSITE_URL);
+  const localizedPath = `/${locale}`;
+  const ogImage = {
+    url: "/opengraph-image.jpg",
+    width: 1200,
+    height: 630,
+    alt: t("company.name"),
+  };
 
   return {
+    metadataBase,
     title: {
       template: `%s - ${t("company.name")}`,
       default: t("company.name"),
@@ -77,18 +86,20 @@ export async function generateMetadata({
     openGraph: {
       title: t("company.name"),
       description: t("company.meta.description"),
-      url: "/en",
+      url: localizedPath,
       type: "website",
       siteName: t("company.name"),
+      images: [ogImage],
     },
     twitter: {
       title: t("company.name"),
       description: t("company.meta.twitter"),
       site: "@SundarClinic",
       creator: "@SundarClinic",
+      images: [ogImage],
     },
     alternates: {
-      canonical: `/${locale}`,
+      canonical: localizedPath,
       languages: Object.fromEntries(
         locales.map((locale) => [locale, `/${locale}`])
       ),
