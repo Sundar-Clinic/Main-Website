@@ -57,7 +57,7 @@ const COMMON_NAVIGATION: NavdataCollection = [
 	{
 		name: {
 			en: 'Gallery',
-			ta: 'கேலரி',
+			ta: 'படத்தொகுப்பு',
 			hi: 'गैलरी',
 		},
 		url: '/gallery',
