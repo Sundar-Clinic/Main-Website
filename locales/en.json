@@ -240,7 +240,9 @@
   "components": {
     "cards": {
       "team": {
-        "languages": "Languages spoken:"
+        "languages": "Languages spoken:",
+        "tenure": "Tenure:",
+        "present": "Present"
       },
       "testimonial": {
         "cta": "View Review",

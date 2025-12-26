@@ -239,7 +239,9 @@
   "components": {
     "cards": {
       "team": {
-        "languages": "பேசப்படும் மொழிகள்:"
+        "languages": "பேசப்படும் மொழிகள்:",
+        "tenure": "பணிக்காலம்:",
+        "present": "தற்போது"
       },
       "testimonial": {
         "cta": "மதிப்பாய்வைக் காண்க",
