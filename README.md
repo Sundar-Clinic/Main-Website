@@ -41,6 +41,16 @@ Welcome to the Sundar Clinic Website repository. This website is built using mod
 3. Create `.env.local` with reference to `.env.sample` variables before running the app (Sanity and gmail app password will be required)
 4. Start the development server: `npm run dev`
 
+## Testing
+
+This project uses Cypress for both end-to-end and component tests.
+
+- Run end-to-end tests (headless): `npm run test:e2e`
+- Open Cypress for end-to-end tests (interactive): `npm run e2e`
+- Run component tests (headless): `npm run test:component`
+- Open Cypress for component tests (interactive): `npm run component`
+- Open Cypress Test Runner (choose e2e or component): `npm run cypress:open`
+
 ## Contribution Guidelines
 
 If you would like to contribute to this project, please read our [Contributing Guidelines](CONTRIBUTING.md) for more information.
