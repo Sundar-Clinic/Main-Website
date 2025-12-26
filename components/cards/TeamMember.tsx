@@ -20,6 +20,7 @@ import {
 import { useTranslations } from 'next-intl';
 import { TeamMembersQueryResult } from '@/@types/cms';
 import { urlForImage } from '@/sanity/lib/image';
+import { dateFormatter } from '@/lib/utils';
 
 type TeamMemberCardProps = React.ComponentProps<'div'> & {
 	member: TeamMembersQueryResult[number];
@@ -37,6 +38,14 @@ type UserSocials = z.infer<typeof userSocials>;
 
 const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
 	const t = useTranslations('components.cards.team');
+	const startDate = member?.startDate
+		? dateFormatter(member.startDate)
+		: null;
+	const endDate = member?.currentlyWorking
+		? t('present')
+		: member?.endDate
+			? dateFormatter(member.endDate)
+			: null;
 
 	const socials: UserSocials = userSocials.parse([
 		{ Icon: Instagram, url: member?.instagram ?? null },
@@ -85,6 +94,15 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
 					)}
 				</p>
 				<p className='mt-2'>{member?.bio}</p>
+				{(startDate || endDate) && (
+					<p className='mt-2 text-sm text-slate-500'>
+						{t('tenure')}{' '}
+						<span className='font-medium text-slate-700'>
+							{startDate ?? '—'}
+							{endDate ? ` - ${endDate}` : ''}
+						</span>
+					</p>
+				)}
 				<p className='mt-2'>
 					{t('languages')}{' '}
 					<span className='font-medium'>
