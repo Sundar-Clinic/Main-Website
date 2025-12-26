@@ -24,6 +24,10 @@ export async function generateMetadata({
   const post = await sanityFetch<PostQueryResult>({
     query: postQuery,
     params: { slug },
+    tags: ["post", slug],
+    options: {
+      revalidate: 3600,
+    },
   });
   if (!post) {
     return notFound();
