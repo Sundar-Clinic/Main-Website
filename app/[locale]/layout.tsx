@@ -25,6 +25,7 @@ import { cn } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
 import { siteConfigQuery } from "@/sanity/lib/queries";
 import type { SiteConfigQueryResult } from "@/@types/cms";
+import { createCollectionTag } from '@/lib/cache-tags';
 
 const sourceSans3 = Source_Sans_3({
   display: "swap",
@@ -124,6 +125,11 @@ export default async function Layout({
   // Fetch site configuration
   const siteConfig = await sanityFetch<SiteConfigQueryResult>({
     query: siteConfigQuery,
+    options: {
+      next: {
+        tags: [createCollectionTag('siteConfig')],
+      },
+    },
   });
 
   return (

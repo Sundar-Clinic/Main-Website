@@ -6,6 +6,7 @@ import type { BlogListingParams } from '@/lib/blogs/blogListing';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
 import { blogListingQuery } from '@/sanity/lib/queries';
 import type { BlogListingQueryResult } from '@/@types/cms';
+import { createCollectionTag } from '@/lib/cache-tags';
 import { unstable_setRequestLocale } from 'next-intl/server';
 
 const BlogsPage = async ({ params: { locale } }: PageProps) => {
@@ -26,6 +27,11 @@ const BlogsPage = async ({ params: { locale } }: PageProps) => {
 			sanityFetch<BlogListingQueryResult>({
 				query: blogListingQuery,
 				params,
+				options: {
+					next: {
+						tags: [createCollectionTag('post'), createCollectionTag('category')],
+					},
+				},
 			}),
 	});
 	return (
