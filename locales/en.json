@@ -296,5 +296,11 @@
       }
     }
   },
-  "sr-menu": "Open Menu"
+  "sr-menu": "Open Menu",
+  "cookieConsent": {
+    "description": "We use cookies to improve your experience on our website. By continuing to browse, you agree to our use of cookies.",
+    "learnMore": "Learn more",
+    "accept": "Accept",
+    "decline": "Decline"
+  }
 }

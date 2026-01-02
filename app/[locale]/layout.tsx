@@ -18,6 +18,7 @@ import {
 import { NextIntlClientProvider } from "next-intl";
 import { GoogleReCaptchaProvider } from "@/components/home/GoogleReCaptchaProvider";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
+import CookieConsent from "@/components/ui/CookieConsent";
 
 import { CONTACTS, WEBSITE_URL } from "@/constants/clinic";
 import { locales } from "@/i18n/i18n";
@@ -162,6 +163,7 @@ export default async function Layout({
             </GoogleReCaptchaProvider>
           </ReactQueryProvider>
         </NextIntlClientProvider>
+        <CookieConsent />
       </body>
     </html>
   );
