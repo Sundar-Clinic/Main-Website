@@ -2,6 +2,7 @@ import React from "react";
 import { postQuery } from "@/sanity/lib/queries";
 import { PostQueryResult } from "@/@types/cms";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
+import { createDocumentTag } from '@/lib/cache-tags';
 import { notFound } from "next/navigation";
 import BlogHeader from "@/components/blogs/Header";
 import BlogAuthor from "@/components/blogs/Author";
@@ -26,9 +27,10 @@ const getPost = async (slug: string) =>
   sanityFetch<PostQueryResult>({
     query: postQuery,
     params: { slug },
-    tags: ["post", slug],
     options: {
-      revalidate: POST_REVALIDATE_SECONDS,
+      next: {
+        tags: [createDocumentTag('post', slug)],
+      },
     },
   });
 const IndividualBlogPage: React.FC<IndividualBlogLayoutProps> = async ({

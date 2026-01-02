@@ -20,6 +20,7 @@ import {
 } from '@/sanity/lib/queries';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import { createCollectionTag } from '@/lib/cache-tags';
 import {
 	FaqsQueryResult,
 	TestimonialsQueryResult,
@@ -29,15 +30,29 @@ import {
 
 export default async function Home({ params: { locale } }: PageProps) {
 	unstable_setRequestLocale(locale);
-	const faqs = await sanityFetch<FaqsQueryResult>({ query: faqsQuery });
+	const faqs = await sanityFetch<FaqsQueryResult>({
+		query: faqsQuery,
+		options: { next: { tags: [createCollectionTag('faq')] } },
+	});
 	const testimonials = await sanityFetch<TestimonialsQueryResult>({
 		query: testimonialsQuery,
+		options: { next: { tags: [createCollectionTag('testimonial')] } },
 	});
 	const galleryImages = await sanityFetch<GalleryImagesQueryResult>({
 		query: galleryImagesQuery,
+		options: { next: { tags: [createCollectionTag('gallery')] } },
 	});
 	const featuredPosts = await sanityFetch<FeaturedPostsQueryResult>({
 		query: featuredPostsQuery,
+		options: {
+			next: {
+				tags: [
+					createCollectionTag('post'),
+					createCollectionTag('team'),
+					createCollectionTag('category'),
+				],
+			},
+		},
 	});
 
 	return (

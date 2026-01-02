@@ -6,7 +6,8 @@
 import type { Metadata } from "next";
 import { locales } from "@/i18n/i18n";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
-import { postQuery } from "@/sanity/lib/queries";
+import { postQuery, getAllPostsQuery } from "@/sanity/lib/queries";
+import { createCollectionTag, createDocumentTag } from '@/lib/cache-tags';
 import { PostQueryResult } from "@/@types/cms";
 import { urlForImage } from "@/sanity/lib/image";
 import { notFound } from "next/navigation";
@@ -24,10 +25,11 @@ export async function generateMetadata({
   const post = await sanityFetch<PostQueryResult>({
     query: postQuery,
     params: { slug },
-    tags: ["post", slug],
     options: {
-      revalidate: 3600,
-    },
+      next: {
+        tags: [createDocumentTag('post', slug)],
+      }
+    }
   });
   if (!post) {
     return notFound();
@@ -68,6 +70,11 @@ export async function generateMetadata({
 // export async function generateStaticParams() {
 // 	const posts = await sanityFetch<GetAllPostsQueryResult>({
 // 		query: getAllPostsQuery,
+//    options: {
+//      next: {
+//        tags: [createCollectionTag('post')],
+//      }
+//    }
 // 	});
 // 	const params: Array<IndividualBlogLayoutProps['params']> = [];
 // 	for (const post of posts) {
